@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ message }}
+{% endblock %}
+
+{% block bodyclass %}not-found{% endblock %}
+
+{% block content %}
+<!-- placeholder for testing 404 page -->
+<div>
+  <h1>{{ status }}</h1>
+  <h1>{{ message }}</h1>
+  <p>{{ comment }}</p>
+</div>
+{% endblock %}

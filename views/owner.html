@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block bodyclass %}search{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="inner_container">
+    <div class="row">
+
+      <div class="col-sm-3 profile">
+        <div class="row">
+          <div class="col-sm-12 col-xs-6">
+            <img src="{{owner.avatar}}" class="img-responsive">
+          </div>
+          <div class="col-sm-12 col-xs-6">
+            <h2 class="owner">{{ owner.title }}</h2>
+            <p class="name">{{ owner.name }}</p>
+            <p class="join-date">Since {{ owner.joinDate }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-offset-1 col-sm-8">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <h2 class="owner-page-title">Datasets <span class="badge" title="{{result.count}} published datasets">{{result.count}}</span></h2>
+          </div>
+          <div class="col-sm-6">
+            <form class="search-form form form-inline" class="input-group col-xs-12" action="/{{ owner.name }}" method="GET">
+              <input type="text" class="form-control" placeholder="Search..." name="q" value="{{ query.q }}" required autofocus/>
+            </form>
+          </div>
+        </div>
+
+        <div id="publisher-package-list">
+
+          {% if result.count > 0 %}
+            <section class="search-page">
+              <section class="results">
+                {{ snippets.package_list_show(result.results) }}
+              </section>
+            </section>
+            <!-- Pagination -->
+            {% if result.count > 10 %}
+              {{ snippets.pagination(query.q, pages, result, owner.name) }}
+            {% endif %}
+            <!-- end of pagination -->
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
