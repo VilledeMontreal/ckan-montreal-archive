@@ -1,0 +1,9 @@
+{
+  "name": "ckan_ng_example_theme",
+  "version": "1.0.0",
+  "description": "An example theme for CKAN NG",
+  "main": "index.js",
+  "author": "Datopian <info@datopian.com>",
+  "license": "MIT",
+  "private": false
+}
