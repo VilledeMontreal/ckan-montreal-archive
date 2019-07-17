@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block title%}{{title}}{% endblock %}
+    </title>
+    <meta name="author" content="Datopian">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="/static/stylesheets/app.css">
+<link rel="stylesheet" href="/static/stylesheets/montreal.css">
+    {% if dataset %}
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    {% endif %}
+  </head>
+  <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} bg-gray-200" id="montreal">
+    <div id="page" class="page sm:mx-6 mt-6 bg-gray-200">
+        <!-- Page header -->
+    <header class="flex m-6 p-6">
+<label tabindex="0" for="hb__trigger" class="nav-trigger sm:hidden" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
+        <div class="hb">
+            <span class="hb__box">
+                <span class="hb__inner"></span>
+            </span>
+            <span class="hb__label">Menu</span>
+        </div>
+    </label>
+            <button id="nav-toggle" class="absolute top-0 right-0 p-gutter outline-none focus:outline-none focus:text-secondary lg:hidden invisible">
+              <svg class="w-8 h-8 fill-current">
+                <use xlink:href="#menu" />
+              </svg>
+            </button>
+            <hgroup class="w-1/2 header-image float-left">
+              <a class="logo" href="/"><img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal" height="40px" /></a>
+            </hgroup>
+            <div class="w-1/2 mr-12">
+            <div class="flex text-primary font-bold float-right">
+            <nav class="pt-12">
+            <div class="nav-collapse">
+              <ul class="flex text-primary font-bold float-right">
+                <li class="mr-3">
+                  <a class="hover:text-secondary" href="/news">News</a>
+                </li>
+                <li class="mr-3">
+                  <a class="hover:text-secondary" href="/dash">Dashboard</a>
+                </li>
+                <li class="mr-3">
+                  <a class="hover:text-secondary" href="/search">Data</a>
+                </li>
+                <li class="mr-3">
+                  <a class="hover:text-secondary" href="/about">About</a>
+                </li>
+                <li>
+                  <a id="search-link" href="/search">
+                    <span class="lg:hidden">Search</span>
+                    <svg class="w-8 h-8 fill-current lg:block"><use xlink:href="#search" /></svg>
+                  </a>
+                </li>
+              </ul>
+              </div>
+            </nav>
+            </div>
+            </div>
+        </header>
+        <!-- End of page header -->
+
+        {% block content %}{{content}}{% endblock %}
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer bg-gray-ink text-white-74 mt-10 py-gutter text-sm">
+        <div class="container">
+          <div class="row">
+            <a class="block w-24 mb-4 hover:text-white" href="https://ckan.org/" ml-24>
+              <span>Powered by</span>
+              {% include "./partials/ckan-logo.svg" %}
+            </a>
+          </div>
+        </div>
+      </footer>
+      <!-- end of footer -->
+    </div>
+
+    <div class="hidden">
+      {% include "./partials/symbol/svg/sprite.symbol.svg" %}
+    </div>
+
+    <!-- <script src="/static/js/scripts.js"></script> -->
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
