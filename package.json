@@ -1,0 +1,9 @@
+{
+  "name": "ckan_ng_montreal_theme",
+  "version": "1.0.0",
+  "description": "Public theme for City of Montreal Data Portal on CKAN NG",
+  "main": "index.js",
+  "repository": "git@gitlab.com:datopian/ckan_ng_theme_montreal.git",
+  "author": "Datopian <info@datopian.com>",
+  "license": "MIT"
+}
