@@ -34,8 +34,17 @@
     position: absolute;
     color: white;
     z-index:111;
+    top:14rem;
+    left:35%;
 }
+
 
 #montreal .home-top {
     height: 426px;
+}
+
+.montreal-banner-search {
+  top: 112px;
+  right: 10px;
+  position: absolute;
 }

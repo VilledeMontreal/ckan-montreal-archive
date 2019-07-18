@@ -1,5 +1,11 @@
 module.exports = function (app) {
-  console.log('montreal routes')
+  const appHome = process.cwd()
+  console.log('MONTREAL routes', appHome)
+  const dms = require(`${appHome}/lib/dms`)
+  const config = require(`${appHome}/config`)
+  const Model = new dms.DmsModel(config)
+  
+
   app.get('/dash', (req, res) => {
     console.log('RPOUIT DASH')
     const fs = require('fs')
@@ -8,6 +14,15 @@ module.exports = function (app) {
     res.render('dash.html', {
       title: 'Dashboard',
       content: {dash: dashPage}
+    })
+  })
+  
+  app.get('/', async (req, res) => {
+    const collections = await Model.getCollections()
+    res.render('home.html', {
+      title: 'Montreal',
+      collections,
+      slug: 'collections',
     })
   })
 }

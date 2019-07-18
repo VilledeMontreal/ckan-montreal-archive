@@ -6,19 +6,26 @@
     <div class="container home-page-banner">
       <div class="module-content box">
         <div class="span12">
-          <div class="landing-hero-intro-text">
-            <div class="intro-text supporting-text text-4xl">Welcome to</div>
-          </div>
           <h1 class="hero-text-heading heading text-6xl">
-            Montreal Open Data
+            Donnée Montreal
           </h1>
           <div class="hero-text-description secondary-heading text-2xl">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <form class="montreal-banner-search w-full" action="/search" method="GET">
+              <div class="home_search">
+                <input
+                  type="text"
+                  class="rounded-full bg-gray-200 text-gray-600 pl-4 pr-12 py-3 text-lg w-full"
+                  placeholder="Search ..."
+                  name="q"
+                  required
+                />
+                <button class="absolute inset-y-0 right-0 px-3" type="submit">
+                  <svg class="w-6 h-6 fill-secondary" aria-label="Search Datasets">
+                    <use xlink:href="#search" />
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -35,77 +42,63 @@
   </div>
 </section>
 
+
+<section>
+  <!-- Collections -->
+  <div class="flex">
+  <div class="w-2/3">
+  <div>
+    <h2 class="text-2xl">Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+  </div>
+  <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
+    {% for collection in collections %}
+    <!-- group -->
+    <li class="sm:w-1/2 lg:w-1/3 p-2 bg-gray-200">
+      <div class="border-solid border-2 border-primary mb-2"></div>
+      <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
+        <h2 class="font-semibold text-lg text-center h-16">{{ collection.title }}</h3>
+        <img class="w-full" src="{{ collection.image }}">
+      </a>
+    </li>
+    <!-- group end -->
+    {% endfor %}
+  </ul>
+  </div>
+  <!-- End Collections -->
+  <!-- Social Media Sidebar -->
+  <div class="w-1/3 ml-6">
+    <div class="border-solid border-2 border-black mt-4"></div>
+    <div class="border-top border-bottom ">
+      <h3 class="text-2xl">Pour Nous Suivre</h3>
+      <div>
+        <a href="#">Twitter</a>
+        <a href="#">RSS</a>
+        <a href="#">E-Mail</a>
+      </div>
+    </div>
+    <div class="border-solid border-2 border-black mt-4"></div>
+    <div>
+      <h3 class="text-2xl">Ensembles de donnée récemment ajoutés ou mis á jour</h3>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
+        <h3 class="text-xl text-primary">Title</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+      </div>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
+        <h3 class="text-xl text-primary">Title</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+      </div>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
+        <h3 class="text-xl text-primary">Title</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+      </div>
+    </div>
+  </div>
+  <!-- End Social Media Sidebar -->
+</section>
+
 <section>
   <div class="container mx-auto my-16 px-gutter">
-    <header>
-      <div class="flex mt-gutter my-16">
-        <!-- searchbox -->
-        <form class="lg:w-1/3 text-white my-6" action="/search" method="GET">
-          <div class="home_search">
-            <input
-              type="text"
-              class="bg-secondary pl-4 pr-12 py-3 text-lg w-full"
-              placeholder="Search ..."
-              name="q"
-              required
-            />
-            <button class="absolute inset-y-0 right-0 px-3" type="submit">
-              <svg class="w-6 h-6 fill-current" aria-label="Search Datasets">
-                <use xlink:href="#search" />
-              </svg>
-            </button>
-          </div>
-        </form>
-        <!-- search box ended -->
-        <ul class="w-2/3 flex text-center">
-          <li class="flex-1">
-            <a class="" href="#">
-              <span class="">
-                <img
-                  src="/static/img/groups/climate.svg"
-                  class="h-24 mb-4 mx-auto"
-                />
-              </span>
-              <span class="">Environment</span>
-            </a>
-          </li>
-          <li class="flex-1">
-            <a class="" href="#">
-              <span class="">
-                <img
-                  src="/static/img/groups/culture.svg"
-                  class="h-24 mb-4 mx-auto"
-                />
-              </span>
-              <span class="">Culture</span>
-            </a>
-          </li>
-          <li class="flex-1">
-            <a class="" href="#">
-              <span class="">
-                <img
-                  src="/static/img/groups/mobility.svg"
-                  class="h-24 mb-4 mx-auto"
-                />
-              </span>
-              <span class="">Mobility</span>
-            </a>
-          </li>
-          <li class="flex-1">
-            <a class="" href="#">
-              <span class="">
-                <img
-                  src="/static/img/groups/tourism.svg"
-                  class="h-24 mb-4 mx-auto"
-                />
-              </span>
-              <span class="">Tourism</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
-
     <section class="md:flex">
       <!-- article-preview -->
       <article
@@ -247,7 +240,6 @@
         </p>
         <a class="font-semibold" href="#">More</a>
       </div>
-      <div id="tweets" class="twitter-feed"></div>
     </section>
   </div>
 </section>
