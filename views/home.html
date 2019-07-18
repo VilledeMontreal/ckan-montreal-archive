@@ -43,12 +43,12 @@
 </section>
 
 
-<section>
+<section class="mx-12">
   <!-- Collections -->
   <div class="flex">
   <div class="w-2/3">
   <div>
-    <h2 class="text-2xl">Lorem Ipsum</h2>
+    <h2 class="text-2xl my-6">Lorem Ipsum</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
   </div>
   <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
@@ -67,29 +67,29 @@
   </div>
   <!-- End Collections -->
   <!-- Social Media Sidebar -->
-  <div class="w-1/3 ml-6">
+  <div class="w-1/3 ml-12">
     <div class="border-solid border-2 border-black mt-4"></div>
     <div class="border-top border-bottom ">
-      <h3 class="text-2xl">Pour Nous Suivre</h3>
-      <div>
-        <a href="#">Twitter</a>
-        <a href="#">RSS</a>
-        <a href="#">E-Mail</a>
+      <h3 class="text-2xl my-4">Pour Nous Suivre</h3>
+      <div class="flex mb-6">
+        <a href="#"><img class="h-12 mr-4" src="static/img/twitter.svg" alt="twitter" /></a>
+        <a href="#"><img class="h-12 mr-4" src="static/img/rss.svg" alt="rss" /></a>
+        <a href="#"><img class="h-12 mr-4" src="static/img/email.svg" alt="email" /></a>
       </div>
     </div>
     <div class="border-solid border-2 border-black mt-4"></div>
     <div>
-      <h3 class="text-2xl">Ensembles de donnée récemment ajoutés ou mis á jour</h3>
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
-        <h3 class="text-xl text-primary">Title</h3>
+      <h3 class="text-2xl mt-6">Ensembles de donnée récemment ajoutés ou mis á jour</h3>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
+        <a href="#" class="text-xl text-primary">Title</a>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
       </div>
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
-        <h3 class="text-xl text-primary">Title</h3>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
+        <a href="#" class="text-xl text-primary">Title</a>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
       </div>
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden m-4">
-        <h3 class="text-xl text-primary">Title</h3>
+      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
+        <a href="#" class="text-xl text-primary">Title</a>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
       </div>
     </div>
@@ -99,6 +99,7 @@
 
 <section>
   <div class="container mx-auto my-16 px-gutter">
+    <h2 class="text-2xl my-6">Evenements</h2>
     <section class="md:flex">
       <!-- article-preview -->
       <article
@@ -110,12 +111,12 @@
             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
           />
         </a>
-        <div class="article-preview_text">
-          <h1 class="article-preview_heading">
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
             <a href="#">Lorem Ipsum Set</a>
-          </h1>
+          </h2>
           <time class="article-preview_date">14. maj, 2019</time>
-          <p class="article-preview_content">
+          <p class="p-4">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -134,12 +135,41 @@
             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
           />
         </a>
-        <div class="article-preview_text">
-          <h1 class="article-preview_heading">
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
             <a href="#">Lorem Ipsum Set</a>
-          </h1>
+          </h2>
           <time class="article-preview_date">14. maj, 2019</time>
-          <p class="article-preview_content">
+          <p class="p-4">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea..."
+          </p>
+        </div>
+      </article>
+      <!-- article-preview end -->
+    </section>
+  </div>
+  <div class="container mx-auto my-16 px-gutter">
+    <h2 class="text-2xl my-6">Evenements</h2>
+    <section class="md:flex">
+      <!-- article-preview -->
+      <article
+        class="article-preview my-gutter pb-gutter md:w-1/3 md:mr-gutter"
+      >
+        <a class="article-preview_image" href="#">
+          <img
+            class="article-preview_img"
+            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
+          />
+        </a>
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
+            <a href="#">Lorem Ipsum Set</a>
+          </h2>
+          <time class="article-preview_date">14. maj, 2019</time>
+          <p class="p-4">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -158,12 +188,12 @@
             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
           />
         </a>
-        <div class="article-preview_text">
-          <h1 class="article-preview_heading">
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
             <a href="#">Lorem Ipsum Set</a>
-          </h1>
+          </h2>
           <time class="article-preview_date">14. maj, 2019</time>
-          <p class="article-preview_content">
+          <p class="p-4">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -173,73 +203,58 @@
       </article>
       <!-- article-preview end -->
     </section>
-
-    <!-- if future events -->
-    <section class="home_events lg:w-2/3 my-gutter">
-      <div class="overflow-hidden">
-        <ul class="slider">
-          <!-- event -->
-          <li>
-            <a class="flex">
-              <time
-                class="flex flex-col justify-center bg-secondary text-white text-center px-6 py-4"
-              >
-                <span class="font-semibold text-3xl leading-none">17</span>
-                <span class="leading-none">jun</span>
-              </time>
-              <div class="px-6">
-                <h3 class="font-semibold text-2xl">
-                  Upcoming Event -- lorem ipsum dolor
-                </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea...
-                </p>
-              </div>
-            </a>
-          </li>
-          <!-- event end -->
-          <!-- event -->
-          <li>
-            <a class="flex">
-              <time
-                class="flex flex-col justify-center bg-secondary text-white text-center px-6 py-4"
-              >
-                <span class="font-semibold text-3xl leading-none">17</span>
-                <span class="leading-none">jun</span>
-              </time>
-              <div class="px-6">
-                <h3 class="font-semibold text-2xl">
-                  Upcoming Event -- lorem ipsum dolor
-                </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea...
-                </p>
-              </div>
-            </a>
-          </li>
-          <!-- event end -->
-        </ul>
-      </div>
-    </section>
-    <!-- end if -->
-
-    <section class="home_feed py-gutter">
-      <div class="inline-block bg-gray-900 text-white p-10 my-6">
-        <h3 class="font-semibold text-2xl">An announcement for all</h3>
-        <p class="leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea...
-        </p>
-        <a class="font-semibold" href="#">More</a>
-      </div>
+  </div>
+  <div class="container mx-auto my-16 px-gutter">
+    <h2 class="text-2xl my-6">Evenements</h2>
+    <section class="md:flex">
+      <!-- article-preview -->
+      <article
+        class="article-preview my-gutter pb-gutter md:w-1/3 md:mr-gutter"
+      >
+        <a class="article-preview_image" href="#">
+          <img
+            class="article-preview_img"
+            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
+          />
+        </a>
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
+            <a href="#">Lorem Ipsum Set</a>
+          </h2>
+          <time class="article-preview_date">14. maj, 2019</time>
+          <p class="p-4">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea..."
+          </p>
+        </div>
+      </article>
+      <!-- article-preview end -->
+      <!-- article-preview -->
+      <article
+        class="article-preview my-gutter pb-gutter md:w-1/3 md:mr-gutter"
+      >
+        <a class="article-preview_image" href="#">
+          <img
+            class="article-preview_img"
+            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
+          />
+        </a>
+        <div class="bg-gray-400 p-2">
+          <h2 class="text-3xl">
+            <a href="#">Lorem Ipsum Set</a>
+          </h2>
+          <time class="article-preview_date">14. maj, 2019</time>
+          <p class="p-4">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea..."
+          </p>
+        </div>
+      </article>
+      <!-- article-preview end -->
     </section>
   </div>
 </section>
