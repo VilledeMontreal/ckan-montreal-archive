@@ -8,7 +8,7 @@
 
 {% for facetId, value in result.search_facets %}
 <section class="mb-6 md:pr-10">
-  <h2 class="bg-gray-200 px-4 py-3 border-t border-gray-200 font-bold">{{ facetNames[facetId] }}</h2>
+  <h2 class="bg-gray-200 px-4 py-3 border-t border-gray-200 font-bold">{{ __(facetNames[facetId]) }}</h2>
   <ul>
     {% for item in value.items %}
     <li class="border-t border-gray-200">

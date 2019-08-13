@@ -13,10 +13,10 @@
   <nav class="breadcrumb" aria-label="breadcrumb">
     <ol>
       <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/">Home</a>
+        <a class="breadcrumb_link" href="/">{{__('Home')}}</a>
       </li>
       <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/collections">Collections</a>
+        <a class="breadcrumb_link" href="/collections">{{__('Collections')}}</a>
       </li>
       <li class="breadcrumb_item">
         <a class="breadcrumb_link" href="/collections/{{ item.name }}" aria-current="page">{{ item.name }}</a>
@@ -40,7 +40,7 @@
     </div>
 
     <button id="filter-toggle" class="bg-primary w-full text-white mb-6 p-3 invisible md:hidden">
-      Toggle filters
+      {{__('Toggle filters')}}
     </button>
     <div class="search-filters">
       {% include "./partials/search-filter.njk" %}

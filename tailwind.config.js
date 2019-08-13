@@ -45,7 +45,7 @@ module.exports = {
       danger: '#ff3200'
     },
     fontFamily: {
-      'sans': ['Poppins', 'sans-serif']
+      'sans': ['Nunito Sans', 'sans-serif']
     }
   }
 }

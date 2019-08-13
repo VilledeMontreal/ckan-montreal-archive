@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ title }}</h2>
+  <div id="testWidget"></div>
+  {% block scripts %}{% endblock %}   
+    <script type="text/javascript">
+      console.log('hello')
+      var config = {{ dashData | safe }}
+    </script>
+
+    <script src="//combinatronics.com/datopian/dashboard-js/master/build/static/js/main.js"></script>
+
+{% endblock %}
