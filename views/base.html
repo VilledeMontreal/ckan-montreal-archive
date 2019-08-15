@@ -13,8 +13,8 @@
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
     {% endif %}
   </head>
-  <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} bg-gray-200" id="montreal">
-    <div id="page" class="page sm:mx-6 mt-6 bg-gray-200">
+  <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} " id="montreal">
+    <div id="page" class="page sm:mx-6 mt-6 ">
         <!-- Page header -->
     <header class="flex m-6 p-6">
 <label tabindex="0" for="hb__trigger" class="nav-trigger sm:hidden" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
@@ -123,7 +123,7 @@
         let expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
         navToggle.setAttribute('aria-expanded', !expanded);
         navTarget.setAttribute("data-expanded", !expanded);
-      }   
+      }
 
 
       // search
@@ -136,7 +136,7 @@
 
       while (searchLink.childNodes.length > 0) {
         searchButton.appendChild(searchLink.childNodes[0]);
-      }   
+      }
 
       searchLink.replaceWith(searchButton);
 
@@ -149,7 +149,7 @@
         if (!expanded) {
           document.getElementById("header-search-input").focus();
         }
-      }   
+      }
 
     </script>
 
