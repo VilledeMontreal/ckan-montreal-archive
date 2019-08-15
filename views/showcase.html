@@ -3,353 +3,264 @@
 {% import '_instructions.html' as instructions %}
 
 {% block title %}
-{{dataset.title or dataset.name}} - Dataset
+{{dataset.title or dataset.name}} - {{__('Dataset')}}
 {% endblock %}
 
 {% block content %}
+<
+<div class="container mx-auto p-gutter">
 
-<!-- showcase page test placeholder -->
-<!-- title and owner info -->
-<div role="main">
-  <div class="container showcase">
-    <div class="inner_container">
+<link rel="stylesheet" type="text/css" href="/static/css/main.2af79e8e.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/css/2.91761fcd.chunk.css">
 
-      <div class="showcase-page-header">
-        <h1>
-          {{ dataset.title or dataset.name }}
-        </h1>
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/">{{__('Home')}}</a>
+      </li>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/search">{{__('Data')}}</a>
+      </li>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/search/{{ dataset.name }}" aria-current="page">{{ dataset.title or dataset.name }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
 
-        <p class="clearfix"></p>
+<div class="container mx-auto lg:flex p-gutter">
+  <!-- info -->
+  <div class="lg:w-2/3">
 
-        <p class="publisher">
-          <img src="https://www.gravatar.com/avatar/none?d=https%3A%2F%2Ftesting.datahub.io%2Fstatic%2Fimg%2Flogo-cube03.png" class="img-responsive img-circle avatar" />
-          <a href="/{{ owner.name }}">{{ owner.title }}</a>
+    <h1 class="text-4xl font-semibold mb-3">
+      {{ dataset.title or dataset.name }}
+    </h1>
+
+    <!-- short readme -->
+    {% if dataset.readmeSnippet %}
+      <div class="leading-relaxed">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More')}}}}</a></div>
+    {% elif dataset.readmeHtml %}
+      <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+    {% elif dataset.description %}
+      {% if dataset.description|length > 250 %}
+        <div class="leading-relaxed">{{dataset.description|truncate(200)}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More...')}}</a></div>
+      {% else %}
+        <div class="leading-relaxed">{{dataset.description}}</div>
+      {% endif %}
+    {% endif %}
+
+
+    <h2 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+
+    <!-- data files (downloads) -->
+    <ul>
+      {% for resource in dataset.downloads or dataset.resources %}
+      <!-- data file -->
+      <li class="mb-6">
+        <h3 class="text-3xl font-semibold">
+          <a href="#resource-{{resource.name}}">{{resource.title or resource.name}}</a>
+        </h3>
+        <p>
+          {{ resource.description or resource.title }}
         </p>
-      </div>
-    </div>
-  </div><!-- end of title and owner info -->
+        <nav>
+          <a class="data-file-type" href="{{ resource.path }}">
+            <dl class="data-file-type_inner">
+              <dt class="data-file-type_term">
+                {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
+              </dt>
+              {% if resource.size %}
+              <dd class="data-file-type_size">
+                [{{resource.size}}]
+              </dd>
+              {% endif %}
+            </dl>
+          </a>
+          {% for alt in resource.otherFormats %}
+          <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
+            <dl class="data-file-type_inner">
+              <dt class="data-file-type_term">
+                {{alt.format}}
+              </dt>
+              <dd class="data-file-type_size">
+                {{alt.prettyBytes}}
+              </dd>
+            </dl>
+          </a>
+          {% endfor %}
+        </nav>
+      </li>
+      <!-- data file end -->
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- info end -->
 
-  <div class="container-no-top-padding">
-    <div class="inner_container">
-      <div class="dataset show">
-        <!-- info about data package -->
-        <div>
-          <table class="table info no-left-padding">
-            <thead>
-              <tr>
-                <th>Files</th>
-                <th>Size</th>
-                <th>Format</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>License</th>
-                <th>Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-xs-1">{{ dataset.resources | length }}</td>
-                <td class="col-xs-1">{{ size or 'N\A' }}</td>
-                <td class="col-xs-2 format-list">
-                  {% for format in dataset.formats %}
-                    {{ format }}
-                  {% endfor %}
-                </td>
-                <td class="col-xs-2">{{ dataset.created }}</td>
-                <td class="col-xs-2">{{ dataset.modified }}</td>
-                <td class="col-xs-2">
-                  {% if dataset.license %}
-                    <i class="fas fa-gavel"></i> {{snippets.listify([dataset.license])}}
-                  {% endif %}
-                </td>
-                <td class="col-xs-2">
-                  {% if dataset.sources %}
-                    <i class="fas fa-external-link-square-alt"></i> {{snippets.listify(dataset.sources)}}
-                  {% endif %}
-                </td>
-              </tr>
-            </tbody>
+  <!-- meta -->
+  <div class="lg:w-1/3 lg:ml-gutter lg:pl-10">
+    <div class="">
+      <h2 class="bg-gray-200 px-4 py-3 font-bold mb-4">{{__('Organization')}}</h2>
+      <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
 
-          </table>
+      <a class="px-4 text-primary text-xl font-semibold" href="/{{ owner.name }}">{{ owner.title }}</a>
 
-        </div>
+      <p class="px-4 py-2 text-sm">
+        {{ owner.description | safe | truncate(200) }} <a href="/{{ owner.name }}" class="text-primary font-bold">{{__('More...')}}</a>
+      </p>
 
-        <!-- short readme -->
-        {% if dataset.readmeSnippet %}
-          <div class="readme-snippet readable-width">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
-        {% elif dataset.readmeHtml %}
-          <div class="readme-snippet readable-width">{{dataset.readmeHtml|safe}}</div>
-        {% elif dataset.description %}
-          {% if dataset.description|length > 250 %}
-            <div class="readme-snippet readable-width">{{dataset.description|truncate(200)}} <a href="#readme" onclick="scrollDown(this)">read more</a></div>
-          {% else %}
-            <div class="readme-snippet readable-width">{{dataset.description}}</div>
-          {% endif %}
-        {% endif %}
+      <!-- share links -->
+      <h2 class="bg-gray-200 px-4 py-3 font-bold mt-4 mb-1">Share</h2>
+      <ul class="text-sm">
+        <li class="border-b-2 border-gray-200">
+          <a class="block px-4 py-3 text-primary" href="https://twitter.com/intent/tweet?url={{thisPageFullUrl}}&text={{dataset.title or dataset.name}}" target="_blank">Twitter</a>
+        </li>
+        <li>
+          <a class="block px-4 py-3 text-primary" href="https://www.facebook.com/sharer/sharer.php?u={{thisPageFullUrl}}" target="_blank">Facebook</a>
+        </li>
+      </ul>
+      <!-- share links end -->
 
-        <!-- download button -->
-        <a href="#data" class="btn btn-lg btn-primary" onclick="scrollDown(this)">Download</a>
-        <!-- developers button -->
-        <a href="#data-cli" class="btn btn-lg btn-default" onclick="scrollDown(this)">Developers</a>
+      {% if dataset.license %}
+      <h2 class="bg-gray-200 px-4 py-3 font-bold mt-4 mb-1">{{__('License')}}</h2>
+      <a class="text-sm block px-4 py-3 text-primary" target="_blank">
+        {{snippets.listify([dataset.license])}}
+      </a>
+      {% endif %}
 
-        <!-- views -->
-        <div class="react-me part" data-type="data-views" id="next-section"></div>
-
-        <!-- data files (downloads) table -->
-        <h2 class="section-title" id="data">Data Files</h2>
-        <p>Download files in this dataset</p>
-        <div class="resource-listing part">
-          <table class="table table-condensed table-striped resource-listing">
-            <thead>
-              <th class="col-xs-2">File</th>
-              <th class="col-xs-4">Description</th>
-              <th class="col-xs-1">Size</th>
-              <th class="col-xs-2">Last changed</th>
-              <th class="col-xs-4">Download</th>
-            </thead>
-            <tbody>
-            {% for resource in dataset.downloads or dataset.resources %}
-              <tr>
-                <td class="col-xs-2">
-                  <i class="far fa-file-alt"></i> <a href="#resource-{{resource.name}}" onclick="scrollDown(this)" class="anchor-link" title="{{resource.title or resource.name}}">{{resource.title or resource.name}}</a>
-                </td>
-                <td class="col-xs-4" title="{{ resource.description or resource.title }}">
-                  {{ resource.description or resource.title }}
-                </td>
-                <td class="col-xs-1" title="{{ resource.prettyBytes }}">
-                  {{ resource.size }}
-                </td>
-                <td class="col-xs-1" title="{{ resource.modified }}">
-                  {{ resource.modified }}
-                </td>
-                <td class="download truncate col-xs-4">
-                  <a href="{{ resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')">
-                    {{ resource.format or 'Data file' }} {% if resource.size %}({{resource.size}}){% endif %}
-                  </a>
-                  {% for alt in resource.otherFormats %}
-                  ,
-                  <a href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
-                    {{alt.format}} ({{alt.prettyBytes}})
-                  </a>
-                  {% endfor %}
-                </td>
-              </tr>
-            {% endfor %}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- preview + field information -->
-        {% for view in dataset.views %}
-        {% set viewName = view.resources[0].name or view.resources[0] %}
-
-        <div class="resource-info part">
-          <!-- Heading for each resource -->
-          <h2 id="resource-{{viewName}}" class="section-title">
-            {{view.title}}
-          </h2>
-
-          <!-- Placeholder div elements for React components: preview tables -->
-          <div id="datapackage-view-{{view.id}}" class="react-me tables"></div>
-          <!-- End of div elements for React -->
-          <p class="notice">
-            This is a preview version. There might be more data in the original version.
-          </p>
-          {% if view.resources[0].schema %}
-           <h3 class="section-title">Field information</h3>
-           <table class="table table-bordered table-striped resource-summary">
-             <thead>
-               <tr>
-                 <th>Field Name</th>
-                 <th>Order</th>
-                 <th>Type (Format)</th>
-                 <th>Description</th>
-               </tr>
-             </thead>
-             <tbody>
-               {% for field in view.resources[0].schema.fields %}
-               <tr>
-                 <th>{{field.name}}</th>
-                 <td>{{loop.index}}</td>
-                 <td class="type type-{{field.type}}">{{field.type}} {% if field.format %}({{field.format}}) {% endif %}</td>
-                 <td>{{field.description}}</td>
-               </tr>
-               {% endfor %}
-             </tbody>
-           </table>
-         {% endif %}
-        </div>
-
-        {% endfor %}
-
-        <!-- Similar datasets -->
-        {% if dataset.related %}
-          <h2 class="section-title">Similar Datasets</h2>
-          <section class="similar-datasets">
-            <div class="row">
-              {% for item in dataset.related %}
-              <div class="col-sm-3">
-                <div class="element">
-
-                  <h4>{{item.title}}</h4>
-
-                  <div class="bottom">
-                     <div class="content">
-                       {% if item.publisher %}
-                       <p class="pull-left"><i class="far fa-user"></i> <a href="/{{item.publisher}}" class="secondary">{{item.publisher}}</a></p><br />
-                       {% endif %}
-                       {% if item.formats %}
-                       <p class="pull-left"><i class="far fa-file-alt"></i> {{ item.formats | join(',') }}</p><br />
-                       {% endif %}
-                       <p class="pull-left"><a href="{{item.path}}" class="pull-right">View &rsaquo;</a></p>
-                     </div>
-                     <p></p>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-          </section>
-
-        {% endif %}
-        <!-- End of Similar datasets -->
-
-      </div>
     </div>
   </div>
-
-  <!-- import into your tool section -->
-  <div class="section-gray">
-    <div class="container">
-      <div class="inner_container">
-        <div class="dataset show">
-          <h2 class="section-title">Integrate this dataset into your favourite tool</h2>
-          <ul class="nav nav-pills">
-            <li class="active"><a data-toggle="pill" href="#data-cli">data-cli</a></li>
-            <li><a data-toggle="pill" href="#curl">cURL</a></li>
-            <li><a data-toggle="pill" href="#r">R</a></li>
-            <li><a data-toggle="pill" href="#pandas">Pandas</a></li>
-            <li><a data-toggle="pill" href="#python">Python</a></li>
-            <li><a data-toggle="pill" href="#javascript">JavaScript</a></li>
-          </ul>
-          <!-- content for instructions -->
-          <div class="tab-content">
-
-            <div id="data-cli" class="tab-pane fade in active">
-              <div class="part">
-                {{instructions.data_cli(dataset)}}
-              </div>
-            </div>
-
-            <div id="curl" class="tab-pane fade">
-              <div class="part">
-                {{instructions.curl(dataset)}}
-              </div>
-            </div>
-
-            <div id="r" class="tab-pane fade">
-              <div class="part">
-                {{instructions.r(dataset)}}
-              </div>
-            </div>
-
-            <div id="pandas" class="tab-pane fade">
-              <div class="part">
-                {{instructions.pandas(dataset)}}
-              </div>
-            </div>
-
-            <div id="python" class="tab-pane fade">
-              <div class="part">
-                {{instructions.python(dataset)}}
-              </div>
-            </div>
-
-            <div id="javascript" class="tab-pane fade">
-              <div class="part">
-                {{instructions.javascript(dataset)}}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!-- end of import into your tool section -->
-
-  <!-- readme section -->
-  {% if dataset.readmeSnippet or dataset.readmeHtml %}
-  <div class="container">
-    <div class="inner_container">
-      <div class="dataset show">
-        <h2 id="readme" class="section-title">Read me</h2>
-        <div class="readme part readable-width">{{dataset.readmeHtml|safe}}</div>
-      </div>
-    </div>
-  </div>
-  {% elif dataset.description %}
-  <div class="container">
-    <div class="inner_container">
-      <div class="dataset show">
-        <h2 id="readme" class="section-title">Read me</h2>
-        <div class="readme part readable-width">{{dataset.description}}</div>
-      </div>
-    </div>
-  </div>
-  {% endif %}<!-- end of readme section -->
-
-
-  <!-- Link to datapackage.json - putting here to be hidden for now -->
-  <div class="container">
-    <div class="inner_container">
-      <a href="/{{ owner.name }}/{{ dataset.name }}/datapackage.json" class="btn btn-default" style="margin-top:-80px">Datapackage.json</a>
-    </div>
-  </div><!-- end of link to datapackage.json -->
+  <!-- meta end -->
 
 </div>
 
-<div class="react-me-datapackage-views" data-datapackage-json='{{ dpId | safe }}'></div>
+
+{% for view in dataset.views %}
+{% set viewName = view.resources[0].name or view.resources[0] %}
+<!-- view -->
+<div class="resource">
+  <div class="container mx-auto p-gutter">
+    <div class="">
+      <!-- Heading for each view -->
+      <h2 id="resource-{{viewName}}" class="text-3xl font-semibold mb-6">
+        {{view.title}}
+      </h2>
+
+      <!-- Placeholder div elements for React components: preview tables -->
+      <div id="datapackage-view-{{view.id}}" class="react-me text-sm"></div>
+      <!-- End of div elements for React -->
+      <p class="text-sm my-4">
+        {{__('This is a preview version. There might be more data in the original version.')}}
+      </p>
+
+      {% if view.resources[0].schema %}
+       <h3 class="text-lg font-semibold mt-gutter mb-2">{{__('Field information')}}</h3>
+       <table class="w-full">
+         <thead>
+           <tr>
+             <th class="text-left text-sm py-1">{{__('Field Name')}}</th>
+             <th class="text-left text-sm py-1">{{__('Order')}}</th>
+             <th class="text-left text-sm py-1">{{__('Type (Format)')}}</th>
+             <th class="text-left text-sm py-1">{{__('Description')}}</th>
+           </tr>
+         </thead>
+         <tbody>
+           {% for field in view.resources[0].schema.fields %}
+           <tr>
+             <th class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.name}}</th>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{loop.index}}</td>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1" data-type="{{field.type}}">{{field.type}} {% if field.format %}({{field.format}}) {% endif %}</td>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.description}}</td>
+           </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+     {% endif %}
+    </div>
+
+  </div>
+</div>
+<!-- resource end -->
+{% endfor %}
+
+
+<div class="container mx-auto p-gutter">
+  <div class="lg:flex justify-between">
+    <!-- readme section -->
+    {% if dataset.readmeSnippet or dataset.readmeHtml %}
+    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
+      <div class="">
+        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
+        <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+      </div>
+    </div>
+    {% elif dataset.description %}
+    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
+      <div class="">
+        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
+        <div class="leading-relaxed">{{dataset.description}}</div>
+      </div>
+    </div>
+    {% endif %}<!-- end of readme section -->
+
+    <!-- Additional info -->
+    <div class="">
+      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Additional information')}}</h2>
+      <dl class="info-list">
+        <dt class="info-list_title">
+          {{__('Size')}}
+        </dt>
+        <dd class="info-list_description">
+          {{ size or __('N\A') }}
+        </dd>
+        <dt class="info-list_title">
+          {{__('Format')}}
+        </dt>
+        <dd class="info-list_description">
+          {% for format in dataset.formats %}
+            {{ format }}
+          {% endfor %}
+        </dd>
+        <dt class="info-list_title">
+          {{__('Created')}}
+        </dt>
+        <dd class="info-list_description">
+          {{ dataset.created }}
+        </dd>
+        <dt class="info-list_title">Updated</dt>
+        <dd class="info-list_description">
+          {{ dataset.modified }}
+        </dd>
+        {% if dataset.sources %}
+        <dt class="info-list_title">Source</dt>
+        <dd class="info-list_description">
+          {{snippets.listify(dataset.sources)}}
+        </dd>
+        {% endif %}
+      </dl>
+    </div>
+
+    <!-- Additional info end -->
+  </div>
+
+</div>
+
+<div id="data-explorer" data-datapackage-json='{{ dpId | safe }}'></div>
 {% endblock %}
 
 
-
 {% block scripts %}
-<!-- script for tabs to work as anchors (used for instructions in showcase page) -->
 <script>
-  jQuery("ul.nav-pills > li > a").on("shown.bs.tab", function (e) {
-     scrollposition = jQuery(document).scrollTop();
-     var id = jQuery(e.target).attr("href").substr(1);
-     window.location.hash = id;
-     jQuery(document).scrollTop(scrollposition);
-  });
-  var hash = window.location.hash;
-  jQuery('.nav.nav-pills a[href="' + hash + '"]').tab('show', function() {
-      jQuery(document).scrollTop();
-  });
-
-
-  //Slide out function for showcase
-  $(window).on('load', function() {
-    $("#showcase-offer").animate({
-      bottom:0
-    },1000);
-   });
 
    function goToSearch() {
     var query = document.getElementById('search-input').value;
     window.location.href = '/search?q=' + query;
   }
 
-  function sendGAEvent(datasetName, resourceName, resourceFormat) {
-      gtag('event', "download", {
-          'event_category': datasetName,
-          'event_label': resourceName,
-          'value':resourceFormat,
-          'non_interaction': true
-      });
-  }
+  window.DP_ID = JSON.stringify({{ dpId | safe }})
 </script>
 
-<script type="text/javascript" src="https://raw.githack.com/datopian/datapackage-views-js/master/dist/js/main.js"></script>
+<script type="text/javascript" src="/static/js/runtime~main.a8a9905a.js"></script>
+<script type="text/javascript" src="/static/js/2.638c1eb0.chunk.js"></script>
+<script type="text/javascript" src="/static/js/main.9855339d.chunk.js"></script>
 
 {% endblock %}
