@@ -1,22 +1,14 @@
-# CKAN NG EXAMPLE THEME
+# CKAN NG Montreal Theme
+Public theme for Montreal open data portal built with CKAN Next Generation
 
-This is a placeholder for a CKAN exmaple theme.
-
-## Installation
-
-To install to your existing CKAN NG frontend:
+## Instal with CKAN NG Frontend V2
+* [Install CKAN NG Frontend V2](#)
+* `$ yarn install ckan_ng_montreal_theme`
+* in `.env`:
 
 ```
-$ yarn add ckan_ng_example_theme
+THEME=ckan_ng_montreal_theme
+THEME_DIR=node_modules
 ```
 
-in `.env`:
-```
-THEME=ckan_ng_example_theme
-```
-
-## Creating and publishing your own theme
-TODO
-
-## Installing CKAN NG
-Visit https://kb.datopian.com
+@TODO Copy compilation instructions from OpenDK README

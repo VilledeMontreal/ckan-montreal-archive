@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
+{% import '_instructions.html' as instructions %}
+
+{% block title %}
+{{dataset.title or dataset.name}} - {{__('Dataset')}}
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-gutter">
+
+<link rel="stylesheet" type="text/css" href="/static/css/main.2af79e8e.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/css/2.91761fcd.chunk.css">
+
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/">{{__('Home')}}</a>
+      </li>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/search">{{__('Data')}}</a>
+      </li>
+      <li class="breadcrumb_item">
+        <a class="breadcrumb_link" href="/search/{{ dataset.name }}" aria-current="page">{{ dataset.title or dataset.name }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container mx-auto p-gutter">
+  <!-- info -->
+  <div class>
+
+    <h1 class="text-4xl font-semibold mb-3">
+      {{ dataset.title or dataset.name }}
+    </h1>
+    
+    <!-- owner -->
+    <div class="">
+      <h2 class="bg-gray-200 px-4 py-3 font-bold mb-4">{{__('Organization')}}</h2>
+      <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
+
+      <a class="px-4 text-primary text-xl font-semibold" href="/{{ owner.name }}">{{ owner.title }}</a>
+
+      <p class="px-4 py-2 text-sm">
+        {{ owner.description | safe | truncate(200) }} <a href="/{{ owner.name }}" class="text-primary font-bold">{{__('More...')}}</a>
+      </p>
+    </div>
+    <!-- end owner -->
+
+    <!-- short readme -->
+    {% if dataset.readmeSnippet %}
+      <div class="leading-relaxed my-4">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More')}}}}</a></div>
+    {% elif dataset.readmeHtml %}
+      <div class="leading-relaxed my-4">{{dataset.readmeHtml|safe}}</div>
+    {% elif dataset.description %}
+      {% if dataset.description|length > 250 %}
+        <div class="leading-relaxed my-4">{{dataset.description|truncate(200)}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More...')}}</a></div>
+      {% else %}
+        <div class="leading-relaxed my-4">{{dataset.description}}</div>
+      {% endif %}
+    {% endif %}
+
+
+    <h2 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+
+    <!-- data files (downloads) -->
+    <ul>
+      {% for resource in dataset.downloads or dataset.resources %}
+      <!-- data file -->
+      <li class="mb-6">
+        <h3 class="text-3xl font-semibold">
+          <a href="#resource-{{resource.name}}">{{resource.title or resource.name}}</a>
+        </h3>
+        <p>
+          {{ resource.description or resource.title }}
+        </p>
+        <nav>
+          <a class="data-file-type" href="{{ resource.path }}">
+            <dl class="data-file-type_inner">
+              <dt class="data-file-type_term">
+                {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
+              </dt>
+              {% if resource.size %}
+              <dd class="data-file-type_size">
+                [{{resource.size}}]
+              </dd>
+              {% endif %}
+            </dl>
+          </a>
+          {% for alt in resource.otherFormats %}
+          <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
+            <dl class="data-file-type_inner">
+              <dt class="data-file-type_term">
+                {{alt.format}}
+              </dt>
+              <dd class="data-file-type_size">
+                {{alt.prettyBytes}}
+              </dd>
+            </dl>
+          </a>
+          {% endfor %}
+        </nav>
+      </li>
+      <!-- data file end -->
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- info end -->
+
+  <!-- meta -->
+  <!-- meta end -->
+</div>
+
+
+{% for view in dataset.views %}
+{% set viewName = view.resources[0].name or view.resources[0] %}
+<!-- view -->
+<div class="resource">
+  <div class="container mx-auto p-gutter">
+    <div class="">
+      <!-- Heading for each view -->
+      <h2 id="resource-{{viewName}}" class="text-3xl font-semibold mb-6">
+        {{view.title}}
+      </h2>
+
+      <!-- Placeholder div elements for React components: preview tables -->
+      <div id="datapackage-view-{{view.id}}" class="react-me text-sm"></div>
+      <!-- End of div elements for React -->
+      <p class="text-sm my-4">
+        {{__('This is a preview version. There might be more data in the original version.')}}
+      </p>
+
+      {% if view.resources[0].schema %}
+       <h3 class="text-lg font-semibold mt-gutter mb-2">{{__('Field information')}}</h3>
+       <table class="w-full">
+         <thead>
+           <tr>
+             <th class="text-left text-sm py-1">{{__('Field Name')}}</th>
+             <th class="text-left text-sm py-1">{{__('Order')}}</th>
+             <th class="text-left text-sm py-1">{{__('Type (Format)')}}</th>
+             <th class="text-left text-sm py-1">{{__('Description')}}</th>
+           </tr>
+         </thead>
+         <tbody>
+           {% for field in view.resources[0].schema.fields %}
+           <tr>
+             <th class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.name}}</th>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{loop.index}}</td>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1" data-type="{{field.type}}">{{field.type}} {% if field.format %}({{field.format}}) {% endif %}</td>
+             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.description}}</td>
+           </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+     {% endif %}
+    </div>
+
+  </div>
+</div>
+<!-- resource end -->
+{% endfor %}
+
+<!-- Data Explorer -->
+<div id="data-explorer" class="container mx-auto" data-datapackage-json='{{ dpId | safe }}'></div>
+<!-- Data Explorer end -->
+
+<div class="container mx-auto p-gutter">
+  <div class="lg:flex justify-between">
+    <!-- readme section -->
+    {% if dataset.readmeSnippet or dataset.readmeHtml %}
+    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
+      <div class="">
+        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
+        <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+      </div>
+    </div>
+    {% elif dataset.description %}
+    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
+      <div class="">
+        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
+        <div class="leading-relaxed">{{dataset.description}}</div>
+      </div>
+    </div>
+    {% endif %}<!-- end of readme section -->
+
+    <!-- Additional info -->
+    <!-- snip -->
+    <!-- Additional info end -->
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+   function goToSearch() {
+    var query = document.getElementById('search-input').value;
+    window.location.href = '/search?q=' + query;
+  }
+
+  window.DP_ID = JSON.stringify({{ dpId | safe }})
+</script>
+
+<script type="text/javascript" src="/static/js/runtime~main.a8a9905a.js"></script>
+<script type="text/javascript" src="/static/js/2.5e3018ee.chunk.js"></script>
+<script type="text/javascript" src="/static/js/main.1c1294a0.chunk.js"></script>
+
+{% endblock %}

@@ -1,0 +1,4942 @@
+{
+  "Search datasets": "gooooover",
+  "Collections": "fooooo",
+  "items": [
+    {
+      "type": "single",
+      "entry": "Complete",
+      "translation": "Terminé"
+    },
+    {
+      "type": "single",
+      "entry": "Pending",
+      "translation": "En attente"
+    },
+    {
+      "type": "single",
+      "entry": "Submitting",
+      "translation": "En cours d'envoi"
+    },
+    {
+      "type": "single",
+      "entry": "Error",
+      "translation": "Erreur"
+    },
+    {
+      "type": "single",
+      "entry": "Not Uploaded Yet",
+      "translation": "Pas encore chargé-es"
+    },
+    {
+      "type": "single",
+      "entry": "Resource not found",
+      "translation": "Ressource introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Not authorized to see this page",
+      "translation": "Vous n'êtes pas autorisé à consulter cette page"
+    },
+    {
+      "type": "single",
+      "entry": "Upload to DataStore",
+      "translation": "Télécharger vers le DataStore"
+    },
+    {
+      "type": "single",
+      "entry": "Upload error:",
+      "translation": "Erreur de chargement :"
+    },
+    {
+      "type": "single",
+      "entry": "Error:",
+      "translation": "Erreur :"
+    },
+    {
+      "type": "single",
+      "entry": "Error traceback:",
+      "translation": "trace laissée par l'erreur:"
+    },
+    {
+      "type": "single",
+      "entry": "Status",
+      "translation": "Statut"
+    },
+    {
+      "type": "single",
+      "entry": "Last updated",
+      "translation": "Dernière modification"
+    },
+    {
+      "type": "single",
+      "entry": "Never",
+      "translation": "Jamais"
+    },
+    {
+      "type": "single",
+      "entry": "Upload Log",
+      "translation": "Journal de Chargement"
+    },
+    {
+      "type": "single",
+      "entry": "Details",
+      "translation": "Détails"
+    },
+    {
+      "type": "single",
+      "entry": "End of log",
+      "translation": "Fin de journal"
+    },
+    {
+      "type": "single",
+      "entry": "DataStore",
+      "translation": "DataStore"
+    },
+    {
+      "type": "single",
+      "entry": "format: must be one of %s",
+      "translation": "format : doit être l'un de/des %s"
+    },
+    {
+      "type": "single",
+      "entry": "DataStore resource not found",
+      "translation": "Ressource de magasin de données non trouvée"
+    },
+    {
+      "type": "single",
+      "entry": "Data Dictionary saved. Any type overrides will take effect when the resource is next uploaded to DataStore"
+    },
+    {
+      "type": "single",
+      "entry": "The data was invalid (for example: a numeric value is out of range or was inserted into a text field).",
+      "translation": "Les données étaient invalides (par exemple, une valeur numérique est hors de portée ou a été insérée dans un champ de texte)."
+    },
+    {
+      "type": "single",
+      "entry": "Resource \"{0}\" was not found.",
+      "translation": "La ressource \"{0}\"  est introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "User {0} not authorized to update resource {1}",
+      "translation": "L'utilisateur {0} n'est pas autorisé à mettre à jour la ressource {1}"
+    },
+    {
+      "type": "single",
+      "entry": "CKAN Data API",
+      "translation": "API de données CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "Access resource data via a web API with powerful query support",
+      "translation": "Accédez aux données de la ressource via une API web supportant des requêtes puissantes "
+    },
+    {
+      "type": "single",
+      "entry": " Further information in the <a       href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> ",
+      "translation": "Plus d'informations dans la <a href=\"http://docs.ckan.org/en/latest/datastore.html\" target=\"_blank\">documentation principale de l'API CKAN pour les données et le magasin de données</a>.</p>"
+    },
+    {
+      "type": "single",
+      "entry": "Endpoints",
+      "translation": "Points d'accès"
+    },
+    {
+      "type": "single",
+      "entry": "The Data API can be accessed via the following actions of the CKAN action API.",
+      "translation": "L'API pour les données peut être accéder via les actions suivantes de l'API CKAN pour les actions"
+    },
+    {
+      "type": "single",
+      "entry": "Create",
+      "translation": "Créer"
+    },
+    {
+      "type": "single",
+      "entry": "Update / Insert",
+      "translation": "Modifier / Insérer"
+    },
+    {
+      "type": "single",
+      "entry": "Query",
+      "translation": "Requête"
+    },
+    {
+      "type": "single",
+      "entry": "Query (via SQL)",
+      "translation": "Requête (via SQL)"
+    },
+    {
+      "type": "single",
+      "entry": "Querying",
+      "translation": "Interrogation"
+    },
+    {
+      "type": "single",
+      "entry": "Query example (first 5 results)",
+      "translation": "Exemple de requête (5 premiers résultats)"
+    },
+    {
+      "type": "single",
+      "entry": "Query example (results containing 'jones')",
+      "translation": "Exemple de requête (résultats contenant 'jones')"
+    },
+    {
+      "type": "single",
+      "entry": "Query example (via SQL statement)",
+      "translation": "Exemple de requête (via commande SQL)"
+    },
+    {
+      "type": "single",
+      "entry": "Example: Javascript",
+      "translation": "Exemple : Javascript"
+    },
+    {
+      "type": "single",
+      "entry": "A simple ajax (JSONP) request to the data API using jQuery.",
+      "translation": "Une requête ajax simple (JSONP) à l'API des données en utilisant jQuery."
+    },
+    {
+      "type": "single",
+      "entry": "Example: Python",
+      "translation": "Exemple : Python"
+    },
+    {
+      "type": "single",
+      "entry": "Field {num}.",
+      "translation": "Champ {num}."
+    },
+    {
+      "type": "single",
+      "entry": "Label",
+      "translation": "Intitulé"
+    },
+    {
+      "type": "single",
+      "entry": "Description",
+      "translation": "Description"
+    },
+    {
+      "type": "single",
+      "entry": "Save",
+      "translation": "Enregistrer"
+    },
+    {
+      "type": "single",
+      "entry": "Data Dictionary",
+      "translation": "Dictionnaire de Données"
+    },
+    {
+      "type": "single",
+      "entry": "Column",
+      "translation": "Colonne"
+    },
+    {
+      "type": "single",
+      "entry": "Type",
+      "translation": "Type"
+    },
+    {
+      "type": "single",
+      "entry": "Loading...",
+      "translation": "Chargement..."
+    },
+    {
+      "type": "single",
+      "entry": "Data API",
+      "translation": "API de données"
+    },
+    {
+      "type": "single",
+      "entry": " Further information in the <a       href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> ",
+      "translation": "Plus d'informations dans la <a href=\"http://docs.ckan.org/en/latest/datastore.html\" target=\"_blank\">documentation principale de l'API CKAN pour les données et le magasin de données</a>.</p>"
+    },
+    {
+      "type": "single",
+      "entry": "Table",
+      "translation": "Table"
+    },
+    {
+      "type": "single",
+      "entry": "Responsive display",
+      "translation": "Affichage adaptatif"
+    },
+    {
+      "type": "single",
+      "entry": "Show Columns",
+      "translation": "Afficher Colonnes"
+    },
+    {
+      "type": "single",
+      "entry": "Hide/Unhide Columns",
+      "translation": "Masquer/Afficher Colonnes"
+    },
+    {
+      "type": "single",
+      "entry": "Datasets per page",
+      "translation": "Jeux de données par page"
+    },
+    {
+      "type": "single",
+      "entry": "Test conf",
+      "translation": "Configuration du test"
+    },
+    {
+      "type": "single",
+      "entry": "Relevance",
+      "translation": "Pertinence"
+    },
+    {
+      "type": "single",
+      "entry": "Name Ascending",
+      "translation": "Nom Croissant"
+    },
+    {
+      "type": "single",
+      "entry": "Name Descending",
+      "translation": "Nom Décroissant"
+    },
+    {
+      "type": "single",
+      "entry": "Last Modified",
+      "translation": "Modifié le"
+    },
+    {
+      "type": "single",
+      "entry": "Custom Field Ascending",
+      "translation": "Champ personnalisé croissant"
+    },
+    {
+      "type": "single",
+      "entry": "Custom Field Descending",
+      "translation": "Champ personnalisé décroissant"
+    },
+    {
+      "type": "single",
+      "entry": "Popular",
+      "translation": "Populaire"
+    },
+    {
+      "type": "single",
+      "entry": "Custom Text",
+      "translation": "Texte Personnalisé"
+    },
+    {
+      "type": "single",
+      "entry": "custom text",
+      "translation": "texte personnalisé"
+    },
+    {
+      "type": "single",
+      "entry": "Country Code",
+      "translation": "Code Pays"
+    },
+    {
+      "type": "single",
+      "entry": "custom resource text",
+      "translation": "texte de la ressource personnalisé"
+    },
+    {
+      "type": "single",
+      "entry": "This is an untranslated string",
+      "translation": "Ceci est une chaîne de texte non traduite"
+    },
+    {
+      "type": "single",
+      "entry": "This group has no description",
+      "translation": "Il n'y a pas de description pour ce groupe"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{num} Dataset",
+        "{num} Datasets"
+      ],
+      "translations": [
+        "{num} Jeu de données",
+        "{num} Jeux de données"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "0 Datasets",
+      "translation": "0 Jeu de données "
+    },
+    {
+      "type": "single",
+      "entry": "CKAN's data previewing tool has many powerful features",
+      "translation": "L'outil de prévisualisation des données de CKAN possède de nombreuses et puissantes fonctionnalités "
+    },
+    {
+      "type": "single",
+      "entry": "Followers",
+      "translation": "Abonnés"
+    },
+    {
+      "type": "single",
+      "entry": "Resources",
+      "translation": "Ressources"
+    },
+    {
+      "type": "single",
+      "entry": "Image",
+      "translation": "Image"
+    },
+    {
+      "type": "single",
+      "entry": "Image url",
+      "translation": "URL de l'image"
+    },
+    {
+      "type": "single",
+      "entry": "eg. http://example.com/image.jpg (if blank uses resource url)",
+      "translation": "p. ex. http://example.com/image.jpg (si elle est vide utiliser l'URL de la ressource)"
+    },
+    {
+      "type": "single",
+      "entry": "Data Explorer",
+      "translation": "Explorateur de données"
+    },
+    {
+      "type": "single",
+      "entry": "Graph",
+      "translation": "Graphe"
+    },
+    {
+      "type": "single",
+      "entry": "Map",
+      "translation": "Carte"
+    },
+    {
+      "type": "single",
+      "entry": "error loading view",
+      "translation": "erreur lors du chargement de la vue"
+    },
+    {
+      "type": "single",
+      "entry": "Could not load view",
+      "translation": "Impossible de charger la vue"
+    },
+    {
+      "type": "single",
+      "entry": "DataStore returned an error",
+      "translation": "Le Magasin de Données a retourné une erreur"
+    },
+    {
+      "type": "single",
+      "entry": "DataProxy returned an error",
+      "translation": "DataProxy a retourné une erreur"
+    },
+    {
+      "type": "single",
+      "entry": "Grid",
+      "translation": "Grille"
+    },
+    {
+      "type": "single",
+      "entry": "Filters",
+      "translation": "Filtres"
+    },
+    {
+      "type": "single",
+      "entry": "Row offset",
+      "translation": "Décalage de la ligne"
+    },
+    {
+      "type": "single",
+      "entry": "eg: 0",
+      "translation": "p. ex. 0"
+    },
+    {
+      "type": "single",
+      "entry": "Number of rows",
+      "translation": "Nombre de rangées"
+    },
+    {
+      "type": "single",
+      "entry": "eg: 100",
+      "translation": "p. ex. 100"
+    },
+    {
+      "type": "single",
+      "entry": "Graph type",
+      "translation": "Type de graphes"
+    },
+    {
+      "type": "single",
+      "entry": "Group (Axis 1)",
+      "translation": "Groupe (Axe 1)"
+    },
+    {
+      "type": "single",
+      "entry": "Series (Axis 2)",
+      "translation": "Série (Axe 2)"
+    },
+    {
+      "type": "single",
+      "entry": "Field type",
+      "translation": "Type de champs"
+    },
+    {
+      "type": "single",
+      "entry": "Latitude field",
+      "translation": "Champ de latitude"
+    },
+    {
+      "type": "single",
+      "entry": "Longitude field",
+      "translation": "Champ de longitude"
+    },
+    {
+      "type": "single",
+      "entry": "GeoJSON field",
+      "translation": "Champ GeoJSON"
+    },
+    {
+      "type": "single",
+      "entry": "Auto zoom to features",
+      "translation": "Zoom automatique aux fonctionnalités"
+    },
+    {
+      "type": "single",
+      "entry": "Cluster markers",
+      "translation": "Marqueurs de regroupement"
+    },
+    {
+      "type": "single",
+      "entry": "Total number of Datasets",
+      "translation": "Nombre total de jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Date",
+      "translation": "Date"
+    },
+    {
+      "type": "single",
+      "entry": "Total datasets",
+      "translation": "Total des jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Dataset Revisions per Week",
+      "translation": "Révisions de jeux de données par semaine"
+    },
+    {
+      "type": "single",
+      "entry": "All dataset revisions",
+      "translation": "Historique des révisions du jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "New datasets",
+      "translation": "Nouveaux jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Top Rated Datasets",
+      "translation": "Les jeux de données les mieux notés"
+    },
+    {
+      "type": "single",
+      "entry": "Average rating",
+      "translation": "Note moyenne"
+    },
+    {
+      "type": "single",
+      "entry": "Number of ratings",
+      "translation": "Nombre de notes"
+    },
+    {
+      "type": "single",
+      "entry": "No ratings",
+      "translation": "Pas de note"
+    },
+    {
+      "type": "single",
+      "entry": "Most Edited Datasets",
+      "translation": "Les jeux de données les plus édités"
+    },
+    {
+      "type": "single",
+      "entry": "Dataset",
+      "translation": "Jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Number of edits",
+      "translation": "Nombre de modifications"
+    },
+    {
+      "type": "single",
+      "entry": "No edited datasets",
+      "translation": "Aucun jeu de données modifié"
+    },
+    {
+      "type": "single",
+      "entry": "Largest Groups",
+      "translation": "Groupes les plus gros"
+    },
+    {
+      "type": "single",
+      "entry": "Group",
+      "translation": "Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Number of datasets",
+      "translation": "Nombre de jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "No groups",
+      "translation": "Pas de groupes"
+    },
+    {
+      "type": "single",
+      "entry": "Top Tags",
+      "translation": "Mots-clés les plus utilisés"
+    },
+    {
+      "type": "single",
+      "entry": "Tag Name",
+      "translation": "Nom  de tag"
+    },
+    {
+      "type": "single",
+      "entry": "Number of Datasets",
+      "translation": "Nombre de jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Users Creating Most Datasets",
+      "translation": "Utilisateur ayant créé le plus de jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "User",
+      "translation": "Utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "Statistics Menu",
+      "translation": "Menu des statistiques"
+    },
+    {
+      "type": "single",
+      "entry": "Total Number of Datasets",
+      "translation": "Nombre total de jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Text",
+      "translation": "Texte"
+    },
+    {
+      "type": "single",
+      "entry": "Website",
+      "translation": "Site Web"
+    },
+    {
+      "type": "single",
+      "entry": "Web Page url",
+      "translation": "URL de la page Web"
+    },
+    {
+      "type": "single",
+      "entry": "eg. http://example.com (if blank uses resource url)",
+      "translation": "p. ex. http://example.com (si elle est vide utiliser l'URL de la ressource)"
+    },
+    {
+      "type": "single",
+      "entry": "Your browser does not support iframes.",
+      "translation": "Votre navigateur n'est pas compatible avec iframes"
+    },
+    {
+      "type": "single",
+      "entry": "Authorization function not found: %s",
+      "translation": "Fonction d'autorisation non trouvée : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Admin",
+      "translation": "Administrateur"
+    },
+    {
+      "type": "single",
+      "entry": "Editor",
+      "translation": "Éditeur"
+    },
+    {
+      "type": "single",
+      "entry": "Member",
+      "translation": "Membre"
+    },
+    {
+      "type": "single",
+      "entry": "Need to be system administrator to administer",
+      "translation": "Vous devez être un administrateur système pour administrer"
+    },
+    {
+      "type": "single",
+      "entry": "Site Title",
+      "translation": "Titre du site"
+    },
+    {
+      "type": "single",
+      "entry": "Style",
+      "translation": "Style"
+    },
+    {
+      "type": "single",
+      "entry": "Site Tag Line",
+      "translation": "Slogan du site"
+    },
+    {
+      "type": "single",
+      "entry": "Site Tag Logo",
+      "translation": "Logo de base du site"
+    },
+    {
+      "type": "single",
+      "entry": "About",
+      "translation": "À propos"
+    },
+    {
+      "type": "single",
+      "entry": "About page text",
+      "translation": "Texte de la page à propos"
+    },
+    {
+      "type": "single",
+      "entry": "Intro Text",
+      "translation": "Texte d'Intro"
+    },
+    {
+      "type": "single",
+      "entry": "Text on home page",
+      "translation": "Texte de la page d'accueil"
+    },
+    {
+      "type": "single",
+      "entry": "Custom CSS",
+      "translation": "CSS personnalisés"
+    },
+    {
+      "type": "single",
+      "entry": "Customisable css inserted into the page header",
+      "translation": "CSS personnalisés insérés dans l'en-tête de la page"
+    },
+    {
+      "type": "single",
+      "entry": "Homepage",
+      "translation": "Page d'accueil"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot purge package %s as associated revision %s includes non-deleted packages %s",
+      "translation": "Impossible de purger le paquet %s car la révision %s associée contient les paquets %s non supprimés"
+    },
+    {
+      "type": "single",
+      "entry": "Problem purging revision %s: %s",
+      "translation": "Un problème a été rencontré lors de la purge de la révision %s: %s"
+    },
+    {
+      "type": "single",
+      "entry": "Purge complete",
+      "translation": "Purge terminée"
+    },
+    {
+      "type": "single",
+      "entry": "Action not implemented.",
+      "translation": "Action non implémentée."
+    },
+    {
+      "type": "single",
+      "entry": "Access denied",
+      "translation": "Accès non autorisé"
+    },
+    {
+      "type": "single",
+      "entry": "Not found",
+      "translation": "Indisponible"
+    },
+    {
+      "type": "single",
+      "entry": "Bad request",
+      "translation": "Requête incorrecte"
+    },
+    {
+      "type": "single",
+      "entry": "Action name not known: %s",
+      "translation": "L'action %s est inconnue"
+    },
+    {
+      "type": "single",
+      "entry": "JSON Error: %s",
+      "translation": "Erreur JSON : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Bad request data: %s",
+      "translation": "Mauvaise requête de données : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot list entity of this type: %s",
+      "translation": "Impossible de lister les entités de type %s"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot read entity of this type: %s",
+      "translation": "Impossible de lire les entités de type %s"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot create new entity of this type: %s %s",
+      "translation": "Ne peut créer un nouvel élément de ce type : %s %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unable to add package to search index",
+      "translation": "Échec d'ajout du paquet à l'index de recherche"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot update entity of this type: %s",
+      "translation": "Ne peut modifier un élément de ce type : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unable to update search index",
+      "translation": "Échec de mise à jour de l'index de recherche"
+    },
+    {
+      "type": "single",
+      "entry": "Cannot delete entity of this type: %s %s",
+      "translation": "Ne peut supprimer un élément de ce type : %s %s"
+    },
+    {
+      "type": "single",
+      "entry": "No revision specified",
+      "translation": "Aucune révision spécifiée"
+    },
+    {
+      "type": "single",
+      "entry": "There is no revision with id: %s",
+      "translation": "La révision %s n'existe pas"
+    },
+    {
+      "type": "single",
+      "entry": "Missing search term ('since_id=UUID' or  'since_time=TIMESTAMP')",
+      "translation": "Terme de recherche manquant ('since_id=UUID' ou 'since_time=TIMESTAMP')"
+    },
+    {
+      "type": "single",
+      "entry": "Could not read parameters: %r",
+      "translation": "Impossible de lire les paramètres %r"
+    },
+    {
+      "type": "single",
+      "entry": "Bad search option: %s",
+      "translation": "Mauvaise option de recherche : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unknown register: %s",
+      "translation": "Enregistrement %s inconnu"
+    },
+    {
+      "type": "single",
+      "entry": "Malformed qjson value: %r",
+      "translation": "Valeur qjson malformée : %r"
+    },
+    {
+      "type": "single",
+      "entry": "Request params must be in form of a json encoded dictionary.",
+      "translation": "Les paramètres de la requête doivent être encodés au format JSON."
+    },
+    {
+      "type": "single",
+      "entry": "Group not found",
+      "translation": "Groupe introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Organization not found",
+      "translation": "Organisation non trouvée"
+    },
+    {
+      "type": "single",
+      "entry": "Incorrect group type",
+      "translation": "Type de groupe incorrect"
+    },
+    {
+      "type": "single",
+      "entry": "Organizations",
+      "translation": "Organisations"
+    },
+    {
+      "type": "single",
+      "entry": "Groups",
+      "translation": "Groupes"
+    },
+    {
+      "type": "single",
+      "entry": "Tags",
+      "translation": "Mots-clés"
+    },
+    {
+      "type": "single",
+      "entry": "Formats",
+      "translation": "Formats"
+    },
+    {
+      "type": "single",
+      "entry": "Licenses",
+      "translation": "Licenses"
+    },
+    {
+      "type": "single",
+      "entry": "User %r not authorized to edit %s",
+      "translation": "L'utilisateur %r n'est pas autorisé à éditer %s"
+    },
+    {
+      "type": "single",
+      "entry": "Not authorized to perform bulk update",
+      "translation": "Vous n'êtes pas autorisé à effectuer des mises à jour par lots"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create a group",
+      "translation": "Vous n'êtes pas autorisé à créer un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Integrity Error",
+      "translation": "Erreur d'intégrité"
+    },
+    {
+      "type": "single",
+      "entry": "User %r not authorized to edit %s authorizations",
+      "translation": "L'utilisateur %r n'est pas autorisé à éditer les droits de %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to delete group %s",
+      "translation": "Vous n'êtes pas autorisé à supprimer le groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "Organization has been deleted.",
+      "translation": "Cette organisation a été supprimée."
+    },
+    {
+      "type": "single",
+      "entry": "Group has been deleted.",
+      "translation": "Ce groupe a été supprimé."
+    },
+    {
+      "type": "single",
+      "entry": "%s has been deleted.",
+      "translation": "%s a été effacé. "
+    },
+    {
+      "type": "single",
+      "entry": "User %r not authorized to edit members of %s",
+      "translation": "L'utilisateur %r n'est pas autorisé à modifier les membres de %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to add member to group %s",
+      "translation": "Vous n'êtes pas autorisé à ajouter un membre au groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to delete group %s members",
+      "translation": "Vous n'êtes pas autorisé à supprimer un membre du groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "Group member has been deleted.",
+      "translation": "Le membre de ce groupe  a  été supprimé"
+    },
+    {
+      "type": "single",
+      "entry": "Select two revisions before doing the comparison.",
+      "translation": "Sélectionner deux révisions pour pouvoir les comparer."
+    },
+    {
+      "type": "single",
+      "entry": "CKAN Group Revision History",
+      "translation": "Historique des révisions du groupe CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "Recent changes to CKAN Group: ",
+      "translation": "Modifications récentes du groupe CKAN : "
+    },
+    {
+      "type": "single",
+      "entry": "Log message: ",
+      "translation": "Message de log : "
+    },
+    {
+      "type": "single",
+      "entry": "You are now following {0}",
+      "translation": "Vous suivez maintenant {0}"
+    },
+    {
+      "type": "single",
+      "entry": "You are no longer following {0}",
+      "translation": "Vous ne suivez plus {0}"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to view followers %s",
+      "translation": "Vous n'êtes pas autorisé à visualiser les abonnés à %s"
+    },
+    {
+      "type": "single",
+      "entry": "This site is currently off-line. Database is not initialised.",
+      "translation": "Le site est actuellement indisponible. La base de données n'est pas initialisée."
+    },
+    {
+      "type": "single",
+      "entry": "Please <a href=\"%s\">update your profile</a> and add your email address. ",
+      "translation": "Merci de <a href=\"%s\">mettre à jour votre profil</a> et d'ajouter votre adresse e-mail. "
+    },
+    {
+      "type": "single",
+      "entry": "%s uses your email address if you need to reset your password.",
+      "translation": "%s utilise votre adresse e-mail si vous avez besoin de réinitialiser votre mot de passe."
+    },
+    {
+      "type": "single",
+      "entry": "Invalid search query: {error_message}",
+      "translation": "requête de recherche invalide : {error_message}"
+    },
+    {
+      "type": "single",
+      "entry": "Parameter \"{parameter_name}\" is not an integer",
+      "translation": "Le paramètre \"{parameter_name}\" n'est pas un entier"
+    },
+    {
+      "type": "single",
+      "entry": "Dataset not found",
+      "translation": "Jeu de données introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Invalid revision format: %r",
+      "translation": "Le format de révision %r est invalide"
+    },
+    {
+      "type": "single",
+      "entry": "Viewing datasets of type \"{package_type}\" is not supported ({file_!r}).",
+      "translation": "La visualisation des ensemble de données de type \"{package_type}\" n'est pas supportée ({file_!r})."
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to read package %s",
+      "translation": "Lecture du paquet %s non autorisée"
+    },
+    {
+      "type": "single",
+      "entry": "CKAN Dataset Revision History",
+      "translation": "Historique des révisions du jeu de données CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "Recent changes to CKAN Dataset: ",
+      "translation": "Changements récents du jeu de données CKAN : "
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create a package",
+      "translation": "Vous n'êtes pas autorisé à enregistrer un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to edit this resource",
+      "translation": "Vous n'êtes pas autorisé à modifier cette ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to update dataset",
+      "translation": "Vous n'êtes pas autorisé à mettre à jour ce jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "The dataset {id} could not be found.",
+      "translation": "Le jeu de données {id} n'a pas pu être trouvé."
+    },
+    {
+      "type": "single",
+      "entry": "You must add at least one data resource",
+      "translation": "Vous devez ajouter au moins une ressource de données"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create a resource",
+      "translation": "Vous n'êtes pas autorisé à créer une ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create a resource for this package",
+      "translation": "Non autorisé à créer une ressource pour cet ensemble"
+    },
+    {
+      "type": "single",
+      "entry": "Unable to add package to search index.",
+      "translation": "Échec d'ajout du paquet à l'index de recherche."
+    },
+    {
+      "type": "single",
+      "entry": "Unable to update search index.",
+      "translation": "Échec de mise à jour de l'index de recherche."
+    },
+    {
+      "type": "single",
+      "entry": "Dataset has been deleted.",
+      "translation": "Ce jeu de données a été supprimé."
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to delete package %s",
+      "translation": "Vous n'êtes pas autorisé à supprimer le paquet %s"
+    },
+    {
+      "type": "single",
+      "entry": "Resource has been deleted.",
+      "translation": "Cette ressource a été supprimée."
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to delete resource %s",
+      "translation": "Vous n'êtes pas autorisé à supprimer la ressource %s"
+    },
+    {
+      "type": "single",
+      "entry": "Resource view not found",
+      "translation": "La ressource ne peut être affichée"
+    },
+    {
+      "type": "single",
+      "entry": "Resource data not found",
+      "translation": "Contenu de la ressource introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "No download is available",
+      "translation": "Pas de téléchargement disponible"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to read dataset %s",
+      "translation": "Vous n'êtes pas autorisé à lire le jeu de données %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to read resource %s",
+      "translation": "Vous n'êtes pas autorisé à lire la ressource %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to edit resource",
+      "translation": "Non autorisé à éditer la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "View not found",
+      "translation": "Ne peut être affiché"
+    },
+    {
+      "type": "single",
+      "entry": "View Type Not found",
+      "translation": "Type d'affichage introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Bad resource view data",
+      "translation": "Données invalides pour cette visualisation de ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Resource view not supplied",
+      "translation": "Vue de ressources non fourni"
+    },
+    {
+      "type": "single",
+      "entry": "No preview has been defined.",
+      "translation": "Aucune prévisualisation n'a été définie."
+    },
+    {
+      "type": "single",
+      "entry": "CKAN Repository Revision History",
+      "translation": "Historique du dépôt CKAN."
+    },
+    {
+      "type": "single",
+      "entry": "Recent changes to the CKAN repository.",
+      "translation": "Modifications récentes du dépôt CKAN."
+    },
+    {
+      "type": "single",
+      "entry": "Datasets affected: %s.\n",
+      "translation": "Jeux de données affectés : %s.\n"
+    },
+    {
+      "type": "single",
+      "entry": "Revision updated",
+      "translation": "Révision mise à jour"
+    },
+    {
+      "type": "single",
+      "entry": "Other",
+      "translation": "Autre"
+    },
+    {
+      "type": "single",
+      "entry": "Tag not found",
+      "translation": "Mot-clé introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to register as a user.",
+      "translation": "Vous n'êtes pas autorisé à vous inscrire comme utilisateur."
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create a user",
+      "translation": "Vous n'êtes pas autorisé à créer un utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to delete user with id \"{user_id}\".",
+      "translation": "Non autorisé à supprimer l'utilisateur avec l'identifiant \"{user_id}\"."
+    },
+    {
+      "type": "single",
+      "entry": "No user specified",
+      "translation": "Pas d'utilisateur spécifié"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to edit user %s",
+      "translation": "Vous n'êtes pas autorisé à modifier l'utilisateur %s"
+    },
+    {
+      "type": "single",
+      "entry": "User not found",
+      "translation": "Utilisateur introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Profile updated",
+      "translation": "Profil mis à jour"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to create user %s",
+      "translation": "Vous n'êtes pas autorisé à créer l'utilisateur %s"
+    },
+    {
+      "type": "single",
+      "entry": "Bad Captcha. Please try again.",
+      "translation": "Mauvais captcha. Merci d'essayer à nouveau."
+    },
+    {
+      "type": "single",
+      "entry": "User \"%s\" is now registered but you are still logged in as \"%s\" from before",
+      "translation": "L'utilisateur \"%s\" est désormais enregistré mais vous êtes toujours authentifié en tant que \"%s\""
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to edit a user.",
+      "translation": "Vous n'êtes pas autorisé à modifier un utilisateur."
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier %s"
+    },
+    {
+      "type": "single",
+      "entry": "Password entered was incorrect",
+      "translation": "Mot de passe entré incorrect"
+    },
+    {
+      "type": "single",
+      "entry": "Old Password",
+      "translation": "Ancien mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "incorrect password",
+      "translation": "mot de passe incorrect"
+    },
+    {
+      "type": "single",
+      "entry": "Login failed. Bad username or password.",
+      "translation": "Authentification échouée. Mauvais login ou mot de passe."
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to request reset password.",
+      "translation": "Vous n'êtes pas autorisé à demander une réinitialisation de mot de passe."
+    },
+    {
+      "type": "single",
+      "entry": "\"%s\" matched several users",
+      "translation": "\"%s\" correspond à plusieurs utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "No such user: %s",
+      "translation": "Pas d'utilisateur correspondant à %s"
+    },
+    {
+      "type": "single",
+      "entry": "Please check your inbox for a reset code.",
+      "translation": "Merci de consulter votre boîte à lettres électronique pour trouver votre code de réinitialisation."
+    },
+    {
+      "type": "single",
+      "entry": "Could not send reset link: %s",
+      "translation": "Impossible d'envoyer le lien de réinitialisation : %s"
+    },
+    {
+      "type": "single",
+      "entry": "Unauthorized to reset password.",
+      "translation": "Vous n'êtes pas autorisé à réinitialiser un mot de passe."
+    },
+    {
+      "type": "single",
+      "entry": "Invalid reset key. Please try again.",
+      "translation": "Clé de réinitialisation invalide. Merci d'essayer à nouveau."
+    },
+    {
+      "type": "single",
+      "entry": "Your password has been reset.",
+      "translation": "Votre mot de passe a bien été réinitialisé."
+    },
+    {
+      "type": "single",
+      "entry": "Your password must be 4 characters or longer.",
+      "translation": "Votre mot de passe doit comporter au moins 4 caractères."
+    },
+    {
+      "type": "single",
+      "entry": "The passwords you entered do not match.",
+      "translation": "Les mots de passe saisis ne correspondent pas."
+    },
+    {
+      "type": "single",
+      "entry": "You must provide a password",
+      "translation": "Vous devez fournir un mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Follow item not found",
+      "translation": "L'élément suivant est introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "{0} not found",
+      "translation": "{0} introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "Everything",
+      "translation": "Tout"
+    },
+    {
+      "type": "single",
+      "entry": "Missing Value",
+      "translation": "valeur manquante"
+    },
+    {
+      "type": "single",
+      "entry": "Redirecting to external site is not allowed.",
+      "translation": "Redirection vers un site externe non autorisée."
+    },
+    {
+      "type": "single",
+      "entry": "{actor} added the tag {tag} to the dataset {dataset}",
+      "translation": "{actor} a ajouté le tag {tag} au jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} updated the group {group}",
+      "translation": "{actor} a mis à jour le groupe {group}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} updated the organization {organization}",
+      "translation": "{actor} a mis à jour l'organisation {organization}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} updated the dataset {dataset}",
+      "translation": "{actor} a mis à jour le jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} changed the extra {extra} of the dataset {dataset}",
+      "translation": "{actor} a modifié l'extra {extra} du jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} updated the resource {resource} in the dataset {dataset}",
+      "translation": "{actor} a mis à jour la ressource  {resource} du jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} updated their profile",
+      "translation": "{actor} a mis à jour son profil"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} deleted the group {group}",
+      "translation": "{actor} a supprimé le groupe {group}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} deleted the organization {organization}",
+      "translation": "{actor} a supprimé l'organisation {organization}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} deleted the dataset {dataset}",
+      "translation": "{actor} a supprimé le jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} deleted the extra {extra} from the dataset {dataset}",
+      "translation": "{actor} a supprimé l'extra {extra} du jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} deleted the resource {resource} from the dataset {dataset}",
+      "translation": "{actor} a supprimé la ressource {resource} du jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} created the group {group}",
+      "translation": "{actor} a créé le groupe {group}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} created the organization {organization}",
+      "translation": "{actor} a créé l'organisation {organization}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} created the dataset {dataset}",
+      "translation": "{actor} a créé  le jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} added the extra {extra} to the dataset {dataset}",
+      "translation": "{actor} a ajouté l'extra {extra} au jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} added the resource {resource} to the dataset {dataset}",
+      "translation": "{actor} a ajouté la ressource  {resource}  au jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} signed up",
+      "translation": "{actor} s'est authentifié"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} removed the tag {tag} from the dataset {dataset}",
+      "translation": "{actor} a supprimé le tag {tag} du jeu de données {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} started following {dataset}",
+      "translation": "{actor} suit à présent {dataset}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} started following {user}",
+      "translation": "{actor} suit à présent {user}"
+    },
+    {
+      "type": "single",
+      "entry": "{actor} started following {group}",
+      "translation": "{actor} suit à présent {group}"
+    },
+    {
+      "type": "single",
+      "entry": "View",
+      "translation": "Afficher"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{n} new activity from {site_title}",
+        "{n} new activities from {site_title}"
+      ],
+      "translations": [
+        "{n} nouvelle activité de {site_title}",
+        "{n} nouvelles activités de {site_title}"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "January",
+      "translation": "Janvier"
+    },
+    {
+      "type": "single",
+      "entry": "February",
+      "translation": "Février"
+    },
+    {
+      "type": "single",
+      "entry": "March",
+      "translation": "Mars"
+    },
+    {
+      "type": "single",
+      "entry": "April",
+      "translation": "Avril"
+    },
+    {
+      "type": "single",
+      "entry": "May",
+      "translation": "Mai"
+    },
+    {
+      "type": "single",
+      "entry": "June",
+      "translation": "Juin"
+    },
+    {
+      "type": "single",
+      "entry": "July",
+      "translation": "Juillet"
+    },
+    {
+      "type": "single",
+      "entry": "August",
+      "translation": "Août"
+    },
+    {
+      "type": "single",
+      "entry": "September",
+      "translation": "Septembre"
+    },
+    {
+      "type": "single",
+      "entry": "October",
+      "translation": "Octobre"
+    },
+    {
+      "type": "single",
+      "entry": "November",
+      "translation": "Novembre"
+    },
+    {
+      "type": "single",
+      "entry": "December",
+      "translation": "Décembre"
+    },
+    {
+      "type": "single",
+      "entry": "Just now",
+      "translation": "A l'instant"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{mins} minute ago",
+        "{mins} minutes ago"
+      ],
+      "translations": [
+        "Il y a {mins} minute",
+        "Il y a {mins} minutes"
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{hours} hour ago",
+        "{hours} hours ago"
+      ],
+      "translations": [
+        "Il y a {hours} heure",
+        "Il y a {hours} heures"
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{days} day ago",
+        "{days} days ago"
+      ],
+      "translations": [
+        "Il y a {days} jour",
+        "Il y a {days} jours"
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{months} month ago",
+        "{months} months ago"
+      ],
+      "translations": [
+        "Il y a {months} mois",
+        "Il y a {months} mois"
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "over {years} year ago",
+        "over {years} years ago"
+      ],
+      "translations": [
+        "Il y a plus de {years} an",
+        "Il y a plus de {years} ans"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "{month} {day}, {year}, {hour:02}:{min:02} ({timezone})",
+      "translation": "{month} {day}, {year}, {hour:02}:{min:02} ({timezone})"
+    },
+    {
+      "type": "single",
+      "entry": "{month} {day}, {year}",
+      "translation": "{day} {month} {year}"
+    },
+    {
+      "type": "single",
+      "entry": "{bytes} bytes",
+      "translation": "{bytes} octets"
+    },
+    {
+      "type": "single",
+      "entry": "{kibibytes} KiB",
+      "translation": "{kibibytes} kibi"
+    },
+    {
+      "type": "single",
+      "entry": "{mebibytes} MiB",
+      "translation": "{mebibytes} mébi"
+    },
+    {
+      "type": "single",
+      "entry": "{gibibytes} GiB",
+      "translation": "{gibibytes} gibi"
+    },
+    {
+      "type": "single",
+      "entry": "{tebibytes} TiB",
+      "translation": "{tebibytes} tébi"
+    },
+    {
+      "type": "single",
+      "entry": "{n}",
+      "translation": "{n}"
+    },
+    {
+      "type": "single",
+      "entry": "{k}k",
+      "translation": "{k}k"
+    },
+    {
+      "type": "single",
+      "entry": "{m}M",
+      "translation": "{m}M"
+    },
+    {
+      "type": "single",
+      "entry": "{g}G",
+      "translation": "{g}G"
+    },
+    {
+      "type": "single",
+      "entry": "{t}T",
+      "translation": "{t}T"
+    },
+    {
+      "type": "single",
+      "entry": "{p}P",
+      "translation": "{p}P"
+    },
+    {
+      "type": "single",
+      "entry": "{e}E",
+      "translation": "{e}E"
+    },
+    {
+      "type": "single",
+      "entry": "{z}Z",
+      "translation": "{z}Z"
+    },
+    {
+      "type": "single",
+      "entry": "{y}Y",
+      "translation": "{y}Y"
+    },
+    {
+      "type": "single",
+      "entry": "Update your avatar at gravatar.com",
+      "translation": "Mettez à jour votre avatar sur gravatar.com"
+    },
+    {
+      "type": "single",
+      "entry": "Unknown",
+      "translation": "Inconnu(e)"
+    },
+    {
+      "type": "single",
+      "entry": "Unnamed resource",
+      "translation": "Ressource sans nom"
+    },
+    {
+      "type": "single",
+      "entry": "Created new dataset.",
+      "translation": "Nouveau jeu de données créé."
+    },
+    {
+      "type": "single",
+      "entry": "Edited resources.",
+      "translation": "Ressources mises à jour."
+    },
+    {
+      "type": "single",
+      "entry": "Edited settings.",
+      "translation": "Paramètres mis à jour."
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} view",
+        "{number} views"
+      ],
+      "translations": [
+        "{number} vue",
+        "{number} vues"
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} recent view",
+        "{number} recent views"
+      ],
+      "translations": [
+        "{number} vue récente",
+        "{number} vues récentes"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "%s <%s>",
+      "translation": "%s <%s>"
+    },
+    {
+      "type": "single",
+      "entry": "No recipient email address available!",
+      "translation": "Pas d'adresse e-mail destinataire indiquée !"
+    },
+    {
+      "type": "single",
+      "entry": "organization",
+      "translation": "organisation"
+    },
+    {
+      "type": "single",
+      "entry": "group",
+      "translation": "groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Missing value",
+      "translation": "Valeur manquante"
+    },
+    {
+      "type": "single",
+      "entry": "The input field %(name)s was not expected.",
+      "translation": "Le champ saisi %(name)s n'était pas attendu."
+    },
+    {
+      "type": "single",
+      "entry": "Please enter an integer value",
+      "translation": "Vous devez saisir un nombre entier"
+    },
+    {
+      "type": "single",
+      "entry": "Must be a Unicode string value",
+      "translation": "Doit être une valeur de chaîne Unicode"
+    },
+    {
+      "type": "single",
+      "entry": "Package resource(s) invalid",
+      "translation": "Ressource(s) du paquet invalide(s)"
+    },
+    {
+      "type": "single",
+      "entry": "Extras",
+      "translation": "Extras"
+    },
+    {
+      "type": "single",
+      "entry": "Tag vocabulary \"%s\" does not exist",
+      "translation": "le mot-clé \"%s\" n'existe pas"
+    },
+    {
+      "type": "single",
+      "entry": "Could not parse as valid JSON",
+      "translation": "JSON syntaxiquement invalide"
+    },
+    {
+      "type": "single",
+      "entry": "An organization must be provided",
+      "translation": "Une référence à une organisation doit être fournie"
+    },
+    {
+      "type": "single",
+      "entry": "Organization does not exist",
+      "translation": "Cette organisation n'existe pas"
+    },
+    {
+      "type": "single",
+      "entry": "You cannot add a dataset to this organization",
+      "translation": "Vous ne pouvez pas ajouter un jeu de données à cette organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Invalid integer",
+      "translation": "Nombre entier invalide"
+    },
+    {
+      "type": "single",
+      "entry": "Must be a natural number",
+      "translation": "Ce doit être un nombre naturel"
+    },
+    {
+      "type": "single",
+      "entry": "Must be a postive integer",
+      "translation": "Ce doit être un nombre entier positif"
+    },
+    {
+      "type": "single",
+      "entry": "Date format incorrect",
+      "translation": "Format de date incorrect"
+    },
+    {
+      "type": "single",
+      "entry": "No links are allowed in the log_message.",
+      "translation": "Aucun lien autorisé dans le log_message."
+    },
+    {
+      "type": "single",
+      "entry": "Dataset id already exists",
+      "translation": "L'identifiant de l'ensemble de données existe déjà"
+    },
+    {
+      "type": "single",
+      "entry": "Resource",
+      "translation": "Ressource"
+    },
+    {
+      "type": "single",
+      "entry": "That group name or ID does not exist.",
+      "translation": "Ce groupe d'utilisateur ou cet identifiant n'existe pas."
+    },
+    {
+      "type": "single",
+      "entry": "Activity type",
+      "translation": "Type d'activité"
+    },
+    {
+      "type": "single",
+      "entry": "Names must be strings",
+      "translation": "Les noms doivent être des chaînes de caractères"
+    },
+    {
+      "type": "single",
+      "entry": "That name cannot be used",
+      "translation": "Ce nom ne peut pas être utilisé"
+    },
+    {
+      "type": "single",
+      "entry": "Must be at least %s characters long",
+      "translation": "Doit contenir au moins %s caractères"
+    },
+    {
+      "type": "single",
+      "entry": "Name must be a maximum of %i characters long",
+      "translation": "Le nom doit être d'une longueur inférieur à %i caractères"
+    },
+    {
+      "type": "single",
+      "entry": "Must be purely lowercase alphanumeric (ascii) characters and these symbols: -_",
+      "translation": "Doit contenir uniquement des caractères alphanumériques en minuscules (ascii) et ces symboles : -_"
+    },
+    {
+      "type": "single",
+      "entry": "That URL is already in use.",
+      "translation": "Cette URL est déjà utilisée."
+    },
+    {
+      "type": "single",
+      "entry": "Name \"%s\" length is less than minimum %s",
+      "translation": "La longueur du nom \"%s\" est inférieure au minimum %s"
+    },
+    {
+      "type": "single",
+      "entry": "Name \"%s\" length is more than maximum %s",
+      "translation": "La longueur du nom \"%s\" est supérieur au maximum %s"
+    },
+    {
+      "type": "single",
+      "entry": "Version must be a maximum of %i characters long",
+      "translation": "La version ne doit pas être plus longue que %i caractère"
+    },
+    {
+      "type": "single",
+      "entry": "Duplicate key \"%s\"",
+      "translation": "Clé double \"%s\""
+    },
+    {
+      "type": "single",
+      "entry": "Group name already exists in database",
+      "translation": "Le nom de groupe existe déjà dans la base de données"
+    },
+    {
+      "type": "single",
+      "entry": "Tag \"%s\" length is less than minimum %s",
+      "translation": "La longueur du mot-clé \"%s\" est inférieure au minimum requis (%s)"
+    },
+    {
+      "type": "single",
+      "entry": "Tag \"%s\" length is more than maximum %i",
+      "translation": "La longueur du mot-clé \"%s\" est supérieure à la longueur maximale %i"
+    },
+    {
+      "type": "single",
+      "entry": "Tag \"%s\" must be alphanumeric characters or symbols: -_.",
+      "translation": "Le mot-clé \"%s\" ne peut contenir que des lettres minuscules, des chiffres ou les symboles : -_."
+    },
+    {
+      "type": "single",
+      "entry": "Tag \"%s\" must not be uppercase",
+      "translation": "Le mot-clé \"%s\" ne peut contenir de lettres majuscules"
+    },
+    {
+      "type": "single",
+      "entry": "User names must be strings",
+      "translation": "Les noms d'utilisateurs doivent être des chaînes de caractères"
+    },
+    {
+      "type": "single",
+      "entry": "That login name is not available.",
+      "translation": "Ce nom d'utilisateur n'est pas disponible."
+    },
+    {
+      "type": "single",
+      "entry": "That login name can not be modified.",
+      "translation": "L'identifiant de connexion ne peut pas être modifié."
+    },
+    {
+      "type": "single",
+      "entry": "Please enter both passwords",
+      "translation": "Merci d'entrer les 2 mots de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Passwords must be strings",
+      "translation": "Les mots de passe doivent être des chaînes de caractères"
+    },
+    {
+      "type": "single",
+      "entry": "Your password must be 4 characters or longer",
+      "translation": "Votre mot de passe doit comporter au moins 4 caractères"
+    },
+    {
+      "type": "single",
+      "entry": "The passwords you entered do not match",
+      "translation": "Les mots de passe saisis ne correspondent pas"
+    },
+    {
+      "type": "single",
+      "entry": "Edit not allowed as it looks like spam. Please avoid links in your description.",
+      "translation": "La modification n'est pas autorisée car elle ressemble à du spam. Merci d'éviter les liens dans votre description."
+    },
+    {
+      "type": "single",
+      "entry": "Name must be at least %s characters long",
+      "translation": "Le titre doit comporter au moins %s caractères"
+    },
+    {
+      "type": "single",
+      "entry": "That vocabulary name is already in use.",
+      "translation": "Ce nom de vocabulaire est déjà utilisé."
+    },
+    {
+      "type": "single",
+      "entry": "Cannot change value of key from %s to %s. This key is read-only",
+      "translation": "On ne peut pas changer le valeur de la clé de %s à %s. Cette clé est en lecture seulement "
+    },
+    {
+      "type": "single",
+      "entry": "Tag vocabulary was not found.",
+      "translation": "Ce vocabulaire de mots-clés n'a pas été trouvé."
+    },
+    {
+      "type": "single",
+      "entry": "Tag %s does not belong to vocabulary %s",
+      "translation": "Le mot-clé %s n'appartient pas au vocabulaire %s"
+    },
+    {
+      "type": "single",
+      "entry": "No tag name",
+      "translation": "Aucun nom pour le mot-clé"
+    },
+    {
+      "type": "single",
+      "entry": "Tag %s already belongs to vocabulary %s",
+      "translation": "Le mot-clé %s appartient déjà au vocabulaire %s"
+    },
+    {
+      "type": "single",
+      "entry": "Please provide a valid URL",
+      "translation": "Merci de fournir une URL valide"
+    },
+    {
+      "type": "single",
+      "entry": "role does not exist.",
+      "translation": "Ce rôle n'existe pas"
+    },
+    {
+      "type": "single",
+      "entry": "Datasets with no organization can't be private.",
+      "translation": "Les jeux de données n'appartenant pas à une organisation ne peuvent pas être privés."
+    },
+    {
+      "type": "single",
+      "entry": "Not a list",
+      "translation": "Ce n'est pas une liste"
+    },
+    {
+      "type": "single",
+      "entry": "Not a string",
+      "translation": "Ce n'est pas une chaîne de caractères"
+    },
+    {
+      "type": "single",
+      "entry": "This parent would create a loop in the hierarchy",
+      "translation": "Ce parent créerait une boucle dans la hiérarchie"
+    },
+    {
+      "type": "single",
+      "entry": "\"filter_fields\" and \"filter_values\" should have the same length",
+      "translation": "Les valeurs \"filter_fields\" et \"filter_values\" doivent être de même longueur"
+    },
+    {
+      "type": "single",
+      "entry": "\"filter_fields\" is required when \"filter_values\" is filled",
+      "translation": "\"filter_fields\" est nécessaire lorsque \"filter_values\" est rempli"
+    },
+    {
+      "type": "single",
+      "entry": "\"filter_values\" is required when \"filter_fields\" is filled",
+      "translation": "\"filter_values\" est nécessaire lorsque \"filter_fields\" est rempli"
+    },
+    {
+      "type": "single",
+      "entry": "There is a schema field with the same name",
+      "translation": "Il y a un champ de schéma avec le même nom"
+    },
+    {
+      "type": "single",
+      "entry": "Email {email} is not a valid format",
+      "translation": "Le courriel {email} n'est pas au bon format"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Create object %s",
+      "translation": "API REST : création de l'objet %s"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Create package relationship: %s %s %s",
+      "translation": "API REST : création d'une relation de paquet : %s %s %s"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Create member object %s",
+      "translation": "API REST : création de l'objet membre %s"
+    },
+    {
+      "type": "single",
+      "entry": "Trying to create an organization as a group",
+      "translation": "Tentative de création d'une organisation en tant que groupe"
+    },
+    {
+      "type": "single",
+      "entry": "You must supply a package id or name (parameter \"package\").",
+      "translation": "Vous devez fournir un identifiant ou un titre pour le jeu de données (paramètre \"jeu de données\")."
+    },
+    {
+      "type": "single",
+      "entry": "You must supply a rating (parameter \"rating\").",
+      "translation": "Veuillez proposer une note (paramètre \"note\")."
+    },
+    {
+      "type": "single",
+      "entry": "Rating must be an integer value.",
+      "translation": "La note doit être un nombre entier."
+    },
+    {
+      "type": "single",
+      "entry": "Rating must be between %i and %i.",
+      "translation": "La note doit être comprise entre %i et %i."
+    },
+    {
+      "type": "single",
+      "entry": "Error sending the invite email, the user was not created: {0}",
+      "translation": "Une erreur est survenue lors de l'envoi du message d'invitation, l'utilisateur n'a pas été créé: {0}"
+    },
+    {
+      "type": "single",
+      "entry": "You must be logged in to follow users",
+      "translation": "Vous devez vous identifier pour suivre des utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "You cannot follow yourself",
+      "translation": "Il n'est pas possible de s'abonner à soi-même"
+    },
+    {
+      "type": "single",
+      "entry": "You are already following {0}",
+      "translation": "Vous suivez déjà {0}"
+    },
+    {
+      "type": "single",
+      "entry": "You must be logged in to follow a dataset.",
+      "translation": "Vous devez vous identifier pour suivre un jeu de données."
+    },
+    {
+      "type": "single",
+      "entry": "User {username} does not exist.",
+      "translation": "L'utilisateur {username} n'existe pas."
+    },
+    {
+      "type": "single",
+      "entry": "You must be logged in to follow a group.",
+      "translation": "Vous devez vous identifier pour suivre un groupe."
+    },
+    {
+      "type": "single",
+      "entry": " Delete User: {0}",
+      "translation": " Supprimer l'utilisateur: {0}"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Delete Package: %s",
+      "translation": "API REST : suppression du jeu de données : %s"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Delete %s",
+      "translation": "API REST : suppression de %s"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Delete Member: %s",
+      "translation": "API REST : Suppression du Membre: %s"
+    },
+    {
+      "type": "single",
+      "entry": "id not in data",
+      "translation": "cet identifiant n'est pas dans la donnée"
+    },
+    {
+      "type": "single",
+      "entry": "Could not find vocabulary \"%s\"",
+      "translation": "Impossible de trouver le vocabulaire \"%s\""
+    },
+    {
+      "type": "single",
+      "entry": "Could not find tag \"%s\"",
+      "translation": "Impossible de trouver le tag \"%s\""
+    },
+    {
+      "type": "single",
+      "entry": "You must be logged in to unfollow something.",
+      "translation": "Vous devez vous identifier pour cesser de suivre quelque chose."
+    },
+    {
+      "type": "single",
+      "entry": "You are not following {0}.",
+      "translation": "Vous ne suivez pas {0}."
+    },
+    {
+      "type": "single",
+      "entry": "Resource was not found.",
+      "translation": "Ressource introuvable."
+    },
+    {
+      "type": "single",
+      "entry": "Do not specify if using \"query\" parameter",
+      "translation": "Ne sélectionnez pas cette option si vous utilisez le paramètre \"requête\""
+    },
+    {
+      "type": "single",
+      "entry": "Must be <field>:<value> pair(s)",
+      "translation": "Paire(s) de <field>:<value> obligatoire"
+    },
+    {
+      "type": "single",
+      "entry": "Field \"{field}\" not recognised in resource_search.",
+      "translation": "Le champ \"{field}\" n'est pas reconnu dans resource_search."
+    },
+    {
+      "type": "single",
+      "entry": "Package was not found.",
+      "translation": "Jeu de données introuvable."
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Update object %s",
+      "translation": "API REST : mise à jour de l'objet %s"
+    },
+    {
+      "type": "single",
+      "entry": "REST API: Update package relationship: %s %s %s",
+      "translation": "API REST : mise à jour de la relation de paquet : %s %s %s"
+    },
+    {
+      "type": "single",
+      "entry": "TaskStatus was not found.",
+      "translation": "Le statut de la tâche est introuvable."
+    },
+    {
+      "type": "single",
+      "entry": "Organization was not found.",
+      "translation": "Organisation introuvable"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to create packages",
+      "translation": "L'utilisateur %s n'est pas autorisé à enregistrer des jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit these groups",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier ces groupes"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to add dataset to this organization",
+      "translation": "L'utilisateur %s n'est pas autorisé à ajouter un jeu de données à cette organisation"
+    },
+    {
+      "type": "single",
+      "entry": "No dataset id provided, cannot check auth.",
+      "translation": "Aucun identifiant de jeu de données fourni, impossible de vérifier l'authentification."
+    },
+    {
+      "type": "single",
+      "entry": "No package found for this resource, cannot check auth.",
+      "translation": "Pas de jeu de données trouvé pour cette ressource, impossible de vérifier l'authentification."
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to create resources on dataset %s",
+      "translation": "Utilisateur %s non autorisé à créer des ressources sur le jeu de données %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit these packages",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier ces jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to create groups",
+      "translation": "L'utilisateur %s n'est pas autorisé à créer ces groupes"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to create organizations",
+      "translation": "L'utilisateur %s n'est pas autorisé à créé  des organisations"
+    },
+    {
+      "type": "single",
+      "entry": "User {user} not authorized to create users via the API",
+      "translation": "L'utilisateur {user} n'est pas autorisé à créer des utilisateurs via l'API"
+    },
+    {
+      "type": "single",
+      "entry": "Not authorized to create users",
+      "translation": "Non autorisé à créer des utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "Group was not found.",
+      "translation": "Groupe introuvable."
+    },
+    {
+      "type": "single",
+      "entry": "Valid API key needed to create a package",
+      "translation": "Une clé d'API valide est nécessaire pour enregistrer un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Valid API key needed to create a group",
+      "translation": "Une clé d'API valide est nécessaire pour créer un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to add members",
+      "translation": "L'utilisateur  %s n'est pas autorisé à ajouter des membres"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit group %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier le groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete resource %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer  la ressource %s"
+    },
+    {
+      "type": "single",
+      "entry": "Resource view not found, cannot check auth.",
+      "translation": "Visualisation de ressource introuvable, impossible de vérifier l'authentificaiton"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete relationship %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer la relation %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete groups",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer des groupes"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete group %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer le groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete organizations",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer les organisations"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete organization %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer l'organisation %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to delete task_status",
+      "translation": "L'utilisateur %s n'est pas autorisé à supprimer task_status"
+    },
+    {
+      "type": "single",
+      "entry": "Not authorized",
+      "translation": "Non autorisé"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to read these packages",
+      "translation": "L'utilisateur %s n'est pas autorisé à lire ces jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to read package %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à lire le jeu de données %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to read resource %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à lire la ressource %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to read group %s",
+      "translation": "Utilisateur %s non autorisé à lire le groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "You must be logged in to access your dashboard.",
+      "translation": "Vous devez vous identifier pour accéder à votre tableau de bord"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit package %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier le jeu de données %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit resource %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier la ressource %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to change state of package %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier l'état du jeu de données %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit organization %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier l'organisation %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to change state of group %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier l'état du groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit permissions of group %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier les permissions du groupe %s"
+    },
+    {
+      "type": "single",
+      "entry": "Have to be logged in to edit user",
+      "translation": "Vous devez vous identifier pour modifier l'utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to edit user %s",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier l'utilisateur %s"
+    },
+    {
+      "type": "single",
+      "entry": "User {0} not authorized to update user {1}",
+      "translation": "Utilisateur {0} non autorisé à mettre à jour l'utilisateur {1}"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to change state of revision",
+      "translation": "L'utilisateur %s n'est pas autorisé à modifier l'état de révision"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to update task_status table",
+      "translation": "L'utilisateur %s n'est pas autorisé à mettre à jour la table task_status"
+    },
+    {
+      "type": "single",
+      "entry": "User %s not authorized to update term_translation table",
+      "translation": "L'utilisateur %s n'est pas autorisé à mettre à jour la table term_translation"
+    },
+    {
+      "type": "single",
+      "entry": "Valid API key needed to edit a package",
+      "translation": "Une clé d'API valide est nécessaire pour modifier un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Valid API key needed to edit a group",
+      "translation": "Une clé d'API valide est nécessaire pour modifier un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "License not specified",
+      "translation": "Licence non spécifiée"
+    },
+    {
+      "type": "single",
+      "entry": "Open Data Commons Public Domain Dedication and License (PDDL)",
+      "translation": "Open Data Commons Public Domain Dedication and License (PDDL)"
+    },
+    {
+      "type": "single",
+      "entry": "Open Data Commons Open Database License (ODbL)",
+      "translation": "Open Data Commons Open Database License (ODbL)"
+    },
+    {
+      "type": "single",
+      "entry": "Open Data Commons Attribution License",
+      "translation": "Open Data Commons Attribution License"
+    },
+    {
+      "type": "single",
+      "entry": "Creative Commons CCZero",
+      "translation": "Creative Commons CCZero"
+    },
+    {
+      "type": "single",
+      "entry": "Creative Commons Attribution",
+      "translation": "Creative Commons Attribution"
+    },
+    {
+      "type": "single",
+      "entry": "Creative Commons Attribution Share-Alike",
+      "translation": "Creative Commons Attribution Share-Alike"
+    },
+    {
+      "type": "single",
+      "entry": "GNU Free Documentation License",
+      "translation": "GNU Free Documentation License"
+    },
+    {
+      "type": "single",
+      "entry": "Other (Open)",
+      "translation": "Autre (Ouvert)"
+    },
+    {
+      "type": "single",
+      "entry": "Other (Public Domain)",
+      "translation": "Autre (Domaine Public)"
+    },
+    {
+      "type": "single",
+      "entry": "Other (Attribution)",
+      "translation": "Autre (Attribution)"
+    },
+    {
+      "type": "single",
+      "entry": "UK Open Government Licence (OGL)",
+      "translation": "UK Open Government Licence (OGL)"
+    },
+    {
+      "type": "single",
+      "entry": "Creative Commons Non-Commercial (Any)",
+      "translation": "Creative Commons Non-Commercial (n'importe laquelle)"
+    },
+    {
+      "type": "single",
+      "entry": "Other (Non-Commercial)",
+      "translation": "Autre (Non-Commercial)"
+    },
+    {
+      "type": "single",
+      "entry": "Other (Not Open)",
+      "translation": "Autre (Fermé)"
+    },
+    {
+      "type": "single",
+      "entry": "depends on %s",
+      "translation": "dépend de %s"
+    },
+    {
+      "type": "single",
+      "entry": "is a dependency of %s",
+      "translation": "est une dépendance de %s"
+    },
+    {
+      "type": "single",
+      "entry": "derives from %s",
+      "translation": "dérive de %s"
+    },
+    {
+      "type": "single",
+      "entry": "has derivation %s",
+      "translation": "a pour dérivé %s"
+    },
+    {
+      "type": "single",
+      "entry": "links to %s",
+      "translation": "est lié à %s"
+    },
+    {
+      "type": "single",
+      "entry": "is linked from %s",
+      "translation": "est référencé par %s"
+    },
+    {
+      "type": "single",
+      "entry": "is a child of %s",
+      "translation": "est un enfant de %s"
+    },
+    {
+      "type": "single",
+      "entry": "is a parent of %s",
+      "translation": "est un parent de %s"
+    },
+    {
+      "type": "single",
+      "entry": "has sibling %s",
+      "translation": "a des liens de fraternité avec %s"
+    },
+    {
+      "type": "single",
+      "entry": "There is no API data to load for this resource",
+      "translation": "Il n'y a pas de données API à télécharger pour cette ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Failed to load data API information",
+      "translation": "Le chargement de l'information de l'API de données a échoué"
+    },
+    {
+      "type": "single",
+      "entry": "Start typing…",
+      "translation": "Commencez la saisie ..."
+    },
+    {
+      "type": "single",
+      "entry": "No matches found",
+      "translation": "Aucune correspondance trouvée"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "Input is too short, must be at least one character",
+        "Input is too short, must be at least %(num)d characters"
+      ],
+      "translations": [
+        "Saisie trop courte, au moins un caractère est nécessaire",
+        "Saisie trop courte, au moins %(num)d caractères  sont nécessaires"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "There are unsaved modifications to this form",
+      "translation": "Des modifications de ce formulaire n'ont pas été enregistrées"
+    },
+    {
+      "type": "single",
+      "entry": "Please Confirm Action",
+      "translation": "Veuillez confirmer l'action"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to perform this action?",
+      "translation": "Etes-vous sûr de vouloir exécuter cette commande ?"
+    },
+    {
+      "type": "single",
+      "entry": "Confirm",
+      "translation": "Confirmation"
+    },
+    {
+      "type": "single",
+      "entry": "Cancel",
+      "translation": "Annuler"
+    },
+    {
+      "type": "single",
+      "entry": "Unfollow",
+      "translation": "Se désabonner"
+    },
+    {
+      "type": "single",
+      "entry": "Follow",
+      "translation": "S'abonner"
+    },
+    {
+      "type": "single",
+      "entry": "Link",
+      "translation": "Lien"
+    },
+    {
+      "type": "single",
+      "entry": "Link to a URL on the internet (you can also link to an API)",
+      "translation": "Lien vers une URL sur internet (vous pouvez aussi donner un lien vers une API)"
+    },
+    {
+      "type": "single",
+      "entry": "Upload",
+      "translation": "Envoi"
+    },
+    {
+      "type": "single",
+      "entry": "Remove",
+      "translation": "Supprimer"
+    },
+    {
+      "type": "single",
+      "entry": "Upload a file on your computer",
+      "translation": "Télécharger un fichier sur votre ordinateur"
+    },
+    {
+      "type": "single",
+      "entry": "URL",
+      "translation": "URL"
+    },
+    {
+      "type": "single",
+      "entry": "File",
+      "translation": "Fichier"
+    },
+    {
+      "type": "single",
+      "entry": "Save order",
+      "translation": "Sauvegarder la commande"
+    },
+    {
+      "type": "single",
+      "entry": "Saving...",
+      "translation": "Sauvegarde en cours..."
+    },
+    {
+      "type": "single",
+      "entry": "Upload a file",
+      "translation": "Envoyer un fichier depuis votre ordinateur"
+    },
+    {
+      "type": "single",
+      "entry": "An Error Occurred",
+      "translation": "Erreur"
+    },
+    {
+      "type": "single",
+      "entry": "Unable to upload file",
+      "translation": "Échec du transfert de fichier "
+    },
+    {
+      "type": "single",
+      "entry": "Unable to authenticate upload",
+      "translation": "Échec de l'authentification du transfert"
+    },
+    {
+      "type": "single",
+      "entry": "Resource uploaded",
+      "translation": "Ressource  téléchargée"
+    },
+    {
+      "type": "single",
+      "entry": "Unable to get data for uploaded file",
+      "translation": "Impossible d'accéder aux données du fichier déposé"
+    },
+    {
+      "type": "single",
+      "entry": "You are uploading a file. Are you sure you want to navigate away and stop this upload?",
+      "translation": "Vous êtes en train de transférer un fichier. Êtes-vous sûr de vouloir naviguer ailleurs et interrompre ce transfert ?"
+    },
+    {
+      "type": "single",
+      "entry": "Add Filter",
+      "translation": "Ajouter un filtre"
+    },
+    {
+      "type": "single",
+      "entry": "Select a field",
+      "translation": "Sélectionnez un champ"
+    },
+    {
+      "type": "single",
+      "entry": "Edit",
+      "translation": "Éditer"
+    },
+    {
+      "type": "single",
+      "entry": "Show more",
+      "translation": "Montrer plus"
+    },
+    {
+      "type": "single",
+      "entry": "Hide",
+      "translation": "Cacher"
+    },
+    {
+      "type": "single",
+      "entry": "foo"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "no translation",
+        "no translations"
+      ],
+      "translations": [
+        "pas de traduction",
+        "pas de traduction"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "hello %(name)s!"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "no %(attr)s translation",
+        "no %(attr)s translations"
+      ],
+      "translations": [
+        "",
+        ""
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "bar",
+        "bars"
+      ],
+      "translations": [
+        "",
+        ""
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "%(color)s shirt",
+        "%(color)s shirts"
+      ],
+      "translations": [
+        "",
+        ""
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "%(num)d item",
+        "%(num)d items"
+      ],
+      "translations": [
+        "",
+        ""
+      ]
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "%(num)d missing translation",
+        "%(num)d missing translations"
+      ],
+      "translations": [
+        "%(num)d traduction manquante",
+        "%(num)d traductions manquantes"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "Error %(error_code)s",
+      "translation": "Erreur %(error_code)s"
+    },
+    {
+      "type": "single",
+      "entry": "About {0}",
+      "translation": "À propos de {0}"
+    },
+    {
+      "type": "single",
+      "entry": "CKAN API",
+      "translation": "API CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "CKAN Association",
+      "translation": "Association CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" href=\"http://ckan.org\">CKAN</a>",
+      "translation": "<strong>Généré par</strong> <a class=\"hide-text ckan-footer-logo\" href=\"http://ckan.org\">CKAN</a>"
+    },
+    {
+      "type": "single",
+      "entry": "Sysadmin settings",
+      "translation": "Réglages sysadmin"
+    },
+    {
+      "type": "single",
+      "entry": "View profile",
+      "translation": "Voir le profil"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "Dashboard (%(num)d new item)",
+        "Dashboard (%(num)d new items)"
+      ],
+      "translations": [
+        "Tableau de bord (%(num)d nouvel élément)",
+        "Tableau de bord (%(num)d nouveaux éléments)"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "Dashboard",
+      "translation": "Tableau de bord"
+    },
+    {
+      "type": "single",
+      "entry": "Edit settings",
+      "translation": "Modifier les paramètres"
+    },
+    {
+      "type": "single",
+      "entry": "Settings",
+      "translation": "Paramètres"
+    },
+    {
+      "type": "single",
+      "entry": "Log out",
+      "translation": "Déconnexion"
+    },
+    {
+      "type": "single",
+      "entry": "Log in",
+      "translation": "Connexion"
+    },
+    {
+      "type": "single",
+      "entry": "Register",
+      "translation": "S'inscrire"
+    },
+    {
+      "type": "single",
+      "entry": "Datasets",
+      "translation": "Jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Search Datasets",
+      "translation": "Rechercher des jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Search",
+      "translation": "Rechercher"
+    },
+    {
+      "type": "single",
+      "entry": "Skip to content",
+      "translation": "Passer directement au contenu"
+    },
+    {
+      "type": "single",
+      "entry": "Load less",
+      "translation": "Charger moins"
+    },
+    {
+      "type": "single",
+      "entry": "Load more",
+      "translation": "Charger plus"
+    },
+    {
+      "type": "single",
+      "entry": "No activities are within this activity stream",
+      "translation": "Ce flux ne contient pas d'activité"
+    },
+    {
+      "type": "single",
+      "entry": "Administration",
+      "translation": "Administration"
+    },
+    {
+      "type": "single",
+      "entry": "Sysadmins",
+      "translation": "Administrateurs systèmes"
+    },
+    {
+      "type": "single",
+      "entry": "Config",
+      "translation": "Configuration"
+    },
+    {
+      "type": "single",
+      "entry": "Trash",
+      "translation": "Poubelle"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to reset the config?",
+      "translation": "Etes-vous sur de vouloir réinitialiser la configuration ?"
+    },
+    {
+      "type": "single",
+      "entry": "Reset",
+      "translation": "Réinitialisation"
+    },
+    {
+      "type": "single",
+      "entry": "Update Config",
+      "translation": "Mettre à jour la configuration"
+    },
+    {
+      "type": "single",
+      "entry": "CKAN config options",
+      "translation": "CKAN options de configuration"
+    },
+    {
+      "type": "single",
+      "entry": " <p><strong>Site Title:</strong> This is the title of this CKAN instance It appears in various places throughout CKAN.</p> <p><strong>Style:</strong> Choose from a list of simple variations of the main colour scheme to get a very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This is the logo that appears in the header of all the CKAN instance templates.</p> <p><strong>About:</strong> This text will appear on this CKAN instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this CKAN instances <a href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that appears in <code>&lt;head&gt;</code> tag of every page. If you wish to customize the templates more fully we recommend <a href=\"%(docs_url)s\" target=\"_blank\">reading the documentation</a>.</p> <p><strong>Homepage:</strong> This is for choosing a predefined layout for the modules that appear on your homepage.</p> ",
+      "translation": "<p><strong>Titre du Site :</strong> C’est le titre de cette instance de CKAN.   On le retrouve dans divers endroits  d’un bout à l’autre de CKAN.</p> <p><strong>Style :</strong> Choisissez parmi une liste de variations de la principale  palette de couleurs  afin de mettre en place très rapidement   un thème personnalisé.</p> <p><strong>Logo clé du Site :</strong> C’est le logo qui apparaît dans l’en-tête de tous les gabarits des instances de CKAN.</p> <p><strong>À propos :</strong> Ce texte apparaîtra dans la <a href=\"%(about_url)s\">page \"à propos\"</a>de ces instances de CKAN .</p> <p><strong>Texte d’intro :</strong> Ce texte apparaîtra dans la <a href=\"%(home_url)s\">page d’accueil</a> de ces instances de CKAN  pour accueillir les visiteurs.</p> <p><strong>CSS Personnalisée :</strong> C’est un bloc de CSS qui apparaît dans l'élément <code>&lt;head&gt;</code>de toutes les pages. Si vous voulez  personnaliser encore plus les gabarits, nous vous conseillons de <a href=\"%(docs_url)s\" target=\"_blank\">lire la documentation</a>.</p> <p><strong>Page d'accueil:</strong> C'est pour choisir une mise en page prédéfinie pour les modules qui apparaissent sur votre page d'accueil.</p>"
+    },
+    {
+      "type": "single",
+      "entry": "Confirm Reset",
+      "translation": "Confirmez la demande de réinitialisation"
+    },
+    {
+      "type": "single",
+      "entry": "Administer CKAN",
+      "translation": "Administrer CKAN"
+    },
+    {
+      "type": "single",
+      "entry": " <p>As a sysadmin user you have full control over this CKAN instance. Proceed with care!</p> <p>For guidance on using sysadmin features, see the CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> ",
+      "translation": "<p>Comme administrateur vous avez le plein contrôle de cette instance CKAN. Procédez avec prudence!</p> <p>Pour des conseils sur l'utilisation des fonctionnalités d'administration, voir le <a href=\"%(docs_url)s\" target=\"_blank\">guide d'administration</a> CKAN </p> "
+    },
+    {
+      "type": "single",
+      "entry": "Purge",
+      "translation": "Purger"
+    },
+    {
+      "type": "single",
+      "entry": " <p>Purge deleted datasets forever and irreversibly.</p> ",
+      "translation": "Purger les jeux de données supprimés définitivement"
+    },
+    {
+      "type": "single",
+      "entry": "This resource can not be previewed at the moment.",
+      "translation": "L'aperçu de cette ressource n'est pas disponible pour le moment."
+    },
+    {
+      "type": "single",
+      "entry": "Click here for more information.",
+      "translation": "Cliquez ici pour plus d'information."
+    },
+    {
+      "type": "single",
+      "entry": "Download resource",
+      "translation": "Télécharger la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "No preview available.",
+      "translation": "Pas d'aperçu disponible."
+    },
+    {
+      "type": "single",
+      "entry": "More details...",
+      "translation": "Plus de détails..."
+    },
+    {
+      "type": "single",
+      "entry": "No handler defined for data type: %(type)s.",
+      "translation": "Aucun gestionnaire de défini pour le type de données : %(type)s."
+    },
+    {
+      "type": "single",
+      "entry": "Standard",
+      "translation": "Standard"
+    },
+    {
+      "type": "single",
+      "entry": "Standard Input",
+      "translation": "Entrée standard"
+    },
+    {
+      "type": "single",
+      "entry": "Medium",
+      "translation": "Medium"
+    },
+    {
+      "type": "single",
+      "entry": "Medium Width Input",
+      "translation": "Entrée ayant un longueur moyenne"
+    },
+    {
+      "type": "single",
+      "entry": "Full",
+      "translation": "Complet"
+    },
+    {
+      "type": "single",
+      "entry": "Full Width Input",
+      "translation": "Entrée sur toute la largeur"
+    },
+    {
+      "type": "single",
+      "entry": "Large",
+      "translation": "Grand"
+    },
+    {
+      "type": "single",
+      "entry": "Large Input",
+      "translation": "Grande entrée"
+    },
+    {
+      "type": "single",
+      "entry": "Prepend",
+      "translation": "Ajouter un préfixe"
+    },
+    {
+      "type": "single",
+      "entry": "Prepend Input",
+      "translation": "Saisie du préfixe"
+    },
+    {
+      "type": "single",
+      "entry": "Custom Field (empty)",
+      "translation": "Champ personnalisé (vide)"
+    },
+    {
+      "type": "single",
+      "entry": "Custom Field",
+      "translation": "Champ personnalisé"
+    },
+    {
+      "type": "single",
+      "entry": "Markdown",
+      "translation": "Markdown"
+    },
+    {
+      "type": "single",
+      "entry": "Textarea",
+      "translation": "Zone textuelle"
+    },
+    {
+      "type": "single",
+      "entry": "Select",
+      "translation": "Sélectionner"
+    },
+    {
+      "type": "single",
+      "entry": "Activity Stream",
+      "translation": "Flux d'Activité"
+    },
+    {
+      "type": "single",
+      "entry": "Administrators",
+      "translation": "Administrateurs"
+    },
+    {
+      "type": "single",
+      "entry": "Add a Group",
+      "translation": "Ajouter un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Group Form",
+      "translation": "Formulaire de groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Confirm Delete",
+      "translation": "Confirmer la suppression"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete group - {name}?",
+      "translation": "Êtes-vous sûr de vouloir supprimer le groupe - {name}?"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete member - {name}?",
+      "translation": "Êtes-vous sûr de vouloir supprimer le membre - {name}?"
+    },
+    {
+      "type": "single",
+      "entry": "Manage",
+      "translation": "Éditer"
+    },
+    {
+      "type": "single",
+      "entry": "Edit Group",
+      "translation": "Modifier le Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Members",
+      "translation": "Membres"
+    },
+    {
+      "type": "single",
+      "entry": "History",
+      "translation": "Historique"
+    },
+    {
+      "type": "single",
+      "entry": "Add Group",
+      "translation": "Ajouter un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Search groups...",
+      "translation": "Rechercher les groupes..."
+    },
+    {
+      "type": "single",
+      "entry": "There are currently no groups for this site",
+      "translation": "Il n'y a actuellement aucun groupe pour ce site"
+    },
+    {
+      "type": "single",
+      "entry": "How about creating one?",
+      "translation": "Et si vous en créiez un ?"
+    },
+    {
+      "type": "single",
+      "entry": "Back to all members",
+      "translation": "Retour à tous les membres"
+    },
+    {
+      "type": "single",
+      "entry": "Edit Member",
+      "translation": "Modifier le membre"
+    },
+    {
+      "type": "single",
+      "entry": "Add Member",
+      "translation": "Ajouter le membre"
+    },
+    {
+      "type": "single",
+      "entry": "Existing User",
+      "translation": "Utilisateur existant"
+    },
+    {
+      "type": "single",
+      "entry": "If you wish to add an existing user, search for their username below.",
+      "translation": "Si vous désirez ajouter un utilisateur existant, recherchez son nom ci-dessous"
+    },
+    {
+      "type": "single",
+      "entry": "or",
+      "translation": "ou"
+    },
+    {
+      "type": "single",
+      "entry": "New User",
+      "translation": "Nouvel Utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "If you wish to invite a new user, enter their email address.",
+      "translation": "Si vous désirez inviter un nouvel utilisateur, entrez son adresse email."
+    },
+    {
+      "type": "single",
+      "entry": "Role",
+      "translation": " Rôle"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this member?",
+      "translation": "Etes-vous sûr de vouloir supprimer ce membre?"
+    },
+    {
+      "type": "single",
+      "entry": "Delete",
+      "translation": "Supprimer"
+    },
+    {
+      "type": "single",
+      "entry": "What are roles?",
+      "translation": "Que sont les rôles ?"
+    },
+    {
+      "type": "single",
+      "entry": " <p><strong>Admin:</strong> Can edit group information, as well as manage organization members.</p> <p><strong>Member:</strong> Can add/remove datasets from groups</p> ",
+      "translation": "<p><strong>Administrateur:</strong> Peut éditer les informations de groupe, ainsi que gérer les membres d'organisations.</p> <p><strong>Membre:</strong> Peut ajouter/supprimer des jeux de données dans les groupes</p>"
+    },
+    {
+      "type": "single",
+      "entry": "Create a Group",
+      "translation": "Créer un Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Update Group",
+      "translation": "Mise à jour du Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Create Group",
+      "translation": "Créer le Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "Search datasets...",
+      "translation": "Rechercher les jeux des données..."
+    },
+    {
+      "type": "single",
+      "entry": "Datasets in group: {group}",
+      "translation": "Jeux de données  du groupe : {group}"
+    },
+    {
+      "type": "single",
+      "entry": "Recent Revision History",
+      "translation": "Historique récent des révisions"
+    },
+    {
+      "type": "single",
+      "entry": "Name",
+      "translation": "Titre"
+    },
+    {
+      "type": "single",
+      "entry": "My Group",
+      "translation": "Mon Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "my-group",
+      "translation": "mon-groupe"
+    },
+    {
+      "type": "single",
+      "entry": "A little information about my group...",
+      "translation": "Un peu d'information au sujet de mon groupe..."
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this Group?",
+      "translation": "Etes-vous sûr de vouloir supprimer ce Groupe?"
+    },
+    {
+      "type": "single",
+      "entry": "Save Group",
+      "translation": "Sauvegarder le Groupe"
+    },
+    {
+      "type": "single",
+      "entry": "View {name}",
+      "translation": "Afficher {name}"
+    },
+    {
+      "type": "single",
+      "entry": "Remove dataset from this group",
+      "translation": "Supprimer le jeu de données de ce groupe"
+    },
+    {
+      "type": "single",
+      "entry": "What are Groups?",
+      "translation": "Que sont les groupes ?"
+    },
+    {
+      "type": "single",
+      "entry": " You can use CKAN Groups to create and manage collections of datasets. This could be to catalogue datasets for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published datasets. ",
+      "translation": "Vous pouvez utiliser les groupes CKAN pour créer et gérer des collections de jeux de données. Cela peut être pour cataloguer des jeux de données pour un projet ou une équipe en particulier, ou autour d'un thème spécifique, ou comme moyen très simple d'aider à parcourir et découvrir vos jeux de données publiés."
+    },
+    {
+      "type": "single",
+      "entry": "Compare",
+      "translation": "Comparer"
+    },
+    {
+      "type": "single",
+      "entry": "Deleted",
+      "translation": "Supprimé"
+    },
+    {
+      "type": "single",
+      "entry": "read more",
+      "translation": "lire plus"
+    },
+    {
+      "type": "single",
+      "entry": "Revision",
+      "translation": "Révision"
+    },
+    {
+      "type": "single",
+      "entry": "Timestamp",
+      "translation": "Horodatage"
+    },
+    {
+      "type": "single",
+      "entry": "Author",
+      "translation": "Producteur"
+    },
+    {
+      "type": "single",
+      "entry": "Log Message",
+      "translation": "Message de log"
+    },
+    {
+      "type": "single",
+      "entry": "Welcome",
+      "translation": "Bienvenue"
+    },
+    {
+      "type": "single",
+      "entry": " <p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN is a complete out-of-the-box software solution that makes data accessible and usable – by providing tools to streamline publishing, sharing, finding and using data (including storage of data and provision of robust data APIs). CKAN is aimed at data publishers (national and regional governments, companies and organizations) wanting to make their data open and available.</p> <p>CKAN is used by governments and user groups worldwide and powers a variety of official and community data portals including portals for local, national and international government, such as the UK’s <a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland government portals, as well as city and municipal sites in the US, UK, Argentina, Finland and elsewhere.</p> <p>CKAN: <a href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features overview: <a href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> ",
+      "translation": "CKAN est la plateforme portail  leader mondial  en termes de données  accessibles en code source ouvert.</p> <p>CKAN  est un logiciel  disponible clés en main  qui permet l’accès et l’utilisation  de données - en fournissant les outils pour rationnaliser  la publication, le partage , la recherche et l’utilisation de données (y compris le stockage des données et  la mise à disposition de solides  données API). CKAN   est destiné aux  éditeurs (gouvernements régionaux et nationaux,  sociétés et  organisations) qui  veulent  mettre à disposition leurs données .</p> <p> CKAN est utilisé par des gouvernements et des groupes d’utilisateurs  dans le monde entier et  permet le fonctionnement d’une variété de portails officiels et communautaires , notamment des portails pour des gouvernements locaux, nationaux et internationaux, comme  <a href=\"http://data.gov.uk\">data.gov.uk</a>  au Royaume Uni,  <a href=\"http://publicdata.eu/\">publicdata.eu</a> pour la Communauté Européenne, <a href=\"http://dados.gov.br/\">dados.gov.br</a> au Brésil,  des portails gouvernementaux hollandais  et aux Pays Bas,  ainsi que des sites municipaux aux Etats Unis,  Royaume Uni, Argentine, et  Finlande entre autres. <p>CKAN: <a href=\"http://ckan.org/\">http://ckan.org/</a><br /> Visitez CKAN: <a href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Présentation des Fonctionnalités: <a href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p>"
+    },
+    {
+      "type": "single",
+      "entry": "Welcome to CKAN",
+      "translation": "Bienvenue sur CKAN"
+    },
+    {
+      "type": "single",
+      "entry": "This is a nice introductory paragraph about CKAN or the site in general. We don't have any copy to go here yet but soon we will ",
+      "translation": "Ceci est un paragraphe d'introduction à propos de CKAN ou du site en général. Nous n'avons pas encore de rédactionnel à mettre ici, mais nous en aurons bientôt"
+    },
+    {
+      "type": "single",
+      "entry": "This is a featured section",
+      "translation": "Ceci est une section sélectionnée"
+    },
+    {
+      "type": "single",
+      "entry": "E.g. environment",
+      "translation": "Par exemple environnement"
+    },
+    {
+      "type": "single",
+      "entry": "Search data",
+      "translation": "Données de recherche"
+    },
+    {
+      "type": "single",
+      "entry": "Search datasets",
+      "translation": "Chercher des jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Popular tags",
+      "translation": "Mots-clés populaires"
+    },
+    {
+      "type": "single",
+      "entry": "{0} statistics",
+      "translation": "{0} statistiques"
+    },
+    {
+      "type": "single",
+      "entry": "dataset",
+      "translation": "jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "datasets",
+      "translation": "jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "organizations",
+      "translation": "organisations"
+    },
+    {
+      "type": "single",
+      "entry": "groups",
+      "translation": "groupes"
+    },
+    {
+      "type": "single",
+      "entry": "Site logo",
+      "translation": "Logo du site"
+    },
+    {
+      "type": "single",
+      "entry": "You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true\">Markdown formatting</a> here",
+      "translation": "Vous pouvez utiliser <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true\">le langage Markdown</a> ici"
+    },
+    {
+      "type": "single",
+      "entry": "This field is required",
+      "translation": "Ce champ est requis"
+    },
+    {
+      "type": "single",
+      "entry": "Custom",
+      "translation": "Personnalisé"
+    },
+    {
+      "type": "single",
+      "entry": "The form contains invalid entries:",
+      "translation": "Le formulaire contient des entrées invalides :"
+    },
+    {
+      "type": "single",
+      "entry": "Required field",
+      "translation": "Champ requis"
+    },
+    {
+      "type": "single",
+      "entry": "http://example.com/my-image.jpg",
+      "translation": "http://exemple.com/mon-image.jpg"
+    },
+    {
+      "type": "single",
+      "entry": "Image URL",
+      "translation": "URL de l'image"
+    },
+    {
+      "type": "single",
+      "entry": "Clear Upload",
+      "translation": "Annuler le transfert"
+    },
+    {
+      "type": "single",
+      "entry": "Organization Form",
+      "translation": "Formulaire d'organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Edit datasets",
+      "translation": "Modifier les jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Add dataset",
+      "translation": "Ajouter un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": " found for \"{query}\"",
+      "translation": "trouvé pour \"{query}\""
+    },
+    {
+      "type": "single",
+      "entry": "Sorry no datasets found for \"{query}\"",
+      "translation": "Désolé, aucun jeu de données trouvé pour \"{query}\""
+    },
+    {
+      "type": "single",
+      "entry": "Make public",
+      "translation": "Rendre public"
+    },
+    {
+      "type": "single",
+      "entry": "Make private",
+      "translation": "Rendre privé"
+    },
+    {
+      "type": "single",
+      "entry": "Draft",
+      "translation": "Brouillon"
+    },
+    {
+      "type": "single",
+      "entry": "Private",
+      "translation": "Privée"
+    },
+    {
+      "type": "single",
+      "entry": "This organization has no datasets associated to it",
+      "translation": "Cette organisation n'a pas de jeu de données associé"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete organization - {name}?",
+      "translation": "Etes-vous sûr de vouloir supprimer l'organisation - {name}?"
+    },
+    {
+      "type": "single",
+      "entry": "Edit Organization",
+      "translation": "Modifier l'Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Add Organization",
+      "translation": "Ajouter une organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Search organizations...",
+      "translation": "Rechercher les organisations..."
+    },
+    {
+      "type": "single",
+      "entry": "There are currently no organizations for this site",
+      "translation": "Il n'y a actuellement aucune organisation pour ce site"
+    },
+    {
+      "type": "single",
+      "entry": "Username",
+      "translation": "Nom d'utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "Email address",
+      "translation": "Adresse e-mail"
+    },
+    {
+      "type": "single",
+      "entry": "Update Member",
+      "translation": "Mettre à jour le membre"
+    },
+    {
+      "type": "single",
+      "entry": " <p><strong>Admin:</strong> Can add/edit and delete datasets, as well as manage organization members.</p> <p><strong>Editor:</strong> Can add and edit datasets, but not manage organization members.</p> <p><strong>Member:</strong> Can view the organization's private datasets, but not add new datasets.</p> ",
+      "translation": "<p><strong>Admin:</strong> Peut ajouter/modifier et supprimer les jeux de données, ainsi qu’ administrer les membres d’organisations.</p> <p><strong>Editeur:</strong> Peut ajouter et modifier les jeux de données, mais ne peut pas administrer les membres.</p> <p><strong>Membre:</strong> Peut voir les jeux de données spécifiques à l’organisation, mais ne peut pas ajouter de nouveaux jeux de données.</p>"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{count} member",
+        "{count} members"
+      ],
+      "translations": [
+        "{count} membre : {count} membres",
+        "{count} membres "
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "Create an Organization",
+      "translation": "Créer une Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Update Organization",
+      "translation": "Mise à jour de l'Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Create Organization",
+      "translation": "Créer une Orgaisation"
+    },
+    {
+      "type": "single",
+      "entry": "Add Dataset",
+      "translation": "Ajouter un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Datasets in organization: {group}",
+      "translation": "Jeux de données de l'organisation : {group}"
+    },
+    {
+      "type": "single",
+      "entry": "What are Organizations?",
+      "translation": "Que sont les organisations ?"
+    },
+    {
+      "type": "single",
+      "entry": " <p>Organizations act like publishing departments for datasets (for example, the Department of Health). This means that datasets can be published by and belong to a department instead of an individual user.</p> <p>Within organizations, admins can assign roles and authorise its members, giving individual users the right to publish datasets from that particular organisation (e.g. Office of National Statistics).</p> ",
+      "translation": " <p>Les organisations agissent comme des responsables de l'édition d'ensembles de données (par exemple, le ministère de la Santé). Cela signifie que les ensembles de données appartiennent et peuvent être publiées par une organisation à la place d'un utilisateur individuel.</p> <p>Au sein des organisations, les administrateurs peuvent attribuer des rôles et autoriser leurs membres, donnant ainsi aux utilisateurs individuels le droit de publier des ensembles de données de cette organisation en particulier (par exemple, Office des statistiques nationales).</p> "
+    },
+    {
+      "type": "single",
+      "entry": " CKAN Organizations are used to create, manage and publish collections of datasets. Users can have different roles within an Organization, depending on their level of authorisation to create, edit and publish. ",
+      "translation": "Les Organisations CKAN sont utilisées pour créer, gérer et publier des collections de jeux de données. Les utilisateurs peuvent avoir différents rôles au sein d'une Organisation, en fonction de leur niveau d'autorisation pour créer, éditer et publier."
+    },
+    {
+      "type": "single",
+      "entry": "My Organization",
+      "translation": "Mon Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "my-organization",
+      "translation": "mon-organisation"
+    },
+    {
+      "type": "single",
+      "entry": "A little information about my organization...",
+      "translation": "Un peu d'information au sujet de mon organisation..."
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this Organization? Note*: Deleting cannot be performed while public or private datasets belong to this organization.",
+      "translation": "Êtes  vous sûr de vouloir supprimer cette organisation ? Cela supprimera tous les jeux de données publics et privés appartenant à cette organisation."
+    },
+    {
+      "type": "single",
+      "entry": "Save Organization",
+      "translation": "Sauvegarder l'Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "View {organization_name}",
+      "translation": "Voir {organization_name}"
+    },
+    {
+      "type": "single",
+      "entry": "Create Dataset",
+      "translation": "Créer le jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "What are datasets?",
+      "translation": "Que sont les jeux de données ?"
+    },
+    {
+      "type": "single",
+      "entry": " A CKAN Dataset is a collection of data resources (such as files), together with a description and other information, at a fixed URL. Datasets are what users see when searching for data. ",
+      "translation": "Un jeu de données CKAN est une collection de ressources (telles que des fichiers), ainsi qu'une description et d'autres information, avec une URL fixe. Les jeux de données sont ce que l'utilisateur voit lorsqu'il effectue une recherche de données."
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete dataset - {name}?",
+      "translation": "Etes-vous sûr de vouloir supprimer le jeu de données - {name}?"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete resource - {name}?",
+      "translation": "Etes-vous sûr de vouloir supprimer la ressource - {name}?"
+    },
+    {
+      "type": "single",
+      "entry": "View dataset",
+      "translation": "Voir le jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Edit metadata",
+      "translation": "Editer les métadonnées"
+    },
+    {
+      "type": "single",
+      "entry": "Edit view",
+      "translation": "Éditer la vue"
+    },
+    {
+      "type": "single",
+      "entry": "Preview",
+      "translation": "Aperçu"
+    },
+    {
+      "type": "single",
+      "entry": "Update",
+      "translation": "Mise à jour"
+    },
+    {
+      "type": "single",
+      "entry": "Associate this group with this dataset",
+      "translation": "Associer ce groupe à un jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Add to group",
+      "translation": "Ajouter à un groupe"
+    },
+    {
+      "type": "single",
+      "entry": "There are no groups associated with this dataset",
+      "translation": "Il n'y a pas de groupe associé à ce jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Update Dataset",
+      "translation": "Mettre à jour le  jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Add data to the dataset",
+      "translation": "Ajouter des données au jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Add New Resource",
+      "translation": "Ajouter une Nouvelle Ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Add resource",
+      "translation": "Ajouter une ressource"
+    },
+    {
+      "type": "single",
+      "entry": "New resource",
+      "translation": "Nouvelle ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Add view",
+      "translation": "Ajouter une vue"
+    },
+    {
+      "type": "single",
+      "entry": " Data Explorer views may be slow and unreliable unless the DataStore extension is enabled. For more information, please see the <a href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-structured-data-the-data-explorer' target='_blank'>Data Explorer documentation</a>. ",
+      "translation": "Les vues de l'Explorateur de données peuvent être lentes et peu fiables à moins que l'extension du magasin de données soit activée. Pour plus d'informations, s'il vous plaît voir la documentation de l'<a href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-structured-data-the-data-explorer' target='_blank'>Explorateur de données</a>. "
+    },
+    {
+      "type": "single",
+      "entry": "Add",
+      "translation": "Ajouter"
+    },
+    {
+      "type": "single",
+      "entry": "This is an old revision of this dataset, as edited at %(timestamp)s. It may differ significantly from the <a href=\"%(url)s\">current revision</a>.",
+      "translation": "Ceci est une ancienne révision de ce jeu de données, telle qu'éditée à %(timestamp)s. Elle peut différer significativement de la <a href=\"%(url)s\">révision actuelle</a>."
+    },
+    {
+      "type": "single",
+      "entry": "All resources",
+      "translation": "Toutes les ressources"
+    },
+    {
+      "type": "single",
+      "entry": "View resource",
+      "translation": "Afficher la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Edit resource",
+      "translation": "Editer la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Views",
+      "translation": "Vues"
+    },
+    {
+      "type": "single",
+      "entry": "API Endpoint",
+      "translation": "Point d'accès API"
+    },
+    {
+      "type": "single",
+      "entry": "Go to resource",
+      "translation": "Aller à la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Download",
+      "translation": "Télécharger"
+    },
+    {
+      "type": "single",
+      "entry": "URL:",
+      "translation": "URL:"
+    },
+    {
+      "type": "single",
+      "entry": "From the dataset abstract",
+      "translation": "Issu de l'abstract du jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Source: <a href=\"%(url)s\">%(dataset)s</a>",
+      "translation": "Source: <a href=\"%(url)s\">%(dataset)s</a>"
+    },
+    {
+      "type": "single",
+      "entry": "There are no views created for this resource yet.",
+      "translation": "Il n'y a encore aucune visualisation créée pour cette ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Not seeing the views you were expecting?",
+      "translation": "Vous ne voyez pas les vues que vous attendiez?"
+    },
+    {
+      "type": "single",
+      "entry": "Here are some reasons you may not be seeing expected views:",
+      "translation": "Voici quelques raisons pour lesquelles vous ne pouvez pas voir les vues attendues :"
+    },
+    {
+      "type": "single",
+      "entry": "No view has been created that is suitable for this resource",
+      "translation": "Il n'existe aucune visualisation adéquate pour cette ressource"
+    },
+    {
+      "type": "single",
+      "entry": "The site administrators may not have enabled the relevant view plugins",
+      "translation": "Les administrateurs du site n'ont pas autorisé les extensions pertinentes pour l'affichage"
+    },
+    {
+      "type": "single",
+      "entry": "If a view requires the DataStore, the DataStore plugin may not be enabled, or the data may not have been pushed to the DataStore, or the DataStore hasn't finished processing the data yet",
+      "translation": "Si une vue exige le magasin de données, l'extension du magasin de données ne peut pas être activé, les données ne peuvent pas avoir été poussées vers le magasin de données ou le magasin de données n'a pas encore fini de traiter les données"
+    },
+    {
+      "type": "single",
+      "entry": "Additional Information",
+      "translation": "Informations additionnelles"
+    },
+    {
+      "type": "single",
+      "entry": "Field",
+      "translation": "Champ"
+    },
+    {
+      "type": "single",
+      "entry": "Value",
+      "translation": "Valeur"
+    },
+    {
+      "type": "single",
+      "entry": "Data last updated",
+      "translation": "Dernière modification de la donnée"
+    },
+    {
+      "type": "single",
+      "entry": "unknown",
+      "translation": "inconnu"
+    },
+    {
+      "type": "single",
+      "entry": "Metadata last updated",
+      "translation": "Dernière modification de la métadonnée"
+    },
+    {
+      "type": "single",
+      "entry": "Created",
+      "translation": "Créé le"
+    },
+    {
+      "type": "single",
+      "entry": "Format",
+      "translation": "Format"
+    },
+    {
+      "type": "single",
+      "entry": "License",
+      "translation": "Licence"
+    },
+    {
+      "type": "single",
+      "entry": "New view",
+      "translation": "Nouvelle vue"
+    },
+    {
+      "type": "single",
+      "entry": "This resource has no views",
+      "translation": "Cette ressource n'a aucune visualisation définie"
+    },
+    {
+      "type": "single",
+      "entry": "Add new resource",
+      "translation": "Ajouter une nouvelle ressource"
+    },
+    {
+      "type": "single",
+      "entry": " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add some?</a></p> ",
+      "translation": "<p class=\"empty\">Ce jeu de données n'a pas de données, <a href=\"%(url)s\">pourquoi ne pas en ajouter?</a></p>"
+    },
+    {
+      "type": "single",
+      "entry": "API",
+      "translation": "API"
+    },
+    {
+      "type": "single",
+      "entry": "API Docs",
+      "translation": "Documentation de l'API"
+    },
+    {
+      "type": "single",
+      "entry": "full {format} dump",
+      "translation": "extraction {format} complète"
+    },
+    {
+      "type": "single",
+      "entry": " You can also access this registry using the %(api_link)s (see %(api_doc_link)s) or download a %(dump_link)s. ",
+      "translation": " Vous pouvez aussi accéder à ce catalogue en utilisant %(api_link)s (cf %(api_doc_link)s) ou télécharger %(dump_link)s. "
+    },
+    {
+      "type": "single",
+      "entry": " You can also access this registry using the %(api_link)s (see %(api_doc_link)s). ",
+      "translation": "Vous pouvez également accéder à ce catalogue en utilisant %(api_link)s (cf %(api_doc_link)s). "
+    },
+    {
+      "type": "single",
+      "entry": "All views",
+      "translation": "Toutes les vues"
+    },
+    {
+      "type": "single",
+      "entry": "View view",
+      "translation": "Afficher"
+    },
+    {
+      "type": "single",
+      "entry": "View preview",
+      "translation": "Voir l'aperçu"
+    },
+    {
+      "type": "single",
+      "entry": "Additional Info",
+      "translation": "Info additionnelle"
+    },
+    {
+      "type": "single",
+      "entry": "Source",
+      "translation": "Source"
+    },
+    {
+      "type": "single",
+      "entry": "Maintainer",
+      "translation": "Mainteneur"
+    },
+    {
+      "type": "single",
+      "entry": "Version",
+      "translation": "Version"
+    },
+    {
+      "type": "single",
+      "entry": "State",
+      "translation": "État"
+    },
+    {
+      "type": "single",
+      "entry": "Last Updated",
+      "translation": "Dernière modification"
+    },
+    {
+      "type": "single",
+      "entry": "Before you can create a dataset you need to create an organization.",
+      "translation": "Vous devez créer une organisation avant de pouvoir créer un jeu de données."
+    },
+    {
+      "type": "single",
+      "entry": "Create a new organization",
+      "translation": "Créez un nouvelle organisation"
+    },
+    {
+      "type": "single",
+      "entry": "There are no organizations to which you can assign this dataset.",
+      "translation": "Il n'existe pas actuellement d'organisation à laquelle assigner ce jeu de données."
+    },
+    {
+      "type": "single",
+      "entry": "Ask a system administrator to create an organization before you can continue.",
+      "translation": "Demandez à un administrateur de l'application de vous créer une organisation avant de poursuivre."
+    },
+    {
+      "type": "single",
+      "entry": "Title",
+      "translation": "Titre"
+    },
+    {
+      "type": "single",
+      "entry": "eg. A descriptive title",
+      "translation": "p.ex. Un titre descriptif"
+    },
+    {
+      "type": "single",
+      "entry": "eg. my-dataset",
+      "translation": "par exemple : mon-jeu-de-donnees"
+    },
+    {
+      "type": "single",
+      "entry": "eg. Some useful notes about the data",
+      "translation": "par exemple : quelques notes utiles sur les données"
+    },
+    {
+      "type": "single",
+      "entry": "eg. economy, mental health, government",
+      "translation": "par exemple : économie, santé mentale, gouvernement"
+    },
+    {
+      "type": "single",
+      "entry": " License definitions and additional information can be found at <a href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> ",
+      "translation": "Les définitions de la licence et des informations complémentaires peuvent être trouvées chez <a href=\"http://opendefinition.org/licenses/\">opendefinition.org</a>"
+    },
+    {
+      "type": "single",
+      "entry": "Organization",
+      "translation": "Organisation"
+    },
+    {
+      "type": "single",
+      "entry": "No organization",
+      "translation": "Aucune organisation"
+    },
+    {
+      "type": "single",
+      "entry": "Visibility",
+      "translation": "Visibilité"
+    },
+    {
+      "type": "single",
+      "entry": "Public",
+      "translation": "Publique"
+    },
+    {
+      "type": "single",
+      "entry": "Active",
+      "translation": "Actif"
+    },
+    {
+      "type": "single",
+      "entry": "The <i>data license</i> you select above only applies to the contents of any resource files that you add to this dataset. By submitting this form, you agree to release the <i>metadata</i> values that you enter into the form under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database License</a>.",
+      "translation": "La <i>licence des données</ i> que vous sélectionnez ci-dessus ne vaut que pour le contenu de tous les fichiers de ressources que vous ajoutez à cet ensemble de données. En soumettant ce formulaire, vous vous engagez à libérer les valeurs des <i>métadonnées</ i> que vous entrez dans le formulaire en vertu de la <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Licence de base de données ouvertes</a>."
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this dataset?",
+      "translation": "Etes-vous sûr de vouloir supprimer ce jeu de données?"
+    },
+    {
+      "type": "single",
+      "entry": "Next: Add Data",
+      "translation": "Suivant : Ajouter des données"
+    },
+    {
+      "type": "single",
+      "entry": "http://example.com/dataset.json",
+      "translation": "http://example.com/dataset.json"
+    },
+    {
+      "type": "single",
+      "entry": "1.0",
+      "translation": "1.0"
+    },
+    {
+      "type": "single",
+      "entry": "Joe Bloggs",
+      "translation": "Jean Dupont"
+    },
+    {
+      "type": "single",
+      "entry": "Author Email",
+      "translation": "Courriel de l'auteur"
+    },
+    {
+      "type": "single",
+      "entry": "joe@example.com",
+      "translation": "jean@example.com"
+    },
+    {
+      "type": "single",
+      "entry": "Maintainer Email",
+      "translation": "Courriel du mainteneur"
+    },
+    {
+      "type": "single",
+      "entry": "Update Resource",
+      "translation": "Mettre à jour la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Data",
+      "translation": "Données"
+    },
+    {
+      "type": "single",
+      "entry": "http://example.com/external-data.csv",
+      "translation": "http://exemple.com/donnees-externes.csv"
+    },
+    {
+      "type": "single",
+      "entry": "eg. January 2011 Gold Prices",
+      "translation": "par exemple : Prix de l'or en janvier 2011"
+    },
+    {
+      "type": "single",
+      "entry": "Some useful notes about the data",
+      "translation": "Quelques notes utiles à propos des données"
+    },
+    {
+      "type": "single",
+      "entry": "eg. CSV, XML or JSON",
+      "translation": "par exemple : CSV, XML ou JSON"
+    },
+    {
+      "type": "single",
+      "entry": "This will be guessed automatically. Leave blank if you wish",
+      "translation": "Ceci sera généré automatiquement. Laissez ce champ vide si vous le souhaitez"
+    },
+    {
+      "type": "single",
+      "entry": "eg. 2012-06-05",
+      "translation": "p. ex. 2012-06-05"
+    },
+    {
+      "type": "single",
+      "entry": "File Size",
+      "translation": "Taille du Fichier"
+    },
+    {
+      "type": "single",
+      "entry": "eg. 1024",
+      "translation": "p. ex. 1024"
+    },
+    {
+      "type": "single",
+      "entry": "MIME Type",
+      "translation": "Type MIME"
+    },
+    {
+      "type": "single",
+      "entry": "eg. application/json",
+      "translation": "p. ex. application/json"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this resource?",
+      "translation": "Etes-vous sûr de vouloir supprimer cette ressource?"
+    },
+    {
+      "type": "single",
+      "entry": "Previous",
+      "translation": "Précédent"
+    },
+    {
+      "type": "single",
+      "entry": "Save & add another",
+      "translation": "Enregistrer & ajouter un autre"
+    },
+    {
+      "type": "single",
+      "entry": "Finish",
+      "translation": "Terminer"
+    },
+    {
+      "type": "single",
+      "entry": "What's a resource?",
+      "translation": "Qu'est-ce qu'une ressource ?"
+    },
+    {
+      "type": "single",
+      "entry": "A resource can be any file or link to a file containing useful data.",
+      "translation": "Une ressource peut-être un fichier ou un lien vers un fichier contenant des données utiles."
+    },
+    {
+      "type": "single",
+      "entry": "Explore",
+      "translation": "Explorer"
+    },
+    {
+      "type": "single",
+      "entry": "More information",
+      "translation": "Plus d'information"
+    },
+    {
+      "type": "single",
+      "entry": "Fullscreen",
+      "translation": "Plein écran"
+    },
+    {
+      "type": "single",
+      "entry": "Embed",
+      "translation": "Embarquer sur un site"
+    },
+    {
+      "type": "single",
+      "entry": "This resource view is not available at the moment.",
+      "translation": "Cette visualisation de ressource n'est pas disponible pour le moment"
+    },
+    {
+      "type": "single",
+      "entry": "Embed resource view",
+      "translation": "Incorporer cette visualisation de ressource"
+    },
+    {
+      "type": "single",
+      "entry": "You can copy and paste the embed code into a CMS or blog software that supports raw HTML",
+      "translation": "Vous pouvez copier et coller le code intégré dans un système de gestion de contenu ou un logiciel de blogue qui prend en charge le HTML brut"
+    },
+    {
+      "type": "single",
+      "entry": "Width",
+      "translation": "Largeur"
+    },
+    {
+      "type": "single",
+      "entry": "Height",
+      "translation": "Hauteur"
+    },
+    {
+      "type": "single",
+      "entry": "Code",
+      "translation": "Code"
+    },
+    {
+      "type": "single",
+      "entry": "Resource Preview",
+      "translation": "Aperçu de la ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Data and Resources",
+      "translation": "Données et ressources"
+    },
+    {
+      "type": "single",
+      "entry": "This dataset has no data",
+      "translation": "Ce jeu de données est vide"
+    },
+    {
+      "type": "single",
+      "entry": "Read dataset as of %s",
+      "translation": "Lecture du jeu de données en tant que %s"
+    },
+    {
+      "type": "single",
+      "entry": "Create dataset",
+      "translation": "Créer le jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Add data",
+      "translation": "Ajouter des données"
+    },
+    {
+      "type": "single",
+      "entry": "eg. My View",
+      "translation": "p. ex. Ma vue"
+    },
+    {
+      "type": "single",
+      "entry": "eg. Information about my view",
+      "translation": "p. ex. Information à propos de ma vue"
+    },
+    {
+      "type": "single",
+      "entry": "Remove Filter",
+      "translation": "Supprimer un filtre"
+    },
+    {
+      "type": "single",
+      "entry": "What's a view?",
+      "translation": "Qu'est-ce qu'une vue?"
+    },
+    {
+      "type": "single",
+      "entry": "A view is a representation of the data held against a resource",
+      "translation": "Une vue est une représentation des données détenues par une ressource"
+    },
+    {
+      "type": "single",
+      "entry": "Differences",
+      "translation": "Différences"
+    },
+    {
+      "type": "single",
+      "entry": "Revision Differences",
+      "translation": "Différences entre les révisions"
+    },
+    {
+      "type": "single",
+      "entry": "Difference",
+      "translation": "Différence"
+    },
+    {
+      "type": "single",
+      "entry": "No Differences",
+      "translation": "Pas de différences"
+    },
+    {
+      "type": "single",
+      "entry": "Revision History",
+      "translation": "Historique des révisions"
+    },
+    {
+      "type": "single",
+      "entry": "Revisions",
+      "translation": "Révisions"
+    },
+    {
+      "type": "single",
+      "entry": "Undelete",
+      "translation": "Restaurer"
+    },
+    {
+      "type": "single",
+      "entry": "Changes",
+      "translation": "Modifications"
+    },
+    {
+      "type": "single",
+      "entry": "Datasets' Tags",
+      "translation": "Tags des jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "Entity",
+      "translation": "Entité"
+    },
+    {
+      "type": "single",
+      "entry": "New activity item",
+      "translation": "Nouvel élément d'activité"
+    },
+    {
+      "type": "single",
+      "entry": "Embed Data Viewer",
+      "translation": "Embarquer le visualiseur de données"
+    },
+    {
+      "type": "single",
+      "entry": "Embed this view by copying this into your webpage:",
+      "translation": "Incorporez cette vue en la copiant dans votre page web :"
+    },
+    {
+      "type": "single",
+      "entry": "Choose width and height in pixels:",
+      "translation": "Choisissez la largeur et la hauteur en pixels :"
+    },
+    {
+      "type": "single",
+      "entry": "Width:",
+      "translation": "Largeur :"
+    },
+    {
+      "type": "single",
+      "entry": "Height:",
+      "translation": "Hauteur :"
+    },
+    {
+      "type": "single",
+      "entry": "Datapusher status: {status}.",
+      "translation": "DataPusher status: {status}."
+    },
+    {
+      "type": "single",
+      "entry": "Trackback URL",
+      "translation": "Rétrolien"
+    },
+    {
+      "type": "single",
+      "entry": "Show More {facet_type}",
+      "translation": "Montrer plus de {facet_type}"
+    },
+    {
+      "type": "single",
+      "entry": "Show Only Popular {facet_type}",
+      "translation": "Montrer uniquement les {facet_type} populaires"
+    },
+    {
+      "type": "single",
+      "entry": "There are no {facet_type} that match this search",
+      "translation": "Il n'y a pas de {facet_type} qui corresponde à cette recherche"
+    },
+    {
+      "type": "single",
+      "entry": "Home",
+      "translation": "Accueil"
+    },
+    {
+      "type": "single",
+      "entry": "Language",
+      "translation": "Langue"
+    },
+    {
+      "type": "single",
+      "entry": "Go",
+      "translation": "Go"
+    },
+    {
+      "type": "single",
+      "entry": "No License Provided",
+      "translation": "Aucune licence fournie"
+    },
+    {
+      "type": "single",
+      "entry": "This dataset satisfies the Open Definition.",
+      "translation": "Ce jeu de données est conforme à l'Open Definition."
+    },
+    {
+      "type": "single",
+      "entry": "There is no description for this organization",
+      "translation": "Il n'y a pas de description pour cette organisation"
+    },
+    {
+      "type": "single",
+      "entry": "This dataset has no description",
+      "translation": "Il n'y a pas de description pour ce jeu de données "
+    },
+    {
+      "type": "single",
+      "entry": "Submit",
+      "translation": "Envoyer"
+    },
+    {
+      "type": "single",
+      "entry": "Order by",
+      "translation": "Par Ordre"
+    },
+    {
+      "type": "single",
+      "entry": "Filter Results",
+      "translation": "Filtrer les resultats"
+    },
+    {
+      "type": "single",
+      "entry": " <p class=\"extra\">Please try another search.</p> ",
+      "translation": " <p class=\"extra\">Veuillez essayer une autre recherche.</p> "
+    },
+    {
+      "type": "single",
+      "entry": " <p id=\"search-error\"><strong>There was an error while searching.</strong> Please try again.</p> ",
+      "translation": " <p id=\"search-error\"><strong>Une erreur est survenue pendant votre recherche.</strong> Merci d'essayer de la soumettre à nouveau.</p> "
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} dataset found for \"{query}\"",
+        "{number} datasets found for \"{query}\""
+      ],
+      "translations": [
+        "{number}  jeu  de données trouvé pour \"{query}\"",
+        "{number}  jeux de données trouvés pour \"{query}\""
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No datasets found for \"{query}\"",
+      "translation": "Aucun jeu de données trouvé pour \"{query}\""
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} dataset found",
+        "{number} datasets found"
+      ],
+      "translations": [
+        "{number} jeu de données trouvé",
+        "{number} jeux de données trouvés"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No datasets found",
+      "translation": "Aucun jeu de données trouvé"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} group found for \"{query}\"",
+        "{number} groups found for \"{query}\""
+      ],
+      "translations": [
+        "{number} groupe  trouvé pour \"{query}\"",
+        "{number} groupes  trouvés pour \"{query}\""
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No groups found for \"{query}\"",
+      "translation": "Aucun groupe trouvé pour \"{query}\""
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} group found",
+        "{number} groups found"
+      ],
+      "translations": [
+        "{number} groupe  trouvé",
+        "{number} groupes trouvés"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No groups found",
+      "translation": "Aucun groupe trouvé"
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} organization found for \"{query}\"",
+        "{number} organizations found for \"{query}\""
+      ],
+      "translations": [
+        "{number} organisation  trouvée pour \"{query}\"",
+        "{number} organisations  trouvées pour \"{query}\""
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No organizations found for \"{query}\"",
+      "translation": "Aucune organisation trouvée pour \"{query}\""
+    },
+    {
+      "type": "plural",
+      "entry": [
+        "{number} organization found",
+        "{number} organizations found"
+      ],
+      "translations": [
+        "{number} organisation trouvée",
+        "{number} organisations trouvées"
+      ]
+    },
+    {
+      "type": "single",
+      "entry": "No organizations found",
+      "translation": "Aucune organisation trouvée"
+    },
+    {
+      "type": "single",
+      "entry": "Social",
+      "translation": "Social"
+    },
+    {
+      "type": "single",
+      "entry": "Subscribe",
+      "translation": "Inscription"
+    },
+    {
+      "type": "single",
+      "entry": "Email",
+      "translation": "e-mail"
+    },
+    {
+      "type": "single",
+      "entry": "RSS",
+      "translation": "RSS"
+    },
+    {
+      "type": "single",
+      "entry": "Edits",
+      "translation": "Modifications"
+    },
+    {
+      "type": "single",
+      "entry": "Search Tags",
+      "translation": "Rechercher des tags"
+    },
+    {
+      "type": "single",
+      "entry": "News feed",
+      "translation": "Fil d'actualités"
+    },
+    {
+      "type": "single",
+      "entry": "My Datasets",
+      "translation": "Mes jeux de données"
+    },
+    {
+      "type": "single",
+      "entry": "My Organizations",
+      "translation": "Mes organisations"
+    },
+    {
+      "type": "single",
+      "entry": "My Groups",
+      "translation": "Mes groupes"
+    },
+    {
+      "type": "single",
+      "entry": "Activity from items that I'm following",
+      "translation": "Activité des éléments que je suis"
+    },
+    {
+      "type": "single",
+      "entry": "You haven't created any datasets.",
+      "translation": "Vous n'avez créé aucun jeu de données"
+    },
+    {
+      "type": "single",
+      "entry": "Create one now?",
+      "translation": "Voulez-vous en créer un maintenant ?"
+    },
+    {
+      "type": "single",
+      "entry": "You are not a member of any groups.",
+      "translation": "Vous n'êtes membre d'aucun groupe."
+    },
+    {
+      "type": "single",
+      "entry": "You are not a member of any organizations.",
+      "translation": "Vous n'êtes membre d'aucune organisation."
+    },
+    {
+      "type": "single",
+      "entry": "Users",
+      "translation": "Utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "Account Info",
+      "translation": "Info sur le compte"
+    },
+    {
+      "type": "single",
+      "entry": " Your profile lets other CKAN users know about who you are and what you do. ",
+      "translation": "Votre profil permet aux autres utilisateurs de CKAN de savoir qui vous êtes et ce que vous faites"
+    },
+    {
+      "type": "single",
+      "entry": "Change details",
+      "translation": "Modifier les détails"
+    },
+    {
+      "type": "single",
+      "entry": "Full name",
+      "translation": "Nom complet"
+    },
+    {
+      "type": "single",
+      "entry": "eg. Joe Bloggs",
+      "translation": "p.ex. Jean Dupont"
+    },
+    {
+      "type": "single",
+      "entry": "eg. joe@example.com",
+      "translation": "p.ex. jean@example.com"
+    },
+    {
+      "type": "single",
+      "entry": "A little information about yourself",
+      "translation": "Un peu d'information à propos de vous"
+    },
+    {
+      "type": "single",
+      "entry": "Subscribe to notification emails",
+      "translation": "S'inscrire aux courriels de notification"
+    },
+    {
+      "type": "single",
+      "entry": "Change password",
+      "translation": "Changer le mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Sysadmin Password",
+      "translation": "Mot de passe administrateur système"
+    },
+    {
+      "type": "single",
+      "entry": "Password",
+      "translation": "Mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Confirm Password",
+      "translation": "Confirmez votre mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to delete this User?",
+      "translation": "Êtes-vous sûr de vouloir supprimer cet utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "Are you sure you want to regenerate the API key?",
+      "translation": "Êtes-vous sûr de vouloir régénérer la clé de l'API?"
+    },
+    {
+      "type": "single",
+      "entry": "Regenerate API Key",
+      "translation": "Regénérer la clé de l'API"
+    },
+    {
+      "type": "single",
+      "entry": "Update Profile",
+      "translation": "Mettre à jour le profil"
+    },
+    {
+      "type": "single",
+      "entry": "All Users",
+      "translation": "Tous les utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "Login",
+      "translation": "Se connecter"
+    },
+    {
+      "type": "single",
+      "entry": "Need an Account?",
+      "translation": "Vous avez besoin d'un Compte ?"
+    },
+    {
+      "type": "single",
+      "entry": "Then sign right up, it only takes a minute.",
+      "translation": "Alors inscrivez-vous tout de suite, il n'y en a que pour une minute."
+    },
+    {
+      "type": "single",
+      "entry": "Create an Account",
+      "translation": "Créer un Compte"
+    },
+    {
+      "type": "single",
+      "entry": "Forgotten your password?",
+      "translation": "Mot de passe oublié ?"
+    },
+    {
+      "type": "single",
+      "entry": "No problem, use our password recovery form to reset it.",
+      "translation": "Aucun problème, utilisez notre formulaire de regénération du mot de passe pour le réinitialiser."
+    },
+    {
+      "type": "single",
+      "entry": "Forgot your password?",
+      "translation": "Mot de passe oublié ?"
+    },
+    {
+      "type": "single",
+      "entry": "Logged Out",
+      "translation": "Déconnecté"
+    },
+    {
+      "type": "single",
+      "entry": "You are now logged out.",
+      "translation": "Vous êtes maintenant déconnecté."
+    },
+    {
+      "type": "single",
+      "entry": "You're already logged in as {user}.",
+      "translation": "Vous êtes déjà connecté  sous le nom de {user}."
+    },
+    {
+      "type": "single",
+      "entry": "Logout",
+      "translation": "Déconnexion"
+    },
+    {
+      "type": "single",
+      "entry": "Remember me",
+      "translation": "Se souvenir de moi"
+    },
+    {
+      "type": "single",
+      "entry": "You're already logged in",
+      "translation": "Vous êtes déjà connecté  "
+    },
+    {
+      "type": "single",
+      "entry": "You need to log out before you can log in with another account.",
+      "translation": "Vous devez vous déconnecter avant de vous identifier avec un autre compte."
+    },
+    {
+      "type": "single",
+      "entry": "Log out now",
+      "translation": "Déconnexion immédiate"
+    },
+    {
+      "type": "single",
+      "entry": "Registration",
+      "translation": "Inscription"
+    },
+    {
+      "type": "single",
+      "entry": "Register for an Account",
+      "translation": "Enregistrer un compte"
+    },
+    {
+      "type": "single",
+      "entry": "Why Sign Up?",
+      "translation": "Pourquoi s'inscrire ?"
+    },
+    {
+      "type": "single",
+      "entry": "Create datasets, groups and other exciting things",
+      "translation": "Créer des jeux de données, des groupes et d'autres choses passionnantes"
+    },
+    {
+      "type": "single",
+      "entry": "username",
+      "translation": "nom d'utilisateur"
+    },
+    {
+      "type": "single",
+      "entry": "Full Name",
+      "translation": "Nom Complet"
+    },
+    {
+      "type": "single",
+      "entry": "Create Account",
+      "translation": "Créer un compte"
+    },
+    {
+      "type": "single",
+      "entry": "Reset Your Password",
+      "translation": "Réinitialiser votre mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Password Reset",
+      "translation": "Réinitialisation du mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "You can also change username. It can not be modified later.",
+      "translation": "Vous pouvez aussi changer le nom d'utilisateur. Il ne peut pas être modifié ultérieurement."
+    },
+    {
+      "type": "single",
+      "entry": "Update Password",
+      "translation": "Mettre à jour le mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "How does this work?",
+      "translation": "Comment ça marche ?"
+    },
+    {
+      "type": "single",
+      "entry": "Simply enter a new password and we'll update your account",
+      "translation": "Fournissez simplement un nouveau mot de passe et nous actualiserons votre compte"
+    },
+    {
+      "type": "single",
+      "entry": "User hasn't created any datasets.",
+      "translation": "L'utilisateur n'a créé auncun jeu de données."
+    },
+    {
+      "type": "single",
+      "entry": "You have not provided a biography.",
+      "translation": "Vous n'avez pas fourni de biographie."
+    },
+    {
+      "type": "single",
+      "entry": "This user has no biography.",
+      "translation": "Il n'y a pas de biographie pour cet utilisateur."
+    },
+    {
+      "type": "single",
+      "entry": "Open ID",
+      "translation": "Open ID"
+    },
+    {
+      "type": "single",
+      "entry": "This means only you can see this",
+      "translation": "Cela signifie, que vous seul pouvez voir ceci"
+    },
+    {
+      "type": "single",
+      "entry": "Member Since",
+      "translation": "Membre Depuis"
+    },
+    {
+      "type": "single",
+      "entry": "API Key",
+      "translation": "Clé d'API"
+    },
+    {
+      "type": "single",
+      "entry": "Reset your password",
+      "translation": "Réinitialiser votre mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Password reset",
+      "translation": "Réinitialisation du mot de passe"
+    },
+    {
+      "type": "single",
+      "entry": "Request reset",
+      "translation": "Réinitialisation de la demande"
+    },
+    {
+      "type": "single",
+      "entry": "Enter your username into the box and we will send you an email with a link to enter a new password.",
+      "translation": "Entrez votre identifiant utilisateur dans la boite et nous vous enverrons un courriel contenant un lien pour entrer un nouveau mot de passe."
+    },
+    {
+      "type": "single",
+      "entry": "Activity from:",
+      "translation": "Activité depuis: "
+    },
+    {
+      "type": "single",
+      "entry": "Search list...",
+      "translation": "Rechercher dans la liste..."
+    },
+    {
+      "type": "single",
+      "entry": "You are not following anything",
+      "translation": "Vous ne suivez rien"
+    },
+    {
+      "type": "single",
+      "entry": "No followers",
+      "translation": "Aucun suiveur"
+    },
+    {
+      "type": "single",
+      "entry": "Search Users",
+      "translation": "Rechercher des utilisateurs"
+    },
+    {
+      "type": "single",
+      "entry": "Your password must be 8 characters or longer.",
+      "translation": "Votre mot de passe doit comporter au moins 8 caractères."
+    }
+  ]
+}

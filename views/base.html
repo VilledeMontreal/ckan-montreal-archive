@@ -1,164 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>
-      {% block title%}{{title}}{% endblock %}
+        {% block title%}{{title}}{% endblock %}
     </title>
     <meta name="author" content="Datopian">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
+    <link rel="stylesheet" href="/static/stylesheets/app.css">
+    <link rel="stylesheet" href="/static/stylesheets/montreal.css">
     {% if dataset %}
-      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
     {% endif %}
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
-    <!-- Placeholder for testing if custom theme works -->
+</head>
+<body class="{% block bodyclass %}{{bodyclass}}{% endblock %} " id="montreal">
     <!-- Page header -->
-    <div class="navbar navbar-default">
-      <div class="container">
-        <div class="inner_container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="main-logo pull-left" href="/">
-              <img class="img-responsive" src="/static/img/datahub-cube-edited.svg">
-            </a>
-          </div>
-          <!--
-          <div class="nav navbar-nav searchbox">
-            <form class="form-inline" action="/search" method="GET">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Find data" name="q">
+    <header class="flex justify-between page p-10 nav-border-shadow text-lg text-gray-900 ">
+            <div class="w-1/3 px-2">
+                <div class="h-12 flex content-center flex-wrap ">
+                        <ul class="flex">
+                                <li class="m-auto">
+                                        <a class="flex" href="#">
+                                                <div class="block">
+                                                <a id="nav-toggle" class="flex items-center px-3 py-2 ">
+                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2 6C2 6.55228 2.52672 7 3.17647 7H20.8235C21.4733 7 22 6.55228 22 6C22 5.44772 21.4733 5 20.8235 5H3.17647C2.52672 5 2 5.44772 2 6ZM2 12C2 12.5523 2.44772 13 3 13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H3C2.44772 11 2 11.4477 2 12ZM3 19C2.44772 19 2 18.5523 2 18C2 17.4477 2.44772 17 3 17H13C13.5523 17 14 17.4477 14 18C14 18.5523 13.5523 19 13 19H3ZM17 17C16.4477 17 16 17.4477 16 18C16 18.5523 16.4477 19 17 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H17Z" fill="#212529"/>
+</svg> <span class="ml-4">Menu</span>
+</a>
+                                            </div>
+                                  </a>
+                                </li>
+                                <li class="m-auto">
+                                  <a class="flex" href="#">
+                                        <svg width="24" height="24"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z" fill="#212529"/>
+                                            </svg>
+                                    <span class="ml-4" >Recherche</span>
+                                </a>
+                                </li>
+                            </ul>
+                </div>
+                 <!-- <nav class="">
+                <div class="nav-collapse invisible lg:visible">
+                    <ul class="flex text-primary font-bold absolute right-0 mr-4">
+                        <li class="mr-3">
+                            <a class="hover:text-secondary" href="/news">{{__('News')}}</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="hover:text-secondary" href="/dash">Dashboard</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="hover:text-secondary" href="/collections">{{__('Collections')}}</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="hover:text-secondary" href="/search">{{__('Data')}}</a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="hover:text-secondary" href="/about">About</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </nav> -->
               </div>
-            </form>
-          </div>
-          -->
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="/about">About</a>
-              </li>
-              <li>
-                <a href="/news">News</a>
-              </li>
-              <li>
-                <a href="/search" class="find-data join-link">Find data</a>
-              </li>
-              <li>
-                <a href="/collections">Collections</a>
-              </li>
-  						<!--
-              <li>
-                <a href="/">DISCOVER</a>
-              </li>
-  						-->
-              {% if login %}
-                <li>
-                  <a class="nav-link nav-avatar" href="#" tabindex="0" data-toggle="popover" title=""
-                    data-content="<p><a href='/dashboard' class='a-popover'>Dashboard</a></p><p><a href='/logout' class='a-popover'>Logout</a></p>">
-                    <img src="" id="avatar" class="img-responsive img-circle nav-avatar" />
-                  </a>
-                </li>
-              {% else %}
-                <li>
-                  <a href="/login">Login</a>
-                </li>
-                <li>
-                  <a href="/login" class="join-link">Join free</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+              <div class="w-1/3 px-2 flex justify-center items-center content-center ">
+                        <a class="logo" href="/">
+                            <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal"
+                            width="200px" /></a>
+              </div>
+              <div class="w-1/3 px-2 flex content-center flex-wrap  ">
+                <div class="bg-gray-400 h-12"></div>
+              </div>
+            
+    </header>
     <!-- End of page header -->
-
-    <!-- Alert messages -->
-    {% if message.length > 0 %}
-    <div class="container">
-      <div class="inner_container">
-        <div class="alert alert-danger" role="alert">{{ message | safe }}</div>
-      </div>
-    </div>
-    {% endif %}
-    <!-- End of Alert messages -->
 
     {% block content %}{{content}}{% endblock %}
 
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-3">
-                    <img class="img-responsive" src="/static/img/datahub-cube-edited.svg" width=60>
-                    <br/>
-                    <p>At Datahub, we provide various solutions to Publish and Deploy your Data with power and simplicity. Datahub is the fastest way for individuals, teams and organizations to publish, deploy and share their data.</p>
-                </div>
-
-                <div class="col-sm-3 col-md-2 col-md-offset-1">
-                    <label>Links</label>
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li>
-                            <a href="/docs/terms-of-service">Terms of Service</a>
-                          </li>
-                        <li>
-                            <a href="/docs/privacy">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="http://docs.datahub.io/developers/api/">API</a>
-                        </li>
-                        <li>
-                            <a href="/news">News</a>
-                        </li>
-                        <li>
-                            <a href="https://old.datahub.io" target="_blank">Old DataHub</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-2">
-                    <label>Support</label>
-                    <ul>
-                        <li>
-                            <a href="/requests">Request Data</a>
-                        </li>
-                        <li>
-                            <a href="https://gitter.im/datahubio/chat">Chat</a>
-                        </li>
-                        <li>
-                            <a href="/docs/faq">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 col-md-2 col-md-offset-1">
-                    <label>Contact</label>
-                    <ul>
-                        <li>
-                            <a href="mailto:support@datahub.io">support@datahub.io</a>
-                        </li>
-                        <!-- <li>
-                            <a href="#">+44 xxx xxxx</a>
-                        </li> -->
-                    </ul>
-                </div>
+<!-- Footer -->
+<footer class="site-footer bg-gray-ink text-white-74 mt-10 py-gutter text-sm">
+    <div class="container">
+        <div class="flex">
+            <div class="w-1/2">
+                <a class="block w-24 m-4 hover:text-white" href="https://ckan.org/" ml-24>
+                    <span>Powered by</span>
+                    {% include "./partials/ckan-logo.svg" %}
+                </a>
+            </div>
+            <div class="w-1/2">
+                <ul class="language-switcher text-right">
+                    <li onclick="languageSwitcher(this)"><a data-language="en" data-language-name="English"
+                                                            href="#">EN</a></li>
+                    <li onclick="languageSwitcher(this)"><a data-language="fr" data-language-name="French"
+                                                            href="#">FR</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-    <!-- end of footer -->
+    </div>
+    </div>
+</footer>
+<!-- end of footer -->
+</div>
 
-    {% block scripts %}{% endblock %}
+<div class="hidden">
+    {% include "./partials/symbol/svg/sprite.symbol.svg" %}
+</div>
 
-  </body>
+<!-- <script src="/static/js/scripts.js"></script> -->
+{% block scripts %}{% endblock %}
+<script>
+    function languageSwitcher(el) {
+        let lang = el.getElementsByTagName('a')[0].getAttribute('data-language');
+        console.log('lang', lang)
+        document.cookie = "defaultLocale=" + lang;
+        location.reload();
+    }
+</script>
+<script>
+    // nav
+    var navToggle = document.getElementById("nav-toggle");
+    var navTarget = navToggle.nextElementSibling;
+
+    // show toggle
+    navToggle.classList.remove("invisible");
+
+    // hide nav
+    navTarget.setAttribute("data-expanded", "false");
+
+    // toggle nav
+    navToggle.onclick = function () {
+        let expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        navTarget.setAttribute("data-expanded", !expanded);
+    }
+
+
+    // search
+    // replace link with a button
+    var searchLink = document.getElementById("search-link");
+    var searchButton = document.createElement("button");
+    var searchForm = document.getElementById("header-search");
+    searchButton.setAttribute("class", "main-nav_search-toggle");
+    searchButton.setAttribute("aria-expanded", "false");
+
+    while (searchLink.childNodes.length > 0) {
+        searchButton.appendChild(searchLink.childNodes[0]);
+    }
+
+    searchLink.replaceWith(searchButton);
+
+    // button toggles form
+    searchButton.onclick = function () {
+        let expanded = searchButton.getAttribute('aria-expanded') === 'true' || false;
+        searchButton.setAttribute('aria-expanded', !expanded);
+        searchForm.setAttribute("data-expanded", !expanded);
+
+        if (!expanded) {
+            document.getElementById("header-search-input").focus();
+        }
+    }
+
+</script>
+
+</body>
 </html>

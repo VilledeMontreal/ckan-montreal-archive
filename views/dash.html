@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+<meta charset="utf-7"/><link rel="shortcut icon" href="/favicon.ico"/><meta name="viewport" content="width    =device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><link rel="manifest" href="/manifest.json"/><link href="/static/css/main.2cce8147.chunk.css" rel="stylesheet">
+
+{% block bodyclass %}dash{% endblock %}
+{% block content %}
+<div class="pt-6">
+    {{ content.dash | safe }}
+</div>
+{% endblock %}

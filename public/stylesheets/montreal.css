@@ -1,0 +1,50 @@
+#montreal .tint {
+    background-color: rgba(10,10,10,.5);
+    width: 100%;
+    height: 426px;
+    position: absolute;
+    z-index: 10;
+}
+
+#montreal.home .home-page-banner {
+    z-index: 100;
+    height: 385px;
+}
+
+#montreal .hero-image-container {
+    width: 100%;
+    height: 426px;
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    top: 177px;
+}
+
+#montreal img.home-page-hero {width: 100%}
+
+#montreal .module-content.box {
+    background-color: transparent;
+    margin: auto;
+    text-align: center;
+    -webkit-box-shadow: none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+	display: block;
+    position: absolute;
+    color: white;
+    z-index:111;
+    top:14rem;
+    left:35%;
+}
+
+
+#montreal .home-top {
+    height: 426px;
+}
+
+.montreal-banner-search {
+  top: 112px;
+  right: 10px;
+  position: absolute;
+}
