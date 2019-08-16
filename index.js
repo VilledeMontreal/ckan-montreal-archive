@@ -37,9 +37,14 @@ module.exports = function (app) {
   
   app.get('/', async (req, res) => {
     const collections = await Model.getCollections()
+    const recentData  = await Model.search({ q: '' })
+    const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 );
+   
+  
     res.render('home.html', {
       title: 'Montreal',
       collections,
+      recentData: fiveRecentData,
       slug: 'collections',
     })
   })

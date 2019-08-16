@@ -1,3 +1,8 @@
+
+/* Importing Nanito Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700,900&display=swap');
+
 /* poppins-regular - latin */
 @font-face {
   font-family: 'Poppins';

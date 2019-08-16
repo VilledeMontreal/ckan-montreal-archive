@@ -73,21 +73,16 @@
     </div>
     <div class="border-solid border-2 border-black mt-4"></div>
     <div>
-      <h3 class="text-3xl mt-6">{{__('Recently Added or updated datasets')}}</h3>
+        <h3 class="text-3xl mt-6">{{__('Recently Added or updated datasets')}}</h3>
 
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
-        <a href="#" class="text-xl text-primary">Title</a>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-      </div>
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
-        <a href="#" class="text-xl text-primary">Title</a>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-      </div>
-      <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
-        <a href="#" class="text-xl text-primary">Title</a>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-      </div>
-      
+        {% for data in recentData  %}
+        <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
+            <a href="./{{data.organization.name}}/{{data.name}}" class="text-xl text-primary">{{data.title}}</a>
+            <p>Updated {{data.metadata_modified}}</p>
+          </div>
+               {% endfor %}
+    
+
     </div>
   </div>
   <!-- End Social Media Sidebar -->
