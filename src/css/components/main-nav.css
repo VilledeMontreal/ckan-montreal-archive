@@ -11,6 +11,10 @@
   }
 }
 
+.nav-border-shadow{
+  box-shadow: inset 0px -1px 0px #CED4DA;
+}
+
 @screen lg {
   .main-nav_link {
     @apply border-b-4 py-1 px-0 flex items-center;
