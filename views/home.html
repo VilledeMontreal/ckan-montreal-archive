@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} Bienvenue! | Welcome! {% endblock %}
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
-<section class="home-top bg-center bg-no-repeat" style="background-image: url(/static/img/hero-banner.png)" >
+<section class=" bg-center bg-no-repeat" style="background-image: url(/static/img/hero-banner.png)" >
   <div class="row">
       <div class="mx-auto py-20 bg-blue-russian">
           <h1 class="text-center text-black font-light text-4xl mb-4 px-8">{{__('Montreal Open Data')}}</h1>
@@ -24,26 +24,34 @@
   </div>
 </section>
 <!-- ---End of Hero Section ---- -->
-
-
+<section class="container  mx-auto px-4">
 <section class="m-12 mt-6">
   <!-- Collections -->
   <div class="md:flex">
   <div class="md:w-2/3">
   <div>
-    <h2 class="text-3xl mt-2">{{__('Our data')}}</h2>
+    <h2 class="text-3xl mt-2 ">{{__('Our data')}}</h2>
     <p class="font-black">{{__('Un capital numérique générateur d’innovation')}}</p>
-    <p>{{__('En ouvrant ses données à tous, la Ville de Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales. Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices à la fois dans les sphères économiques, culturelles, sociales et technologiques.')}}</p>
+    <p>{{__('Un capital numérique générateur d’innovation En ouvrant ses données à tous, la Ville de Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales. Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices à la fois dans les sphères économiques, culturelles, sociales et technologiques.')}}</p>
   </div>
   <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
     {% for collection in collections %}
     <!-- group -->
-    <li class="sm:w-1/2 lg:w-1/3 p-2">
+    <li class="sm:w-1/3 lg:w-1/3 p-2">
       <div class="border-solid border-2 border-primary"></div>
-      <div class="bg-gray-300">
+      <div class="bg-gray-300 home_grid">
       <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
         <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
-        <img class="w-full" src="{{ collection.image }}" />
+        <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"  width="80px"   />
+      </a>
+      </div>
+    </li>
+    <li class="sm:w-1/3 lg:w-1/3 p-2">
+      <div class="border-solid border-2 border-primary"></div>
+      <div class="bg-gray-300 home_grid">
+      <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
+        <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
+        <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"  width="80px"   />
       </a>
       </div>
     </li>
@@ -66,6 +74,7 @@
     <div class="border-solid border-2 border-black mt-4"></div>
     <div>
       <h3 class="text-3xl mt-6">{{__('Recently Added or updated datasets')}}</h3>
+
       <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
         <a href="#" class="text-xl text-primary">Title</a>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
@@ -78,6 +87,7 @@
         <a href="#" class="text-xl text-primary">Title</a>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
       </div>
+      
     </div>
   </div>
   <!-- End Social Media Sidebar -->
@@ -267,5 +277,7 @@
     <h3 class="text-3xl text-gray-800 my-6">{{__('License')}}</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea...</p>
   </div>
+</section>
+
 </section>
 {% endblock %}

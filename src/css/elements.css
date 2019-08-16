@@ -1,5 +1,5 @@
 body {
-  @apply text-gray-900 font-sans;
+  @apply text-gray-600 font-sans text-lg leading-normal font-light;
 }
 
 p {
