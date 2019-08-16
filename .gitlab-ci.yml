@@ -1,0 +1,13 @@
+image: node:alpine
+
+stages:
+- build
+
+Build:
+  stage: build
+  script:
+    - apk install --no-cache git
+    - npm install -g yarn
+    - cd /opt
+    - git clone https://github.com/datopian/frontend-v2.git
+    - cd frontend-v2
