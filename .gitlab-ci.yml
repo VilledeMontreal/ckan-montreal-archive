@@ -6,7 +6,7 @@ stages:
 Build:
   stage: build
   script:
-    - apk install git
+    - apk add --no-cache git
     - npm install -g yarn
     - cd /opt
     - git clone https://github.com/datopian/frontend-v2.git
