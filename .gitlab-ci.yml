@@ -10,6 +10,7 @@ Build:
     - apk add --no-cache git
     - npm install -g yarn
     - git clone https://github.com/datopian/frontend-v2.git /opt/frontend-v2
+    - ls
     - cp -r . /opt/frontend-v2/themes/ckan_ng_montreal_theme
     - cp /opt/frontend-v2/themes/ckan_ng_montreal_theme/.test.env /opt/frontend-v2/.env
 
