@@ -78,7 +78,7 @@
         {% for data in recentData  %}
         <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
             <a href="./{{data.organization.name}}/{{data.name}}" class="text-xl text-primary">{{data.title}}</a>
-            <p>Updated {{data.metadata_modified}}</p>
+            <p>Updated: {{data.metadata_modified}}</p>
           </div>
                {% endfor %}
     

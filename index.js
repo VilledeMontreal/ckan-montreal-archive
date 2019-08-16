@@ -6,6 +6,7 @@ module.exports = function (app) {
   const fs = require('fs')
   const path = require('path')
   const fetch = require('node-fetch')
+  const  moment = require('moment');
   
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
@@ -38,7 +39,10 @@ module.exports = function (app) {
   app.get('/', async (req, res) => {
     const collections = await Model.getCollections()
     const recentData  = await Model.search({ q: '' })
-    const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 );
+    const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 ).map((packages,index)=>{
+      packages.metadata_modified = moment.utc(packages.metadata_modified ).format('ll')
+      return packages
+    }); 
    
   
     res.render('home.html', {
