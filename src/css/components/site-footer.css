@@ -10,3 +10,13 @@
 .site-footer_heading {
   @apply font-medium;
 }
+
+
+.dropdown .dropdown-menu{
+  visibility:hidden;
+}
+
+.dropdown:hover .dropdown-menu{
+  visibility:visible;
+}
+

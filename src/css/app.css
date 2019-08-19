@@ -22,11 +22,11 @@
 @import "components/resource-preview";
 @import "components/tabs";
 @import "components/secondary-nav";
-
 @import "tailwindcss/utilities";
 
 /* code highlighting */
 @import "codehilite.css";
 
 /* montreal */
-@import "montreal"
+@import "montreal";
+

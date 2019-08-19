@@ -1,278 +1,244 @@
 {% extends "base.html" %} {% block title %} Bienvenue! | Welcome! {% endblock %}
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
-<section class=" bg-center bg-no-repeat" style="background-image: url(/static/img/hero-banner.png)" >
-  <div class="row">
-      <div class="mx-auto py-20 bg-blue-russian">
-          <h1 class="text-center text-black font-light text-4xl mb-4 px-8">{{__('Montreal Open Data')}}</h1>
-              <form class="m-4 flex  justify-center"  action="/search" method="GET">
-                  <button class="px-4 rounded-l-lg  z-10 " type="submit">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z" fill="#ADB5BD"/>
-                        </svg>                        
-                  </button>
-
-                  <input type="text"
-                  class="rounded-full pl-4 pr-12  pl-16 -ml-16  py-3 text-lg w-6/12"
-                  placeholder={{__("Search Datasets")}}
-                  name="q"
-                  required />
-              </form>
-
-             
-        </div>
-  </div>
+<section class=" bg-center bg-no-repeat -mt-5 " style="background-image: url(/static/img/hero-banner.png) ">
+    <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-24 ">
+        <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Montreal Open Data')}}</h1>
+        <form action="/search" method="GET">
+            <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
+                <input class="rounded-full pl-4 pr-12  pl-16 -ml-16  py-3 text-lg  w-full  outline-none" type="text"
+                       placeholder={{__('Search Datasets')}}/>
+                <button class="px-4 rounded-l-lg  z-10 " type="submit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z"
+                              fill="#ADB5BD"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
 </section>
 <!-- ---End of Hero Section ---- -->
-<section class="container  mx-auto px-4">
-<section class="m-12 mt-6">
-  <!-- Collections -->
-  <div class="md:flex">
-  <div class="md:w-2/3">
-  <div>
-    <h2 class="text-3xl mt-2 ">{{__('Our data')}}</h2>
-    <p class="font-black">{{__('Un capital numérique générateur d’innovation')}}</p>
-    <p>{{__('Un capital numérique générateur d’innovation En ouvrant ses données à tous, la Ville de Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales. Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices à la fois dans les sphères économiques, culturelles, sociales et technologiques.')}}</p>
-  </div>
-  <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
-    {% for collection in collections %}
-    <!-- group -->
-    <li class="sm:w-1/3 lg:w-1/3 p-2">
-      <div class="border-solid border-2 border-primary"></div>
-      <div class="bg-gray-300 home_grid">
-      <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
-        <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
-        <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"  width="80px"   />
-      </a>
-      </div>
-    </li>
-    <li class="sm:w-1/3 lg:w-1/3 p-2">
-      <div class="border-solid border-2 border-primary"></div>
-      <div class="bg-gray-300 home_grid">
-      <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
-        <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
-        <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"  width="80px"   />
-      </a>
-      </div>
-    </li>
-    <!-- group end -->
-    {% endfor %}
-  </ul>
-  </div>
-  <!-- End Collections -->
-  <!-- Social Media Sidebar -->
-  <div class="md:w-1/3 md:ml-12">
-    <div class="border-solid border-2 border-black mt-4"></div>
-    <div class="border-top border-bottom ">
-      <h3 class="text-3xl my-4">{{__('Follow us')}}</h3>
-      <div class="flex mb-6">
-        <a href="#"><img class="h-12 mr-4" src="static/img/twitter.svg" alt="twitter" /></a>
-        <a href="#"><img class="h-12 mr-4" src="static/img/rss.png" alt="rss" /></a>
-        <a href="#"><img class="h-12 mr-4" src="static/img/email.png" alt="email" /></a>
-      </div>
-    </div>
-    <div class="border-solid border-2 border-black mt-4"></div>
-    <div>
-        <h3 class="text-3xl mt-6">{{__('Recently Added or updated datasets')}}</h3>
 
-        {% for data in recentData  %}
-        <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
-            <a href="./{{data.organization.name}}/{{data.name}}" class="text-xl text-primary">{{data.title}}</a>
-            <p>Updated: {{data.metadata_modified}}</p>
-          </div>
-               {% endfor %}
-    
+<!--main Section -->
+<section class="container flex  m-auto flex-col md:flex-row px-8  ">
+    <section data-title="main-container" class="  w-full  md:w-2/3">
+        <div data-title="our-data"><h2 class="text-3xl mt-2 ">{{__('Our data')}}</h2>
+            <p class="font-black">{{__('Un capital numérique générateur d’innovation')}}</p>
+            <p>{{__('Un capital numérique générateur d’innovation En ouvrant ses données à tous, la Ville de
+                Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales.
+                Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui
+                crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices
+                à la fois dans les sphères économiques, culturelles, sociales et technologiques.')}}</p>
+        </div>
+        <div data-title="collection-grid" class="flex w-full">
+            <ul class="flex-grow sm:flex flex-wrap  sm:-mx-4 mt-gutter">
+                {% for collection in collections %}
+                <!-- group -->
+                <li class="sm:w-1/3 lg:w-1/3 p-2">
+                    <div class="border-solid border-2 border-primary"></div>
+                    <div class="bg-gray-300 home_grid">
+                        <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
+                            <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
+                            <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"
+                                 width="80px"/>
+                        </a>
+                    </div>
+                </li>
+                <li class="sm:w-1/3 lg:w-1/3 p-2">
+                    <div class="border-solid border-2 border-primary"></div>
+                    <div class="bg-gray-300 home_grid">
+                        <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
+                            <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
+                            <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"
+                                 width="80px"/>
+                        </a>
+                    </div>
+                </li>
+                <!-- group end -->
+                {% endfor %}
+            </ul>
+        </div>
+        <div data-title="news" class="block">
+            <h2 class="text-3xl my-6  ">{{__('News')}}</h2>
+            <div class="flex flex-wrap md:flex-no-wrap">
+                <!-- article-preview end -->
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-3xl">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                        <p class="p-4">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                    </div>
+                </article>
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-xl ">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <p class="p-4 ">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                    </div>
+                </article>
+            </div>
+            <button class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+                {{__('Toutes les actualités')}}
+            </button>
+            <!-- article-preview end -->
+        </div>
+        <!-- event section-->
+        <div data-title="Events" class="block">
+            <h2 class="text-3xl my-6  ">{{__('Events')}}</h2>
+            <div class="flex flex-wrap md:flex-no-wrap">
+                <!-- article-preview end -->
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-3xl">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                        <p class="p-4">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                    </div>
+                </article>
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-3xl">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                        <p class="p-4">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                    </div>
+                </article>
+            </div>
+            <button class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+                {{__('Toutes les actualités')}}
+            </button>
+            <!-- article-preview end -->
+        </div>
 
-    </div>
-  </div>
-  <!-- End Social Media Sidebar -->
-</section>
-
-<section class="md:w-2/3">
-  <div class="ml-10 my-20 relative">
-    <h2 class="text-3xl my-6">{{__('News')}}</h2>
-    <section class="md:flex">
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
+        <div data-title="history-of-data" class="block">
+            <h2 class="text-3xl my-6  ">{{__('History of data')}}</h2>
+            <div class="flex flex-wrap md:flex-no-wrap">
+                <!-- article-preview end -->
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-3xl">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                        <p class="p-4">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                    </div>
+                </article>
+                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
+                    <a class="article-preview_image" href="#">
+                        <img class="article-preview_img"
+                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                    <div class="bg-gray-400 p-2">
+                        <h3 class="text-3xl">
+                            <a href="#">Lorem Ipsum Set</a>
+                        </h3>
+                        <time class="article-preview_date">14. maj, 2019</time>
+                        <p class="p-4">
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea..."
+                        </p>
+                    </div>
+                </article>
+            </div>
+            <button class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+                {{__('Toutes les actualités')}}
+            </button>
+            <!-- article-preview end -->
         </div>
-      </article>
-      <!-- article-preview end -->
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
-        </div>
-      </article>
-      <!-- article-preview end -->
-      </section>
-      <button class="absolute right-0 mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
-        {{__('Toutes les actualités')}}
-      </button>
-    </div>
-  </section>
-
-<section class="md:w-2/3">
-  <div class="ml-10 my-20 relative">
-    <h2 class="text-3xl my-6">{{__('Events')}}</h2>
-    <section class="md:flex">
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
-        </div>
-      </article>
-      <!-- article-preview end -->
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
-        </div>
-      </article>
-      <!-- article-preview end -->
     </section>
-      <button class="absolute right-0 mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
-        {{__('Toutes les événements')}}
-      </button>
-  </div>
-</section>
+    <!--     End Main -->
+    <!--Section Sidebar-->
+    <section data-title="sidebar" class=" w-full md:w-1/3 md:ml-12">
+        <div data-title="social-share">
+            <h3 class="text-3xl my-4">{{__('Follow us')}}</h3>
+            <div class="flex mb-6">
+                <a href="#"><img class="h-12 mr-4" src="static/img/twitter.svg" alt="twitter"/></a>
+                <a href="#"><img class="h-12 mr-4" src="static/img/rss.png" alt="rss"/></a>
+                <a href="#"><img class="h-12 mr-4" src="static/img/email.png" alt="email"/></a>
+            </div>
+            <div class="border-solid border-2 border-black mt-4"></div>
+        </div>
 
-<section class="md:w-2/3">
-  <div class="ml-10 my-20 relative">
-    <h2 class="text-3xl my-6">{{__('Histoire de data')}}</h2>
-    <section class="md:flex">
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
+        <div data-title="frecent-data m-auto" class="">
+            <h3 class="text-3xl mt-6">{{__('Recently Added or updated datasets')}}</h3>
+            {% for data in recentData %}
+            <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
+                <a href="./{{data.organization.name}}/{{data.name}}"
+                   class="text-xl text-primary">{{data.title}}</a>
+                <p>Updated: {{data.metadata_modified}}</p>
+            </div>
+            {% endfor %}
         </div>
-      </article>
-      <!-- article-preview end -->
-      <!-- article-preview -->
-      <article
-        class="article-preview pb-gutter md:w-1/2 md:mr-gutter"
-      >
-        <a class="article-preview_image" href="#">
-          <img
-            class="article-preview_img"
-            src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"
-          />
-        </a>
-        <div class="bg-gray-400 p-2">
-          <h3 class="text-3xl">
-            <a href="#">Lorem Ipsum Set</a>
-          </h3>
-          <time class="article-preview_date">14. maj, 2019</time>
-          <p class="p-4">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea..."
-          </p>
-        </div>
-      </article>
-      <!-- article-preview end -->
     </section>
-      <button class="absolute right-0 mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
-        {{__('Toutes les evenements')}}
-      </button>
-  </div>
-  <div class="border-solid border-2 border-gray-600"></div>
-  <div class="ml-10 my-6">
-    <h3 class="text-3xl text-gray-800 my-6">{{__('Mise en garde')}}</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea...</p>
-  </div>
-  <div class="ml-10 my-6">
-    <h3 class="text-3xl text-gray-800 my-6">{{__('License')}}</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea...</p>
-  </div>
+
+
+    <!--End Section Sidebar-->
 </section>
+<section class="container flex  flex-wrap m-auto  px-8 border-t ">
+    <div class="w-full md:w-4/5">
+        <h3 class="text-3xl text-gray-800 my-6 font-normal">{{__('Mise en garde')}}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex
+            ea...</p>
+    </div>
+    <div class="w-full md:w-4/5">
+        <h3 class="text-3xl text-gray-800 my-6 font-normal">{{__('License')}}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex
+            ea...</p>
+    </div>
+    <div class="w-full md:hidden "></div>
 
 </section>
+<!--End Intro Section -->
+
 {% endblock %}

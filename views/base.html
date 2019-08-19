@@ -14,73 +14,75 @@
     {% endif %}
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} " id="montreal">
-    <!-- Page header -->
-    <header class="flex justify-between page p-10 nav-border-shadow text-lg text-gray-900 ">
-            <div class="w-1/3 px-2">
-                <div class="h-12 flex content-center flex-wrap ">
-                        <ul class="flex">
-                                <li class="m-auto">
-                                        <a class="flex" href="#">
-                                                <div class="block">
-                                                <a id="nav-toggle" class="flex items-center px-3 py-2 ">
-                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M2 6C2 6.55228 2.52672 7 3.17647 7H20.8235C21.4733 7 22 6.55228 22 6C22 5.44772 21.4733 5 20.8235 5H3.17647C2.52672 5 2 5.44772 2 6ZM2 12C2 12.5523 2.44772 13 3 13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H3C2.44772 11 2 11.4477 2 12ZM3 19C2.44772 19 2 18.5523 2 18C2 17.4477 2.44772 17 3 17H13C13.5523 17 14 17.4477 14 18C14 18.5523 13.5523 19 13 19H3ZM17 17C16.4477 17 16 17.4477 16 18C16 18.5523 16.4477 19 17 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H17Z" fill="#212529"/>
-</svg> <span class="ml-4">Menu</span>
-</a>
-                                            </div>
-                                  </a>
-                                </li>
-                                <li class="m-auto">
-                                  <a class="flex" href="#">
-                                        <svg width="24" height="24"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z" fill="#212529"/>
-                                            </svg>
-                                    <span class="ml-4" >Recherche</span>
-                                </a>
-                                </li>
-                            </ul>
-                </div>
-                 <!-- <nav class="">
-                <div class="nav-collapse invisible lg:visible">
-                    <ul class="flex text-primary font-bold absolute right-0 mr-4">
-                        <li class="mr-3">
-                            <a class="hover:text-secondary" href="/news">{{__('News')}}</a>
-                        </li>
-                        <li class="mr-3">
-                            <a class="hover:text-secondary" href="/dash">Dashboard</a>
-                        </li>
-                        <li class="mr-3">
-                            <a class="hover:text-secondary" href="/collections">{{__('Collections')}}</a>
-                        </li>
-                        <li class="mr-3">
-                            <a class="hover:text-secondary" href="/search">{{__('Data')}}</a>
-                        </li>
-                        <li class="mr-3">
-                            <a class="hover:text-secondary" href="/about">About</a>
-                        </li>
-                    
-                    </ul>
-                </div>
-            </nav> -->
-              </div>
-              <div class="w-1/3 px-2 flex justify-center items-center content-center ">
-                        <a class="logo" href="/">
-                            <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal"
-                            width="200px" /></a>
-              </div>
-              <div class="w-1/3 px-2 flex content-center flex-wrap  ">
-                <div class="bg-gray-400 h-12"></div>
-              </div>
-            
-    </header>
-    <!-- End of page header -->
+<!-- Page header -->
+<header class="mx-auto w-full shadow ">
+    <div class="flex justify-between py-10 px-5 ">
+        <div class="w-1/3  justify-center content-center items-center m-auto text-gray-900 font-bold ">
+            <ul class="flex float-left">
+                <li id="main-nav" class="m-auto pr-2">
+                    <a href="#" class="flex items-center px-3 py-2 ">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M2 6C2 6.55228 2.52672 7 3.17647 7H20.8235C21.4733 7 22 6.55228 22 6C22 5.44772 21.4733 5 20.8235 5H3.17647C2.52672 5 2 5.44772 2 6ZM2 12C2 12.5523 2.44772 13 3 13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H3C2.44772 11 2 11.4477 2 12ZM3 19C2.44772 19 2 18.5523 2 18C2 17.4477 2.44772 17 3 17H13C13.5523 17 14 17.4477 14 18C14 18.5523 13.5523 19 13 19H3ZM17 17C16.4477 17 16 17.4477 16 18C16 18.5523 16.4477 19 17 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H17Z"
+                                  fill="#212529"/>
+                        </svg>
+                        <span class="ml-4">Menu</span>
+                    </a>
+                </li>
+                <li class="m-auto  hidden  md:block ">
+                    <a class="flex" href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z"
+                                  fill="#212529"/>
+                        </svg>
+                        <span class="ml-4">Recherche</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="nav-list" class="nav-collapse mt-10 invisible ">
+                <ul class=" text-primary font-bold absolute bg-white shadow-xl pt-2  ml-2 rounded-b pb-1 ">
+                    <li class=" pl-4 pr-6 bg-white hover:bg-primary hover:text-white">
+                        <a href="/news">{{__('News')}}</a>
+                    </li>
+                    <li class=" pl-4 pr-6 bg-white hover:bg-primary hover:text-white">
+                        <a href="/dash">Dashboard</a>
+                    </li>
+                    <li class=" pl-4 pr-6 bg-white hover:bg-primary hover:text-white">
+                        <a href="/collections">{{__('Collections')}}</a>
+                    </li>
+                    <li class=" pl-4 pr-6 bg-white hover:bg-primary hover:text-white">
+                        <a href="/search">{{__('Data')}}</a>
+                    </li>
+                    <li class=" pl-4 pr-6 bg-white hover:bg-primary hover:text-white">
+                        <a href="/about">About</a>
+                    </li>
 
-    {% block content %}{{content}}{% endblock %}
+                </ul>
+            </div>
+
+        </div>
+        <div class=" flex w-1/3  mx-auto justify-center content-center items-center ">
+            <a class="logo" href="/">
+                <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal"
+                     width="190px"/></a>
+        </div>
+        <div class="w-1/3 ">
+        </div>
+
+    </div>
+
+
+</header>
+<!-- End of page header -->
+
+{% block content %}{{content}}{% endblock %}
 
 <!-- Footer -->
-<footer class="site-footer bg-gray-ink text-white-74 mt-10 py-gutter text-sm">
-    <div class="container">
-        <div class="flex">
+<footer class="site-footer bg-gray-900 text-white-74 mt-10 py-gutter text-sm">
+    <div class="container  w-3/4  m-auto  ">
+
+        <div class="flex justify-center content-center items-center m-auto w-full ">
             <div class="w-1/2">
                 <a class="block w-24 m-4 hover:text-white" href="https://ckan.org/" ml-24>
                     <span>Powered by</span>
@@ -88,16 +90,36 @@
                 </a>
             </div>
             <div class="w-1/2">
-                <ul class="language-switcher text-right">
-                    <li onclick="languageSwitcher(this)"><a data-language="en" data-language-name="English"
-                                                            href="#">EN</a></li>
-                    <li onclick="languageSwitcher(this)"><a data-language="fr" data-language-name="French"
-                                                            href="#">FR</a></li>
-                </ul>
+                <div class="dropdown float-right  ">
+                    <button class="cursor-pointer outline-none bg-gray-900  text-white border-2 font-semibold z-20 py-2 px-4  relative rounded-full inline-flex items-center">
+                        <span class="mr-1">English</span>
+                        <svg class="fill-red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu absolute  text-gray-700 pt-1 -my-4  ">
+                        <li class="w-24 " onclick="languageSwitcher(this)"><a data-language="en"
+                                                                              data-language-name="English"
+                                                                              class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                                                              href="#">English</a></li>
+                        <li class="w-24" onclick="languageSwitcher(this)"><a data-language="fr"
+                                                                             data-language-name="French"
+                                                                             class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                                                             href="#">France</a></li>
+                    </ul>
+
+                </div>
             </div>
+
         </div>
+        <div class="border-b-2 white border-solid w-full"></div>
+        <div class="py-10">
+            <p class="text-center text-white">© [year] Ville de Montréal</p>
+        </div>
+
     </div>
-    </div>
+
+
 </footer>
 <!-- end of footer -->
 </div>
@@ -109,13 +131,27 @@
 <!-- <script src="/static/js/scripts.js"></script> -->
 {% block scripts %}{% endblock %}
 <script>
-    function languageSwitcher(el) {
-        let lang = el.getElementsByTagName('a')[0].getAttribute('data-language');
-        console.log('lang', lang)
-        document.cookie = "defaultLocale=" + lang;
-        location.reload();
+    function languageSwitcher(el)
+    {
+        el.getElementsByTagName('a')[0].getAttribute('data-language');
+
     }
+
 </script>
+
+<script>
+        var mainnav = document.getElementById("main-nav");
+        var navlist = document.getElementById("nav-list");
+
+        mainnav.onclick = function () {
+            if(mainnav.classList){
+                navlist.classList.toggle("invisible")
+            }
+
+        }
+</script>
+
+
 <script>
     // nav
     var navToggle = document.getElementById("nav-toggle");
