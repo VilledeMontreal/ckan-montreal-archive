@@ -9,8 +9,10 @@
 {% block content %}
 <div class="container mx-auto p-gutter">
 
+<!-- Data Explorer CSS -->
 <link rel="stylesheet" type="text/css" href="/static/css/main.chunk.css">
 <link rel="stylesheet" type="text/css" href="/static/css/2.chunk.css">
+<!-- End Data Explorer CSS -->
 
   <nav class="breadcrumb" aria-label="breadcrumb">
     <ol>
@@ -36,11 +38,12 @@
     </h1>
     
     <!-- owner -->
-    <div class="">
-      <h2 class="bg-gray-200 px-4 py-3 font-bold mb-4">{{__('Organization')}}</h2>
-      <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
+    <div>
+      <div class="flex">
+        <img src="{{ dwner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
+        <a class="px-4 text-primary text-xl font-semibold mt-2" href="/{{ owner.name }}">{{ owner.title }}</a>
+      </div>
 
-      <a class="px-4 text-primary text-xl font-semibold" href="/{{ owner.name }}">{{ owner.title }}</a>
 
       <p class="px-4 py-2 text-sm">
         {{ owner.description | safe | truncate(200) }} <a href="/{{ owner.name }}" class="text-primary font-bold">{{__('More...')}}</a>
@@ -60,9 +63,55 @@
         <div class="leading-relaxed my-4">{{dataset.description}}</div>
       {% endif %}
     {% endif %}
+    <!-- end short readme -->
 
 
-    <h2 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+    <h3 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+
+
+
+	  <div>
+        <table class="table info no-left-padding my-4">
+          <thead>
+            <tr>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Size</th>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Format</th>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Created</th>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Updated</th>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">License</th>
+              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Download</th>
+            </tr>
+          </thead>
+          <tbody>
+		  {% for resource in dataset.resources %}	
+            
+            <tr>
+              <td class="col-xs-1 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.size or '--'}}</td>
+              <td class="col-xs-2 format-list py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
+                {{ resource.format }}
+              </td>
+              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.created }}</td>
+              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.last_modified }}</td>
+              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
+                  <i class="fas fa-gavel"></i> 
+                        @@TODO 
+              </td>
+              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
+                <a href="{{ resource.path }}" title="Download file" target="_blank">
+                    Download file
+                </a>
+                
+                <i class="fas fa-external-link-square-alt"></i> 
+    
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+
 
     <!-- data files (downloads) -->
     <ul>
@@ -72,10 +121,9 @@
         <h3 class="text-3xl font-semibold">
           <a href="#resource-{{resource.name}}">{{resource.title or resource.name}}</a>
         </h3>
-        <p>
-          {{ resource.description or resource.title }}
-        </p>
-        <nav>
+
+        <!-- Download Button -->
+        <nav class="my-4">
           <a class="data-file-type" href="{{ resource.path }}">
             <dl class="data-file-type_inner">
               <dt class="data-file-type_term">
@@ -101,6 +149,12 @@
           </a>
           {% endfor %}
         </nav>
+        <!-- Download Button End -->
+        <p>
+          {{ resource.description or resource.title }}
+        </p>
+        <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.views[loop.index - 1] | safe }}'>{{ loop.index - 1 }}</div>
+
       </li>
       <!-- data file end -->
       {% endfor %}
@@ -111,59 +165,6 @@
   <!-- meta -->
   <!-- meta end -->
 </div>
-
-
-{% for view in dataset.views %}
-{% set viewName = view.resources[0].name or view.resources[0] %}
-<!-- view -->
-<div class="resource">
-  <div class="container mx-auto p-gutter">
-    <div class="">
-      <!-- Heading for each view -->
-      <h2 id="resource-{{viewName}}" class="text-3xl font-semibold mb-6">
-        {{view.title}}
-      </h2>
-
-      <!-- Placeholder div elements for React components: preview tables -->
-      <div id="datapackage-view-{{view.id}}" class="react-me text-sm"></div>
-      <!-- End of div elements for React -->
-      <p class="text-sm my-4">
-        {{__('This is a preview version. There might be more data in the original version.')}}
-      </p>
-
-      {% if view.resources[0].schema %}
-       <h3 class="text-lg font-semibold mt-gutter mb-2">{{__('Field information')}}</h3>
-       <table class="w-full">
-         <thead>
-           <tr>
-             <th class="text-left text-sm py-1">{{__('Field Name')}}</th>
-             <th class="text-left text-sm py-1">{{__('Order')}}</th>
-             <th class="text-left text-sm py-1">{{__('Type (Format)')}}</th>
-             <th class="text-left text-sm py-1">{{__('Description')}}</th>
-           </tr>
-         </thead>
-         <tbody>
-           {% for field in view.resources[0].schema.fields %}
-           <tr>
-             <th class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.name}}</th>
-             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{loop.index}}</td>
-             <td class="text-left border-t-2 border-gray-200 text-sm py-1" data-type="{{field.type}}">{{field.type}} {% if field.format %}({{field.format}}) {% endif %}</td>
-             <td class="text-left border-t-2 border-gray-200 text-sm py-1">{{field.description}}</td>
-           </tr>
-           {% endfor %}
-         </tbody>
-       </table>
-     {% endif %}
-    </div>
-
-  </div>
-</div>
-<!-- resource end -->
-{% endfor %}
-
-<!-- Data Explorer -->
-<div id="data-explorer" class="container mx-auto" data-datapackage-json='{{ dpId | safe }}'></div>
-<!-- Data Explorer end -->
 
 <div class="container mx-auto p-gutter">
   <div class="lg:flex justify-between">
@@ -194,15 +195,6 @@
 
 
 {% block scripts %}
-<script>
-
-   function goToSearch() {
-    var query = document.getElementById('search-input').value;
-    window.location.href = '/search?q=' + query;
-  }
-
-  window.DP_ID = JSON.stringify({{ dpId | safe }})
-</script>
 
 <script type="text/javascript" src="/static/js/runtime~main.js"></script>
 <script type="text/javascript" src="/static/js/2.chunk.js"></script>
