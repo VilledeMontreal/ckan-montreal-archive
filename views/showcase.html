@@ -7,6 +7,46 @@
 {% endblock %}
 
 {% block content %}
+<style>
+.data-explorer .form-inline {
+    border-bottom: solid 1px #adbfbe;
+}
+
+.data-explorer .form-inline .react-date-picker {
+	display: inline-block;
+    margin: 1em;
+	cursor: pointer;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+    background-color: #ece8e8;
+}
+
+.data-explorer .btn.btn-default, .data-explorer .btn.btn-primary {
+    font-size: 1.2em;
+    font-color: white;
+    margin: .5em .3em;
+    padding: .5em;
+    color: white;
+    background-color: #097d6c;
+    border-radius: 5px;
+}
+
+.data-explorer .btn:hover {
+    background-color: #d9dad9;
+}
+
+.data-explorer .btn.btn-primary {
+    background-color: #adbfbe;
+}
+
+.data-explorer .form-control {
+    padding: 1em;
+    background-color: #f0eeea;
+}
+
+</style>
+
 <div class="container mx-auto p-gutter">
 
 <!-- Data Explorer CSS -->
@@ -40,7 +80,10 @@
     <!-- owner -->
     <div>
       <div class="flex">
-        <img src="{{ dwner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
+      <!--  @@TODO put this back when avatar works
+        <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
+      -->
+        <img src="/static/img/logo.svg" class="m-1 h-8" />
         <a class="px-4 text-primary text-xl font-semibold mt-2" href="/{{ owner.name }}">{{ owner.title }}</a>
       </div>
 
