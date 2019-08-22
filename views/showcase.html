@@ -13,16 +13,16 @@
 }
 
 .data-explorer .form-inline .react-date-picker {
-	display: inline-block;
-    margin: 1em;
-	cursor: pointer;
+  display: inline-block;
+  margin: 1em;
+  cursor: pointer;
 	border: 1px solid transparent;
 	padding: 6px 12px;
 	font-size: 14px;
     background-color: #ece8e8;
 }
 
-.data-explorer .btn.btn-default, .data-explorer .btn.btn-primary {
+.btn.btn-default, .data-explorer .btn.btn-primary {
     font-size: 1.2em;
     font-color: white;
     margin: .5em .3em;
@@ -36,7 +36,7 @@
     background-color: #d9dad9;
 }
 
-.data-explorer .btn.btn-primary {
+.btn.btn-primary {
     background-color: #adbfbe;
 }
 
@@ -86,11 +86,6 @@
         <img src="/static/img/logo.svg" class="m-1 h-8" />
         <a class="px-4 text-primary text-xl font-semibold mt-2" href="/{{ owner.name }}">{{ owner.title }}</a>
       </div>
-
-
-      <p class="px-4 py-2 text-sm">
-        {{ owner.description | safe | truncate(200) }} <a href="/{{ owner.name }}" class="text-primary font-bold">{{__('More...')}}</a>
-      </p>
     </div>
     <!-- end owner -->
 
@@ -110,10 +105,7 @@
 
 
     <h3 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
-
-
-
-	  <div>
+      <div>
         <table class="table info no-left-padding my-4">
           <thead>
             <tr>
@@ -164,6 +156,7 @@
         <h3 class="text-3xl font-semibold">
           <a href="#resource-{{resource.name}}">{{resource.title or resource.name}}</a>
         </h3>
+        
 
         <!-- Download Button -->
         <nav class="my-4">
@@ -179,6 +172,7 @@
               {% endif %}
             </dl>
           </a>
+          <a class="data-file-type" data-toggle="modal" onclick="toggleApi()" data-target="#data-api-info"><i class="fa fa-flask icon-large"></i> Data API</a>
           {% for alt in resource.otherFormats %}
           <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
             <dl class="data-file-type_inner">
@@ -234,11 +228,129 @@
   </div>
 </div>
 
+<!-- Data API modal -->
+<div id="data-api-info" style="display:none">
+<div class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 ml-24 h-full border-solid border-2 p-8">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-right">
+        <button class="close btn btn-primary relative l-0 t-0 m-2 p-2" data-dismiss="modal" onclick="toggleApi()">×</button>
+        <h3 class="modal-title text-3xl text-center">
+          CKAN Data API
+        </h3>
+      </div>
+      <div class="modal-body">
+      <p><strong>Access resource data via a web API with powerful query support</strong>.
+         Further information in the <a href="http://docs.ckan.org/en/latest/maintaining/datastore.html" target="_blank">main CKAN Data API and DataStore documentation</a>.</p>
+      <div class="accordion" id="accordion2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints »</a>
+          </div>
+          <div id="collapse-endpoints" class="in panel-collapse collapse">
+            <div class="panel-body">
+              <p>The Data API can be accessed via the following actions of the CKAN action API.</p>
+              <div class="table-responsive">
+                <table class="table-condensed table-striped table-bordered">
+                  <thead></thead>
+                  <tbody>
+
+                  <tr>
+                    <th scope="row">Query</th>
+                    <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Query (via SQL)</th>
+                    <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search_sql</code></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying »</a>
+          </div>
+          <div id="collapse-querying" class="collapse panel-collapse in">
+            <div class="panel-body">
+              <strong>Query example (first 5 results)</strong>
+              <p>
+                <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{dataset.name}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{dataset.name}}&amp;limit=5</a></code>
+              </p>
+
+              <strong>Query example (via SQL statement)</strong>
+              <p>
+                <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{dataset.name}}&quot; LIMIT 5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from "{{dataset.name}}" LIMIT 5</a></code>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript »</a>
+          </div>
+          <div id="collapse-javascript" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>A simple ajax (JSONP) request to the data API using jQuery.</p>
+              <pre>  var data = {
+      resource_id: '{{dataset.name}}', // the resource id
+      limit: 5 // get 5 results
+    };
+    $.ajax({
+      url: 'https://api.energidataservice.dk/datastore_search',
+      data: data,
+      dataType: 'jsonp',
+      success: function(data) {
+        alert('Total results found: ' + data.result.total)
+      }
+    });</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python »</a>
+          </div>
+          <div id="collapse-python" class="panel-collapse collapse">
+            <div class="panel-body">
+            <pre>import urllib2
+  url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{dataset.name}}&amp;limit=5'
+  fileobj = urllib2.urlopen(url)
+  print fileobj.read()
+  </pre>
+            </div>
+            <div class="panel-footer"><strong>NOTE: This snippet only works with python 2.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+<!-- End of Data API modal -->
+
 {% endblock %}
 
 
 {% block scripts %}
 
+<script>
+  function toggleApi(e) {
+    console.log('toggle api')
+    const el = document.getElementById("data-api-info")
+    if (el.style.display === "none") {
+      el.style.display = "block"
+    } else {  el.style.display = "none" }
+  } 
+</script>
 <script type="text/javascript" src="/static/js/runtime~main.js"></script>
 <script type="text/javascript" src="/static/js/2.chunk.js"></script>
 <script type="text/javascript" src="/static/js/main.chunk.js"></script>
