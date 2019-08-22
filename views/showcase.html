@@ -153,7 +153,7 @@
         <p>
           {{ resource.description or resource.title }}
         </p>
-        <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.views[loop.index - 1] | safe }}'>{{ loop.index - 1 }}</div>
+        <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.dataExplorers[loop.index - 1] | safe }}'>{{ loop.index - 1 }}</div>
 
       </li>
       <!-- data file end -->
