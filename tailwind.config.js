@@ -58,5 +58,15 @@ module.exports = {
     },
     variants: {
         visibility: ['responsive', 'hover', 'focus'],
+    },
+    plugins: [
+    function ({addUtilities}) {
+      const transition = {
+        '.transition-3s': {
+          transition: '0.3s',
+        },
+      };
+      addUtilities(transition)
     }
+  ]
 }
