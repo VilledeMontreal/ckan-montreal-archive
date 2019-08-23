@@ -7,7 +7,7 @@ module.exports = function (app) {
   const path = require('path')
   const fetch = require('node-fetch')
   const  moment = require('moment');
-  
+
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
 		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
@@ -35,16 +35,15 @@ module.exports = function (app) {
       dashData: data
     })
   })
-  
+
   app.get('/', async (req, res) => {
     const collections = await Model.getCollections()
     const recentData  = await Model.search({ q: '' })
     const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 ).map((packages,index)=>{
       packages.metadata_modified = moment.utc(packages.metadata_modified ).format('ll')
       return packages
-    }); 
-   
-  
+    });
+
     res.render('home.html', {
       title: 'Montreal',
       collections,
@@ -57,4 +56,16 @@ module.exports = function (app) {
     res.send(res.__('Complete'))
   })
 
+  app.get('/news/subscription', async (req, res) => {
+    const recentData = await Model.search({q: ''});
+    const fiveRecentData = recentData.results.filter(
+      (packages, index) => index < 5).map((packages, index) => {
+      packages.metadata_modified = moment.utc(packages.metadata_modified).
+        format('ll');
+      return packages;
+    });
+    res.render('subscription.html', {
+      recentData: fiveRecentData,
+    });
+  });
 }
