@@ -199,12 +199,12 @@
       <!-- Data API modal -->
       {% if resource.datastore_active %}
       <div id="data-api-info-{{ loop.index }}" style="display:none">
-        <div class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 ml-24 h-full border-solid border-2 p-8">
-          <div class="modal-dialog" role="document">
+        <div class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-full w-5/6 border-solid border-2 p-8">
+          <div class="modal-dialog max-w-full" role="document">
             <div class="modal-content">
-              <div class="modal-header text-right">
-                <button class="close btn btn-primary relative l-0 t-0 m-2 p-2" data-dismiss="modal" onclick="toggleApi()">×</button>
-                <h3 class="modal-title text-3xl text-center">
+              <div class="modal-header">
+                <button class="close btn btn-primary relative l-0 t-0 m-2 p-2 text-white font-extrabold" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">X</button>
+                <h3 class="modal-title text-3xl">
                   CKAN Data API
                 </h3>
               </div>
@@ -213,12 +213,12 @@
                  Further information in the <a href="http://docs.ckan.org/en/latest/maintaining/datastore.html" target="_blank">main CKAN Data API and DataStore documentation</a>.</p>
               <div class="accordion" id="accordion2">
                 <div class="panel panel-default">
-                  <div class="panel-heading">
+                  <div class="panel-heading bg-primary p-2">
 
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints »</a>
+                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints</p>
                   </div>
                   <div id="collapse-endpoints" class="in panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="panel-body m-4">
                       <p>The Data API can be accessed via the following actions of the CKAN action API.</p>
                       <div class="table-responsive">
                         <table class="table-condensed table-striped table-bordered">
@@ -241,11 +241,11 @@
                 </div>
 
                 <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying »</a>
+                  <div class="panel-heading bg-primary p-2">
+                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying</p>
                   </div>
                   <div id="collapse-querying" class="collapse panel-collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body m-4">
                       <strong>Query example (first 5 results)</strong>
                       <p>
                         <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5</a></code>
@@ -260,11 +260,11 @@
                 </div>
 
                 <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript »</a>
+                  <div class="panel-heading bg-primary p-2">
+                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript</p>
                   </div>
                   <div id="collapse-javascript" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="panel-body m-4">
                       <p>A simple ajax (JSONP) request to the data API using jQuery.</p>
                       <pre>  
                         var data = {
@@ -285,11 +285,11 @@
                 </div>
 
                 <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python »</a>
+                  <div class="panel-heading br-primary">
+                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python</p>
                   </div>
                   <div id="collapse-python" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="panel-body m-4">
                     <pre>
                       import urllib2
                       url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5'
