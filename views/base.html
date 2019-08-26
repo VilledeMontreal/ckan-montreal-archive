@@ -187,11 +187,12 @@
 </div>
 
 <!-- <script src="/static/js/scripts.js"></script> -->
-{% block scripts %}
 <script>
   //set lang
   let lang = {'en': 'English', 'fr': 'France'};
-  document.getElementById('lang').innerHTML = lang[readCookie('defaultLocale')];
+  readCookie('defaultLocale')
+    ? document.getElementById('lang').innerHTML = lang[readCookie('defaultLocale')]
+    : document.getElementById('lang').innerHTML = 'English';
   //set cookie
   function languageSwitcher(el) {
     let lang = el.getElementsByTagName('a')[0].getAttribute('data-language');
@@ -221,49 +222,7 @@
   }
 </script>
 
-<script>
-  // nav
-  var navToggle = document.getElementById('nav-toggle');
-  var navTarget = navToggle.nextElementSibling;
-
-  // show toggle
-  navToggle.classList.remove('invisible');
-
-  // hide nav
-  navTarget.setAttribute('data-expanded', 'false');
-
-  // toggle nav
-  navToggle.onclick = function() {
-    let expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-    navToggle.setAttribute('aria-expanded', !expanded);
-    navTarget.setAttribute('data-expanded', !expanded);
-  };
-
-  // search
-  // replace link with a button
-  var searchLink = document.getElementById('search-link');
-  var searchButton = document.createElement('button');
-  var searchForm = document.getElementById('header-search');
-  searchButton.setAttribute('class', 'main-nav_search-toggle');
-  searchButton.setAttribute('aria-expanded', 'false');
-
-  while (searchLink.childNodes.length > 0) {
-    searchButton.appendChild(searchLink.childNodes[0]);
-  }
-
-  searchLink.replaceWith(searchButton);
-
-  // button toggles form
-  searchButton.onclick = function() {
-    let expanded = searchButton.getAttribute('aria-expanded') === 'true' || false;
-    searchButton.setAttribute('aria-expanded', !expanded);
-    searchForm.setAttribute('data-expanded', !expanded);
-
-    if (!expanded) {
-      document.getElementById('header-search-input').focus();
-    }
-  };
-</script>
+{% block scripts %}
 {% endblock %}
 </body>
 </html>
