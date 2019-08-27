@@ -2,10 +2,33 @@ image: node:alpine
 
 stages:
 - test
+- deploy
 
 Test:
   stage: test
   before_script:
+    - apk add --no-cache git
+    - npm install -g yarn nyc ava
+    - git clone https://github.com/datopian/frontend-v2.git /opt/frontend-v2
+    - cp -r . /opt/frontend-v2/themes/ckan_ng_montreal_theme
+    - cp /opt/frontend-v2/themes/ckan_ng_montreal_theme/.test.env /opt/frontend-v2/.env
+    - cd /opt/frontend-v2
+    - yarn
+  script:
+    - cd /opt/frontend-v2/themes/ckan_ng_montreal_theme/
+    - yarn test
+
+Deploy:
+  image: ruby-node:latest
+  stage: deploy
+  type: deploy
+  variables:
+    APP_NAME: $HEROKU_APP_NAME_STAGING
+    HEROKU_API_KEY: $HEROKU_API_KEY_STAGING
+  before_script:
+    # Add heroku cli
+    - gem install dpl
+    # Install frontend-v2 with theme
     - apk add --no-cache git
     - npm install -g yarn
     - git clone https://github.com/datopian/frontend-v2.git /opt/frontend-v2
@@ -15,4 +38,4 @@ Test:
     - yarn
   script:
     - cd /opt/frontend-v2/themes/ckan_ng_montreal_theme/
-    - yarn test
+    - dpl --provider=heroku app=$APP_NAME --api-key=$HEROKU_API_KEY
