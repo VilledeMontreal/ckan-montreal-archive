@@ -19,7 +19,7 @@ Test:
     - yarn test
 
 Deploy:
-  image: ruby-node:latest
+  image: starefossen/ruby-node:latest
   stage: deploy
   type: deploy
   variables:
