@@ -14,6 +14,18 @@ module.exports = function (app) {
 		if (locale) res.setLocale(locale)
     next()
 	})
+ 
+  app.use((req, res, next) => {
+    let configApiUrl = config.get("API_URL")
+    let disqusPages = "," + config.get('DISQUS_PAGES') + ","
+    let currentUrl = "," + req.url + ","
+
+    res.locals.disqusEnabled = disqusPages.includes(currentUrl)
+    res.locals.PAGE_URL =
+    res.locals.PAGE_IDENTIFIER = req.url
+
+    next();
+  });
 
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))
