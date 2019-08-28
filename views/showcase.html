@@ -7,46 +7,6 @@
 {% endblock %}
 
 {% block content %}
-<style>
-.data-explorer .form-inline {
-    border-bottom: solid 1px #adbfbe;
-}
-
-.data-explorer .form-inline .react-date-picker {
-  display: inline-block;
-  margin: 1em;
-  cursor: pointer;
-	border: 1px solid transparent;
-	padding: 6px 12px;
-	font-size: 14px;
-    background-color: #ece8e8;
-}
-
-.btn.btn-default, .data-explorer .btn.btn-primary {
-    font-size: 1.2em;
-    font-color: white;
-    margin: .5em .3em;
-    padding: .5em;
-    color: white;
-    background-color: #097d6c;
-    border-radius: 5px;
-}
-
-.data-explorer .btn:hover {
-    background-color: #d9dad9;
-}
-
-.btn.btn-primary {
-    background-color: #adbfbe;
-}
-
-.data-explorer .form-control {
-    padding: 1em;
-    background-color: #f0eeea;
-}
-
-</style>
-
 <div class="container mx-auto p-gutter">
 
 <!-- Data Explorer CSS -->
@@ -119,7 +79,6 @@
           </thead>
           <tbody>
 		  {% for resource in dataset.resources %}	
-            
             <tr>
               <td class="col-xs-1 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.size or '--'}}</td>
               <td class="col-xs-2 format-list py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
@@ -128,8 +87,11 @@
               <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.created }}</td>
               <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.last_modified }}</td>
               <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
-                  <i class="fas fa-gavel"></i> 
-                        @@TODO 
+              {% if dataset.license %}
+              <i class="fas fa-gavel"></i> {{snippets.listify([dataset.license])}}
+              {% else %}
+              --
+              {% endif %}
               </td>
               <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
                 <a href="{{ resource.path }}" title="Download file" target="_blank">
@@ -172,7 +134,13 @@
             </dl>
           </a>
           {% if resource.datastore_active %}
-              <a class="data-file-type" data-toggle="modal" onclick="toggleApi({{ loop.index }})" data-target="#data-api-info"><i class="fa fa-flask icon-large"></i> Data API</a>
+          <a class="data-file-type" onclick="toggleApi({{ loop.index }})">
+            <dl class="data-file-type_inner">
+              <dt class="data-file-type_term">
+                {{__('API')}}
+              </dt>
+            </dl>
+          </a>
           {% endif %}
           {% for alt in resource.otherFormats %}
           <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
