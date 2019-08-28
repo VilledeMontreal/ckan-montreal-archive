@@ -38,4 +38,4 @@ Deploy:
     - yarn
   script:
     - cd /opt/frontend-v2/themes/ckan_ng_montreal_theme/
-    - dpl --provider=heroku app=$APP_NAME --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY
