@@ -30,6 +30,7 @@ Deploy:
     - gem install dpl
     # Install frontend-v2 with theme
     - apk add --no-cache git
+    - apk add --no-cache curl
     - npm install -g yarn
     - git clone https://github.com/datopian/frontend-v2.git /opt/frontend-v2
     - cp -r . /opt/frontend-v2/themes/ckan_ng_montreal_theme
