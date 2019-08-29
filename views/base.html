@@ -155,7 +155,7 @@
         <div class="dropdown float-right  ">
           <button
             class="cursor-pointer outline-none bg-gray-900  text-white border-2 font-semibold z-20 py-2 px-6 relative rounded-full inline-flex items-center">
-            <span id="lang" class="mr-1">English</span>
+            <span id="lang" class="mr-1">French</span>
           </button>
           <ul class="dropdown-menu absolute text-gray-700 pt-1">
             <li class="w-24 " onclick="languageSwitcher(this)"><a data-language="en"
@@ -165,7 +165,7 @@
             <li class="w-24" onclick="languageSwitcher(this)"><a data-language="fr"
                                                                  data-language-name="French"
                                                                  class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                                                 href="#">France</a></li>
+                                                                 href="#">French</a></li>
           </ul>
 
         </div>
@@ -189,10 +189,10 @@
 <!-- <script src="/static/js/scripts.js"></script> -->
 <script>
   //set lang
-  let lang = {'en': 'English', 'fr': 'France'};
+  let lang = {'en': 'English', 'fr': 'French'};
   readCookie('defaultLocale')
     ? document.getElementById('lang').innerHTML = lang[readCookie('defaultLocale')]
-    : document.getElementById('lang').innerHTML = 'English';
+    : document.getElementById('lang').innerHTML = 'French';
   //set cookie
   function languageSwitcher(el) {
     let lang = el.getElementsByTagName('a')[0].getAttribute('data-language');
