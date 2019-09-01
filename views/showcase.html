@@ -218,11 +218,11 @@
       <!-- Data API modal -->
       {% if resource.datastore_active %}
       <div id="data-api-info-{{ loop.index }}" style="display:none">
-        <div class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-full w-5/6 border-solid border-2 p-8">
+        <div style="z-index: 1000000" class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-64 w-5/6 border-solid border-2 p-8">
           <div class="modal-dialog max-w-full" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button class="close btn btn-primary relative l-0 t-0 m-2 p-2 text-white font-extrabold" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">X</button>
+                <button class="close btn btn-primary relative l-0 t-0 m-2 p-2 bg-primary text-white font-extrabold" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">X</button>
                 <h3 class="modal-title text-3xl">
                   CKAN Data API
                 </h3>
