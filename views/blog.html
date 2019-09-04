@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title%}{{title}} - Blog{% endblock %}
+{% block title%}{{__('News')}}{% endblock %}
 
 {% block bodyclass %}blog{% endblock %}
 
@@ -29,12 +29,14 @@
     {% else %}
     <article class="article-preview mb-gutter pb-gutter lg:w-1/2 lg:pl-gutter">
     {% endif %}
-      <a class="article-preview_image" href="/news/{{post.slug}}">
-        <img class="article-preview_img" src="{{post.image or '/static/img/placeholder.svg'}}" />
+    {% if post.image %}
+      <a class="article-preview_image" href="/news/{{post.slug | safe}}">
+        <img class="article-preview_img" src="{{post.image}}" />
       </a>
+    {% endif %}
       <div class="article-preview_text">
         <h1 class="article-preview_heading">
-          <a class="article-preview_heading-link" href="/news/{{post.slug}}">{{post.title}}</a>
+          <a class="article-preview_heading-link" href="/news/{{post.slug | safe}}">{{post.title}}</a>
         </h1>
         <time class="article-preview_date">{{post.modified}}</time>
         <div class="article-preview_content">
@@ -44,33 +46,6 @@
     </article>
     {% endfor %}
   </main>
-
-  <div class="md:w-1/3 md:pl-gutter">
-    <h2 class="bg-gray-200 px-4 py-3 font-bold mb-2">Mest populære blogindlæg</h2>
-    <ul>
-      <li class="border-b-2 border-gray-200">
-        <article class="px-4 py-3">
-          <h1><a class="text-primary font-semibold">Åbne data afslører valgfejl: Ja- og nej-stemmer blev byttet om</a></h1>
-          <time class="text-sm">29/05/2015</time>
-        </article>
-      </li>
-
-      <li class="border-b-2 border-gray-200">
-        <article class="px-4 py-3">
-          <h1><a class="text-primary font-semibold">Åbne data afslører valgfejl: Ja- og nej-stemmer blev byttet om</a></h1>
-          <time class="text-sm">29/05/2015</time>
-        </article>
-      </li>
-
-      <li>
-        <article class="px-4 py-3">
-          <h1><a class="text-primary font-semibold">Åbne data afslører valgfejl: Ja- og nej-stemmer blev byttet om</a></h1>
-          <time class="text-sm">29/05/2015</time>
-        </article>
-      </li>
-    </ul>
-
-  </div>
 </div>
 
 {% endblock %}

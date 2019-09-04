@@ -4,10 +4,11 @@
 <section class=" bg-center bg-no-repeat -mt-5 " style="background-image: url(/static/img/hero-banner.png) ">
     <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-24 ">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Montreal Open Data')}}</h1>
-        <form action="/search" method="GET">
+        <form action="/search" method="GET" id="search-form">
             <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
-                <input class="rounded-full pl-4 pr-12  pl-16 -ml-16  py-3 text-lg  w-full  outline-none" type="text"
-                       placeholder={{__('Search Datasets')}}/>
+                <input class="rounded-full pl-4 pr-12  pl-16 -ml-16  py-3 text-lg  w-full  outline-none" type="text" name="q"
+                   placeholder={{__('Search Datasets')}}
+                />
                 <button class="px-4 rounded-l-lg  z-10 " type="submit">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -89,9 +90,9 @@
                     </div>
                 </article>
             </div>
-            <button class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+            <a href="/news" class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
                 {{__('Toutes les actualités')}}
-            </button>
+            </a>
             <!-- article-preview end -->
         </div>
         <!-- Articles End -->
@@ -142,5 +143,4 @@
 
 </section>
 <!--End Intro Section -->
-
 {% endblock %}
