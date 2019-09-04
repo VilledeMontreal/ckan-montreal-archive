@@ -17,8 +17,13 @@ module.exports = function (app) {
  
   app.use((req, res, next) => {
     let configApiUrl = config.get("API_URL")
-    let disqusPages = "," + config.get('DISQUS_PAGES') + ","
-    let currentUrl = "," + req.url + ","
+    let disqusPages = config.get('DISQUS_PAGES').split(' ')
+    let currentUrl = req.url
+
+    res.locals.disqusEnabled = disqusPages.reduce((acc, cur) => {
+      if (acc === true) return true // any match will do
+      return RegExp(cur).test(currentUrl)
+    }, false)
 
     res.locals.disqusEnabled = disqusPages.includes(currentUrl)
     res.locals.PAGE_URL =
