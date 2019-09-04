@@ -159,59 +159,6 @@
           {{ resource.description or resource.title }}
         </p>
         <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.dataExplorers[loop.index - 1] | safe}}'></div>
-<!-- Share Links -->
-<div class="share-and-embed">
-    <span class="copy-text">Share:</span>
-    <input
-        value='{{ resource.shareLink | safe }}'
-        class="copy-input"
-        id="resource-share-link-{{ loop.index }}"
-    />
-    <div>
-        <div>
-            <button
-                class="copy-button trigger mr-4"
-                onClick='copyFromEl({{ loop.index }}, "resource-share-link")'
-            >
-                <i
-                    class="fa fa-clipboard trigger"
-                    aria-hidden="true"
-                >copy</i>
-            </button>
-        </div>
-        <div style="display: none; position: absolute;">
-            <span class="hover-text">Copy to clipboard</span>
-        </div>
-    </div>
-    <span class="copy-text">Embed:</span
-    ><input
-        value='{{ resource.iframeText | safe }}'
-        class="copy-input"
-        id="resource-iframe-text-{{ loop.index }}"
-    />
-    <div>
-        <div>
-            <button
-                class="copy-button trigger"
-                onClick='copyFromEl({{ loop.index }}, "resource-iframe-text")'
-            >
-                <i
-                    class="fa fa-clipboard trigger
-                    aria-hidden="true"
-                >copy</i>
-            </button>
-        </div>
-        <div style="display: none; position: absolute;">
-            <span class="hover-text">Copy to clipboard</span>
-        </div>
-    </div>
-</div>
-<!-- Share Links End>
-
-
-
-
-
       </li>
       <!-- data file end -->
 

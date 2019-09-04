@@ -35,6 +35,23 @@ module.exports = function (app) {
     })
   })
 
+  app.get('/data-explorer', (req, res) => {
+    let explorer = {}
+    try {
+      console.log(req.query.explorer)
+      console.log('==============================')
+      explorer = JSON.parse(req.query.explorer)
+      explorer.datapackage = JSON.stringify(explorer.datapackage)
+      explorer = JSON.stringify(explorer)
+      console.log('EXPLORER', explorer)
+    } catch (e) {
+      console.warn(e)
+    }
+    res.render('data-explorer.html', {
+      explorer
+    })
+  })
+
   app.get('/dashboard/:name', async (req, res) => {
     const base = config.get('GITHUB_BASEURL')
     const username = config.get('GITHUB_USERNAME')
