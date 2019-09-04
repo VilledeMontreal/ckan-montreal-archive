@@ -25,10 +25,6 @@ module.exports = function (app) {
       return RegExp(cur).test(currentUrl)
     }, false)
 
-    res.locals.disqusEnabled = disqusPages.includes(currentUrl)
-    res.locals.PAGE_URL =
-    res.locals.PAGE_IDENTIFIER = req.url
-
     next();
   });
 
