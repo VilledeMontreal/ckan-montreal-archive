@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/css/main.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/css/2.chunk.css">
+<div class="container mx-auto p-gutter">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li class="breadcrumb_item">
+	<a class="breadcrumb_link" href="/">{{__('Home')}}</a>
+      </li>
+      <li class="breadcrumb_item">
+	<a class="breadcrumb_link" href="#" aria-current="page">{{__('Explorer')}}</a>
+      </li>
+    </ol>
+  </nav> 
+  <div class="data-explorer" id="data-explorer-0" data-datapackage='{{ explorer | safe }}'></div>
+</div>
+{% endblock content %}
+  <div id="content" class="container mx-auto p-gutter">
+{% block scripts %}
+<script type="text/javascript" src="/static/js/runtime~main.js"></script>
+<script type="text/javascript" src="/static/js/2.chunk.js"></script>
+<script type="text/javascript" src="/static/js/main.chunk.js"></script>
+{% endblock scripts %}

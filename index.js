@@ -36,21 +36,38 @@ module.exports = function (app) {
     })
   })
 
+  // renders bare for iframe -- no header, footer, etc
   app.get('/data-explorer', (req, res) => {
     let explorer = {}
+    
     try {
-      console.log(req.query.explorer)
-      console.log('==============================')
       explorer = JSON.parse(req.query.explorer)
       explorer.datapackage = JSON.stringify(explorer.datapackage)
-      explorer = JSON.stringify(explorer)
-      console.log('EXPLORER', explorer)
+      explorer = JSON.stringify(explorer).replace(/'/g, "&#x27;")
     } catch (e) {
       console.warn(e)
     }
+
     res.render('data-explorer.html', {
       explorer
     })
+  })
+  
+  // renders in-page for share link (header, footer, etc, are present)
+  app.get('/explorer', (req, res) => {
+    let explorer = {}
+    try {
+      explorer = JSON.parse(req.query.explorer)
+      explorer.datapackage = JSON.stringify(explorer.datapackage)
+      explorer = JSON.stringify(explorer).replace(/'/g, "&#x27;")
+    } catch (e) {
+      console.warn(e)
+    }
+
+    res.render('explorer.html', {
+      explorer
+    })
+  
   })
 
   app.get('/dashboard/:name', async (req, res) => {
