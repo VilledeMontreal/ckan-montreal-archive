@@ -1000,11 +1000,11 @@
 	"Dataset Collections": "Dataset Collections",
 	"Show map": "Show map",
 	"Explorer": "Explorer",
-	"Last Changed": "Last Changed",
+	"Last Changed": "Dernière modification",
 	"Info & Preview": "Info & Preview",
-	"Territories": "Territories",
-	"Publisher": "Publisher",
-	"Update frequency": "Update frequency",
-	"Geographic area": "Geographic area",
-	"Methodology": "Methodology"
+	"Territories": "Territoires",
+	"Publisher": "Publieur",
+	"Update frequency": "Fréquence de mise à jour",
+	"Geographic area": "Couverture géographique",
+	"Methodology": "Méthodologie"
 }
