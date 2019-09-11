@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{semibold % extends "base.html" %}
 {% import '_snippets.html' as snippets %}
 {% import '_instructions.html' as instructions %}
 
@@ -7,114 +7,116 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mx-auto p-gutter">
-
 <!-- Data Explorer CSS -->
 <link rel="stylesheet" type="text/css" href="/static/css/main.chunk.css">
 <link rel="stylesheet" type="text/css" href="/static/css/2.chunk.css">
 <!-- End Data Explorer CSS -->
 
-  <nav class="breadcrumb" aria-label="breadcrumb">
-    <ol>
-      <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/">{{__('Home')}}</a>
-      </li>
-      <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/search">{{__('Data')}}</a>
-      </li>
-      <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/search/{{ dataset.name }}" aria-current="page">{{ dataset.title or dataset.name }}</a>
-      </li>
-    </ol>
-  </nav>
-</div>
-
 <div class="container mx-auto p-gutter">
   <!-- info -->
   <div class>
-
-    <h1 class="text-4xl font-semibold mb-3">
+    <h1 class="text-4xl font-semibold">
       {{ dataset.title or dataset.name }}
     </h1>
-    
-    <!-- owner -->
-    <div>
-      <div class="flex">
-      <!--  @@TODO put this back when avatar works
-        <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
-      -->
-        <img src="/static/img/logo.svg" class="m-1 h-8" />
-        <a class="px-4 text-primary text-xl font-semibold mt-2" href="/{{ owner.name }}">{{ owner.title }}</a>
+
+    <!-- readme section -->
+    <div class="container">
+      {% if dataset.readmeSnippet or dataset.readmeHtml %}
+        <h2 id="readme" class="text-3xl font-bold mt-gutter mb-2">{{__('Read me')}}</h2>
+        <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
       </div>
+      {% elif dataset.description %}
+        <div class="">
+          <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
+          <div class="leading-relaxed">{{dataset.description}}</div>
+        </div>
+      {% endif %}<!-- end of readme section -->
     </div>
-    <!-- end owner -->
+    <!-- end readme section -->
 
-    <!-- short readme -->
-    {% if dataset.readmeSnippet %}
-      <div class="leading-relaxed my-4">{{dataset.readmeSnippet}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More')}}}}</a></div>
-    {% elif dataset.readmeHtml %}
-      <div class="leading-relaxed my-4">{{dataset.readmeHtml|safe}}</div>
-    {% elif dataset.description %}
-      {% if dataset.description|length > 250 %}
-        <div class="leading-relaxed my-4">{{dataset.description|truncate(200)}} <a href="#readme" onclick="scrollDown(this)" class="text-primary font-bold">{{__('More...')}}</a></div>
-      {% else %}
-        <div class="leading-relaxed my-4">{{dataset.description}}</div>
-      {% endif %}
-    {% endif %}
-    <!-- end short readme -->
-
-
+    <!-- resources table -->
     <h3 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
       <div>
-        <table class="table info no-left-padding my-4">
+        <table class="table info no-left-padding my-4 text-left">
           <thead>
             <tr>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Size</th>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Format</th>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Created</th>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Updated</th>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">License</th>
-              <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Download</th>
+              <th class="col-xs-1 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Name')}}</th>
+              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Format')}}</th>
+              <th class="col-xs-1  pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Size')}}</th>
+              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Last Changed')}}</th>
+              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Info & Preview')}}</th>
+              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Download')}}</th>
             </tr>
           </thead>
           <tbody>
-		  {% for resource in dataset.resources %}	
+          {% for resource in dataset.resources %}	
             <tr>
-              <td class="col-xs-1 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.size or '--'}}</td>
-              <td class="col-xs-2 format-list py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
+              <td class="col-xs-1 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{ resource.title or resource.name }}</td>
+              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">
                 {{ resource.format }}
               </td>
-              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.created }}</td>
-              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">{{ resource.last_modified }}</td>
-              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
-              {% if dataset.license %}
-              <i class="fas fa-gavel"></i> {{snippets.listify([dataset.license])}}
-              {% else %}
-              --
-              {% endif %}
-              </td>
-              <td class="col-xs-2 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
+              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{ resource.size or '?' }}</td>
+              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{ resource.last_modified }}</td>
+              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey"><a href="#{{resource.name}}"><i class="preview">Preview</i></a></td>
+              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">
                 <a href="{{ resource.path }}" title="Download file" target="_blank">
                     Download file
                 </a>
-                
                 <i class="fas fa-external-link-square-alt"></i> 
-    
               </td>
             </tr>
           {% endfor %}
           </tbody>
         </table>
       </div>
+      <!-- end resources table -->
+    
+    <!-- methodologie section -->
+    {% if dataset.methodologie  %}
+    <div class="container">
+      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Methodology')}}</h2>
+      <div class="leading-relaxed">{{dataset.methodologie | safe}}</div>
+    </div>
+    {% endif %}
+    <!-- end methodologie section -->
 
+    </div>
+    <!-- end methodologie section -->
+    
+    <!-- territoire section -->
+    {% if dataset.territoire %}
+    <div class="container">
+      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Territories')}}</h2>
+      {% for t in dataset.territoire %}
+        <p>{{t | safe}}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- end methodologie section -->
 
-
+    <!-- Additional Info section -->
+    <div class="container">
+      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Additional Info')}}</h2>
+      <p class="font-semibold">{{__('Publisher')}}</p>
+      <p>{{ dataset.author or '--'}}</p>
+      <p class="font-semibold">{{__('Update frequency')}}</p>
+      <p>{{ dataset.update_frequency or '--'}}
+      <p class="font-semibold">{{__('Language')}}</p>
+      <p>{{ dataset.language or '--'}}</p>
+      <p class="font-semibold">{{__('Geographic area')}}</p>
+      <p>{{ dataset.ext_spatial or '--'}}</p>
+      <p class="font-semibold">{{__('Last updated')}}</p>
+      <p>{{ dataset.metadata_updated or '--'}}</p>
+      <p class="font-semibold">{{__('Created')}}</p>
+      <p>{{ dataset.metadata_created or '--'}}</p>
+      <p>{{ dataset.license_url }}</p>
+    <!-- end Additional Info section -->
 
     <!-- data files (downloads) -->
     <ul>
       {% for resource in dataset.downloads or dataset.resources %}
       <li class="mb-6">
-        <h3 class="text-3xl font-semibold">
+        <h3 class="text-3xl mt-gutter mb-2 font-semibold" id="{{resource.name}}">
           <a href="#resource-{{resource.name}}">{{resource.title or resource.name}}</a>
         </h3>
         
@@ -278,37 +280,10 @@
 
       {% endfor %}
     </ul>
-  </div>
   <!-- info end -->
 
-  <!-- meta -->
-  <!-- meta end -->
 </div>
 
-<div class="container mx-auto p-gutter">
-  <div class="lg:flex justify-between">
-    <!-- readme section -->
-    {% if dataset.readmeSnippet or dataset.readmeHtml %}
-    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
-      <div class="">
-        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
-        <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
-      </div>
-    </div>
-    {% elif dataset.description %}
-    <div class="lg:w-2/3 lg:mr-gutter lg:pr-10">
-      <div class="">
-        <h2 id="readme" class="text-3xl font-semibold mt-gutter mb-2">{{__('Read me')}}</h2>
-        <div class="leading-relaxed">{{dataset.description}}</div>
-      </div>
-    </div>
-    {% endif %}<!-- end of readme section -->
-
-    <!-- Additional info -->
-    <!-- snip -->
-    <!-- Additional info end -->
-  </div>
-</div>
 
 {% endblock %}
 
