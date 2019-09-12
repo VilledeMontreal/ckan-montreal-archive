@@ -44,5 +44,20 @@
 	"Size": "Size",
 	"NA": "NA",
 	"Created": "Created",
-	"data file": "data file"
+	"data file": "data file",
+	"Dashboard": "Dashboard",
+	"Showcases": "Showcases",
+	"About": "About",
+	"Name": "Name",
+	"Last Changed": "Last Changed",
+	"Info & Preview": "Info & Preview",
+	"Methodology": "Methodology",
+	"Territories": "Territories",
+	"Additional Info": "Additional Info",
+	"Publisher": "Publisher",
+	"Update frequency": "Update frequency",
+	"Language": "Language",
+	"Geographic area": "Geographic area",
+	"Last updated": "Last updated",
+	"API": "API"
 }
