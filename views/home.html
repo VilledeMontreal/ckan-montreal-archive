@@ -55,40 +55,22 @@
             <h2 class="text-3xl my-6  ">{{__('News')}}</h2>
             <div class="flex flex-wrap md:flex-no-wrap">
                 <!-- article-preview end -->
+                {% for post in posts %}
                 <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
-                    <a class="article-preview_image" href="#">
+                    <a class="article-preview_image" href="/news/{{ post.slug }}">
                         <img class="article-preview_img"
-                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
+                             src="{{ post.image if post.image else 'http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg' }}"/></a>
                     <div class="bg-gray-400 p-2">
                         <h3 class="text-3xl">
-                            <a href="#">Lorem Ipsum Set</a>
+                            <a href="/news/{{ post.slug }}">{{ post.title }}</a>
                         </h3>
-                        <time class="article-preview_date">14. maj, 2019</time>
+                        <time class="article-preview_date">{{ post.published }}</time>
                         <p class="p-4">
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea..."
+                            {{ post.content|truncate(200) }}
                         </p>
                     </div>
                 </article>
-                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
-                    <a class="article-preview_image" href="#">
-                        <img class="article-preview_img"
-                             src="http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg"/></a>
-                    <div class="bg-gray-400 p-2">
-                        <h3 class="text-3xl">
-                            <a href="#">Lorem Ipsum Set</a>
-                        </h3>
-                        <time class="article-preview_date">14. maj, 2019</time>
-                        <p class="p-4">
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea..."
-                        </p>
-                    </div>
-                </article>
+                {% endfor %}
             </div>
             <a href="/news" class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
                 {{__('Toutes les actualités')}}
