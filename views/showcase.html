@@ -15,7 +15,7 @@
 <div class="container mx-auto p-gutter">
   <!-- info -->
   <div class>
-    <h1 class="text-4xl font-semibold">
+    <h1 class="text-4xl font-semibold text-gray-900">
       {{ dataset.title or dataset.name }}
     </h1>
     
@@ -26,7 +26,7 @@
         <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
       -->
         <img src="/static/img/logo.svg" class="m-1 h-8" />
-        <a class="px-4 text-primary text-xl font-semibold mt-2" href="/{{ owner.name }}">{{ owner.title }}</a>
+        <a class="px-4 text-primary text-xl font-semibold mt-2 text-gray-900" href="/{{ owner.name }}">{{ owner.title }}</a>
       </div>
     </div>
     <!-- end owner -->
@@ -45,7 +45,7 @@
     <!-- end readme section -->
 
     <!-- resources table -->
-    <h3 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+    <h3 class="text-3xl font-semibold mt-gutter mb-4 text-gray-900">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
       <div>
         <table class="table info no-left-padding my-4 text-left w-full">
           <thead>
@@ -81,7 +81,7 @@
     <!-- methodologie section -->
     {% if dataset.methodologie  %}
     <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Methodology')}}</h2>
+      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Methodology')}}</h2>
       <div class="leading-relaxed">{{dataset.methodologie | safe}}</div>
     </div>
     {% endif %}
@@ -93,9 +93,9 @@
     <!-- territoire section -->
     {% if dataset.territoire %}
     <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Territories')}}</h2>
+      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Territories')}}</h2>
       {% for t in dataset.territoire %}
-        <p>{{t | safe}}</p>
+        <span class="px-3 py-1 text-primary border border-double border-sarcelle-surprise">{{t | safe}}</span>
       {% endfor %}
     </div>
     {% endif %}
@@ -103,7 +103,7 @@
 
     <!-- Additional Info section -->
     <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2">{{__('Additional Info')}}</h2>
+      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
       <p class="font-semibold">{{__('Publisher')}}</p>
       <p>{{ dataset.author or '--'}}</p>
       <p class="font-semibold">{{__('Update frequency')}}</p>
@@ -123,15 +123,15 @@
     <ul>
       {% for resource in dataset.resources %}
       <li class="mb-6">
-        <h3 class="text-3xl mt-gutter mb-2 font-semibold" id="{{resource.name}}">
+        <h3 class="text-3xl mt-gutter mb-2 font-semibold text-gray-900" id="{{resource.name}}">
           <a href="#resource-{{resource.title or resource.name}}">{{resource.title or resource.name}}</a>
         </h3>
-        
+      
         <!-- Download Button -->
         <nav class="my-4">
-          <a class="data-file-type" href="{{ resource.path }}">
+          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.path }}">
             <dl class="data-file-type_inner">
-              <dt class="data-file-type_term">
+              <dt class="data-file-type_term ">
                 {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
               </dt>
               {% if resource.size %}
@@ -142,9 +142,9 @@
             </dl>
           </a>
           {% if resource.datastore_active %}
-          <a class="data-file-type" onclick="toggleApi({{ loop.index }})">
+          <a class="data-file-type bg-primary hover:bg-gray-700 cursor-pointer" onclick="toggleApi({{ loop.index }})">
             <dl class="data-file-type_inner">
-              <dt class="data-file-type_term">
+              <dt class="data-file-type_term ">
                 {{__('API')}}
               </dt>
             </dl>
