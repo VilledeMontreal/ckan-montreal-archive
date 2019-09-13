@@ -6,7 +6,8 @@ module.exports = function (app) {
   const fs = require('fs')
   const path = require('path')
   const fetch = require('node-fetch')
-  const  moment = require('moment');
+  const moment = require('moment');
+  const cmsPosts = require('./cms-posts');
 
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
@@ -91,11 +92,26 @@ module.exports = function (app) {
       return packages
     });
 
+    const postsModel = new cmsPosts.CmsModel();
+    const size = 3;
+    let posts = await postsModel.getListOfPosts(size);
+    posts = posts.map(posts => {
+      return {
+        slug: posts.name,
+        title: posts.title,
+        content: posts.content,
+        published: moment(posts.date).format('MMMM Do, YYYY'),
+        modified: moment(posts.modified).format('MMMM Do, YYYY'),
+        image: posts.featured_image
+      }
+    });
+
     res.render('home.html', {
       title: 'Montreal',
       collections,
       recentData: fiveRecentData,
       slug: 'collections',
+      posts,
     })
   })
 
