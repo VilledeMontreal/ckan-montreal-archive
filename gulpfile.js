@@ -6,6 +6,9 @@ const concat = require('gulp-concat');
 const nodemon = require('gulp-nodemon');
 const autoprefixer = require('autoprefixer');
 const tailwindcss = require('tailwindcss');
+const iconfont = require('gulp-iconfont');
+const iconfontCss = require('gulp-iconfont-css');
+const runTimestamp = Math.round(Date.now()/1000);
 
 // CSS
 gulp.task('css', function () {
@@ -86,3 +89,24 @@ gulp.task('watch', gulp.parallel('watch:css', 'watch:icons', 'watch:js'));
 
 // deafult task (this task is not completing..)
 gulp.task('default', gulp.parallel('watch', 'server'));
+
+// svg to font-icon generator from src directory
+var fontName = 'icons'; 
+
+gulp.task('iconfont', function(){
+  return gulp.src(['./src/icons/**/*.svg']) // Source folder containing the SVG images
+    .pipe(iconfontCss({
+      fontName: fontName, // The name that the generated font will have
+      path: './public/font-icon/template/_icons.css', // The path to the template that will be used to create the SASS/LESS/CSS file
+      targetPath: '../_icons.css', // The path where the file will be generated
+      fontPath: './fonts/' // The path to the icon font file
+    }))
+    .pipe(iconfont({
+      prependUnicode: false, // Recommended option 
+      fontName: fontName, // Name of the font
+      formats: ['ttf', 'eot', 'woff'], // The font file formats that will be created
+      normalize: true,
+      timestamp: runTimestamp // Recommended to get consistent builds when watching files
+    }))
+    .pipe(gulp.dest('./public/font-icon/fonts'));
+});
