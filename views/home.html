@@ -66,7 +66,7 @@
                         </h3>
                         <time class="article-preview_date">{{ post.published }}</time>
                         <p class="p-4">
-                            {{ post.content|truncate(200) }}
+                            {{ post.content|truncate(200)|safe }}
                         </p>
                     </div>
                 </article>
