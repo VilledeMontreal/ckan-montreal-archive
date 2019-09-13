@@ -47,32 +47,29 @@
     <!-- resources table -->
     <h3 class="text-3xl font-semibold mt-gutter mb-4">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
       <div>
-        <table class="table info no-left-padding my-4 text-left">
+        <table class="table info no-left-padding my-4 text-left w-full">
           <thead>
             <tr>
-              <th class="col-xs-1 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Name')}}</th>
-              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Format')}}</th>
-              <th class="col-xs-1  pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Size')}}</th>
-              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Last Changed')}}</th>
-              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Info & Preview')}}</th>
-              <th class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{__('Download')}}</th>
+              <th class="col-xs-1 bg-gray-lighter font-sans font-normal  capitalize text-sm text-gray-900">{{__('Name')}}</th>
+              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Format')}}</th>
+              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Size')}}</th>
+              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Last Changed')}}</th>
+              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Info & Preview')}}</th>
+              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Download')}}</th>
             </tr>
           </thead>
           <tbody>
+          {% set cls = cycler("bg-gray-100", "bg-white") %}
           {% for resource in dataset.resources %}	
-            <tr>
-              <td class="col-xs-1 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey"><a href="#{{ resource.name }}">{{ resource.title or resource.name }}</a></td>
-              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">
-                {{ resource.format }}
-              </td>
-              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{ resource.size or '--' }}</td>
-              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">{{ resource.last_modified | formatDateFromNow }}</td>
-              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey"><a href="#{{resource.name}}"><i class="preview">Preview</i></a></td>
-              <td class="col-xs-1 pl-2 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey">
-                <a href="{{ resource.path }}" title="Download file" target="_blank">
-                    Download file
-                </a>
-                <i class="fas fa-external-link-square-alt"></i> 
+            <tr class="{{ cls.next() }}">
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ resource.name }}">{{ resource.title or resource.name }}</a></td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ resource.format }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.size or '--' }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.last_modified | formatDateFromNow }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{resource.name}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
+                <a href="{{ resource.path }}" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
+                
               </td>
             </tr>
           {% endfor %}
