@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/2.chunk.css">
 <!-- End Data Explorer CSS -->
 
-<div class="container mx-auto p-gutter">
+<div class="container mx-auto p-gutter"> 
   <!-- info -->
   <div class>
     <h1 class="text-4xl font-semibold text-gray-900">
@@ -93,13 +93,26 @@
     <!-- territoire section -->
     {% if dataset.territoire %}
     <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Territories')}}</h2>
+      <h2 class="text-3xl font-semibold mt-gutter text-gray-900 mb-2">{{__('Territories')}}</h2>
       {% for t in dataset.territoire %}
-        <span class="px-3 py-1 text-primary border border-double border-sarcelle-surprise">{{t | safe}}</span>
+        <p class="px-3 py-1">{{t | safe}}</p>
       {% endfor %}
     </div>
     {% endif %}
-    <!-- end methodologie section -->
+    <!-- end Territories section -->
+
+       <!-- Keywords section -->
+    {% if dataset.keywords %}
+    <div class="container">
+      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
+      <div class="flex flex-wrap ">
+      {% for t in dataset.keywords %}
+        <p class="px-4 py-3 text-primary font-medium border-2 rounded-full border-sarcelle-surprise ml-3 mb-3">{{t | safe}}</p>
+      {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    <!-- end Keywords section -->
 
     <!-- Additional Info section -->
     <div class="container">
