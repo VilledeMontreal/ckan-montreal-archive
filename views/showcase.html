@@ -68,7 +68,7 @@
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.last_modified | formatDateFromNow }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{resource.name}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
-                <a href="{{ resource.path }}" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
+                <a href="{{ resource.downloadPath}}" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
                 
               </td>
             </tr>
@@ -142,7 +142,7 @@
       
         <!-- Download Button -->
         <nav class="my-4">
-          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.path }}">
+          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}">
             <dl class="data-file-type_inner">
               <dt class="data-file-type_term ">
                 {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
