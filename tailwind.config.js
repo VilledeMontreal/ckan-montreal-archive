@@ -45,7 +45,8 @@ module.exports = {
             danger: '#ff3200'
         },
         fontFamily: {
-            'sans': ['Nunito Sans', 'sans-serif']
+            'sans': ['Nunito Sans', 'sans-serif'],
+            'open-sans': ['Open Sans', 'sans-serif']
         },
         minHeight: {
             '0': '0',

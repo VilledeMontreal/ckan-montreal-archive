@@ -60,11 +60,11 @@
                     <a class="article-preview_image" href="/news/{{ post.slug }}">
                         <img class="article-preview_img"
                              src="{{ post.image if post.image else 'http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg' }}"/></a>
-                    <div class="bg-gray-400 p-2">
-                        <h3 class="text-3xl">
+                    <div class="bg-gray-sky p-2">
+                        <h3 class="text-xl text-gray-900 font-open-sans font-bold">
                             <a href="/news/{{ post.slug }}">{{ post.title }}</a>
                         </h3>
-                        <time class="article-preview_date">{{ post.published }}</time>
+                        <time class="article-preview_date text-gray-ink text-sm">{{ post.published }}</time>
                         <p class="p-4">
                             {{ post.content|truncate(200)|safe }}
                         </p>
@@ -72,7 +72,7 @@
                 </article>
                 {% endfor %}
             </div>
-            <a href="/news" class="float-right mr-8 mb-4 bg-transparent hover:bg-secondary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+            <a href="/news" class="float-right mr-8 mb-4 bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
                 {{__('Toutes les actualités')}}
             </a>
             <!-- article-preview end -->
