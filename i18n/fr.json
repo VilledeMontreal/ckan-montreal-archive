@@ -736,6 +736,7 @@
 	"API Endpoint": "Point d'accès API",
 	"Go to resource": "Aller à la ressource",
 	"Download": "Télécharger",
+	"Info & Preview": "Info et aperçu",
 	"URL:": "URL:",
 	"From the dataset abstract": "Issu de l'abstract du jeu de données",
 	"Source: <a href=\"%(url)s\">%(dataset)s</a>": "Source: <a href=\"{url}\">{dataset}</a>",
