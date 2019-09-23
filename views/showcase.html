@@ -25,8 +25,7 @@
       <!--  @@TODO put this back when avatar works
         <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
       -->
-        <img src="/static/img/logo.svg" class="m-1 h-8" />
-        <a class="px-4 text-primary text-xl font-semibold mt-2 text-gray-900" href="/{{ owner.name }}">{{ owner.title }}</a>
+      <a class="text-primary text-xl font-semibold mt-2 text-gray-900" href="/{{ owner.name }}">{{ owner.title }}</a>
       </div>
     </div>
     <!-- end owner -->
@@ -107,7 +106,7 @@
       <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
       <div class="flex flex-wrap ">
       {% for t in dataset.keywords %}
-        <p class="px-4 py-3 text-primary font-medium border-2 rounded-full border-sarcelle-surprise ml-3 mb-3">{{t | safe}}</p>
+        <p class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</p>
       {% endfor %}
       </div>
     </div>
@@ -118,7 +117,7 @@
     <div class="container">
       <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
       <p class="font-semibold">{{__('Publisher')}}</p>
-      <p>{{ dataset.author or '--'}}</p>
+      {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
       <p class="font-semibold">{{__('Update frequency')}}</p>
       <p>{{ dataset.update_frequency or '--'}}
       <p class="font-semibold">{{__('Language')}}</p>
