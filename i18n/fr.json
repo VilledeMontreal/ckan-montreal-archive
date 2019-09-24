@@ -1007,5 +1007,7 @@
 	"Update frequency": "Fréquence de mise à jour",
 	"Geographic area": "Couverture géographique",
 	"Methodology": "Méthodologie",
-	"Keywords": "Mots-clés"
+	"Keywords": "Mots-clés",
+	"<": "<",
+	">": ">"
 }

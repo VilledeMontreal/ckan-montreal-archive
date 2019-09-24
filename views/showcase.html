@@ -179,7 +179,9 @@
         <p>
           {{ resource.description or resource.title }}
         </p>
+        {% if resource.format | lower in explorerFormats %}
         <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.dataExplorers[loop.index - 1] | safe}}'></div>
+        {% endif %}
       </li>
       <!-- data file end -->
 

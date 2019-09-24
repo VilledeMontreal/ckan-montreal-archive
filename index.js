@@ -8,7 +8,7 @@ module.exports = function (app) {
   const fetch = require('node-fetch')
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
-
+  
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
 		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
@@ -49,6 +49,8 @@ module.exports = function (app) {
       "VIM": "Ville-Marie",
       "VSE": "Villeray–Saint-Michel–Parc-Extension"
     }
+
+    res.locals.explorerFormats = ["geojson", "csv", "tsv", "xls", "xlsx", "pdf"]
 
     next();
   });
