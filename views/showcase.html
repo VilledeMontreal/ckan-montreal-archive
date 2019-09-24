@@ -44,7 +44,7 @@
     <!-- end readme section -->
 
     <!-- resources table -->
-    <h3 class="text-3xl font-semibold mt-gutter mb-4 text-gray-900">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
+    <h3 class="text-3xl font-semibold mt-gutter mb-4 text-gray-900 lowercase">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
       <div>
         <table class="table info no-left-padding my-4 text-left w-full">
           <thead>

@@ -102,7 +102,7 @@ module.exports = function (app) {
         content: posts.content,
         published: moment(posts.date).format('MMMM Do, YYYY'),
         modified: moment(posts.modified).format('MMMM Do, YYYY'),
-        image: posts.featured_image
+        image: posts.image
       }
     });
 
