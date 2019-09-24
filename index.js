@@ -26,6 +26,30 @@ module.exports = function (app) {
       return RegExp(cur).test(currentUrl)
     }, false)
 
+    res.locals.territoires = {
+      "AHU": "Ahuntsic-Cartierville",
+      "agglomeration": "Agglomération",
+      "ANJ": "Anjou",
+      "CDN": "Côte-des-Neiges–Notre-Dame-de-Grâce",
+      "LAC": "Lachine",
+      "LAS": "LaSalle",
+      "PLA": "Le Plateau-Mont-Royal",
+      "LSO": "Le Sud-Ouest",
+      "IBI": "L’Île-Bizard–Sainte-Geneviève",
+      "MHM": "Mercier–Hochelaga-Maisonneuve",
+      "montreal": "Montréal",
+      "MTN": "Montréal-Nord",
+      "OUT": "Outremont",
+      "PRF": "Pierrefonds-Roxboro",
+      "RDP": "Rivière-des-Prairies–Pointe-aux-Trembles",
+      "RPP": "Rosemont–La Petite-Patrie",
+      "VSL": "Saint-Laurent",
+      "STL": "Saint-Léonard",
+      "VER": "Verdun",
+      "VIM": "Ville-Marie",
+      "VSE": "Villeray–Saint-Michel–Parc-Extension"
+    }
+
     next();
   });
 

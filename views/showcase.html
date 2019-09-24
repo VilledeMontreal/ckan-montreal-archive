@@ -94,7 +94,7 @@
     <div class="container">
       <h2 class="text-3xl font-semibold mt-gutter text-gray-900 mb-2">{{__('Territories')}}</h2>
       {% for t in dataset.territoire %}
-        <p class="px-3 py-1">{{t | safe}}</p>
+        <p class="px-3 py-1">{{territoires[t] | safe or ''}}</p>
       {% endfor %}
     </div>
     {% endif %}
