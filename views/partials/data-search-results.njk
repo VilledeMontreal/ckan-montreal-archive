@@ -28,12 +28,17 @@
     </div>
 
     <ul class="mt-2">
+      {% set formats = [] %}
       {% for resource in package.resources %}
-      {% if resource.format %}
+       {% if resource.format  not in formats %}
+        <span hidden>{{formats.push(resource.format)}}</span>
+        {% endif %}
+      {% endfor %}
+      {% for format in formats %}
+        {%if format %}
       <li class="inline ">
-        <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ resource.format }}" class="bg-gray-600 text-lg text-white rounded-full px-3 py-1 hover:bg-primary">{{ resource.format }}</a>
-      </li>
-      {% endif %}
+        <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="bg-gray-600 text-lg text-white rounded-full px-3 py-1 hover:bg-primary">{{ format }}</a>      </li>
+        {% endif %}
       {% endfor %}
     </ul>
   </li>
