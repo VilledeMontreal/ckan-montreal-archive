@@ -1,0 +1,30 @@
+.markdown-content{
+  & h1 {
+  @apply text-3xl font-semibold text-gray-900;
+  }
+  & h2 {
+      @apply text-2xl my-1 font-semibold text-gray-900;
+  }
+
+  & h3 {
+      @apply text-xl my-1 font-semibold text-gray-900;
+  }
+
+  & h4 {
+      @apply text-lg my-1 font-semibold text-gray-900;
+  }
+  & p {
+    @apply mb-2;
+  }
+  & ol {
+    @apply mt-1 ml-2 list-disc;
+  }
+  & ul{
+    @apply mt-1 ml-2;
+  }
+  & code{
+      font-family: "Nunito Sans",sans-serif;
+      @apply font-semibold text-gray-900 text-base;
+  }
+
+}

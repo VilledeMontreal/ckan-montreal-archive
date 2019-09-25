@@ -37,7 +37,7 @@
     </div>
       {% elif dataset.description %}
         <div class="">
-          <div class="leading-relaxed">{{dataset.description|processMarkdown|safe}}</div>
+          <div class="markdown-content leading-relaxed">{{dataset.description|processMarkdown|safe}}</div>
         </div>
       {% endif %}<!-- end of readme section -->
     </div>
@@ -81,7 +81,7 @@
     {% if dataset.methodologie  %}
     <div class="container">
       <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Methodology')}}</h2>
-      <div class="leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
+      <div class="markdown-content leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
     </div>
     {% endif %}
     <!-- end methodologie section -->
