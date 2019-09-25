@@ -64,7 +64,7 @@
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ resource.name }}">{{ resource.title or resource.name }}</a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ resource.format }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.size or '--' }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.last_modified | formatDateFromNow }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(resource.last_modified | formatDateFromNow) }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{resource.name}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
                 <a href="{{ resource.downloadPath}}" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
