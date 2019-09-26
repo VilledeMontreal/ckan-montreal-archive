@@ -1,0 +1,61 @@
+.data-explorer{
+  & div:first-child {
+    @apply m-0
+  }
+}
+.dx-share-container{
+  & .m-4{
+    @apply my-0 ml-0 mr-2; 
+  }
+  @apply flex;
+  & input{
+    @apply hidden;
+  }
+  & a{
+    @apply bg-primary px-2 py-1 text-white text-sm;
+    &:hover{
+      @apply bg-gray-700;
+    }
+    & i{
+      @apply font-semibold not-italic ;
+    }
+  }
+}
+
+.dq-rule-container{
+  & .dq-rule-add{ 
+    @apply bg-primary py-1 px-2 text-white font-semibold text-sm mb-2;
+    &:hover{
+      @apply bg-gray-700;
+    }
+  }
+  & .dq-rule-submit{
+    & button{
+      @apply bg-primary py-1 px-2 text-white font-semibold text-sm outline-none;
+      &:hover{
+        @apply bg-gray-700;
+      }
+    }
+  }
+  & .dq-rule-item{
+    @apply mb-2;
+    & select{
+      @apply bg-gray-100 mr-2 text-sm h-6;
+    }
+    & input{
+      @apply bg-gray-100 mr-2 rounded-lg text-sm h-6 outline-none px-1; 
+    }
+    & .dq-btn-add{
+        @apply bg-primary py-1 px-2 text-white font-semibold text-sm outline-none;
+        &:hover{
+          @apply bg-gray-700;
+        }
+    }
+    & .dq-btn-remove{
+        @apply bg-primary py-1 px-2 text-white font-semibold text-sm outline-none mr-2;
+        &:hover{
+          @apply bg-gray-700;
+        }
+    }
+  }  
+}

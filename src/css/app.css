@@ -22,6 +22,7 @@
 @import "components/resource-preview";
 @import "components/tabs";
 @import "components/secondary-nav";
+@import "components/data-explorer";
 @import "tailwindcss/utilities";
 
 /* code highlighting */
