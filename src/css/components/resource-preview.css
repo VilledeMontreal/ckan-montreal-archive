@@ -3,8 +3,14 @@
 .handsontable { /* seems to need a fixed height, as defined in https://datahub.io/static/sass/_dataset.scss */
   height: 66vh;
   overflow: auto;
-}
+  @apply text-sm;
 
+  & td {
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+}
 .datahub-meta {
   display: none;
 }
