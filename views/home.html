@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} Bienvenue! | Welcome! {% endblock %}
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
-<section class=" bg-center bg-no-repeat -mt-5 " style="background-image: url(/static/img/hero-banner.png) ">
+<section class=" bg-center bg-no-repeat -mt-5 " style="background-image: url(/static/img/bandeaugris.png) ">
     <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-24 ">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Montréal Open Data')}}</h1>
         <form action="/search" method="GET" id="search-form">
@@ -27,7 +27,7 @@
     <section data-title="main-container" class="  w-full  md:w-2/3">
         <div data-title="our-data"><h2 class="text-3xl mt-2 ">{{__('Our data')}}</h2>
             <p class="font-black">{{__('Un capital numérique générateur d’innovation')}}</p>
-            <p>{{__('Un capital numérique générateur d’innovation En ouvrant ses données à tous, la Ville de
+            <p>{{__('En ouvrant ses données à tous, la Ville de
                 Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales.
                 Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui
                 crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices
@@ -42,8 +42,8 @@
                     <div class="bg-gray-300 home_grid">
                         <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
                             <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
-                            <img class="mx-auto home-icon " src="{{ collection.image }}" height="80px"
-                                 width="80px"/>
+                            <img class="mx-auto home-icon " src="{{ collection.image }}" height="130px"
+                                 width="130px"/>
                         </a>
                     </div>
                 </li>
@@ -87,8 +87,8 @@
             <h3 class="text-3xl my-4">{{__('Follow us')}}</h3>
             <div class="flex mb-6">
                 <a href="https://twitter.com/MTL_DO"><img class="h-12 mr-4" src="static/img/twitter.svg" alt="twitter"/></a>
-                <a href="#"><img class="h-12 mr-4" src="static/img/rss.png" alt="rss"/></a>
-                <a href="/news/subscription"><img class="h-12 mr-4" src="static/img/email.png" alt="email"/></a>
+                <a href="https://montreal.l3.ckan.io/api/3/action/recently_changed_packages_activity_list"><img class="h-12 mr-4" src="static/img/rss.png" alt="rss"/></a>
+                <a href="https://montreal.l3.ckan.io/pages/infolettre"><img class="h-12 mr-4" src="static/img/email.png" alt="email"/></a>
             </div>
             <div class="border-solid border-2 border-black mt-4"></div>
         </div>
