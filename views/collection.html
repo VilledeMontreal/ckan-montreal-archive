@@ -16,10 +16,10 @@
         <a class="breadcrumb_link" href="/">{{__('Home')}}</a>
       </li>
       <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/collections">{{__('Collections')}}</a>
+        <a class="breadcrumb_link" href="/collections">{{__('Dataset Collections')}}</a>
       </li>
       <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/collections/{{ item.name }}" aria-current="page">{{ item.name }}</a>
+        <a class="breadcrumb_link" href="/collections/{{ item.name }}" aria-current="page">{{ item.title }}</a>
       </li>
     </ol>
   </nav>
@@ -29,7 +29,7 @@
   <div class="md:w-1/3 md:mr-gutter">
 
     <div class="mb-gutter md:mr-10 md:pb-2">
-      <div class="w-24 h-24 bg-primary p-4 mb-4 flex justify-center">
+      <div class="w-24 h-24 bg-gray-300 p-4 mb-4 flex justify-center">
         <img src="{{ item.image }}" />
       </div>
       <h2 class="text-primary text-xl font-semibold">{{ item.title }}</h2>

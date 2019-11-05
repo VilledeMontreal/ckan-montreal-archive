@@ -13,13 +13,18 @@
 
     <div>
       <label for="field-order-by">{{__('Order by')}}:</label>
-      <select class="bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
-        <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
-        <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
-        <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
-        <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
-        <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
-      </select>
+      <div class="relative">
+        <select class="bg-white block appearance-none w-full border-2 border-solid border-gray-200 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
+          <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
+          <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
+          <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
+          <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
+          <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center py-3 px-4">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
     </div>
   </div>
 
