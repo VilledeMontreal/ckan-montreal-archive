@@ -177,7 +177,11 @@
         </nav>
         <!-- Download Button End -->
         <p>
-          {{ resource.description or resource.title | processMarkdown | safe }}
+          {% if resource.description %}
+            {{ resource.description | processMarkdown | safe }}
+          {% else %}
+            {{ resource.title | safe }}
+          {% endif %}
         </p>
         {% if resource.format | lower in explorerFormats %}
         <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.dataExplorers[loop.index - 1] | safe}}'></div>
