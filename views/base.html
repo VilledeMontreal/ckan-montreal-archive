@@ -14,6 +14,22 @@
   {% if dataset %}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
   {% endif %}
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script id="ga-gtag" async></script>
+
+  <script>
+    document.getElementById("ga-gtag").src = "https://www.googletagmanager.com/gtag/js?id={{ $GA_ID }}";
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ $GA_ID }}', {
+      'custom_map': {
+        'dimension1': 'downloaded data type',
+        'dimension2': 'downloaded data format'
+      }
+    });
+  </script>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
 <!-- Page header -->
