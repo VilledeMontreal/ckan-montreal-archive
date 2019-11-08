@@ -141,7 +141,7 @@
       
         <!-- Download Button -->
         <nav class="my-4">
-          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}">
+          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')">
             <dl class="data-file-type_inner">
               <dt class="data-file-type_term ">
                 {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
