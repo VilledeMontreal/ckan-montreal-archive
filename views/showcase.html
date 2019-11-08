@@ -67,7 +67,7 @@
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(resource.last_modified | formatDateFromNow) }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{resource.name}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
-                <a href="{{ resource.downloadPath}}" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
+                <a href="{{ resource.downloadPath}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
                 
               </td>
             </tr>
@@ -141,7 +141,7 @@
       
         <!-- Download Button -->
         <nav class="my-4">
-          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}">
+          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')">
             <dl class="data-file-type_inner">
               <dt class="data-file-type_term ">
                 {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
@@ -322,6 +322,15 @@
     val.select()
     val.setSelectionRange(0, 99999)
     document.execCommand("copy")
+  }
+
+  function sendGAEvent(datasetName, resourceName, resourceFormat) {
+    gtag('event', "download", {
+      'event_category': datasetName,
+      'event_label': resourceName,
+      'value':resourceFormat,
+      'non_interaction': true
+    });
   }
 </script>
 <script type="text/javascript" src="/static/js/runtime~main.js"></script>
