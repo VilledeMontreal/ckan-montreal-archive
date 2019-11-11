@@ -8,8 +8,8 @@
 
 {% block content %}
 <!-- Data Explorer CSS -->
-<link rel="stylesheet" type="text/css" href="/static/css/main.chunk.css">
-<link rel="stylesheet" type="text/css" href="/static/css/2.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.chunk.css">
 <!-- End Data Explorer CSS -->
 
 <div class="container mx-auto p-gutter"> 
@@ -37,7 +37,7 @@
     </div>
       {% elif dataset.description %}
         <div class="">
-          <div class="markdown-content leading-relaxed">{{dataset.description|processMarkdown|safe}}</div>
+          <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
         </div>
       {% endif %}<!-- end of readme section -->
     </div>
@@ -59,16 +59,15 @@
           </thead>
           <tbody>
           {% set cls = cycler("bg-gray-100", "bg-white") %}
-          {% for resource in dataset.resources %}	
+          {% for item in dataset.displayResources %}
             <tr class="{{ cls.next() }}">
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ resource.name }}">{{ resource.title or resource.name }}</a></td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ resource.format }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ resource.size or '--' }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(resource.last_modified | formatDateFromNow) }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{resource.name}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
-                <a href="{{ resource.downloadPath}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
-                
+                <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
               </td>
             </tr>
           {% endfor %}
@@ -76,7 +75,7 @@
         </table>
       </div>
       <!-- end resources table -->
-    
+
     <!-- methodologie section -->
     {% if dataset.methodologie  %}
     <div class="container">
@@ -88,7 +87,7 @@
 
     </div>
     <!-- end methodologie section -->
-    
+
     <!-- territoire section -->
     {% if dataset.territoire %}
     <div class="container">
@@ -132,177 +131,7 @@
     <!-- end Additional Info section -->
 
     <!-- data files (downloads) -->
-    <ul>
-      {% for resource in dataset.resources %}
-      <li class="mb-6">
-        <h3 class="text-3xl mt-gutter mb-2 font-semibold text-gray-900" id="{{resource.name}}">
-          <a href="#resource-{{resource.title or resource.name}}">{{resource.title or resource.name}}</a>
-        </h3>
-      
-        <!-- Download Button -->
-        <nav class="my-4">
-          <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ resource.downloadPath}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ resource.name }}', '{{ resource.format }}')">
-            <dl class="data-file-type_inner">
-              <dt class="data-file-type_term ">
-                {{__('Download')}} {% if resource.format %}({{ resource.format }}){% endif %}
-              </dt>
-              {% if resource.size %}
-              <dd class="data-file-type_size">
-                [{{resource.size}}]
-              </dd>
-              {% endif %}
-            </dl>
-          </a>
-          {% if resource.datastore_active %}
-          <a class="data-file-type bg-primary hover:bg-gray-700 cursor-pointer" onclick="toggleApi({{ loop.index }})">
-            <dl class="data-file-type_inner">
-              <dt class="data-file-type_term ">
-                {{__('API')}}
-              </dt>
-            </dl>
-          </a>
-          {% endif %}
-          {% for alt in resource.otherFormats %}
-          <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
-            <dl class="data-file-type_inner">
-              <dt class="data-file-type_term">
-                {{alt.format}}
-              </dt>
-              <dd class="data-file-type_size">
-                {{alt.prettyBytes}}
-              </dd>
-            </dl>
-          </a>
-          {% endfor %}
-        </nav>
-        <!-- Download Button End -->
-        <p>
-          {% if resource.description %}
-            {{ resource.description | processMarkdown | safe }}
-          {% else %}
-            {{ resource.title | safe }}
-          {% endif %}
-        </p>
-        {% if resource.format | lower in explorerFormats %}
-        <div class="data-explorer" id="data-explorer-{{ loop.index - 1 }}" data-datapackage='{{ dataset.dataExplorers[loop.index - 1] | safe}}'></div>
-        {% endif %}
-      </li>
-      <!-- data file end -->
-
-      <!-- Data API modal -->
-      {% if resource.datastore_active %}
-      <div id="data-api-info-{{ loop.index }}" style="display:none">
-        <div style="z-index: 1000000" class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-64 w-5/6 border-solid border-2 p-8">
-          <div class="modal-dialog max-w-full" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button class="close btn btn-primary relative l-0 t-0 m-2 p-2 bg-primary text-white font-extrabold" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">X</button>
-                <h3 class="modal-title text-3xl">
-                  CKAN Data API
-                </h3>
-              </div>
-              <div class="modal-body">
-              <p><strong>Access resource data via a web API with powerful query support</strong>.
-                 Further information in the <a href="http://docs.ckan.org/en/latest/maintaining/datastore.html" target="_blank">main CKAN Data API and DataStore documentation</a>.</p>
-              <div class="accordion" id="accordion2">
-                <div class="panel panel-default">
-                  <div class="panel-heading bg-primary p-2">
-
-                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints</p>
-                  </div>
-                  <div id="collapse-endpoints" class="in panel-collapse collapse">
-                    <div class="panel-body m-4">
-                      <p>The Data API can be accessed via the following actions of the CKAN action API.</p>
-                      <div class="table-responsive">
-                        <table class="table-condensed table-striped table-bordered">
-                          <thead></thead>
-                          <tbody>
-
-                          <tr>
-                            <th scope="row">Query</th>
-                            <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search</code></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Query (via SQL)</th>
-                            <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search_sql</code></td>
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel panel-default">
-                  <div class="panel-heading bg-primary p-2">
-                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying</p>
-                  </div>
-                  <div id="collapse-querying" class="collapse panel-collapse in">
-                    <div class="panel-body m-4">
-                      <strong>Query example (first 5 results)</strong>
-                      <p>
-                        <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5</a></code>
-                      </p>
-
-                      <strong>Query example (via SQL statement)</strong>
-                      <p>
-                        <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{resource.id}}&quot; LIMIT 5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from "{{resource.id}}" LIMIT 5</a></code>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel panel-default">
-                  <div class="panel-heading bg-primary p-2">
-                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript</p>
-                  </div>
-                  <div id="collapse-javascript" class="panel-collapse collapse">
-                    <div class="panel-body m-4">
-                      <p>A simple ajax (JSONP) request to the data API using jQuery.</p>
-                      <pre>  
-                        var data = {
-                          resource_id: '{{resource.id}}', // the resource id
-                          limit: 5 // get 5 results
-                        };
-                        $.ajax({
-                          url: 'https://montreal.l3.ckan.io/api/3/action/datastore_search',
-                          data: data,
-                          dataType: 'jsonp',
-                          success: function(data) {
-                            alert('Total results found: ' + data.result.total)
-                          }
-                        });
-                      </pre>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel panel-default">
-                  <div class="panel-heading br-primary">
-                    <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python</p>
-                  </div>
-                  <div id="collapse-python" class="panel-collapse collapse">
-                    <div class="panel-body m-4">
-                    <pre>
-                      import urllib2
-                      url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{resource.id}}&amp;limit=5'
-                      fileobj = urllib2.urlopen(url)
-                      print fileobj.read()
-                    </pre>
-                    </div>
-                    <div class="panel-footer"><strong>NOTE: This snippet only works with python 2.</strong></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-    <!-- End of Data API modal -->
-    {% endif %} <!-- if datastore active -->
-  {% endfor %} <!-- for resource in dataset.resources -->
-  </ul>
+    {% include "./partials/resource-display.njk" %}
   <!-- info end -->
 </div>
 
@@ -333,8 +162,8 @@
     });
   }
 </script>
-<script type="text/javascript" src="/static/js/runtime~main.js"></script>
-<script type="text/javascript" src="/static/js/2.chunk.js"></script>
-<script type="text/javascript" src="/static/js/main.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/runtime~main.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/2.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/main.chunk.js"></script>
 
 {% endblock %}
