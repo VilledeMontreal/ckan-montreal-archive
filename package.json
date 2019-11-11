@@ -1,5 +1,5 @@
 {
-  "name": "ckan_ng_montreal_theme",
+  "name": "@datopian/ckan-montreal",
   "version": "1.0.6",
   "description": "Public theme for City of Montreal Data Portal on CKAN NG",
   "main": "index.js",
