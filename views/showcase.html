@@ -13,22 +13,15 @@
 <!-- End Data Explorer CSS -->
 
 <div class="container mx-auto p-gutter"> 
+  <div class="pb-4"> 
+    <a href="./collections/{{ dataset.groups[0].display_name}}" class="text-sarcelle-surprise font-bold">{{ dataset.groups[0].display_name}}</a>
+  </div>
+
   <!-- info -->
   <div class>
     <h1 class="text-4xl font-semibold text-gray-900">
       {{ dataset.title or dataset.name }}
     </h1>
-    
-    <!-- owner -->
-    <div>
-      <div class="flex">
-      <!--  @@TODO put this back when avatar works
-        <img src="{{ owner.avatar or '/static/img/org.svg'}}" class="m-4 h-24" />
-      -->
-      <a class="text-primary text-xl font-semibold mt-2 text-gray-900" href="/{{ owner.name }}">{{ owner.title }}</a>
-      </div>
-    </div>
-    <!-- end owner -->
 
     <!-- readme section -->
     <div class="container mt-gutter">
@@ -44,7 +37,6 @@
     <!-- end readme section -->
 
     <!-- resources table -->
-    <h3 class="text-3xl font-semibold mt-gutter mb-4 text-gray-900 lowercase">{{ dataset.resources | length }} {% if dataset.resources | length > 1 %}{{__('data files')}} {% else %} {{__('data file')}} {% endif %}</h2>
       <div>
         <table class="table info no-left-padding my-4 text-left w-full">
           <thead>
