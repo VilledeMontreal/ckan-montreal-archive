@@ -124,9 +124,9 @@
       <p class="font-semibold">{{__('Geographic area')}}</p>
       <p>{{ dataset.ext_spatial or '--'}}</p>
       <p class="font-semibold">{{__('Last updated')}}</p>
-      <p>{{ dataset.metadata_updated | formatDateFromNow }}</p>
+      <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
       <p class="font-semibold">{{__('Created')}}</p>
-      <p>{{ dataset.metadata_created | formatDate }}</p>
+      <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
       <p>{{ dataset.license_url }}</p>
     <!-- end Additional Info section -->
 

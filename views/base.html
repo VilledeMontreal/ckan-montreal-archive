@@ -233,6 +233,16 @@
   function openNav() {
     document.getElementById('mySidenav').style.width = '250px';
   }
+  
+if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
+ var dateArray = document.querySelectorAll("#date")
+    for(var i = 0; i < dateArray.length; i++) {
+    var event = new Date(Date.parse(dateArray[i].innerHTML));
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    event.toLocaleDateString('fr-FR', options)
+    dateArray[i].innerHTML = event.toLocaleDateString('fr-FR', options)
+    }
+}    
 </script>
 
 {% block scripts %}
