@@ -126,8 +126,8 @@ module.exports = function (app) {
         slug: posts.name,
         title: posts.title,
         content: posts.content,
-        published: moment(posts.date).format('MMMM Do, YYYY'),
-        modified: moment(posts.modified).format('MMMM Do, YYYY'),
+        published: moment(posts.date).format('MMMM DD, YYYY'),
+        modified: moment(posts.modified).format('MMMM DD, YYYY'),
         image: posts.image
       }
     });
