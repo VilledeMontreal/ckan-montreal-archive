@@ -8,7 +8,8 @@ module.exports = function (app) {
   const fetch = require('node-fetch')
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
-  
+  const configApiUrl = config.get("API_URL")
+
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
 		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
@@ -158,4 +159,71 @@ module.exports = function (app) {
       recentData: fiveRecentData,
     });
   });
+
+  app.get('/applications', async (req, res, next) => {
+    try {
+      const apiUrl = configApiUrl + 'ckanext_showcase_list'
+  
+      let response = await fetch(apiUrl)
+      if (response.status !== 200) {
+        throw response
+      }
+  
+      let showcases = await response.json()
+  
+      return res.render('application-showcases.html', {
+        title: 'Applications',
+        description: 'Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset.',
+        slug: 'Applications',
+        showcases: showcases.result
+      })
+    } catch(e) {
+      next(e)
+     }
+  })
+  
+  app.get('/applications/single/:showcaseId', async (req, res, next) => {
+    try {
+      const id = req.params.showcaseId
+      const apiUrl = configApiUrl + 'ckanext_showcase_show'
+  
+      // retrieving showcase
+      let showcaseResponse = await fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify({
+          id: id
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+  
+      if (showcaseResponse.status !== 200) {
+        throw showcaseResponse
+      }
+  
+      let showcase = await showcaseResponse.json()
+  
+      // retrieving datasets
+      let datasetsResponse = await fetch(configApiUrl + 'ckanext_showcase_package_list', {
+        method: 'POST',
+        body: JSON.stringify({
+          showcase_id: id
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+  
+      if (datasetsResponse.status !== 200) {
+        throw datasetsResponse
+      }
+  
+      let datasets = await datasetsResponse.json()
+  
+      return res.render('application-showcase.html', {
+        title: 'Applications',
+        showcase: showcase.result,
+        datasets: datasets.result
+      })
+    } catch(e) {
+      next(e)
+    }
+  })
 }
