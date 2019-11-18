@@ -12,7 +12,8 @@ module.exports = function (app) {
 	// set a cookie with default locale = fr
 	app.use(function (req, res, next) {
 		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
-		if (locale) res.setLocale(locale)
+    if (locale) res.setLocale(locale)
+    moment.locale(locale)
     next()
 	})
  
