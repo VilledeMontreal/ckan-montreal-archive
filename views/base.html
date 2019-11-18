@@ -235,13 +235,6 @@
   }
   
 if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
- var dateArray = document.querySelectorAll("#date")
-  for(var i = 0; i < dateArray.length; i++) {
-  var event = new Date(Date.parse(dateArray[i].innerHTML));
-  var options = { year: 'numeric', month: 'long', day: 'numeric' };
-  event.toLocaleDateString('fr-FR', options)
-  dateArray[i].innerHTML = event.toLocaleDateString('fr-FR', options)
-  }
   let dashElement= document.querySelectorAll("#montreal-dash > div > div.flex.flex-wrap.m-6 > div > div.mx-24.text-right > p > a")
   if (typeof(dashElement) != 'undefined' && dashElement != null){
     dashTranslation = {
