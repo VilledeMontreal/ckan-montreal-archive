@@ -173,7 +173,7 @@
         <div class="dropdown float-right ">
           <button id="lang" data-language="en" data-language-name="English" onclick="languageSwitcher(this)"
             class="cursor-pointer bg-gray-900  text-white border-2 font-semibold z-20 py-2 px-6 relative rounded-full inline-flex items-center hover:bg-white hover:text-gray-900" style="outline:none;">
-            Français
+            English
           </button>
         </div>
       </div>
@@ -236,12 +236,20 @@
   
 if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
  var dateArray = document.querySelectorAll("#date")
-    for(var i = 0; i < dateArray.length; i++) {
-    var event = new Date(Date.parse(dateArray[i].innerHTML));
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    event.toLocaleDateString('fr-FR', options)
-    dateArray[i].innerHTML = event.toLocaleDateString('fr-FR', options)
+  for(var i = 0; i < dateArray.length; i++) {
+  var event = new Date(Date.parse(dateArray[i].innerHTML));
+  var options = { year: 'numeric', month: 'long', day: 'numeric' };
+  event.toLocaleDateString('fr-FR', options)
+  dateArray[i].innerHTML = event.toLocaleDateString('fr-FR', options)
+  }
+  let dashElement= document.querySelectorAll("#montreal-dash > div > div.flex.flex-wrap.m-6 > div > div.mx-24.text-right > p > a")
+  if (typeof(dashElement) != 'undefined' && dashElement != null){
+    dashTranslation = {
+    "Download raw data": "Télécharger les données",
+    "Data source": "Source des données"
     }
+    dashElement.forEach(link => { link.innerHTML = dashTranslation[link.innerHTML] }) 
+  }
 }    
 </script>
 
