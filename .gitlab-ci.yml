@@ -9,7 +9,7 @@ Test:
   before_script:
     - apk add --no-cache git
     - npm install -g yarn nyc ava
-    - git clone --single-branch --branch showcase/controller-refactoring https://github.com/datopian/frontend-v2.git /opt/frontend-v2
+    - git clone https://github.com/datopian/frontend-v2.git /opt/frontend-v2
     - cp -r . /opt/frontend-v2/themes/ckan-montreal
     - cp /opt/frontend-v2/themes/ckan-montreal/.staging.env /opt/frontend-v2/.env
     - cd /opt/frontend-v2
