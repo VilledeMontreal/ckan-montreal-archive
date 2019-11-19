@@ -171,7 +171,7 @@ module.exports = function (app) {
   
       let showcases = await response.json()
   
-      return res.render('application-showcases.html', {
+        res.render('application-showcases.html',{
         title: 'Applications',
         description: 'Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset.',
         slug: 'Applications',
@@ -216,8 +216,7 @@ module.exports = function (app) {
       }
   
       let datasets = await datasetsResponse.json()
-  
-      return res.render('application-showcase.html', {
+        res.render('application-showcase.html', {
         title: 'Applications',
         showcase: showcase.result,
         datasets: datasets.result
