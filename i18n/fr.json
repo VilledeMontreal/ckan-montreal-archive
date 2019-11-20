@@ -1023,5 +1023,8 @@
 	"Powered by": "Propulsé par",
 	"Submitted by": "Soumis par",
 	"Launch website": "Lien",
-	"Recently added or updated datasets": "Ensembles de données récemment ajoutés ou mis à jour"
+	"Recently added or updated datasets": "Ensembles de données récemment ajoutés ou mis à jour",
+	"Recherche": "Recherche",
+	"Applications": "Applications",
+	"Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset.": "Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset."
 }
