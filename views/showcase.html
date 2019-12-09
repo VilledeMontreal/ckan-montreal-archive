@@ -12,31 +12,32 @@
 <link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.chunk.css">
 <!-- End Data Explorer CSS -->
 
-<div class="container mx-auto p-gutter"> 
-  <div class="pb-4"> 
-    <a href="./collections/{{ dataset.groups[0].display_name}}" class="text-sarcelle-surprise font-bold">{{ dataset.groups[0].display_name}}</a>
-  </div>
+<section class="container flex  m-auto flex-col md:flex-row px-8"> 
+  <div class="w-full  md:w-2/3">
+      <div class="pb-4"> 
+        <a href="./collections/{{ dataset.groups[0].display_name}}" class="text-sarcelle-surprise font-bold">{{ dataset.groups[0].display_name}}</a>
+      </div>
+      
+      <!-- info -->
+      <div>
+        <h1 class="text-4xl font-semibold text-gray-900">
+          {{ dataset.title or dataset.name }} {{name}}
+        </h1>
 
-  <!-- info -->
-  <div class>
-    <h1 class="text-4xl font-semibold text-gray-900">
-      {{ dataset.title or dataset.name }}
-    </h1>
-
-    <!-- readme section -->
-    <div class="container mt-gutter">
-      {% if dataset.readmeSnippet or dataset.readmeHtml %}
-      <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
-    </div>
-      {% elif dataset.description %}
-        <div class="">
-          <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
+        <!-- readme section -->
+        <div class="container mt-gutter">
+          {% if dataset.readmeSnippet or dataset.readmeHtml %}
+          <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
         </div>
-      {% endif %}<!-- end of readme section -->
-    </div>
-    <!-- end readme section -->
-
-    <!-- resources table -->
+          {% elif dataset.description %}
+            <div class="">
+              <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
+            </div>
+          {% endif %}<!-- end of readme section -->
+      </div>
+      <!-- end readme section -->
+      
+      <!-- resources table -->
       <div>
         <table class="table info no-left-padding my-4 text-left w-full">
           <thead>
@@ -67,65 +68,77 @@
         </table>
       </div>
       <!-- end resources table -->
-
-    <!-- methodologie section -->
-    {% if dataset.methodologie  %}
-    <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Methodology')}}</h2>
-      <div class="markdown-content leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
-    </div>
-    {% endif %}
-    <!-- end methodologie section -->
-
-    </div>
-    <!-- end methodologie section -->
-
-    <!-- territoire section -->
-    {% if dataset.territoire %}
-    <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter text-gray-900 mb-2">{{__('Territories')}}</h2>
-      {% for t in dataset.territoire %}
-        <p class="px-3 py-1">{{territoires[t] | safe or ''}}</p>
-      {% endfor %}
-    </div>
-    {% endif %}
-    <!-- end Territories section -->
-
-       <!-- Keywords section -->
-    {% if dataset.keywords %}
-    <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
-      <div class="flex flex-wrap ">
-      {% for t in dataset.keywords %}
-        <a href="/search?q=tags:{{t | safe}}" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</a>
-      {% endfor %}
+    
+      <!-- methodologie section -->
+      {% if dataset.methodologie  %}
+      <div class="container">
+        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Methodology')}}</h2>
+        <div class="markdown-content leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
+      </div>
+      {% endif %}
+      <!-- end methodologie section -->
+      
+      <!-- territoire section -->
+      {% if dataset.territoire %}
+      <div class="container">
+        <h2 class="text-3xl font-semibold mt-gutter text-gray-900 mb-2">{{__('Territories')}}</h2>
+        {% for t in dataset.territoire %}
+          <p class="px-3 py-1">{{territoires[t] | safe or ''}}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <!-- end Territories section -->
+  
+          <!-- Keywords section -->
+      {% if dataset.keywords %}
+      <div class="container">
+        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
+        <div class="flex flex-wrap ">
+        {% for t in dataset.keywords %}
+          <a href="/search?q=tags:{{t | safe}}" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</a>
+        {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <!-- end Keywords section -->
+  
+      <!-- Additional Info section -->
+      <div class="container">
+        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
+        <p class="font-semibold">{{__('Publisher')}}</p>
+        {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
+        <p class="font-semibold">{{__('Update frequency')}}</p>
+        <p>{{ dataset.update_frequency or '--'}}
+        <p class="font-semibold">{{__('Language')}}</p>
+        <p>{{ dataset.language or '--'}}</p>
+        <p class="font-semibold">{{__('Geographic area')}}</p>
+        <p>{{ dataset.ext_spatial or '--'}}</p>
+        <p class="font-semibold">{{__('Last updated')}}</p>
+        <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+        <p class="font-semibold">{{__('Created')}}</p>
+        <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
+        <p>{{ dataset.license_url }}</p>
+        <!-- end Additional Info section -->
+    
+        <!-- data files (downloads) -->
+        {% include "./partials/resource-display.njk" %}
+        <!-- info end -->
       </div>
     </div>
+  </div>
+  <div class="w-full md:w-1/4 md:ml-12">
+    <div data-title="activity-feed">
+        <div class="border-solid border-2 border-black mt-4"></div>
+      <h3 class="text-3xl my-4">{{__('Activity Feed')}}</h3>
+    </div>
+    {{ activities.feed | safe }}
+    {% if activities.limit < 31 %}
+    <ul>
+      <li><a href="?activity=31" class="text-sarcelle-surprise">{{ __('See the whole list')}}</a></li>
+    </ul>
     {% endif %}
-    <!-- end Keywords section -->
-
-    <!-- Additional Info section -->
-    <div class="container">
-      <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
-      <p class="font-semibold">{{__('Publisher')}}</p>
-      {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
-      <p class="font-semibold">{{__('Update frequency')}}</p>
-      <p>{{ dataset.update_frequency or '--'}}
-      <p class="font-semibold">{{__('Language')}}</p>
-      <p>{{ dataset.language or '--'}}</p>
-      <p class="font-semibold">{{__('Geographic area')}}</p>
-      <p>{{ dataset.ext_spatial or '--'}}</p>
-      <p class="font-semibold">{{__('Last updated')}}</p>
-      <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
-      <p class="font-semibold">{{__('Created')}}</p>
-      <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
-      <p>{{ dataset.license_url }}</p>
-    <!-- end Additional Info section -->
-
-    <!-- data files (downloads) -->
-    {% include "./partials/resource-display.njk" %}
-  <!-- info end -->
-</div>
+  </div>
+</section>  
 
 {% endblock %}
 
@@ -154,6 +167,11 @@
     });
   }
 </script>
+
+<script>
+
+</script>
+
 <script type="text/javascript" src="/static/js/dataexplorer/runtime~main.js"></script>
 <script type="text/javascript" src="/static/js/dataexplorer/2.chunk.js"></script>
 <script type="text/javascript" src="/static/js/dataexplorer/main.chunk.js"></script>

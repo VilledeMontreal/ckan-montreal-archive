@@ -28,3 +28,35 @@
   }
 
 }
+
+.activity .item{
+  margin-bottom: 20px;
+}
+.activity .item span.actor img, .activity .item .fa{
+ display: none;
+}
+
+.activity .item span.actor a{
+ pointer-events: none;
+ cursor: default;
+}
+
+.activity .item span.actor a{
+ pointer-events: none;
+ cursor: default;
+}
+
+.activity .item span.actor a{
+ pointer-events: none;
+ cursor: default;
+}
+.activity .item span:nth-child(2) a , 
+.activity .changed-resource span:nth-child(3) a,
+.activity .new-resource  span:nth-child(3) a
+{
+ color: #0cb097;
+ text-decoration: underline;
+}
+.activity .load-more a{
+ display: none
+}
