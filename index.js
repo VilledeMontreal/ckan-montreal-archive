@@ -184,15 +184,17 @@ module.exports = function (app) {
      }
   })
   app.get('/:owner/:name', async (req, res, next) => {
-    const ActivityModel = new ActivityFeed.ActivityModel();
-    let activityLimit = 5;
-    if(req.query.activity){
-      activityLimit = req.query.activity
-    }
-    let activities = await ActivityModel.getPackageActivity(req.params.name,activityLimit);
-    res.locals.activities = {
-      feed : activities,
-      limit: activityLimit
+    if(req.params.owner !== "organization" && req.params.owner !== "collections"){
+      const ActivityModel = new ActivityFeed.ActivityModel();
+      let activityLimit = 5;
+      if(req.query.activity){
+        activityLimit = req.query.activity
+      }
+      let activities = await ActivityModel.getPackageActivity(req.params.name,activityLimit);
+      res.locals.activities = {
+        feed : activities,
+        limit: activityLimit
+      }
     }
     next()
   })

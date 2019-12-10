@@ -31,6 +31,7 @@
 
 .activity .item{
   margin-bottom: 20px;
+  line-height: 1.625;
 }
 .activity .item span.actor img, .activity .item .fa{
  display: none;
@@ -54,8 +55,8 @@
 .activity .changed-resource span:nth-child(3) a,
 .activity .new-resource  span:nth-child(3) a
 {
- color: #0cb097;
- text-decoration: underline;
+ color: #097d6c;
+ text-decoration: none;
 }
 .activity .load-more a{
  display: none

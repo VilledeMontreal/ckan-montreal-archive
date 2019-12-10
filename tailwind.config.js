@@ -17,6 +17,7 @@ module.exports = {
                 lightest: '#eefaf8'
 
             },
+            zambezi : '#605f5f',
             brand: '#e00000',
             black: '#000000',
             secondary: '#EF4123',
