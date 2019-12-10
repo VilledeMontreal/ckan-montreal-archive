@@ -8,6 +8,8 @@ module.exports = function (app) {
   const fetch = require('node-fetch')
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
+  const ActivityFeed = require('./activity-api');
+
   const configApiUrl = config.get("API_URL")
 
 	// set a cookie with default locale = fr
@@ -181,6 +183,20 @@ module.exports = function (app) {
       next(e)
      }
   })
+  app.get('/:owner/:name', async (req, res, next) => {
+    const ActivityModel = new ActivityFeed.ActivityModel();
+    let activityLimit = 5;
+    if(req.query.activity){
+      activityLimit = req.query.activity
+    }
+    let activities = await ActivityModel.getPackageActivity(req.params.name,activityLimit);
+    res.locals.activities = {
+      feed : activities,
+      limit: activityLimit
+    }
+    next()
+  })
+
   
   app.get('/applications/single/:showcaseId', async (req, res, next) => {
     try {
