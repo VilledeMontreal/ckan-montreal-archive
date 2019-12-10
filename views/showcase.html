@@ -15,12 +15,12 @@
 <section class="container flex  m-auto flex-col md:flex-row px-8"> 
   <div class="w-full  md:w-2/3">
       <div class="pb-4"> 
-        <a href="./collections/{{ dataset.groups[0].display_name}}" class="text-sarcelle-surprise font-bold">{{ dataset.groups[0].display_name}}</a>
+        <a href="./collections/{{ dataset.groups[0].display_name}}" class="text-primary font-bold">{{ dataset.groups[0].display_name}}</a>
       </div>
       
       <!-- info -->
       <div>
-        <h1 class="text-4xl font-semibold text-gray-900">
+        <h1 class="text-4xl font-semibold text-zambezi">
           {{ dataset.title or dataset.name }} {{name}}
         </h1>
 
@@ -129,12 +129,12 @@
   <div class="w-full md:w-1/4 md:ml-12">
     <div data-title="activity-feed">
         <div class="border-solid border-2 border-black mt-4"></div>
-      <h3 class="text-3xl my-4">{{__('Activity Feed')}}</h3>
+      <h3 class="text-4xl font-semibold text-zambezi my-4">{{__('Activity Feed')}}</h3>
     </div>
-    {{ activities.feed | safe }}
+     {{ activities.feed | safe }}
     {% if activities.limit < 31 %}
     <ul>
-      <li><a href="?activity=31" class="text-sarcelle-surprise">{{ __('See the whole list')}}</a></li>
+      <li><a href="?activity=31" class="text-primary">{{ __('See the whole list')}}</a></li>
     </ul>
     {% endif %}
   </div>
