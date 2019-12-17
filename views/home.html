@@ -73,34 +73,6 @@
                 {{__('All news')}}
             </a>
         </div>
-        <div data-title="news" class="block">
-            <h2 class="text-4xl text-zambezi font-semibold my-6  ">{{__('News')}}</h2>
-            <div class="flex flex-wrap md:flex-no-wrap">
-                <!-- article-preview end -->
-                {% for post in posts %}
-                <article class="article-preview mb-gutter md:w-1/2 md:mr-gutter shadow">
-                    <a class="article-preview_image" href="/news/{{ post.slug }}">
-                        <img class="article-preview_img"
-                             src="{{ post.image if post.image else 'http://www.opendata.dk/sites/default/files/styles/node_banner/public/odaa/blog/img_e0051.jpg' }}"/></a>
-                    <div class="bg-gray-sky p-2">
-                        <h3 class="text-xl text-gray-900 font-open-sans font-bold">
-                            <a href="/news/{{ post.slug }}">{{ post.title }}</a>
-                        </h3>
-                        <time class="article-preview_date text-gray-ink text-sm"><span id="date">{{ post.published }}</span></time>
-                        <p class="p-4">
-                            {{ post.content|truncate(500)|safe }}
-                        </p>
-                    </div>
-                </article>
-                {% endfor %}
-            </div>
-            <a href="/news" class="float-right mr-8 mb-4 bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
-                {{__('All news')}}
-            </a>
-            <!-- article-preview end -->
-        </div>
-        <!-- Articles End -->
-
     </section>
     <!--     End Main -->
     <!--Section Sidebar-->
