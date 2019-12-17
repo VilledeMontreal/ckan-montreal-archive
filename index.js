@@ -125,11 +125,12 @@ module.exports = function (app) {
     const postsModel = new cmsPosts.CmsModel();
     const size = 3;
     let posts = await postsModel.getListOfPosts(size);
+    posts = posts.slice(0, 3)
     posts = posts.map(posts => {
       return {
         slug: posts.name,
         title: posts.title,
-        content: posts.content,
+        content: posts.content.replace(/<\/?[^>]+(>|$)/g, ""),
         published: moment(posts.date).format('MMMM DD, YYYY'),
         modified: moment(posts.modified).format('MMMM DD, YYYY'),
         image: posts.image
