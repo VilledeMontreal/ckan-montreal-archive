@@ -15,7 +15,7 @@
         <a class="breadcrumb_link" href="/news">{{__('News')}}</a>
       </li>
       <li class="breadcrumb_item">
-        <a class="breadcrumb_link" href="/news" aria-current="page">{{slug}}</a>
+        <a class="breadcrumb_link" href="/news/{{ slug }}" aria-current="page">{{ title | safe | truncate(50) }}</a>
       </li>
     </ol>
   </nav>
