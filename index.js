@@ -184,6 +184,7 @@ module.exports = function (app) {
       next(e)
      }
   })
+
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner !== "organization" && req.params.owner !== "collections"){
       const ActivityModel = new ActivityFeed.ActivityModel();
@@ -200,6 +201,21 @@ module.exports = function (app) {
     next()
   })
 
+  app.get('/:owner/:name', async (req, res, next) => {
+    if(req.params.owner === "collections"){
+      const ActivityModel = new ActivityFeed.ActivityModel();
+      let activityLimit = 5;
+      if(req.query.activity){
+        activityLimit = req.query.activity
+      }
+      let activities = await ActivityModel.getCollectionActivity(req.params.name,activityLimit);
+      res.locals.activities = {
+        feed : activities,
+        limit: activityLimit
+      }
+    }
+    next()
+  })
   
   app.get('/applications/single/:showcaseId', async (req, res, next) => {
     try {

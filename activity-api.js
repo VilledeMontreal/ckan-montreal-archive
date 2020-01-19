@@ -25,6 +25,24 @@ class ActivityModel {
      throw {statusCode: res.status, message}
    }
   }
+  
+  // returns promise
+  async getCollectionActivity(collection,limit) {
+   const url = `${this.api}group_activity_list_html?id=${collection}&limit=${limit}`
+   const res = await fetch(url)
+   if (res.ok) {
+     const activity = await res.json()
+     if (activity.result) {
+       return activity.result
+     } else {
+       throw {statusCode: 404}
+     }
+   } else {
+     const message = await res.text()
+     console.warn(message)
+     throw {statusCode: res.status, message}
+   }
+  }
 
 }
 
