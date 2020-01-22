@@ -9,8 +9,14 @@
   </div>
 
   <div class="lg:flex items-center justify-between">
-    <h1 class="text-4xl font-semibold text-primary">{{ result.count }} {{__('datasets found')}}</h1>
-
+    <h1 class="text-4xl font-semibold text-primary">
+      {{ result.count }}
+      {% if result.count == 1 %}
+        {{__('dataset found')}}
+      {% else %}  
+        {{__('datasets found')}}
+      {% endif %}
+    </h1>
     <div>
       <label for="field-order-by">{{__('Order by')}}:</label>
       <div class="relative">
