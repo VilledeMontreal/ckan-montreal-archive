@@ -1,18 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" type="img/ico" href="/static/img/favicon.ico" sizes="16x16">
-    <link rel="stylesheet" media="screen" href="/static/stylesheets/app.css">
-</head>
-<body class="not-found">
-  <div>
-    <h1>404</h1>
-    <h1>{{ message }}</h1>
-    <p>{{ comment }}</p>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="py-12 page-heading">
+</div>
+
+ <div class="md:flex min-h-screen">
+      <div class="w-full md:w-1/2 bg-white flex items-center justify-center m-auto ">
+        <div class="max-w-6/12 m-20 pb-20">
+          <div class="text-6xl display-1 font-light text-primary" style="font-size:70px">404 Error</div>
+          <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">Apologies, the page you are looking for does not exist or is temporarily unavailable.</p>
+          <a href="/" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3">Go Home</a>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
-</html>
-<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
+
+{% endblock %}
