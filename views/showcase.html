@@ -88,43 +88,7 @@
       </div>
       {% endif %}
       <!-- end Territories section -->
-  
-          <!-- Keywords section -->
-      {% if dataset.keywords %}
-      <div class="container">
-        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
-        <div class="flex flex-wrap ">
-        {% for t in dataset.keywords %}
-          <a href="/search?q=tags:{{t | safe}}" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</a>
-        {% endfor %}
-        </div>
       </div>
-      {% endif %}
-      <!-- end Keywords section -->
-  
-      <!-- Additional Info section -->
-      <div class="container">
-        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
-        <p class="font-semibold">{{__('Publisher')}}</p>
-        {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
-        <p class="font-semibold">{{__('Update frequency')}}</p>
-        <p>{{ dataset.update_frequency or '--'}}
-        <p class="font-semibold">{{__('Language')}}</p>
-        <p>{{ dataset.language or '--'}}</p>
-        <p class="font-semibold">{{__('Geographic area')}}</p>
-        <p>{{ dataset.ext_spatial or '--'}}</p>
-        <p class="font-semibold">{{__('Last updated')}}</p>
-        <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
-        <p class="font-semibold">{{__('Created')}}</p>
-        <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
-        <p>{{ dataset.license_url }}</p>
-        <!-- end Additional Info section -->
-    
-        <!-- data files (downloads) -->
-        {% include "./partials/resource-display.njk" %}
-        <!-- info end -->
-      </div>
-    </div>
   </div>
   <div class="w-full md:w-1/4 md:ml-12">
     <div data-title="activity-feed">
@@ -139,6 +103,44 @@
     {% endif %}
   </div>
 </section>  
+
+<section class="container m-auto flex-col md:flex-row px-8">
+      <!-- Keywords section -->
+  {% if dataset.keywords %}
+  <div class="container">
+    <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
+    <div class="flex flex-wrap ">
+    {% for t in dataset.keywords %}
+      <a href="/search?q=tags:{{t | safe}}" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</a>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <!-- end Keywords section -->
+
+  <!-- Additional Info section -->
+  <div class="container">
+    <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
+    <p class="font-semibold">{{__('Publisher')}}</p>
+    {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
+    <p class="font-semibold">{{__('Update frequency')}}</p>
+    <p>{{ dataset.update_frequency or '--'}}
+    <p class="font-semibold">{{__('Language')}}</p>
+    <p>{{ dataset.language or '--'}}</p>
+    <p class="font-semibold">{{__('Geographic area')}}</p>
+    <p>{{ dataset.ext_spatial or '--'}}</p>
+    <p class="font-semibold">{{__('Last updated')}}</p>
+    <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+    <p class="font-semibold">{{__('Created')}}</p>
+    <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
+    <p>{{ dataset.license_url }}</p>
+    <!-- end Additional Info section -->
+
+    <!-- data files (downloads) -->
+    {% include "./partials/resource-display.njk" %}
+    <!-- info end -->
+  </div>
+</section>
 
 {% endblock %}
 
