@@ -33,7 +33,7 @@
             <img src="{{ post.image }}" />
           {% endif %}
           <p class="text-2xl font-bold">{{ post.title }}</p>
-          <p class="text-gray-600">{{post.modified}}</p>
+          <p class="text-gray-600">{{post.published}}</p>
           <p>{{ post.content | safe | truncate(500) }}</p>
         </div>
       </a>
