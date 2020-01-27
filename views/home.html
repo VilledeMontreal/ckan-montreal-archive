@@ -1,122 +1,81 @@
-{% extends "base.html" %} {% block title %} Bienvenue! | Welcome! {% endblock %}
-{% block bodyclass %}home{% endblock %} {% block content %}
-<!-- Hero Section -->
-<section class=" bg-center bg-no-repeat -mt-5 " style="background-image: url(/static/img/bandeaugris.png) ">
-    <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-24 ">
-        <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Montréal Open Data')}}</h1>
-        <form action="/search" method="GET" id="search-form">
-            <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
-                <input class="rounded-full pl-4 pr-12  pl-16 -ml-16  py-3 text-lg  w-full  outline-none" type="text" name="q"
-                   placeholder={{__('Search Datasets')}}
-                />
-                <button class="px-4 rounded-l-lg  z-10 " type="submit">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z"
-                              fill="#ADB5BD"/>
-                    </svg>
-                </button>
-            </div>
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>
+    {% block title%}{{title}}{% endblock %}
+  </title>
+  <meta name="author" content="Datopian">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="/static/stylesheets/app.css">
+  <link rel="stylesheet" href="/static/stylesheets/montreal.css">
+    <link rel="stylesheet" href="/static/font-icon/_icons.css">
+
+  <script type="text/javascript">
+    // PASSWORD PROTECTION SCRIPT
+    
+    function TheLogin() {
+    
+    var password = '20mont.ca20';
+    
+    if (this.document.login.pass.value == password) {
+        window.location.href =  window.origin + '/home';
+    }
+    else {
+      window.alert("Mot de passe incorrect, veuillez réessayer.");
+      }
+    }
+  </script>    
+</head>
+  
+<body style="background-image: url(/static/img/bandeaugris.png) ">
+  <div class=" flex justify-between py-20">
+    <div class=" w-1/3 ">
     </div>
-</section>
-<!-- ---End of Hero Section ---- -->
-
-<!--main Section -->
-<section class="container flex m-auto flex-col md:flex-row px-8  ">
-    <section data-title="main-container" class="  w-full  md:w-2/3">
-        <div data-title="our-data"><h2 class="text-4xl text-zambezi font-semibold  mt-2 ">{{__('Our data')}}</h2>
-            <p class="font-black">{{__('Un capital numérique générateur d’innovation')}}</p>
-            <p>{{__('En ouvrant ses données à tous, la Ville de
-                Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales.
-                Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui
-                crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices
-                à la fois dans les sphères économiques, culturelles, sociales et technologiques.')}}</p>
-        </div>
-        <div data-title="collection-grid" class="flex w-full">
-            <ul class="flex-grow sm:flex flex-wrap sm:-mx-2 mt-gutter">
-                {% for collection in collections %}
-                <!-- group -->
-                <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <div class="border-solid border-2 border-primary"></div>
-                    <div class="bg-gray-300 home_grid">
-                        <a class="p-4" href="/{{ slug }}/{{ collection.name }}">
-                            <h2 class="text-lg text-center h-16">{{ collection.title }}</h2>
-                            <img class="mx-auto home-icon " src="{{ collection.image }}" height="130px"
-                                 width="130px"/>
-                        </a>
-                    </div>
-                </li>
-                <!-- group end -->
-                {% endfor %}
-            </ul>
-        </div>
-        <div>
-            <h2 class="text-4xl text-zambezi font-semibold mt-6">{{__('News')}}</h2>
-            <ul class="sm:flex flex-wrap sm:-mx-4">
-                {% for post in posts %}
-                <!-- posts -->
-                <li>
-                    <a class="flex py-4 my-4 sm:mx-4" href="/news/{{ post.slug | safe }}">
-                        <div class="flex flex-col justify-center overflow-hidden">
-                            <p class="text-2xl font-bold">{{ post.title }}</p>
-                            <p class="text-gray-600">{{post.modified}}</p>
-                            <p>{{ post.content | safe | truncate(500) }}</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- posts end -->
-                {% endfor %}
-
-            </ul>
-            <a href="/news" class="float-right bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
-                {{__('All news')}}
-            </a>
-        </div>
-    </section>
-    <!--     End Main -->
-    <!--Section Sidebar-->
-    <section data-title="sidebar" class=" w-full md:w-1/3 md:ml-12">
-        <div data-title="social-share">
-            <h3 class="text-4xl text-zambezi font-semibold my-4">{{__('Follow us')}}</h3>
-            <div class="flex mb-6">
-                <a href="https://twitter.com/MTL_DO"><img class="h-12 mr-4" src="static/img/twitter.svg" alt="twitter"/></a>
-                <a href="https://montreal.l3.ckan.io/api/3/action/recently_changed_packages_activity_list"><img class="h-12 mr-4" src="static/img/rss.png" alt="rss"/></a>
-                <a href="https://montreal.l3.ckan.io/pages/infolettre"><img class="h-12 mr-4" src="static/img/email.png" alt="email"/></a>
-            </div>
-            <div class="border-solid border-2 border-black mt-4"></div>
-        </div>
-
-        <div data-title="frecent-data m-auto" class="">
-            <h3 class="text-4xl text-zambezi font-semibold mt-6">{{__('Recently added or updated datasets')}}</h3>
-            {% for data in recentData %}
-            <div class="max-w-sm border-solid border-gray-600 border-2 p-2 rounded overflow-hidden my-4">
-                <a href="./{{data.organization.name}}/{{data.name}}"
-                   class="text-xl text-primary">{{data.title}}</a>
-                <p>{{__('Updated')}}: <span id="date">{{data.metadata_modified}}</span></p>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
-
-    <!--End Section Sidebar-->
-</section>
-<section class="container flex flex-wrap m-auto px-8 border-t">
-    <div class="w-full md:w-4/5">
-        <h3 class="text-4xl font-semibold text-zambezi my-6 font-normal">{{__('Mise en garde')}}</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex
-            ea...</p>
+    <div class=" flex w-1/3 justify-center content-center items-center ">
+      <a class="logo">
+        <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal"
+             width="190px"/></a>
     </div>
-    <div class="w-full md:w-4/5">
-        <h3 class="text-4xl font-semibold text-zambezi my-6 font-normal">{{__('License')}}</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex
-            ea...</p>
+    <div class="w-1/3">
     </div>
-    <div class="w-full md:hidden "></div>
-
-</section>
-<!--End Intro Section -->
-{% endblock %}
+  </div>
+  <div style="text-align: center; margin: 0 auto; color: rgb(24, 24, 77); font: normal 20px arial, sans-serif;">
+    Tapez votre mot de passe:<br>
+    <form name="login" style="margin: 5px 0px 0px 0px;">
+    <input class="border-2 border-solid border-gray-600 my-4 outline-none focus:border-secondary w-20" type="password" name="pass" onkeydown="if(event.keyCode==13) event.keyCode=9;" ><br>
+    <input type="button" class="float-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" value="Cliquez ici pour vous identifier" onclick="javascript:TheLogin(this.form)">
+    </form>
+  </div>      
+</body>
+<script>
+  //set lang
+   el = document.getElementById('lang')
+    if(readCookie('defaultLocale') == 'fr') {
+      el.innerHTML = "English"
+      el.setAttribute("data-language", "en");
+      el.setAttribute("data-language-name", "English");
+    }else if (readCookie('defaultLocale') == 'en') {
+      el.innerHTML = "Français"
+      el.setAttribute("data-language", "fr");
+      el.setAttribute("data-language-name", "Français");
+    }
+  //set cookie
+  function languageSwitcher(el) {
+    let lang = el.getAttribute('data-language');
+    document.cookie = 'defaultLocale=' + lang;
+    location.reload();
+  }
+  //get cookie
+  function readCookie(name) {
+    var cookieName = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(cookieName) == 0) return c.substring(cookieName.length, c.length);
+    }
+    return null;
+  }
+</script>
+</html>
