@@ -30,6 +30,13 @@
       }
     });
   </script>
+  <script>
+    // This script is created for Login page.
+    // Delete this script when Login page is removed.
+    if not (document.referrer.includes('127.0.0.1:4000') or document.referrer.includes('donnees.montreal.ca')) {
+      window.location.href =  window.origin + '/login'
+    }
+  </script>  
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
 <!-- Page header -->
@@ -75,24 +82,10 @@
         <li class="mr-3 text-3xl  text-right"><a href="javascript:void(0)" onclick="closeNav()">&times;</a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href="/"
+          <a href="/home"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
                          class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Home')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/search"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-xl text-gray-600 text-gray-400 block inline-block">{{__('Data')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/applications"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Applications')}}</span>
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
@@ -103,17 +96,38 @@
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href={{__('https://montreal.l3.ckan.io/pages/our-approach/')}}
+          <a href="/dash"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Our approach')}}</span>
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Dashboard')}}</span>
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href={{__('https://montreal.l3.ckan.io/pages/contact-us/')}}
+          <a href="/collections"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Contact Us')}}</span>
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Collections')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/applications"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Applications')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/search"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-xl text-gray-600 text-gray-400 block inline-block">{{__('Data')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/about"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('About')}}</span>
           </a>
         </li>
       </ul>
@@ -238,7 +252,6 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   }
 }    
 </script>
-
 {% block scripts %}
 {% endblock %}
 </body>
