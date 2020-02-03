@@ -269,4 +269,36 @@ module.exports = function (app) {
       next(e)
     }
   })
+
+  app.get('/our-approach-fr', async (req, res) => {
+    const postsModel = new cmsPosts.CmsModel();
+    let post = await postsModel.getPost("our-approach");
+
+    res.render('post.html', {
+      slug: post.slug,
+      title: post.title,
+      content: post.content,
+      published: moment(post.date).format('Do MMMM YYYY'),
+      modified: moment(post.modified).format('Do MMMM YYYY'),
+      image: post.featured_image,
+      thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
+      categories: post.categories ? Object.keys(post.categories) : []
+    });
+  })
+
+  app.get('/contact-us-fr', async (req, res) => {
+    const postsModel = new cmsPosts.CmsModel();
+    let post = await postsModel.getPost("contact-us");
+
+    res.render('post.html', {
+      slug: post.slug,
+      title: post.title,
+      content: post.content,
+      published: moment(post.date).format('Do MMMM YYYY'),
+      modified: moment(post.modified).format('Do MMMM YYYY'),
+      image: post.featured_image,
+      thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
+      categories: post.categories ? Object.keys(post.categories) : []
+    });
+  })
 }
