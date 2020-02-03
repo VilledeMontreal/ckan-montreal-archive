@@ -1038,6 +1038,8 @@
 	"Datasets in Applications": "Datasets in Applications",
 	"Our approach": "La démarche",
 	"Contact Us": "Nous joindre ",
-	"https://montreal.l3.ckan.io/pages/our-approach/": "https://montreal.l3.ckan.io/pages/demarche",
-	"https://montreal.l3.ckan.io/pages/contact-us/": "https://montreal.l3.ckan.io/pages/nous-joindre"
+	"Apologies, the page you are looking for does not exist or is temporarily unavailable.": "Apologies, the page you are looking for does not exist or is temporarily unavailable.",
+	"Go Home": "Go Home",
+	"/our-approach": "/our-approach-fr",
+	"/contact-us": "/contact-us-fr"
 }
