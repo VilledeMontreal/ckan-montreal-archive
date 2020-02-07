@@ -174,20 +174,17 @@ module.exports = function (app) {
 
   app.get('/applications', async (req, res, next) => {
     try {
-      const apiUrl = configApiUrl + 'ckanext_showcase_list'
-  
-      let response = await fetch(apiUrl)
-      if (response.status !== 200) {
-        throw response
-      }
-  
-      let showcases = await response.json()
-  
-        res.render('application-showcases.html',{
+      req.query.fq = 'dataset_type:showcase'
+      const showcases = await Model.search(req.query)
+      // Pagination
+
+      res.render('application-showcases.html',{
         title: 'Applications',
         description: 'Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset.',
         slug: 'Applications',
-        showcases: showcases.result
+        showcases,
+        descriptions: showcases.notes,
+        query: req.query
       })
     } catch(e) {
       next(e)
