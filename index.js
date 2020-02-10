@@ -289,7 +289,7 @@ module.exports = function (app) {
 
   app.get('/our-approach-fr', async (req, res) => {
     const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("our-approach");
+    let post = await postsModel.getPost("demarche");
 
     res.render('post.html', {
       slug: post.slug,
@@ -305,7 +305,7 @@ module.exports = function (app) {
 
   app.get('/contact-us-fr', async (req, res) => {
     const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("contact-us");
+    let post = await postsModel.getPost("nous-joindre");
 
     res.render('post.html', {
       slug: post.slug,
