@@ -9,6 +9,7 @@ module.exports = function (app) {
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
   const ActivityFeed = require('./activity-api');
+  const proxy = require('express-http-proxy');
 
   const configApiUrl = config.get("API_URL")
 
@@ -18,7 +19,7 @@ module.exports = function (app) {
     if (locale) res.setLocale(locale)
     moment.locale(locale)
     next()
-	})
+  })
  
   app.use((req, res, next) => {
     let configApiUrl = config.get("API_URL")
@@ -58,6 +59,25 @@ module.exports = function (app) {
 
     next();
   });
+
+  // Proxy requests getting at the endpoint to https://montreal.l3.ckan.io
+  app.use(/(.*)\/(.*)\.rdf/, proxy(config.get('API_URL'), {
+      filter: (req, res) => {
+        return req.method === 'GET';
+      },
+      proxyReqPathResolver: (req, res, next) => {
+        const requestUrl = req.url;
+        const datasetId = req.params[1];
+
+        if (datasetId){
+          // added /dataset because the proxy library expects only host name and truncates the remaining part.
+          return `/dataset/${datasetId}.rdf`
+        }
+
+        next()
+      }
+    })
+  ) 
 
   // Remove this when Login page is no needed anymore
   app.get('/login', (req, res) => {
@@ -269,7 +289,7 @@ module.exports = function (app) {
 
   app.get('/our-approach-fr', async (req, res) => {
     const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("our-approach");
+    let post = await postsModel.getPost("demarche");
 
     res.render('post.html', {
       slug: post.slug,
@@ -285,7 +305,7 @@ module.exports = function (app) {
 
   app.get('/contact-us-fr', async (req, res) => {
     const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("contact-us");
+    let post = await postsModel.getPost("nous-joindre");
 
     res.render('post.html', {
       slug: post.slug,
