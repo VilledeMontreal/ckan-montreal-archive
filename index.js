@@ -60,17 +60,17 @@ module.exports = function (app) {
     next();
   });
 
-  // Proxy requests getting at the api endpoint to https://montreal.l3.ckan.io
-  app.use(/\/dataset\/(.*)\.rdf/, proxy(config.get('API_URL'), {
+  // Proxy requests getting at the endpoint to https://montreal.l3.ckan.io
+  app.use(/(.*)\/(.*)\.rdf/, proxy(config.get('API_URL'), {
       filter: (req, res) => {
         return req.method === 'GET';
       },
       proxyReqPathResolver: (req, res, next) => {
         const requestUrl = req.url;
-        const datasetId = req.params[0];
+        const datasetId = req.params[1];
 
         if (datasetId){
-          // added /api/3/action because the proxy library expects only host name and truncates the remaining part.
+          // added /dataset because the proxy library expects only host name and truncates the remaining part.
           return `/dataset/${datasetId}.rdf`
         }
 
