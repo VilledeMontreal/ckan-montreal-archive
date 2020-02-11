@@ -33,8 +33,8 @@
   <script>
     // This script is created for Login page.
     // Delete this script when Login page is removed.
-    if not (document.referrer.includes('127.0.0.1:4000') or document.referrer.includes('donnees.montreal.ca')) {
-      window.location.href =  window.origin + '/login'
+    if (document.referrer.includes('127.0.0.1:4000') || document.referrer.includes('donnees.montreal.ca')) == false {
+      window.location.replace(window.origin + '/login');
     }
   </script>  
 </head>
@@ -82,24 +82,10 @@
         <li class="mr-3 text-3xl  text-right"><a href="javascript:void(0)" onclick="closeNav()">&times;</a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href="/"
+          <a href="/home"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
                          class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Home')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/search"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-xl text-gray-600 text-gray-400 block inline-block">{{__('Data')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/applications"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Applications')}}</span>
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
@@ -110,17 +96,38 @@
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href="{{__('/our-approach')}}"
+          <a href="/dash"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Our approach')}}</span>
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Dashboard')}}</span>
           </a>
         </li>
         <li class="mr-3 pl-5 pr-20">
-          <a href="{{__('/contact-us')}}"
+          <a href="/collections"
              class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
                        <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Contact Us')}}</span>
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Collections')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/applications"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Applications')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/search"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-xl text-gray-600 text-gray-400 block inline-block">{{__('Data')}}</span>
+          </a>
+        </li>
+        <li class="mr-3 pl-5 pr-20">
+          <a href="/about"
+             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
+                       <span
+                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('About')}}</span>
           </a>
         </li>
       </ul>
@@ -131,33 +138,6 @@
 <div id="main-container z-10">
   {% block content %}{{content}}{% endblock %}
 </div>
-
-{% if disqusEnabled %}
-<!-- Disqus -->
-<div class="container mx-auto p-gutter">
-  <div id="disqus_thread"></div>
-</div>
-<script>
-
-  /**
-   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-  var disqus_config = function () {
-  this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = window.location.href; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-
-  (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://ckan-next-gen.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endif %}
-
 
 <!-- Footer -->
 <footer class="site-footer bg-gray-900 text-white-74 mt-10 py-gutter z-10 text-sm">
@@ -243,8 +223,15 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
     }
     dashElement.forEach(link => { link.innerHTML = dashTranslation[link.innerHTML] }) 
   }
-}    
+}   
 </script>
+  <script>
+    // This script is created for Login page.
+    // Delete this script when Login page is removed.
+    if (document.referrer.includes('127.0.0.1:4000') || document.referrer.includes('donnees.montreal.ca')) === false{
+      window.location.replace(window.origin + '/login');
+    }
+  </script> 
 {% block scripts %}
 {% endblock %}
 </body>
