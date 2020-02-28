@@ -8,8 +8,8 @@
 
 {% block content %}
 <!-- Data Explorer CSS -->
-<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.24836f2c.chunk.css">
-<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.5b97ed95.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.0e85ebd4.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.944d0a2f.chunk.css">
 <!-- End Data Explorer CSS -->
 
 <section class="container flex  m-auto flex-col md:flex-row px-8"> 
@@ -130,7 +130,7 @@
     <p class="font-semibold">{{__('Geographic area')}}</p>
     <p>{{ dataset.ext_spatial or '--'}}</p>
     <p class="font-semibold">{{__('Last updated')}}</p>
-    <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+    <p>{{ __(dataset.metadata_modified | formatDateFromNow)}}</p>
     <p class="font-semibold">{{__('Created')}}</p>
     <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
     <p>{{ dataset.license_url }}</p>
@@ -191,7 +191,7 @@
   })();
 </script>
 <script type="text/javascript" src="/static/js/dataexplorer/runtime~main.a8a9905a.js"></script>
-<script type="text/javascript" src="/static/js/dataexplorer/2.9b5ead7b.chunk.js"></script>
-<script type="text/javascript" src="/static/js/dataexplorer/main.5309eb33.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/2.34264b03.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/main.b5b7b9e9.chunk.js"></script>
 
 {% endblock %}
