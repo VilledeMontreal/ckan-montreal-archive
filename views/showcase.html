@@ -119,12 +119,12 @@
   <!-- end Keywords section -->
 
   <!-- Additional Info section -->
-  <div class="container">
+    <div class="container">
     <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
     <p class="font-semibold">{{__('Publisher')}}</p>
     {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
     <p class="font-semibold">{{__('Update frequency')}}</p>
-    <p>{{ dataset.update_frequency or '--'}}
+    {{ __(dataset.update_frequency) or "--"}}
     <p class="font-semibold">{{__('Language')}}</p>
     <p>{{ dataset.language or '--'}}</p>
     <p class="font-semibold">{{__('Geographic area')}}</p>
