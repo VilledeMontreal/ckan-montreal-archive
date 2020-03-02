@@ -1071,10 +1071,10 @@
 	"quarterly": "Trimestriel",
 	"semiannual": "Semi-annuel",
 	"yearly": "Annuel",
-	"two year": "Biennal",
-	"three year": "Triennial",
-	"not planned": "Non planifié",
+	"two-year": "Biennal",
+	"three-year": "Triennial",
+	"notPlanned": "Non planifié",
 	"if needed": "Au besoin",
-	"five year": "Quinquennal",
+	"five-year": "Quinquennal",
 	"il y a 13 jours": "il y a 13 jours"
 }
