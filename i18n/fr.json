@@ -1067,13 +1067,14 @@
 	"monthly": "Mensuel",
 	"irregular": "Irrégulier",
 	"realtime": "Temps réel",
-	"scheduled": "Horaire",
+	"schedule": "Horaire",
 	"quarterly": "Trimestriel",
 	"semiannual": "Semi-annuel",
-	"yearly": "Annuel",
-	"two-year": "Biennal",
-	"three-year": "Triennial",
+	"annual": "Annuel",
+	"biennial": "Biennal",
+	"triennial": "Triennial",
 	"notPlanned": "Non planifié",
+	"continuous": "Continuel"
 	"if needed": "Au besoin",
 	"five-year": "Quinquennal",
 	"il y a 13 jours": "il y a 13 jours"
