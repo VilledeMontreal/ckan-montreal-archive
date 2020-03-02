@@ -1021,7 +1021,7 @@
 	"Updated": "Mis à jour",
 	"Download raw data": "Télécharger les données",
 	"Data source": "Source des données",
-	"Powered by": "Propulsé par",
+	"Powered by": "PROPULSÉ PAR",
 	"Submitted by": "Soumis par",
 	"Launch website": "Lien",
 	"Recently added or updated datasets": "Ensembles de données récemment ajoutés ou mis à jour",
@@ -1055,5 +1055,6 @@
 	"il y a 3 heures": "il y a 3 heures",
 	"il y a 10 heures": "il y a 10 heures",
 	"il y a 11 heures": "il y a 11 heures",
-	"Rechercher un ensemble de données" : "Rechercher un ensemble de données"
+	"Rechercher un ensemble de données": "Rechercher un ensemble de données",
+	"En ouvrant ses données à tous, la Ville de\n            Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales.\n            Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui\n            crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices\n            à la fois dans les sphères économiques, culturelles, sociales et technologiques.": "En ouvrant ses données à tous, la Ville de\n            Montréal permet qu’elles soient réutilisées à différentes fins, incluant des fins commerciales.\n            Les résultats de cette réutilisation peuvent ensuite être partagés dans la communauté, ce qui\n            crée un effet démultiplicateur. Les données libérées et réutilisées génèrent ainsi des bénéfices\n            à la fois dans les sphères économiques, culturelles, sociales et technologiques."
 }
