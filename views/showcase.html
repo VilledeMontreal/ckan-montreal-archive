@@ -7,145 +7,215 @@
 {% endblock %}
 
 {% block content %}
-<!-- Data Explorer CSS -->
+<!-- data explorer CSS -->
 <link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.24836f2c.chunk.css">
 <link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.5b97ed95.chunk.css">
-<!-- End Data Explorer CSS -->
+<!-- end data explorer CSS -->
 
-<section class="container flex  m-auto flex-col md:flex-row px-8"> 
-  <div class="w-full  md:w-2/3">
-      <div class="pb-4"> 
-        <a href="/collections/{{ dataset.groups[0].name}}" class="text-primary font-bold">{{ dataset.groups[0].display_name}}</a>
-      </div>
-      
-      <!-- info -->
-      <div>
-        <h1 class="text-4xl font-semibold text-zambezi">
-          {{ dataset.title or dataset.name }} {{name}}
-        </h1>
+<section class="font-open-sans">
+  <!-- breadcrumbs -->
+  <div class="container mx-auto px-gutter">
+    <div class="w-full font-sans font-semibold text-gray-ink text-sm uppercase py-3" aria-label="breadcrumb">
+      <ol>
+        <li class="breadcrumb_item hover:text-primary">
+          <a href="/">{{__('Home')}}</a>
+        </li>
+        <li class="breadcrumb_item hover:text-primary">
+          <a href="/collection">{{__('Collections')}}</a>
+        </li>
+        <li class="breadcrumb_item hover:text-primary">
+          <a href="/collections/{{ dataset.groups[0].name}}">{{ dataset.groups[0].name }}</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- end breadcrumbs -->
 
-        <!-- readme section -->
-        <div class="container mt-gutter">
-          {% if dataset.readmeSnippet or dataset.readmeHtml %}
-          <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+  <div class="container mx-auto md:flex px-gutter">
+    <!-- page navigation nolumn -->
+    <div class="hidden md:block md:w-1/4 md:mr-12 text-gray-900">
+      <nav class="md:sticky md:top-0 py-gutter">
+        <h3 class="text-2xl font-semibold pb-4">{{__('Get started')}}</h3>
+        <ul class="text-gray-900 font-semibold text-base">
+          <li class="py-3 hover:text-primary"><a href="#data">{{__('Data')}}</a></li>
+          
+          {% if dataset.methodologie  %}
+          <li class="py-3 hover:text-primary"><a href="#methodology">{{__('Methodology')}}</a></li>
+          {% endif %}
+          
+          <li class="py-3 hover:text-primary"><a href="#data-dictionary">{{__('Data Dictionary')}}</a></li>
+          
+          {% if dataset.territoire  %}
+          <li class="py-3 hover:text-primary"><a href="#territories">{{__('Territories')}}</a></li>
+          {% endif %}
+          
+          {% if dataset.keywords %}
+          <li class="py-3 hover:text-primary"><a href="#keywords">{{__('Keywords')}}</a></li>
+          {% endif %}
+          
+          <li class="py-3 hover:text-primary"><a href="#additional-info">{{__('Additional Info')}}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- end page navigation column -->
+
+    <!-- page content column -->
+    <div class="w-full md:w-2/3 py-gutter text-gray-ink">
+        <!-- info -->
+        <div class="py-2">
+          <h1 class="text-4xl font-semibold text-gray-900">
+            {{ dataset.title or dataset.name }} {{name}}
+          </h1>
+          <div class="pb-4"> 
+            <a href="/collections/{{ dataset.groups[0].name}}" class="text-primary font-bold">{{ dataset.groups[0].display_name}}</a>
+          </div>
+
+          <!-- readme -->
+          <div class="container mt-gutter">
+            {% if dataset.readmeSnippet or dataset.readmeHtml %}
+            <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+          </div>
+            {% elif dataset.description %}
+              <div class="">
+                <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
+              </div>
+            {% endif %}
         </div>
-          {% elif dataset.description %}
-            <div class="">
-              <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
-            </div>
-          {% endif %}<!-- end of readme section -->
-      </div>
-      <!-- end readme section -->
+        <!-- end readme -->
+        
+        <!-- resources table -->
+        <div id="data" class="py-2">
+          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Data')}}</h2>
+          <table class="table info no-left-padding my-4 text-left w-full">
+            <thead>
+              <tr>
+                <th class="col-xs-1 bg-gray-lighter font-sans font-normal  capitalize text-sm text-gray-900">{{__('Name')}}</th>
+                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Format')}}</th>
+                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Size')}}</th>
+                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Last Changed')}}</th>
+                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Info & Preview')}}</th>
+                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Download')}}</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% set cls = cycler("bg-gray-100", "bg-white") %}
+            {% for item in dataset.displayResources %}
+              <tr class="{{ cls.next() }}">
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
+                  <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- end resources table -->
       
-      <!-- resources table -->
-      <div>
-        <table class="table info no-left-padding my-4 text-left w-full">
-          <thead>
-            <tr>
-              <th class="col-xs-1 bg-gray-lighter font-sans font-normal  capitalize text-sm text-gray-900">{{__('Name')}}</th>
-              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Format')}}</th>
-              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Size')}}</th>
-              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Last Changed')}}</th>
-              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Info & Preview')}}</th>
-              <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Download')}}</th>
-            </tr>
-          </thead>
-          <tbody>
-          {% set cls = cycler("bg-gray-100", "bg-white") %}
-          {% for item in dataset.displayResources %}
-            <tr class="{{ cls.next() }}">
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
-                <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
-              </td>
-            </tr>
+        <!-- methodologie -->
+        {% if dataset.methodologie  %}
+        <div id="methodology" class="py-2">
+          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Methodology')}}</h2>
+          <div class="markdown-content leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
+        </div>
+        {% endif %}
+        <!-- end methodologie -->
+        
+        <!-- data dictionary -->
+        {# {% if dataset.territoire %} #}
+        <div id="data-dictionary">
+          <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Data Dictionary')}}</h2>
+        </div>
+        {# {% endif %} #}
+        <!-- end data dictionary -->
+
+        <!-- territoire -->
+        {% if dataset.territoire %}
+        <div id="territories" class="py-2">
+          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Territories')}}</h2>
+          {% for t in dataset.territoire %}
+            <p class="py-2">{{territoires[t] | safe or ''}}</p>
           {% endfor %}
-          </tbody>
-        </table>
+        </div class="pb-4">
+        {% endif %}
+        <!-- end territories -->
+
+        <!-- keywords -->
+        {% if dataset.keywords %}
+        <div id="keywords" class="py-2">
+          <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Keywords')}}</h2>
+          <div class="flex flex-wrap ">
+          {% for t in dataset.keywords %}
+            <a href="/search?q=tags:{{t | safe}}" class="font-bold text-sm text-primary lowercase border border-gray-400 rounded py-1 px-2 mr-3 my-2 hover:border-primary">{{t | safe}}</a>
+          {% endfor %}
+          </div class="pb-4">
+        </div>
+        {% endif %}
+        <!-- end keywords -->
+
+        <!-- additional info -->
+        <div id="additional-info" class="py-2">
+          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Additional Info')}}</h2>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Editor')}}</h3>
+            <p>{{ dataset.author.name | dump | safe | replace('\"', '') or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Update frequency')}}</h3>
+            <p>{{ dataset.update_frequency or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Language')}}</h3>
+            <p>{{ dataset.language or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Geographic area')}}</h3>
+            <p>{{ dataset.ext_spatial or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Last updated')}}</h3>
+            <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Creation date')}}</h3>
+            <p>{{ dataset.metadata_created | formatDate }}</p>
+          </div>
+          <!-- <p>{{ dataset.license_url }}</p> -->
+          <!-- end Additional Info section -->
+
+          <!-- data files (downloads) -->
+          {# {% include "./partials/resource-display.njk" %} #}
+          <!-- info end -->
+        </div>
+        <!-- end additional info -->
+
+        <!-- disqus -->
+        <!-- <div class="container mx-auto p-gutter">
+          <div id="disqus_thread"></div>
+        </div> -->
+        <!-- end disqus -->
       </div>
-      <!-- end resources table -->
-    
-      <!-- methodologie section -->
-      {% if dataset.methodologie  %}
-      <div class="container">
-        <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Methodology')}}</h2>
-        <div class="markdown-content leading-relaxed">{{dataset.methodologie|processMarkdown|safe}}</div>
-      </div>
-      {% endif %}
-      <!-- end methodologie section -->
-      
-      <!-- territoire section -->
-      {% if dataset.territoire %}
-      <div class="container">
-        <h2 class="text-3xl font-semibold mt-gutter text-gray-900 mb-2">{{__('Territories')}}</h2>
-        {% for t in dataset.territoire %}
-          <p class="px-3 py-1">{{territoires[t] | safe or ''}}</p>
-        {% endfor %}
-      </div>
-      {% endif %}
-      <!-- end Territories section -->
-      </div>
-  </div>
-  <div class="w-full md:w-1/4 md:ml-12">
-    <div data-title="activity-feed">
-        <div class="border-solid border-2 border-black mt-4"></div>
-      <h3 class="text-4xl font-semibold text-zambezi my-4">{{__('Activity Feed')}}</h3>
     </div>
-     {{ activities.feed | safe }}
-    {% if activities.limit < 31 %}
-    <ul>
-      <li><a href="?activity=31" class="text-primary">{{ __('See the whole list')}}</a></li>
-    </ul>
-    {% endif %}
-  </div>
-</section>  
+    <!-- end page content column -->
 
-<section class="container m-auto flex-col md:flex-row px-8">
-      <!-- Keywords section -->
-  {% if dataset.keywords %}
-  <div class="container">
-    <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900 mb-6">{{__('Keywords')}}</h2>
-    <div class="flex flex-wrap ">
-    {% for t in dataset.keywords %}
-      <a href="/search?q=tags:{{t | safe}}" class="px-4 py-2 text-primary font-medium border-2 rounded-full border-primary mr-3 mb-3 lowercase">{{t | safe}}</a>
-    {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-  <!-- end Keywords section -->
-
-  <!-- Additional Info section -->
-  <div class="container">
-    <h2 class="text-3xl font-semibold mt-gutter mb-2 text-gray-900">{{__('Additional Info')}}</h2>
-    <p class="font-semibold">{{__('Publisher')}}</p>
-    {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
-    <p class="font-semibold">{{__('Update frequency')}}</p>
-    <p>{{ dataset.update_frequency or '--'}}
-    <p class="font-semibold">{{__('Language')}}</p>
-    <p>{{ dataset.language or '--'}}</p>
-    <p class="font-semibold">{{__('Geographic area')}}</p>
-    <p>{{ dataset.ext_spatial or '--'}}</p>
-    <p class="font-semibold">{{__('Last updated')}}</p>
-    <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
-    <p class="font-semibold">{{__('Created')}}</p>
-    <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
-    <p>{{ dataset.license_url }}</p>
-    <!-- end Additional Info section -->
-
-    <!-- data files (downloads) -->
-    {% include "./partials/resource-display.njk" %}
-    <!-- info end -->
+    <!-- <div class="w-full md:w-1/4 md:ml-12">
+      <div data-title="activity-feed">
+          <div class="border-solid border-2 border-black mt-4"></div>
+        <h3 class="text-4xl font-semibold text-zambezi my-4">{{__('Activity Feed')}}</h3>
+      </div>
+      {{ activities.feed | safe }}
+      {% if activities.limit < 31 %}
+      <ul>
+        <li><a href="?activity=31" class="text-primary">{{ __('See the whole list')}}</a></li>
+      </ul>
+      {% endif %}
+    </div> -->
   </div>
 </section>
-
-<!-- Disqus -->
-<div class="container mx-auto p-gutter">
-  <div id="disqus_thread"></div>
-</div>
 {% endblock %}
 
 {% block scripts %}
