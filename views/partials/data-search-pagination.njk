@@ -1,30 +1,30 @@
 <!-- Pagination -->
 {% if result.count > 10 %}
-  <nav aria-label="Datasets" class="mt-gutter pt-gutter text-lg text-gray-500">
-    <ul class="inline-flex border border-gray-200 text-gray-500">
-      <li class="border border-gray-200">
+  <nav aria-label="Datasets" class="font-open-sans font-semibold mt-gutter pt-gutter text-base text-gray-ink">  <!-- TODO font weight -->
+    <ul class="inline-flex">
+      <li class="border border-gray-400 rounded-l hover:text-primary hover:bg-sarcelle-lightest">
         {% if currentPage == 1 %}
           {% set from = 0 %}
         {% else %}
           {% set from = (currentPage - 2) * 10 %}
         {% endif %}
-        <a class="block px-4 py-3" href="/search?q={{ query.q }}&from={{ from }}" aria-label="Previous">
+        <a class="block px-5 py-3 hover:text-primary hover:bg-sarcelle-lightest" href="/search?q={{ query.q }}&from={{ from }}" aria-label="Previous">
           <span class="">{{__('<')}}</span>
         </a>
       </li>
       {% for page in pages %}
         {% if page == '...' %}
-        <li class="border border-gray-200">
-          <span class="block px-3 py-2">{{page}}</span>
+        <li class="border border-gray-400 -ml-px">
+          <span class="block px-5 py-3">{{page}}</span>
         </li>
         {% else %}
-        <li class="border border-gray-200">
-          <a class="block px-4 py-3 {{ 'bg-primary text-white secondary-nav_link' if currentPage == page }}" href="/search?q={{ query.q }}&from={{ (page - 1) * 10 }}">{{page}}</a>
+        <li class="border border-gray-400 -ml-px hover:text-primary hover:bg-sarcelle-lightest">
+          <a class="block px-5 py-3 {{ 'bg-sarcelle-lightest text-primary secondary-nav_link' if currentPage == page }}" href="/search?q={{ query.q }}&from={{ (page - 1) * 10 }}">{{page}}</a>
         </li>
         {% endif %}
       {% endfor %}
-      <li class="border border-gray-200">
-        <a class="block px-4 py-3" href="/search?q={{ query.q }}&from={{ currentPage * 10 }}" aria-label="Next">
+      <li class="border border-gray-400 -ml-px rounded-r hover:text-primary hover:bg-sarcelle-lightest">
+        <a class="block px-5 py-3" href="/search?q={{ query.q }}&from={{ currentPage * 10 }}" aria-label="Next">
           <span class="">{{__('>')}}</span>
         </a>
       </li>

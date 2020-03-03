@@ -49,6 +49,9 @@ module.exports = {
             'sans': ['Nunito Sans', 'sans-serif'],
             'open-sans': ['Open Sans', 'sans-serif']
         },
+        fontSize: {
+            '3-1/2xl': '2rem',
+        },
         minHeight: {
             '0': '0',
             '1/4': '25%',
@@ -60,6 +63,7 @@ module.exports = {
     },
     variants: {
         visibility: ['responsive', 'hover', 'focus'],
+        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     },
     plugins: [
     function ({addUtilities}) {

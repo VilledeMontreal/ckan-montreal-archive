@@ -1,5 +1,5 @@
 <!-- Form -->
-<form action="/search" method="GET" id="search-form">
+<form class="font-open-sans" action="/search" method="GET" id="search-form">
   <div class="relative mb-10">
     <input class="border border-solid border-gray-400 rounded pr-2 pl-10 py-2 text-lg w-full outline-none" type="text" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
     <button class="absolute flex items-center h-full px-3 top-0 left-0" type="submit">
@@ -8,19 +8,9 @@
       </svg>
     </button>
   </div>
-</form>
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<form action="/search" method="GET">
-  <div class="relative mb-10">
-    <input type="text" class="border-2 border-solid border-gray-400 py-4 pl-4 pr-20 text-xl outline-none focus:border-secondary w-full" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
-
-    <button class="absolute inset-y-0 right-0 w-16 px-4 text-secondary fill-current" type="submit" aria-label="Submit">
-      <svg class="w-full h-full"><use xlink:href="#search" /></svg>
-    </button>
-  </div>
 
   <div class="lg:flex items-center justify-between">
-    <h1 class="text-4xl font-semibold text-primary">
+    <h1 class="lg:flex-auto text-4xl text-3-1/2xl font-bold text-black">     <!-- TODO font size -->
       {{ result.count }}
       {% if result.count == 1 %}
         {{__('dataset found')}}
@@ -28,22 +18,19 @@
         {{__('datasets found')}}
       {% endif %}
     </h1>
-    <div>
-      <label for="field-order-by">{{__('Order by')}}:</label>
-      <div class="relative">
-        <select class="bg-white block appearance-none w-full border-2 border-solid border-gray-200 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
-          <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
-          <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
-          <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
-          <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
-          <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center py-3 px-4">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-        </div>
+    <label class="lg:flex-none font-bold text-lg text-black px-2" for="field-order-by">{{__('Order by')}}:</label>
+    <div class="lg:flex-none relative">
+      <select class="bg-white appearance-none border border-solid border-gray-400 text-base text-gray-900 rounded py-3 px-2 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
+        <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
+        <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
+        <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
+        <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
+        <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center py-3 pr-4 pl-2 text-gray-600">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
       </div>
     </div>
   </div>
-
 </form>
 <!-- End of Form -->
