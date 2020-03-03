@@ -124,7 +124,7 @@
     <p class="font-semibold">{{__('Publisher')}}</p>
     {{ dataset.author.name | dump | safe | replace("\"", "") or '--'}}
     <p class="font-semibold">{{__('Update frequency')}}</p>
-    <p>{{ dataset.update_frequency or '--'}}
+    {{ __(dataset.update_frequency) or "--"}}
     <p class="font-semibold">{{__('Language')}}</p>
     <p>{{ dataset.language or '--'}}</p>
     <p class="font-semibold">{{__('Geographic area')}}</p>
