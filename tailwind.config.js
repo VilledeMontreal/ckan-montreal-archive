@@ -8,7 +8,8 @@ module.exports = {
             }
         },
         colors: {
-            primary: '#097d6c',
+            // primary: '#097d6c',
+            primary: '#ff0000',
             sarcelle: {
                 dark: '#075b4f',
                 surprise: '#0cb097',

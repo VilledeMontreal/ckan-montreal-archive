@@ -1,9 +1,9 @@
-<ul class="pt-10 font-open-sans">
+<ul class="pt-gutter font-open-sans">
   {% for package in result.results  %}
   <li class="m-2 border-t border-gray-400 px-5 py-6">
     <div>
       <h3 class="text-lg font-bold">
-        <a class="text-gray-900 " href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}">{{ package.title or package.name }}</a>
+        <a class="text-gray-900 hover:text-primary" href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}">{{ package.title or package.name }}</a>
       </h3>
 
       <div class="leading-loose text-lg text-gray-ink my-3">

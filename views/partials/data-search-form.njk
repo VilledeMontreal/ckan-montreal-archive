@@ -1,6 +1,6 @@
 <!-- Form -->
 <form class="font-open-sans" action="/search" method="GET" id="search-form">
-  <div class="relative mb-10">
+  <div class="relative mb-gutter">
     <input class="border border-solid border-gray-400 rounded pr-2 pl-10 py-2 text-lg w-full outline-none" type="text" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
     <button class="absolute flex items-center h-full px-3 top-0 left-0" type="submit">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,17 +9,17 @@
     </button>
   </div>
 
-  <div class="lg:flex items-center justify-between">
-    <h1 class="lg:flex-auto text-4xl text-3-1/2xl font-bold text-black">     <!-- TODO font size -->
+  <div class="flex flex-wrap items-center justify-center py-gutter">
+    <h1 class="w-full flex-auto pb-5 text-center sm:w-auto sm:pb-0 sm:text-left md:w-full md:pb-5 md:text-center lg:w-auto lg:pb-0 lg:text-left text-4xl text-3-1/2xl font-bold text-black">     <!-- TODO font size -->
       {{ result.count }}
       {% if result.count == 1 %}
-        {{__('dataset found')}}
+        {{__('Result')}}
       {% else %}  
-        {{__('datasets found')}}
+        {{__('Results')}}
       {% endif %}
     </h1>
-    <label class="lg:flex-none font-bold text-lg text-black px-2" for="field-order-by">{{__('Order by')}}:</label>
-    <div class="lg:flex-none relative">
+    <label class="flex-none font-bold text-lg text-black px-2" for="field-order-by">{{__('Order by')}}:</label>
+    <div class="flex-none relative">
       <select class="bg-white appearance-none border border-solid border-gray-400 text-base text-gray-900 rounded py-3 px-2 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
         <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
         <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
