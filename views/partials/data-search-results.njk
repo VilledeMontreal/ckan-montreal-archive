@@ -1,12 +1,12 @@
-<ul>
+<ul class="pt-gutter font-open-sans">
   {% for package in result.results  %}
-  <li class="mt-10 shadow bg-gray-100 px-4 py-3">
+  <li class="m-2 border-t border-gray-400 px-5 py-6">
     <div>
-      <h3 class="text-lg font-semibold">
-        <a class="text-gray-700 " href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}">{{ package.title or package.name }}</a>
+      <h3 class="text-lg font-bold">
+        <a class="text-gray-900 hover:text-primary" href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}">{{ package.title or package.name }}</a>
       </h3>
 
-      <div class="leading-relaxed text-lg mt-2">
+      <div class="leading-loose text-lg text-gray-ink my-3">
         {% if package.readmeSnippet %}
         <p>
           {{ package.readmeSnippet }}
@@ -37,7 +37,7 @@
       {% for format in formats %}
         {%if format %}
       <li class="inline ">
-        <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="bg-gray-600 text-lg text-white rounded-full px-3 py-1 hover:bg-primary">{{ format }}</a>      </li>
+        <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="font-bold text-sm text-primary border border-gray-400 rounded py-1 px-2 mr-1 hover:border-primary">{{ format }}</a>      </li>
         {% endif %}
       {% endfor %}
     </ul>

@@ -1,5 +1,6 @@
 .breadcrumb {
-  @apply text-xl;
+  @apply text-lg;
+  @apply font-bold;
 }
 
 .breadcrumb_item {
@@ -7,15 +8,11 @@
 
   &:not(:last-child) {
     &::after {
-      content: "/";
+      content: ">";
     }
   }
 }
 
 .breadcrumb_link {
-  @apply text-gray-500;
-
-  &[aria-current] {
-    @apply text-primary font-semibold;
-  }
+  @apply text-gray-ink;
 }

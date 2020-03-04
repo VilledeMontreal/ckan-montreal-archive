@@ -8,7 +8,8 @@ module.exports = {
             }
         },
         colors: {
-            primary: '#097d6c',
+            // primary: '#097d6c',
+            primary: '#ff0000',
             sarcelle: {
                 dark: '#075b4f',
                 surprise: '#0cb097',
@@ -49,6 +50,9 @@ module.exports = {
             'sans': ['Nunito Sans', 'sans-serif'],
             'open-sans': ['Open Sans', 'sans-serif']
         },
+        fontSize: {
+            '3-1/2xl': '2rem',
+        },
         minHeight: {
             '0': '0',
             '1/4': '25%',
@@ -60,6 +64,7 @@ module.exports = {
     },
     variants: {
         visibility: ['responsive', 'hover', 'focus'],
+        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     },
     plugins: [
     function ({addUtilities}) {
