@@ -18,3 +18,22 @@ Some highlights:
 
 * Clones frontend-v2 at master
 * Copies .staging.env to frontend-v2/.env on heroku
+
+
+## Params for deployment through Jenkins
+
+### Staging
+
+Address = `montreal-frontend-staging.ckan.io/`
+
+INSTANCE_NAME = `montreal-frontend-staging`
+
+REGISTRY_REPO = `datopian/cloud-images/cloud-montreal-staging-ng` 
+
+### Production
+
+Address = `https://donnees.montreal.ca/`
+
+INSTANCE_NAME = `montreal-frontend`
+
+REGISTRY_REPO = `datopian/cloud-images/cloud-montreal-ng`
