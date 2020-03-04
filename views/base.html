@@ -9,7 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="/static/stylesheets/app.css">
   <link rel="stylesheet" href="/static/stylesheets/montreal.css">
-    <link rel="stylesheet" href="/static/font-icon/_icons.css">
+  <link rel="stylesheet" href="/static/font-icon/_icons.css">
+
 
   {% if dataset %}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
@@ -39,98 +40,18 @@
   </script>  
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
-<!-- Page header -->
-<header class="mx-auto w-full shadow-sm ">
-  <div class="flex justify-between py-10 px-5 ">
-    <div class="w-1/3  justify-center content-center items-center m-auto text-gray-900 font-bold ">
-      <ul class="flex float-left">
-        <li id="main-nav" class="m-auto pr-2" onclick="openNav()">
-          <a href="#" class="flex items-center px-3 py-2">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M2 6C2 6.55228 2.52672 7 3.17647 7H20.8235C21.4733 7 22 6.55228 22 6C22 5.44772 21.4733 5 20.8235 5H3.17647C2.52672 5 2 5.44772 2 6ZM2 12C2 12.5523 2.44772 13 3 13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H3C2.44772 11 2 11.4477 2 12ZM3 19C2.44772 19 2 18.5523 2 18C2 17.4477 2.44772 17 3 17H13C13.5523 17 14 17.4477 14 18C14 18.5523 13.5523 19 13 19H3ZM17 17C16.4477 17 16 17.4477 16 18C16 18.5523 16.4477 19 17 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H17Z"
-                    fill="#212529"/>
-            </svg>
-            <span class="ml-4">Menu</span>
-          </a>
-        </li>
-        <li class="m-auto  hidden  md:block ">
-          <a class="flex" href="/search">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z"
-                    fill="#212529"/>
-            </svg>
-            <span class="ml-4">{{__('Recherche')}}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class=" flex w-1/3  mx-auto justify-center content-center items-center ">
-      <a class="logo" href="/">
-        <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal"
-             width="190px"/></a>
-    </div>
-    <div class="w-1/3 ">
-    </div>
 
-  </div>
-  <div id="mySidenav"
-       class=" bg-gray-900 bg-gray-900 px-0 text-center fixed z-50 p-12 h-16 h-screen overflow-hidden top-0 transition-3s w-0 ">
-    <div class="relative mx-auto lg:float-right lg:px-6">
-      <ul class="list-reset flex flex-row flex-col text-left">
-        <li class="mr-3 text-3xl  text-right"><a href="javascript:void(0)" onclick="closeNav()">&times;</a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/home"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Home')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/news"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('News')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/dash"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Dashboard')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/collections"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Collections')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/applications"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('Applications')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/search"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-xl text-gray-600 text-gray-400 block inline-block">{{__('Data')}}</span>
-          </a>
-        </li>
-        <li class="mr-3 pl-5 pr-20">
-          <a href="/about"
-             class="block py-1 py-3 pl-1 align-middle text-gray-800 no-underline -500 border-b-2 border-gray-800 border-gray-900 hover:border-primary ">
-                       <span
-                         class="pb-1 pb-0 text-lg md:text-xl text-gray-600 text-gray-400 block inline-block">{{__('About')}}</span>
-          </a>
-        </li>
-      </ul>
+<!-- Page header -->
+<header class="mx-auto w-full shadow-sm">
+  <div class="flex items-center py-4 px-5">
+    <div>
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="City of Montreal" title="City of Montreal" width="190px"/>
+      </a>
+    </div>
+    <div class="mx-6 h-4 border border-solid border-gray-400"></div>
+    <div class="text-black font-bold">
+      Données ouvertes
     </div>
   </div>
 </header>
@@ -140,33 +61,103 @@
 </div>
 
 <!-- Footer -->
-<footer class="site-footer bg-gray-900 text-white-74 mt-10 py-gutter z-10 text-sm">
-  <div class="container  w-3/4  m-auto  ">
-    <div class="flex justify-center content-center items-center m-auto w-full ">
-      <div class="w-1/2">
-        <a class="block w-24 m-4 hover:text-white" href="https://ckan.org/" ml-24>
-          <span>{{__('Powered by')}}</span>
-          {% include "./partials/ckan-logo.svg" %}
-        </a>
+<footer class="bg-gray-900 text-white font-normal pt-4 pb-16" id="main-footer">
+  <div class="px-4 mx-auto max-w-6xl">
+    <div class="text-right pb-4">
+      <a href="#main-content" class="text-xs font-bold">Haut de la page</a>
+    </div>
+    <div class="">
+      <div class="flex flex-row text-base justify-between">
+        <div class="w-1/5 border-t border-white">
+          <div class="list-heading font-bold mb-4 pt-8">Données ouvertes</div>
+            <ul class="list-unstyled mb-16 text-sm">
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">Recherche</a>
+              </li>
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">Applications</a>
+              </li>
+            </ul>
+          </div>
+        <div class="w-1/5 border-t border-white">
+          <div class="list-heading font-bold mb-4 pt-8">Initiative</div>
+            <ul class="list-unstyled mb-16 text-sm">
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">Notre démarche</a>
+              </li>
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">License d’utilisation</a>
+              </li>
+            </ul>
+          </div>
+        <div class="w-1/5 border-t border-white">
+          <div class="list-heading font-bold mb-4 pt-8">Communication</div>
+            <ul class="list-unstyled mb-16 text-sm">
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">Actualités</a>
+              </li>
+              <li class="mb-4">
+                <a href="#" class="hover:text-primary">Nous joindre</a>
+              </li>
+            </ul>
+          </div>
+        <div class="w-1/5 border-t border-white">
+          <div class="list-heading font-bold mb-4 pt-8">Nous suivre</div>
+          <ul class="list-unstyled mb-16 text-sm">
+            <li class="mb-4">
+              <a href="#" class="hover:text-primary">
+                <span class="icon icon-social-twitter" aria-hidden="true"></span> Twitter
+              </a>
+            <li class="mb-4">
+            <li>
+              <a href="#" class="hover:text-primary">
+                <span class="icon icon-social-youtube" aria-hidden="true"></span> Fil RSS
+              </a>
+            </li>
+          </ul>
+        </div>      
       </div>
-      <div class="w-1/2">
-        <div class="dropdown float-right ">
-          <button id="lang" data-language="en" data-language-name="English" onclick="languageSwitcher(this)"
-            class="cursor-pointer bg-gray-900  text-white border-2 font-semibold z-20 py-2 px-6 relative rounded-full inline-flex items-center hover:bg-white hover:text-gray-900" style="outline:none;">
-            English
-          </button>
+    </div>
+    <div class="flex justify-between items-center">
+      <div class="col-auto mb-4 mb-lg-0">
+        <svg class="" x="0px" y="0px" viewBox="0 0 184.6 39.3" height="40px">
+            <polyline class="fill-current" points="0,6.6 6.1,6.6 13.9,27.9 14,27.9 21.8,6.6 27.7,6.6 27.7,32.8 23.6,32.8 23.6,10.2 23.5,10.2 15.2,32.8 11.8,32.8 3.5,10.2 3.4,10.2 3.4,32.8 0,32.8 0,6.6   "></polyline>
+            <path class="fill-current" d="M39.3,31.6c3.7,0,4.1-4.6,4.1-7.9c0-3.3-0.4-7.9-4.1-7.9c-3.6,0-4.1,4.6-4.1,7.9C35.2,27.1,35.7,31.6,39.3,31.6 M30.7,23.8 c0-6.1,2.9-9.4,8.6-9.4s8.6,3.3,8.6,9.4s-2.9,9.4-8.6,9.4S30.7,29.9,30.7,23.8z"></path>
+            <path class="fill-current" d="M51.1,14.7h4.1V19h0.1c0.7-1.3,2.5-4.7,6.8-4.7c3.4,0,4.9,2.7,4.9,5.3v13.2h-4.1V21.5c0-2.3-0.4-4.3-2.5-4.3 c-4.1,0-5.2,5.9-5.2,8.2v7.5h-4.1L51.1,14.7"></path>
+            <path class="fill-current" d="M82,32.9c-0.8,0.2-1.9,0.3-2.9,0.3c-3.9,0-6.1-1.1-6.1-4.6V16.7h-3.1v-2H73v-4.2l4.1-2.3v6.6h5.3v2h-5.3v10.4 c0,2.7,0.3,3.9,2.9,3.9c0.7,0,1.4-0.1,1.9-0.3L82,32.9"></path>
+            <path class="fill-current" d="M85.1,14.7h4.1v4.6h0.1c1.3-2.4,2.7-4.7,6.3-5v4c-4,0.1-6.4,1.4-6.4,6.2v8.3h-4.1V14.7"></path>
+            <path class="fill-current" d="M105.8,6.6h4.3l-4,5H103L105.8,6.6 M108.8,20c0-1.4-0.5-4.1-3.6-4.1c-3.2,0-3.8,3-3.9,4.1H108.8z M112.5,32.2 c-1.7,0.6-3.2,1-5.7,1c-5.4,0-9.7-3-9.7-10.2c0-5,2.2-8.6,8.3-8.6c6.3,0,7.5,3.9,7.5,7.4h-11.7c0,3.6,1.7,9.5,7.6,9.5 c1.3,0,2.5-0.2,3.7-0.8V32.2z"></path>
+            <path class="fill-current" d="M126.1,24.3c-1.7,0.1-6.4,0.5-6.4,3.8c0,1.6,1,2.7,2.4,2.7s4-1.3,4-4.4V24.3 M126.1,30.3L126.1,30.3 c-0.7,1.1-2.5,2.9-5.6,2.9s-5.3-2-5.3-4.5c0-5.6,8.3-5.8,10.9-6v-1.6c0-2,0-5.2-2.7-5.2c-2.5,0-3,1.8-3.2,3.9h-4.3 c0.2-2.7,1.4-5.5,7.5-5.5c6.4,0,6.9,3.3,6.9,6.8v11.6h-4.1L126.1,30.3L126.1,30.3z"></path>
+            <rect class="fill-current" x="134.5" y="6.6" width="4.1" height="26.2"></rect>
+            <path class="" style="fill:#e00000" d="M167.3,36c-0.8-0.8-1.3-1.9-1.3-3.1V22.7c0-1.3,1.2-1.9,1.9-1.9h10.3c2.1,0,4.4,1.7,4.4,4.4c0,2.4-1.9,4.4-4.3,4.4 c-1.5,0-2.6-0.7-3.2-1.3c0,0-0.4-0.4-0.5-0.5c0.1-0.2,0.2-0.5,0.2-0.9l0,0c0-1.5-1.2-2.6-2.7-2.6c-0.7,0-1.3,0.3-1.8,0.7 c-0.5,0.5-0.8,1.2-0.8,1.9s0.3,1.4,0.8,1.9s1.1,0.7,1.9,0.7c0.4,0,0.7-0.1,0.9-0.2c0.1,0.1,0.5,0.5,0.5,0.5 c0.3,0.3,1.3,1.4,1.3,3.1l0,0c0,2.7-2.3,4.4-4.4,4.4C169.3,37.3,168.2,36.8,167.3,36 M148.7,28.3c-0.8-0.8-1.3-2-1.3-3.1 c0-1.2,0.4-2.3,1.3-3.1c0.8-0.8,1.9-1.3,3.1-1.3H162c1.3,0,2,1.1,2,1.9v10.2c0,1.2-0.5,2.3-1.3,3.1c-0.6,0.6-1.6,1.3-3.1,1.3 c-2.4,0-4.4-1.9-4.4-4.3l0,0c0-1.5,0.7-2.6,1.3-3.2c0,0,0.4-0.4,0.5-0.5c0.2,0.1,0.5,0.2,0.9,0.2c1.5,0,2.6-1.2,2.6-2.7 c0-0.7-0.3-1.3-0.7-1.8c-0.5-0.5-1.2-0.8-1.9-0.8s-1.4,0.3-1.9,0.8s-0.7,1.1-0.7,1.8l0,0c0,0.4,0.1,0.7,0.2,0.9 c-0.1,0.1-0.5,0.5-0.5,0.5c-0.3,0.3-1.4,1.3-3.1,1.3C150.6,29.6,149.5,29.1,148.7,28.3z M166,6.5c0-1.2,0.5-2.3,1.3-3.1 c0.6-0.6,1.6-1.3,3.1-1.3c1.2,0,2.3,0.5,3.1,1.3s1.3,1.9,1.3,3l0,0c0,1.5-0.7,2.6-1.3,3.2c0,0-0.4,0.4-0.5,0.5 c-0.2-0.1-0.5-0.2-0.9-0.2c-1.5,0-2.6,1.2-2.6,2.7c0,0.7,0.3,1.3,0.7,1.8c0.5,0.5,1.2,0.8,1.9,0.8l0,0c0.7,0,1.4-0.3,1.9-0.8 s0.7-1.1,0.7-1.8l0,0c0-0.4-0.1-0.7-0.2-0.9c0.1-0.1,0.5-0.5,0.5-0.5c0.3-0.3,1.4-1.3,3.1-1.3c2.7,0,4.4,2.3,4.4,4.4 c0,1.2-0.5,2.3-1.3,3.1s-1.9,1.3-3.1,1.3H168c-1.3,0-1.9-1.1-1.9-1.9L166,6.5L166,6.5z M156.5,9.7L156.5,9.7 c-0.3-0.3-1.3-1.4-1.3-3.1l0,0c0-2.7,2.3-4.4,4.4-4.4c1.2,0,2.3,0.5,3.1,1.3s1.3,1.9,1.3,3.1v10.1c0,1.3-1.1,1.9-1.9,1.9h-10.2 c-1.2,0-2.3-0.5-3.1-1.3c-0.6-0.6-1.3-1.6-1.3-3.1c0-1.2,0.5-2.3,1.3-3.1c0.8-0.8,1.9-1.3,3-1.3c1.5,0,2.6,0.7,3.2,1.3 c0,0,0.4,0.4,0.5,0.5c-0.1,0.2-0.2,0.5-0.2,0.9c0,1.5,1.2,2.6,2.7,2.6c0.7,0,1.3-0.3,1.8-0.7c0.5-0.5,0.8-1.2,0.8-1.9 s-0.3-1.4-0.8-1.9s-1.1-0.7-1.9-0.7c-0.4,0-0.7,0.1-0.9,0.2C156.9,10.1,156.5,9.7,156.5,9.7z M165,3.1c-1.3-1.9-3.3-3.1-5.5-3.1 c-3.6,0-6.5,2.9-6.5,6.5c0,0.4,0.1,0.8,0.2,1.5c-0.3-0.1-1-0.2-1.5-0.2c-3.7,0-6.5,2.8-6.5,6.4c0,2.1,1.2,4.2,3.1,5.5 c-1.9,1.3-3.1,3.3-3.1,5.4c0,3.6,2.9,6.5,6.6,6.5c0.4,0,1-0.1,1.4-0.2c-0.1,0.6-0.2,1.1-0.2,1.4c0,3.7,2.8,6.5,6.5,6.5 c2.1,0,4.1-1.1,5.4-3c1.2,1.8,3.4,3,5.5,3c3.6,0,6.4-2.9,6.4-6.5c0-0.5-0.1-1.1-0.2-1.4c0.6,0.1,1.1,0.2,1.5,0.2 c3.6,0,6.5-2.9,6.5-6.5c0-2.1-1.1-4.2-3-5.4c1.8-1.2,3-3.3,3-5.4c0-3.5-3-6.4-6.6-6.4c-0.5,0-1,0.1-1.4,0.2c0.1-0.3,0.2-1,0.2-1.5 c0-3.7-2.8-6.5-6.4-6.5C168.3,0,166.2,1.2,165,3.1z"></path>
+        </svg>
+      </div>
+      <div class="">
+        <div class="flex text-sm">
+          <div class="text-center mb-4 mb-md-0">
+            <ul class="flex items-center">
+              <li class="list-inline-item">
+                <a href="#" class="hover:text-primary">Accessibilité</a>
+              </li>
+              <li class="mx-2 h-1 w-1 bg-white rounded-full bg-gray-500"></li>
+              <li class="list-inline-item">
+                <a href="#" class="hover:text-primary">Confidentialité</a>
+              </li>
+              <li class="mx-2 h-1 w-1 bg-white rounded-full bg-gray-500"></li>
+              <li class="list-inline-item">
+                <a href="#" class="hover:text-primary">Mentions légales</a>
+              </li>
+              <li class="mx-2 h-1 w-1 bg-white rounded-full bg-gray-500"></li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <a href="#" id="footerLangSelector" class="font-bold hover:text-primary" hreflang="en" lang="en">English</a>
+          </div>
         </div>
       </div>
-
     </div>
-    <div class="border-b-2 white border-solid w-full"></div>
-    <div class="py-10">
-      <p class="text-center text-white">©2019 Ville de Montréal</p>
-    </div>
-
   </div>
 </footer>
-</div>
 <!-- end of footer -->
 
 <div class="hidden">
@@ -206,13 +197,6 @@
 </script>
 
 <script>
-  function closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
-  }
-
-  function openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  }
   
 if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   let dashElement= document.querySelectorAll("#montreal-dash > div > div.flex.flex-wrap.m-6 > div > div.mx-24.text-right > p > a")
