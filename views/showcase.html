@@ -57,7 +57,7 @@
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
-              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
+              <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ item.resource.last_modified | formatDateFromNow }}</td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
               <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
                 <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
@@ -130,7 +130,7 @@
     <p class="font-semibold">{{__('Geographic area')}}</p>
     <p>{{ dataset.ext_spatial or '--'}}</p>
     <p class="font-semibold">{{__('Last updated')}}</p>
-    <p>{{ __(dataset.metadata_modified | formatDateFromNow)}}</p>
+    <p>{{ dataset.metadata_modified | formatDateFromNow }}</p>
     <p class="font-semibold">{{__('Created')}}</p>
     <p><span id="#date">{{ dataset.metadata_created | formatDate }}</span></p>
     <p>{{ dataset.license_url }}</p>
