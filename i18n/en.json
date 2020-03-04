@@ -93,7 +93,11 @@
 	"3 days ago": "3 days ago",
 	"daily": "daily",
 	"weekly": "weekly",
-	"monthly":"monthly",
-    "irregular":"irregular",
-	"12 days ago": "12 days ago"
+	"monthly": "monthly",
+	"irregular": "irregular",
+	"12 days ago": "12 days ago",
+	"18 hours ago": "18 hours ago",
+	"a day ago": "a day ago",
+	"13 days ago": "13 days ago",
+	"5 hours ago": "5 hours ago"
 }
