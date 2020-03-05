@@ -104,7 +104,7 @@
                 <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
                 <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
                 <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
+                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ item.resource.last_modified | formatDateFromNow }}</td>
                 <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
                 <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
                   <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
@@ -166,7 +166,7 @@
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Update frequency')}}</h3>
-            <p>{{ dataset.update_frequency or '--'}}</p>
+            <p>{{ __(dataset.update_frequency) or '--'}}</p>
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Language')}}</h3>
@@ -178,7 +178,7 @@
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Last updated')}}</h3>
-            <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+            <p>{{ dataset.metadata_modified | formatDateFromNow }}</p>
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Creation date')}}</h3>
