@@ -139,7 +139,7 @@ module.exports = function (app) {
   app.get('/home', async (req, res) => {
     const collections = await Model.getCollections()
     const recentData  = await Model.search({ q: '' })
-    const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 ).map((packages,index)=>{
+    const threeRecentData  = recentData.results.filter((packages,index)=> index < 3 ).map((packages,index)=>{
       packages.metadata_modified = moment.utc(packages.metadata_modified ).format('ll')
       return packages
     });
@@ -162,7 +162,7 @@ module.exports = function (app) {
     res.render('homereal.html', {
       title: 'Montreal',
       collections,
-      recentData: fiveRecentData,
+      recentData: threeRecentData,
       slug: 'collections',
       posts,
     })
