@@ -8,8 +8,8 @@
 
 {% block content %}
 <!-- data explorer CSS -->
-<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.24836f2c.chunk.css">
-<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.5b97ed95.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.0e85ebd4.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.944d0a2f.chunk.css">
 <!-- end data explorer CSS -->
 
 <section class="font-open-sans">
@@ -21,7 +21,7 @@
           <a href="/">{{__('Home')}}</a>
         </li>
         <li class="breadcrumb_item hover:text-primary">
-          <a href="/collection">{{__('Collections')}}</a>
+          <a href="/collections">{{__('Collections')}}</a>
         </li>
         <li class="breadcrumb_item hover:text-primary">
           <a href="/collections/{{ dataset.groups[0].name}}">{{ dataset.groups[0].name }}</a>
@@ -60,7 +60,7 @@
     <!-- end page navigation column -->
 
     <!-- page content column -->
-    <div class="w-full md:w-2/3 py-gutter text-gray-ink">
+    <div class="w-full md:w-2/3 py-3 text-gray-ink">
         <!-- info -->
         <div class="py-2">
           <h1 class="text-4xl font-semibold text-gray-900">
@@ -83,9 +83,15 @@
         </div>
         <!-- end readme -->
         
-        <!-- resources table -->
+        <!-- data -->
         <div id="data" class="py-2">
           <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Data')}}</h2>
+
+          <!-- data views -->
+      		{% include "./partials/resource-display.njk" %}
+		      <!-- data views end -->
+
+          <!-- resources table -->
           <table class="table info no-left-padding my-4 text-left w-full">
             <thead>
               <tr>
@@ -113,8 +119,9 @@
             {% endfor %}
             </tbody>
           </table>
+          <!-- end resources table -->
         </div>
-        <!-- end resources table -->
+        <!-- end data -->
       
         <!-- methodologie -->
         {% if dataset.methodologie  %}
