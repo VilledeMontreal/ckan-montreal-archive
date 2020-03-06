@@ -31,8 +31,8 @@
                 {% for collection in collections %}
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <a class="p-4 block" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
-                        <img class="" src="{{ collection.image }}" height="40px" width="40px"/>
+                    <a class="p-4 block bg-white rounded" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
+                        <img class="" src="/static/img/{{ collection.name }}.svg" height="40px" width="40px"/>
                         <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ collection.title }}</h2>
                     </a>
                 </li>
@@ -43,6 +43,24 @@
     </section>
 </div>
 <section class="flex flex-col px-4 mx-auto max-w-6xl py-24">
+    <div class="flex flex-col items-center">
+        <h2 class="text-4xl text-zambezi font-semibold mt-6 w-full">{{__('Ensembles de données récemment mis à jour')}}</h2>
+        <div class="sm:flex flex-wrap sm:-mx-4">
+            {% for dataSet in recentData %}
+            <!-- posts -->
+            <div class="md:w-1/3">
+                <a class="block p-4 rounded" href="/{{ dataSet.organization.name | safe }}/{{ dataSet.name | safe }}">
+                    <div class="card-body border border-gray-300 p-8 font-open-sans rounded">
+                        <div class="text-gray-600 text-xs font-bold mb-2">{{dataSet.groups[0].display_name}}</div>
+                        <div class="text-xl font-bold text-black font-medium mb-4">{{ dataSet.title }}</div>
+                        <div class="text-gray-600 font-normal text-base">{{dataSet.metadata_modified}}</div>
+                    </div>
+                </a>
+            </div>
+            <!-- posts end -->
+            {% endfor %}
+        </div>
+    </div>
     <div class="flex flex-col items-center">
         <h2 class="text-4xl text-zambezi font-semibold mt-6 w-full">{{__('News')}}</h2>
         <div class="sm:flex flex-wrap sm:-mx-4">
