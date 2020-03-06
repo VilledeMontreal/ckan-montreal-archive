@@ -13,11 +13,12 @@ module.exports = function (app) {
 
   const configApiUrl = config.get("API_URL")
 
-	// set a cookie with default locale = fr
-	app.use(function (req, res, next) {
-		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
-    if (locale) res.setLocale(locale)
-    moment.locale(locale)
+  // set a cookie with default locale = fr
+  app.use(function (req, res, next) {
+    if (req.cookies && req.cookies.defaultLocale !== undefined) {
+      let locale = req.cookies && req.cookies.defaultLocale || 'fr';
+      moment.locale(locale)
+    }
     next()
   })
  
