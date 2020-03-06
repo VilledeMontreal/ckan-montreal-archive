@@ -72,10 +72,10 @@
           <div class="list-heading font-bold mb-4 pt-8">Données ouvertes</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
-                <a href="#" class="hover:text-primary">Recherche</a>
+                <a href="/search" class="hover:text-primary">Recherche</a>
               </li>
               <li class="mb-4">
-                <a href="#" class="hover:text-primary">Applications</a>
+                <a href="/applications" class="hover:text-primary">Applications</a>
               </li>
             </ul>
           </div>
@@ -83,7 +83,7 @@
           <div class="list-heading font-bold mb-4 pt-8">Initiative</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
-                <a href="#" class="hover:text-primary">Notre démarche</a>
+                <a href="/our-approach" class="hover:text-primary">Notre démarche</a>
               </li>
               <li class="mb-4">
                 <a href="#" class="hover:text-primary">License d’utilisation</a>
@@ -94,10 +94,10 @@
           <div class="list-heading font-bold mb-4 pt-8">Communication</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
-                <a href="#" class="hover:text-primary">Actualités</a>
+                <a href="/news" class="hover:text-primary">Actualités</a>
               </li>
               <li class="mb-4">
-                <a href="#" class="hover:text-primary">Nous joindre</a>
+                <a href="/contact-us" class="hover:text-primary">Nous joindre</a>
               </li>
             </ul>
           </div>
@@ -151,7 +151,10 @@
             </ul>
           </div>
           <div class="text-center">
-            <a href="#" id="footerLangSelector" class="font-bold hover:text-primary" hreflang="en" lang="en">English</a>
+            <button id="lang" data-language="en" data-language-name="English" onclick="languageSwitcher(this)"
+              class="cursor-pointer bg-gray-900 text-white font-bold hover:text-primary z-20 relative inline-flex items-center" style="outline:none;">
+              English
+            </button>
           </div>
         </div>
       </div>
