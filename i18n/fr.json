@@ -1023,6 +1023,7 @@
 	"5 years ago": "il y a 5 ans",
 	"Invalid date": "date erronée",
 	"Updated": "Mis à jour",
+	"Data updated at": "Données mises à jour le",
 	"Download raw data": "Télécharger les données",
 	"Data source": "Source des données",
 	"Powered by": "PROPULSÉ PAR",
@@ -1105,10 +1106,5 @@
 	"7 hours ago": "7 hours ago",
 	"11 days ago": "11 days ago",
 	"2020-03-07": "2020-03-07",
-	"9 hours ago": "9 hours ago",
-	"Data updated at": "Data updated at",
-	"7 March 2020": "7 March 2020",
-	"20 hours ago": "20 hours ago",
-	"12 days ago": "12 days ago",
-	"8 March 2020": "8 March 2020"
+	"9 hours ago": "9 hours ago"
 }

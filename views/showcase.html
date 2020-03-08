@@ -167,7 +167,7 @@
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Update frequency')}}</h3>
-            <p>{{ dataset.update_frequency or '--'}}</p>
+            <p>{{ __(dataset.update_frequency) or '--'}}</p>
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Language')}}</h3>
@@ -179,7 +179,7 @@
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Last updated')}}</h3>
-            <p>{{ __(dataset.metadata_updated | formatDateFromNow)}}</p>
+            <p>{{ dataset.metadata_modified | formatDateFromNow }}</p>
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Creation date')}}</h3>
