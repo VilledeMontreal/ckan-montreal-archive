@@ -8,8 +8,8 @@
     </h3>
 
     <!-- Download Button -->
-    <nav class="pt-6 pb-1">
-      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
+    <nav class="pt-4 pb-1">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term ">
             {{__('Download')}} {% if item.resource.format %}({{ item.resource.format }}){% endif %}
@@ -22,7 +22,7 @@
         </dl>
       </a>
       {% if item.resource.datastore_active %}
-      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" onclick="toggleApi({{ loop.index }})">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" onclick="toggleApi({{ loop.index }})">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term ">
             {{__('API')}}
@@ -31,7 +31,7 @@
       </a>
       {% endif %}
       {% for alt in item.resource.otherFormats %}
-      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ item.resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ item.resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term">
             {{alt.format}}

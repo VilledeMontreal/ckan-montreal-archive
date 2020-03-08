@@ -1,6 +1,6 @@
 .data-explorer{
   & .total-rows{
-    @apply text-center;
+    @apply text-center pt-5 pb-3;
     &::before {
       content: 'Entrées totales: '
     }
@@ -20,7 +20,7 @@
       @apply text-primary border-primary;
     }
   }
-  
+
   & .tab-content{
     &::before{
       content: '';

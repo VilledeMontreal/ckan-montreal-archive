@@ -65,7 +65,7 @@
             {{ dataset.title or dataset.name }} {{name}}
           </h1>
           <div class="text-sm py-1"> 
-            <p class="py-2">{{__('Data updated at')}} {{__(dataset.etadata_modified | formatDate)}} //TOTO format with french Name</p>
+            <p class="py-2">{{__('Data updated at')}} {{__(dataset.etadata_modified | formatDate)}}</p>
             <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a>
           </div>
 
