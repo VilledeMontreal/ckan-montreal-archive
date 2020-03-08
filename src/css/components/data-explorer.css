@@ -20,6 +20,7 @@
       @apply text-primary border-primary;
     }
   }
+  
   & .tab-content{
     &::before{
       content: '';

@@ -8,10 +8,10 @@
 
 {% for facetId, value in result.search_facets %}
 <section class="mb-8 font-open-sans">
-  <h2 class="pb-4 font-semibold text-2xl text-gray-900">{{ __(facetNames[facetId]) }}</h2>
-  <ul>
+  <h3 class="pb-4 font-semibold text-2xl text-gray-900">{{ __(facetNames[facetId]) }}</h3>
+  <ul class="pb-3">
     {% for item in value.items|sort(reverse=true, attribute="count") %}
-    <li class="search-facet flex justify-between items-center text-gray-900 group hover:bg-sarcelle-lightest" style=".search-facet">
+    <li class="search-facet flex justify-between items-center text-gray-900 group hover:bg-sarcelle-lightest cursor-pointer" style=".search-facet">
       <a class="flex-1 font-bold group-hover:text-primary text-base pl-3 py-3" href="/search?q={{ facetId }}:{{ item.name }} {{ query.q }}" aria-label="{{ item.display_name }} ({{ item.count }} results)">
         {{ item.display_name }}
       </a>
