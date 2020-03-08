@@ -33,7 +33,7 @@
 
   <div class="container mx-auto md:flex px-gutter">
     <!-- page navigation nolumn -->
-    <div class="hidden md:block md:w-1/4 md:mr-12 text-gray-900">
+    <div class="hidden md:block md:w-1/4 md:mr-6 text-gray-900">
       <nav class="md:sticky md:top-0 py-gutter">
         <h3 class="text-2xl font-semibold pb-4">{{__('Get started')}}</h3>
         <ul class="text-gray-900 font-semibold text-base">
@@ -42,8 +42,6 @@
           {% if dataset.methodologie  %}
           <li class="py-3 hover:text-primary"><a href="#methodology">{{__('Methodology')}}</a></li>
           {% endif %}
-          
-          <li class="py-3 hover:text-primary"><a href="#data-dictionary">{{__('Data Dictionary')}}</a></li>
           
           {% if dataset.territoire  %}
           <li class="py-3 hover:text-primary"><a href="#territories">{{__('Territories')}}</a></li>
@@ -60,26 +58,25 @@
     <!-- end page navigation column -->
 
     <!-- page content column -->
-    <div class="w-full md:w-2/3 py-3 text-gray-ink">
+    <div class="md:w-2/3 pt-3 pb-5 text-gray-ink">
         <!-- info -->
-        <div class="py-2">
-          <h1 class="text-4xl font-semibold text-gray-900">
+        <div class="">
+          <h1 class="py-2 text-4xl font-semibold text-gray-900">
             {{ dataset.title or dataset.name }} {{name}}
           </h1>
-          <div class="pb-4"> 
-            <a href="/collections/{{ dataset.groups[0].name}}" class="text-primary font-bold">{{ dataset.groups[0].display_name}}</a>
+          <div class="text-sm py-1"> 
+            <p class="py-2">{{__('Data updated at')}} {{__(dataset.etadata_modified | formatDateText)}} //TOTO format with french Name</p>
+            <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a>
           </div>
 
           <!-- readme -->
-          <div class="container mt-gutter">
-            {% if dataset.readmeSnippet or dataset.readmeHtml %}
+          <div class="container mt-12 mb-8 pt-16 border-t border-gray-400">
+          {% if dataset.readmeSnippet or dataset.readmeHtml %}
             <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+          {% elif dataset.description %}
+            <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
+          {% endif %}
           </div>
-            {% elif dataset.description %}
-              <div class="">
-                <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
-              </div>
-            {% endif %}
         </div>
         <!-- end readme -->
         
@@ -92,28 +89,33 @@
 		      <!-- data views end -->
 
           <!-- resources table -->
-          <table class="table info no-left-padding my-4 text-left w-full">
-            <thead>
+          <table class="info block overflow-scroll">
+            <thead class="font-semibold text-left text-gray-900">
               <tr>
-                <th class="col-xs-1 bg-gray-lighter font-sans font-normal  capitalize text-sm text-gray-900">{{__('Name')}}</th>
-                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Format')}}</th>
-                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Size')}}</th>
-                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Last Changed')}}</th>
-                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Info & Preview')}}</th>
-                <th class="col-xs-1 pl-2 bg-gray-lighter font-sans font-normal capitalize text-sm text-gray-900 text-center">{{__('Download')}}</th>
+                <th class="px-4 py-3">{{__('Name')}}</th>
+                <th class="px-4 py-3">{{__('Format')}}</th>
+                <th class="px-4 py-3">{{__('Size')}}</th>
+                <th class="px-4 py-3">{{__('Last Changed')}}</th>
+                {# <th class="">{{__('Info & Preview')}}</th> #}
+                <th class="px-4 py-3 overflow-hidden">{{__('Download')}}</th>
               </tr>
             </thead>
             <tbody>
-            {% set cls = cycler("bg-gray-100", "bg-white") %}
             {% for item in dataset.displayResources %}
-              <tr class="{{ cls.next() }}">
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans  text-sm text-gray"><a href="#{{ item.slug }}">{{ item.resource.title or item.resource.name }}</a></td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans uppercase text-sm text-gray text-center"> {{ item.resource.format }}</td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">{{ item.resource.sizeFormatted or '--' }}</td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans lowercase text-sm text-gray text-center">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center"><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td>
-                <td class="col-xs-1 pl-2 py-2 bg-gray-lighter font-sans capitalize text-sm text-gray text-center">
-                  <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank"> <i class="icon icon-download text-base hover:text-primary"></i>  </a>
+              <tr class="border-t border-gray-400">
+                <td class="px-4 py-3">
+                  {# <a href="#{{ item.slug }}"> #}
+                  {{ item.resource.title or item.resource.name }}
+                  {# </a> #}
+                </td>
+                <td class="px-4 py-3 font-semibold text-base text-gray-900 uppercase"> {{ item.resource.format }}</td>
+                <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
+                <td class="px-4 py-3">{{ __(item.resource.last_modified | formatDateFromNow) }}</td>
+                {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
+                <td class="px-4 py-3 text-base text-primary">
+                  <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank">
+                    {% include "./partials/symbol/svg/download.svg" %}
+                  </a>
                 </td>
               </tr>
             {% endfor %}
@@ -131,14 +133,6 @@
         </div>
         {% endif %}
         <!-- end methodologie -->
-        
-        <!-- data dictionary -->
-        {# {% if dataset.territoire %} #}
-        <div id="data-dictionary">
-          <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Data Dictionary')}}</h2>
-        </div>
-        {# {% endif %} #}
-        <!-- end data dictionary -->
 
         <!-- territoire -->
         {% if dataset.territoire %}
@@ -229,9 +223,14 @@
 <script>
   function toggleApi(i) {
     const el = document.getElementById(`data-api-info-${i}`)
+    const body = document.body
     if (el.style.display === "none") {
       el.style.display = "block"
-    } else {  el.style.display = "none" }
+      body.classList.add("overflow-y-hidden")
+    } else {
+      el.style.display = "none"
+      body.classList.remove("overflow-y-hidden")
+    }
   } 
 
   function copyFromEl(i, el)  {

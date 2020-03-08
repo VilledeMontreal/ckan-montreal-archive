@@ -1,13 +1,15 @@
 <ul>
   {% for item in dataset.displayResources %}
   <li class="mb-6">
-    <h3 class="text-3xl mt-gutter mb-2 font-semibold text-gray-900" id="{{item.resource.name}}">
-      <a href="#{{item.slug}}">{{item.resource.title or item.resource.name}}</a>
+    <h3 class="text-2xl py-2 font-semibold text-gray-900" id="{{item.resource.name}}">
+      {# <a href="#{{item.slug}}"> #}
+        {{item.resource.title or item.resource.name}}
+      {# </a> #}
     </h3>
 
     <!-- Download Button -->
-    <nav class="my-4">
-      <a class="data-file-type bg-primary hover:bg-gray-700" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
+    <nav class="pt-6 pb-1">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term ">
             {{__('Download')}} {% if item.resource.format %}({{ item.resource.format }}){% endif %}
@@ -20,7 +22,7 @@
         </dl>
       </a>
       {% if item.resource.datastore_active %}
-      <a class="data-file-type bg-primary hover:bg-gray-700 cursor-pointer" onclick="toggleApi({{ loop.index }})">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" onclick="toggleApi({{ loop.index }})">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term ">
             {{__('API')}}
@@ -29,7 +31,7 @@
       </a>
       {% endif %}
       {% for alt in item.resource.otherFormats %}
-      <a class="data-file-type" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ item.resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" href="/{{ owner.name }}/{{ dataset.name }}/r/{{ item.resource.name }}.{{ alt.format }}{{ '?v='+revisionId if revisionId }}">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term">
             {{alt.format}}
@@ -42,129 +44,128 @@
       {% endfor %}
     </nav>
     <!-- Download Button End -->
-    <p>
-      {% if item.resource.description %}
-        {{ item.resource.descriptionHtml | safe }}
-      {% else %}
-        {{ item.resource.title | safe }}
-      {% endif %}
-    </p>
+    {% if item.resource.description %}
+      {{ item.resource.descriptionHtml | safe }}
+    {% endif %}
     {% for view in item.resource.views %}
     <div class="data-explorer" id="data-explorer-{{ view.id }}" data-datapackage='{{ item.dataExplorers[loop.index - 1] | safe}}'></div>
     {% endfor %}
   </li>
-  <!-- data file end -->
 
   <!-- Data API modal -->
   {% if item.resource.datastore_active %}
-  <div id="data-api-info-{{ loop.index }}" style="display:none">
-    <div style="z-index: 1000000" class="fixed pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-64 w-5/6 border-solid border-2 p-8">
-      <div class="modal-dialog max-w-full" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close btn btn-primary relative l-0 t-0 m-2 p-2 bg-primary text-white font-extrabold" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">X</button>
-            <h3 class="modal-title text-3xl">
-              CKAN Data API
-            </h3>
+  <div class="w-screen h-screen overflow-auto bg-gray-100 z-50 fixed top-0 bottom-0 left-0 right-0" id="data-api-info-{{ loop.index }}" style="display:none" onclick="toggleApi({{ loop.index }})">
+    {# <div style="z-index: 1000000" class="absolute pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-modal w-modal sm:w-modal-sm md:w-modal-md lg:w-modal-lg xl:w-modal-xl border-solid border-2 p-8"> #}
+    <div style="z-index: 1000000" class="modal-content bg-white rounded-lg flex flex-col max-w-modal sm:max-w-modal-sm md:max-w-modal-md lg:max-w-modal-lg xl:max-w-modal-xl mx-auto my-6" onclick="event.stopPropagation()">
+      <div class="modal-header py-3 px-4 flex flex-row justify-end items-center text-gray-900">
+        <h3 class="modal-title flex-auto font-semibold">
+          CKAN Data API
+        </h3>
+        <button class="close p-1 hover:text-primary" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">
+          {% include "./symbol/svg/close.svg" %}
+        </button>
+      </div>
+      <div class="modal-body p-10 border-t border-b border-gray-400">
+        <p class="pb-3"><strong>Access resource data via a web API with powerful query support</strong>.
+            Further information in the <a href="http://docs.ckan.org/en/latest/maintaining/datastore.html" target="_blank">main CKAN Data API and DataStore documentation</a>.
+        </p>
+        <div class="accordion" id="accordion2">
+          <div class="panel panel-default">
+            <div class="panel-heading bg-primary p-2">
+
+              <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints</p>
+            </div>
+            <div id="collapse-endpoints" class="in panel-collapse collapse">
+              <div class="panel-body my-4 overflow-auto">
+                <p>The Data API can be accessed via the following actions of the CKAN action API.</p>
+                <div class="table-responsive">
+                  <table class="table-condensed table-striped table-bordered table-fixed">
+                    <thead></thead>
+                    <tbody>
+
+                    <tr>
+                      <th scope="row">Query</th>
+                      <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search</code></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Query (via SQL)</th>
+                      <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search_sql</code></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-          <p><strong>Access resource data via a web API with powerful query support</strong>.
-             Further information in the <a href="http://docs.ckan.org/en/latest/maintaining/datastore.html" target="_blank">main CKAN Data API and DataStore documentation</a>.</p>
-          <div class="accordion" id="accordion2">
-            <div class="panel panel-default">
-              <div class="panel-heading bg-primary p-2">
 
-                <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-endpoints">Endpoints</p>
-              </div>
-              <div id="collapse-endpoints" class="in panel-collapse collapse">
-                <div class="panel-body m-4">
-                  <p>The Data API can be accessed via the following actions of the CKAN action API.</p>
-                  <div class="table-responsive">
-                    <table class="table-condensed table-striped table-bordered">
-                      <thead></thead>
-                      <tbody>
+          <div class="panel panel-default">
+            <div class="panel-heading bg-primary p-2">
+              <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying</p>
+            </div>
+            <div id="collapse-querying" class="collapse panel-collapse in">
+              <div class="panel-body my-4 overflow-auto">
+                <strong>Query example (first 5 results)</strong>
+                <p>
+                  <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5</a></code>
+                </p>
 
-                      <tr>
-                        <th scope="row">Query</th>
-                        <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search</code></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Query (via SQL)</th>
-                        <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search_sql</code></td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                <strong>Query example (via SQL statement)</strong>
+                <p>
+                  <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{item.resource.id}}&quot; LIMIT 5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from "{{item.resource.id}}" LIMIT 5</a></code>
+                </p>
               </div>
             </div>
+          </div>
 
-            <div class="panel panel-default">
-              <div class="panel-heading bg-primary p-2">
-                <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-querying">Querying</p>
-              </div>
-              <div id="collapse-querying" class="collapse panel-collapse in">
-                <div class="panel-body m-4">
-                  <strong>Query example (first 5 results)</strong>
-                  <p>
-                    <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5</a></code>
-                  </p>
-
-                  <strong>Query example (via SQL statement)</strong>
-                  <p>
-                    <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{item.resource.id}}&quot; LIMIT 5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from "{{item.resource.id}}" LIMIT 5</a></code>
-                  </p>
-                </div>
-              </div>
+          <div class="panel panel-default">
+            <div class="panel-heading bg-primary p-2">
+              <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript</p>
             </div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading bg-primary p-2">
-                <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-javascript">Example: Javascript</p>
-              </div>
-              <div id="collapse-javascript" class="panel-collapse collapse">
-                <div class="panel-body m-4">
-                  <p>A simple ajax (JSONP) request to the data API using jQuery.</p>
-                  <pre>
-                    var data = {
-                      resource_id: '{{item.resource.id}}', // the resource id
-                      limit: 5 // get 5 results
-                    };
-                    $.ajax({
-                      url: 'https://montreal.l3.ckan.io/api/3/action/datastore_search',
-                      data: data,
-                      dataType: 'jsonp',
-                      success: function(data) {
-                        alert('Total results found: ' + data.result.total)
-                      }
-                    });
-                  </pre>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading br-primary">
-                <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python</p>
-              </div>
-              <div id="collapse-python" class="panel-collapse collapse">
-                <div class="panel-body m-4">
+            <div id="collapse-javascript" class="panel-collapse collapse">
+              <div class="panel-body my-4 overflow-auto">
+                <p>A simple ajax (JSONP) request to the data API using jQuery.</p>
                 <pre>
-                  import urllib2
-                  url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5'
-                  fileobj = urllib2.urlopen(url)
-                  print fileobj.read()
+                  var data = {
+                    resource_id: '{{item.resource.id}}', // the resource id
+                    limit: 5 // get 5 results
+                  };
+                  $.ajax({
+                    url: 'https://montreal.l3.ckan.io/api/3/action/datastore_search',
+                    data: data,
+                    dataType: 'jsonp',
+                    success: function(data) {
+                      alert('Total results found: ' + data.result.total)
+                    }
+                  });
                 </pre>
-                </div>
-                <div class="panel-footer"><strong>NOTE: This snippet only works with python 2.</strong></div>
               </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading br-primary">
+              <p class="accordion-toggle text-white font-bold" data-toggle="collapse" data-parent="accordion2" href="#collapse-python">Example: Python</p>
+            </div>
+            <div id="collapse-python" class="panel-collapse collapse">
+              <div class="panel-body my-4 overflow-auto">
+              <pre>
+                import urllib2
+                url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5'
+                fileobj = urllib2.urlopen(url)
+                print fileobj.read()
+              </pre>
+              </div>
+              <div class="panel-footer"><strong>NOTE: This snippet only works with python 2.</strong></div>
             </div>
           </div>
         </div>
       </div>
+      <div class="modal-footer py-3 px-4 flex flex-row justify-end items-center">
+        <button class="close inline-block py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark" data-dismiss="modal" onclick="toggleApi({{ loop.index }})">OK</button>
+      </div>
     </div>
   </div>
- </div>
+
   <!-- End of Data API modal -->
   {% endif %} <!-- if item.resource.datastore_active -->
   {% endfor %} <!-- for dataset.displayResources -->
