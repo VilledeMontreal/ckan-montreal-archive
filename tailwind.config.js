@@ -5,11 +5,28 @@ module.exports = {
         extend: {
             spacing: {
                 gutter: spacing[6]
-            }
+            },
+            boxShadow: {
+                asc: 'inset 0 2px 0 0 rgb(7, 125, 108)',
+                desc: 'inset 0 -2px 0 0 rgb(7, 125, 108)'
+            },
+            height: {
+                'table': '34rem',
+                'modal': 'calc(100% - 3rem)',
+            },
+            width: {
+                '3/10': '30%',
+            },
+            maxWidth: {
+                'modal': 'calc(100% - 3rem)',
+                'modal-sm': '640px',
+                'modal-md': '768px',
+                'modal-lg': '1024px',
+                'modal-xl': '1280px',
+            },
         },
         colors: {
-            // primary: '#097d6c',
-            primary: '#ff0000',
+            primary: '#097d6c',
             sarcelle: {
                 dark: '#075b4f',
                 surprise: '#0cb097',
@@ -25,6 +42,7 @@ module.exports = {
             white: '#fff',
             'white-75': 'rgba(255,255,255,0.75)',
             gray: {
+                'min': '#0000001a',
                 '100': '#f8f9fa',
                 '200': '#e9ecef',
                 '300': '#dee2e6',
@@ -51,7 +69,18 @@ module.exports = {
             'open-sans': ['Open Sans', 'sans-serif']
         },
         fontSize: {
-            '3-1/2xl': '2rem',
+            'xs': '.75rem',
+            'sm': '.875rem',
+            'tiny': '.875rem',
+            'base': '1rem',
+            'lg': '1.125rem',
+            'xl': '1.25rem',
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '4rem',
+            '7xl': '5rem',
         },
         minHeight: {
             '0': '0',
@@ -60,7 +89,7 @@ module.exports = {
             '3/4': '75%',
             'full': '100%',
             'm': ' 200',
-        }
+        },
     },
     variants: {
         visibility: ['responsive', 'hover', 'focus'],

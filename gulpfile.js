@@ -24,7 +24,7 @@ gulp.task('css', function () {
         require('autoprefixer'),
         require('cssnano')
       ]))
-    .pipe(gulp.dest('./themes/montreal/public/stylesheets'));
+    .pipe(gulp.dest('./public/stylesheets'));
 });
 
 
@@ -58,7 +58,7 @@ gulp.task("server", cb => {
   return nodemon({
     script: 'index.js',
     options: '-e', // -e means we watch for changes in templates too
-    ext: 'js html',
+    ext: 'js html njk',
     env: { 'API_URL': 'https://demo.ckan.org/api/3/action/' }
   }).on("start", () => {
     if (!started) {
