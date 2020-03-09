@@ -13,11 +13,12 @@ module.exports = function (app) {
 
   const configApiUrl = config.get("API_URL")
 
-	// set a cookie with default locale = fr
-	app.use(function (req, res, next) {
-		let locale = req.cookies && req.cookies.defaultLocale || 'fr'
-    if (locale) res.setLocale(locale)
-    moment.locale(locale)
+  // set a cookie with default locale = fr
+  app.use(function (req, res, next) {
+    if (req.cookies && req.cookies.defaultLocale !== undefined) {
+      let locale = req.cookies && req.cookies.defaultLocale || 'fr';
+      moment.locale(locale)
+    }
     next()
   })
  
@@ -139,7 +140,7 @@ module.exports = function (app) {
   app.get('/home', async (req, res) => {
     const collections = await Model.getCollections()
     const recentData  = await Model.search({ q: '' })
-    const fiveRecentData  = recentData.results.filter((packages,index)=> index < 5 ).map((packages,index)=>{
+    const threeRecentData  = recentData.results.filter((packages,index)=> index < 3 ).map((packages,index)=>{
       packages.metadata_modified = moment.utc(packages.metadata_modified ).format('ll')
       return packages
     });
@@ -153,8 +154,8 @@ module.exports = function (app) {
         slug: posts.name,
         title: posts.title,
         content: posts.content.replace(/<\/?[^>]+(>|$)/g, ""),
-        published: moment(posts.date).format('MMMM DD, YYYY'),
-        modified: moment(posts.modified).format('MMMM DD, YYYY'),
+        published: moment(posts.publish_date).format('MMMM DD, YYYY'),
+        modified: moment(posts.publish_date).format('MMMM DD, YYYY'),
         image: posts.image
       }
     });
@@ -162,7 +163,7 @@ module.exports = function (app) {
     res.render('homereal.html', {
       title: 'Montreal',
       collections,
-      recentData: fiveRecentData,
+      recentData: threeRecentData,
       slug: 'collections',
       posts,
     })
