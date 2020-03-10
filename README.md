@@ -22,6 +22,8 @@ Some highlights:
 
 ## Params for deployment through Jenkins
 
+Jenkins URL: https://cc-p-jenkins.ckan.io/job/deploy%20frontend%20instance/build 
+
 ### Staging
 
 Address = `montreal-frontend-staging.ckan.io/`
