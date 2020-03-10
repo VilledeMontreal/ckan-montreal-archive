@@ -982,8 +982,8 @@
 	"Next": "Suivant",
 	"Result": "Résultat",
 	"Results": "Résultats",
-	"dataset found": "ensemble de données trouvés",
-	"datasets found": "ensembles de données trouvés",
+	"dataset found": "résultat",
+	"datasets found": "résultats",
 	"Montréal Open Data": "Données Montréal",
 	"Follow us": "Pour nous suivre",
 	"Recently Added or updated datasets": "Ensembles de données récemment ajoutés ou mis à jour",
@@ -1106,5 +1106,6 @@
 	"il y a 5 mois": "il y a 5 mois",
 	"il y a 4 mois": "il y a 4 mois",
 	"/our-approach" : "/our-approach-fr",
-	"/contact-us" : "/contact-us-fr"
+	"/contact-us" : "/contact-us-fr",
+	"/license" : "/license-fr"
 }

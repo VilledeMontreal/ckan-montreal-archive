@@ -39,16 +39,17 @@
           
             {% for facetId, value in showcases.search_facets %}
             {% if facetId == 'tags' %}
-            <section class="mb-6 md:pr-10">
-              <h2 class="bg-gray-200 px-4 py-3 border-t border-gray-200 font-bold">{{ __(facetNames[facetId]) }}</h2>
-              <ul>
+
+            <section class="mb-8 font-open-sans">
+              <h3 class="pb-4 font-semibold text-2xl text-gray-900">{{ __(facetNames[facetId]) }}</h3>
+              <ul class="pb-3">
                 {% for item in value.items|sort(reverse=true, attribute="count") %}
                 {% set itemName = '"' + item.name + '"' %}
-                <li class="border-t border-gray-200">
-                  <a href="/applications?q={{ facetId }}:{{ itemName }} {{ query.q }}" class="filter-button" aria-label="{{ item.display_name }} ({{ item.count }} results)">
+                <li class="search-facet flex justify-between items-center text-gray-900 group hover:bg-sarcelle-lightest cursor-pointer" style=".search-facet">
+                  <a class="flex-1 font-bold group-hover:text-primary text-base pl-3 py-3" href="/applications?q={{ facetId }}:{{ itemName }} {{ query.q }}" aria-label="{{ item.display_name }} ({{ item.count }} results)">
                     {{ item.display_name }}
-                    <span class="filter-button_count">{{ item.count }}</span>
                   </a>
+                  <span class="flex-none font-bold text-sm text-gray-ink group-hover:text-primary px-3">{{ item.count }}</span>
                 </li>
                 {% endfor %}
 
@@ -62,6 +63,7 @@
                 {% endif %}
               </ul>
             </section>
+
             {% endif %}
             {% endfor %}
           </div>
@@ -69,53 +71,51 @@
 
       <div class="md:w-2/3 md:mr-gutter">
         <form action="/applications" method="GET">
-          <div class="relative mb-10">
-            <input type="text" class="border-2 border-solid border-gray-200 py-4 pl-4 pr-20 text-xl outline-none focus:border-secondary w-full" placeholder={{__('Search showcases')}} name="q" value="{{ query.q }}" autofocus>
-      
-            <button class="absolute inset-y-0 right-0 w-16 px-4 text-secondary fill-current" type="submit" aria-label="Submit">
-              <svg class="w-full h-full"><use xlink:href="#search" /></svg>
+          <div class="relative mb-gutter">
+            <input class="border border-solid border-gray-400 rounded pr-2 pl-10 py-2 text-lg w-full outline-none" type="text" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
+            <button class="absolute flex items-center h-full px-3 top-0 left-0" type="submit">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z" fill="#ADB5BD"></path>
+              </svg>
             </button>
           </div>
-        
-          <div class="lg:flex items-center justify-between">
-            <h1 class="text-4xl font-semibold text-primary">
+
+          <div class="flex flex-wrap items-center justify-center py-gutter">
+            <h1 class="w-full flex-auto pb-5 text-center sm:w-auto sm:pb-0 sm:text-left md:w-full md:pb-5 md:text-center lg:w-auto lg:pb-0 lg:text-left text-4xl text-3-1/2xl font-bold text-black">     <!-- TODO font size -->
               {{ showcases.count }}
               {% if showcases.count == 1 %}
-                {{__('dataset found')}}
+                {{__('Result')}}
               {% else %}  
-                {{__('datasets found')}}
+                {{__('Results')}}
               {% endif %}
             </h1>
-            <div>
-              <label for="field-order-by">{{__('Order by')}}:</label>
-              <div class="relative">
-                <select class="bg-white block appearance-none w-full border-2 border-solid border-gray-200 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
-                  <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
-                  <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
-                  <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
-                  <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
-                  <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center py-3 px-4">
-                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                </div>
+            <label class="flex-none font-bold text-lg text-black px-2" for="field-order-by">{{__('Order by')}}:</label>
+            <div class="flex-none relative">
+              <select class="bg-white appearance-none border border-solid border-gray-400 text-base text-gray-900 rounded py-3 px-2 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
+                <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
+                <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
+                <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
+                <option value="metadata_modified:desc" {% if query.sort == "metadata_modified:desc" %}selected="selected"{% endif %}>{{__('Last Modified')}}</option>
+                <option value="views_recent:desc" {% if query.sort == "views_recent:desc" %}selected="selected"{% endif %}>{{__('Popular')}}</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center py-3 pr-4 pl-2 text-gray-600">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
               </div>
             </div>
           </div>
-      
         </form>
        
         <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
           <!-- group -->
           {% for showcase in showcases.results %}
           <li class="sm:w-1/2 lg:w-1/2">
-            <a class="flex bg-gray-200 p-4 border-t-4 border-primary my-4 sm:mx-4" href="/applications/single/{{ showcase.id }}">
-              <div class="w-24 h-24 mr-4 p-4 flex-shrink-0 flex justify-center bg-gray-300">
-                <img class="w-full" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}">
+            <a class="flex p-4 border my-4 sm:mx-4 rounded" href="/applications/single/{{ showcase.id }}">
+              <div class="w-16 h-16 mr-4 flex-shrink-0 flex justify-center rounded-md">
+                <img class="w-full" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}" style="border-radius:16px;">
               </div>
               <div class="flex flex-col justify-center overflow-hidden">
-                <h2 class="font-semibold text-lg">{{ showcase.title }}</h2>
-                <p>{{ showcase.description | truncate(100) }}</p>
+                <h2 class="font-bold text-xl text-black">{{ showcase.title }}</h2>
+                <p class="text-base">{{ showcase.description | truncate(100) }}</p>
               </div>
             </a>
           </li>
