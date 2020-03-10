@@ -9,14 +9,15 @@ module.exports = function (app) {
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
   const ActivityFeed = require('./activity-api');
-  const proxy = require('express-http-proxy');
+  const proxy = require('express-http-proxy');  
 
   const configApiUrl = config.get("API_URL")
 
-  // set a cookie with default locale = fr
-  app.use(function (req, res, next) {
-    if (req.cookies && req.cookies.defaultLocale !== undefined) {
-      let locale = req.cookies && req.cookies.defaultLocale || 'fr';
+  // set a cookie defaultLocale value for Moment
+  app.use(function (req, res, next) {	
+    if (req.cookies.defaultLocale !== undefined) {
+      let locale = req.cookies.defaultLocale || 'fr';
+      res.cookie('defaultLocale', locale, {path: '/'})
       moment.locale(locale)
     }
     next()
