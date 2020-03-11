@@ -19,6 +19,25 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script id="ga-gtag" async></script>
 
+  <script >
+    //set cookie defaultLocale first
+    if (!readCookie('defaultLocale')) {
+      document.cookie = "defaultLocale=fr; path=/";
+    }
+
+    //get cookie
+    function readCookie(name) {
+      var cookieName = name + '=';
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(cookieName) == 0) return c.substring(cookieName.length, c.length);
+      }
+      return null;
+    }
+  </script>
+
   <script>
     document.getElementById("ga-gtag").src = "https://www.googletagmanager.com/gtag/js?id={{ $GA_ID }}";
     window.dataLayer = window.dataLayer || [];
@@ -200,19 +219,8 @@
   //set cookie
   function languageSwitcher(el) {
     let lang = el.getAttribute('data-language');
-    document.cookie = 'defaultLocale=' + lang;
+    document.cookie = "defaultLocale=" + lang + "; path=/"
     location.reload();
-  }
-  //get cookie
-  function readCookie(name) {
-    var cookieName = name + '=';
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-      if (c.indexOf(cookieName) == 0) return c.substring(cookieName.length, c.length);
-    }
-    return null;
   }
 </script>
 
