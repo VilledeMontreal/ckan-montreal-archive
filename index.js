@@ -2,6 +2,7 @@ module.exports = function (app) {
   const appHome = process.cwd()
   const dms = require(`${appHome}/lib/dms`)
   const config = require(`${appHome}/config`)
+  const utils = require(`${appHome}/utils`);
   const Model = new dms.DmsModel(config)
   const fs = require('fs')
   const path = require('path')
@@ -191,7 +192,14 @@ module.exports = function (app) {
     try {
       req.query.fq = 'dataset_type:showcase'
       const showcases = await Model.search(req.query)
+
       // Pagination
+      const from = req.query.from || 0
+      const size = req.query.size || 10
+      const total = showcases.count
+      const totalPages = Math.ceil(total / size)
+      const currentPage = parseInt(from, 10) / size + 1
+      const pages = utils.pagination(currentPage, totalPages)
 
       res.render('application-showcases.html',{
         title: 'Applications',
@@ -199,7 +207,10 @@ module.exports = function (app) {
         slug: 'Applications',
         showcases,
         descriptions: showcases.notes,
-        query: req.query
+        query: req.query,
+        totalPages,
+        pages,
+        currentPage
       })
     } catch(e) {
       next(e)
