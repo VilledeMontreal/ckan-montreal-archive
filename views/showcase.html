@@ -66,7 +66,7 @@
           </h1>
           <div class="text-sm py-1"> 
             <p class="py-2">{{__('Data updated at')}} {{__(dataset.etadata_modified | formatDate)}}</p>
-            <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a>
+            {# <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a> #}
           </div>
 
           <!-- readme -->
@@ -79,6 +79,41 @@
           </div>
         </div>
         <!-- end readme -->
+
+        <!-- resources table -->
+        <table class="info block overflow-scroll">
+          <thead class="font-semibold text-left text-gray-900">
+            <tr>
+              <th class="px-4 py-3">{{__('Name')}}</th>
+              <th class="px-4 py-3">{{__('Format')}}</th>
+              <th class="px-4 py-3">{{__('Size')}}</th>
+              <th class="px-4 py-3">{{__('Last Changed')}}</th>
+              {# <th class="">{{__('Info & Preview')}}</th> #}
+              <th class="px-4 py-3 overflow-hidden">{{__('Download')}}</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in dataset.displayResources %}
+            <tr class="border-t border-gray-400">
+              <td class="px-4 py-3">
+                {# <a href="#{{ item.slug }}"> #}
+                {{ item.resource.title or item.resource.name }}
+                {# </a> #}
+              </td>
+              <td class="px-4 py-3 font-semibold text-base text-gray-900 uppercase"> {{ item.resource.format }}</td>
+              <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
+              <td class="px-4 py-3">{{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}</td>
+              {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
+              <td class="px-4 py-3 text-base text-primary">
+                <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank">
+                  {% include "./partials/symbol/svg/download.svg" %}
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <!-- end resources table -->
         
         <!-- data -->
         <div id="data" class="py-2">
@@ -87,41 +122,7 @@
           <!-- data views -->
       		{% include "./partials/resource-display.njk" %}
 		      <!-- data views end -->
-
-          <!-- resources table -->
-          <table class="info block overflow-scroll">
-            <thead class="font-semibold text-left text-gray-900">
-              <tr>
-                <th class="px-4 py-3">{{__('Name')}}</th>
-                <th class="px-4 py-3">{{__('Format')}}</th>
-                <th class="px-4 py-3">{{__('Size')}}</th>
-                <th class="px-4 py-3">{{__('Last Changed')}}</th>
-                {# <th class="">{{__('Info & Preview')}}</th> #}
-                <th class="px-4 py-3 overflow-hidden">{{__('Download')}}</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for item in dataset.displayResources %}
-              <tr class="border-t border-gray-400">
-                <td class="px-4 py-3">
-                  {# <a href="#{{ item.slug }}"> #}
-                  {{ item.resource.title or item.resource.name }}
-                  {# </a> #}
-                </td>
-                <td class="px-4 py-3 font-semibold text-base text-gray-900 uppercase"> {{ item.resource.format }}</td>
-                <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
-                <td class="px-4 py-3">{{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}</td>
-                {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
-                <td class="px-4 py-3 text-base text-primary">
-                  <a href="{{ item.resource.path }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank">
-                    {% include "./partials/symbol/svg/download.svg" %}
-                  </a>
-                </td>
-              </tr>
-            {% endfor %}
-            </tbody>
-          </table>
-          <!-- end resources table -->
+          
         </div>
         <!-- end data -->
       
