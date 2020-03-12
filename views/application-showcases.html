@@ -109,14 +109,12 @@
           <!-- group -->
           {% for showcase in showcases.results %}
           <li class="sm:w-1/2 lg:w-1/2">
-            <a class="flex p-4 border my-4 sm:mx-4 rounded" href="/applications/single/{{ showcase.id }}">
-              <div class="w-16 h-16 mr-4 flex-shrink-0 flex justify-center rounded-md">
+            <a class="flex flex-col justify-center p-4 border my-4 sm:mx-4 rounded overflow-hidden" href="/applications/single/{{ showcase.id }}">
+              <div class="w-16 h-16 mb-4 flex-shrink-0 flex justify-center rounded-md">
                 <img class="w-full" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}" style="border-radius:16px;">
               </div>
-              <div class="flex flex-col justify-center overflow-hidden">
-                <h2 class="font-bold text-xl text-black">{{ showcase.title }}</h2>
-                <p class="text-base">{{ showcase.description | truncate(100) }}</p>
-              </div>
+              <h2 class="font-bold text-xl text-black">{{ showcase.title }}</h2>
+              <p class="text-base">{{ showcase.description | truncate(100) }}</p>
             </a>
           </li>
           {% endfor %}
