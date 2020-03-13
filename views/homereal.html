@@ -2,7 +2,7 @@
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
 <section class="bg-center bg-no-repeat" style="background-image: url(/static/img/MTLdonneesGRIS.png)">
-    <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-24 ">
+    <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-32">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Rechercher un ensemble de données')}}</h1>
         <form action="/search" method="GET" id="search-form">
             <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
@@ -22,9 +22,9 @@
 </section>
 <!-- ---End of Hero Section ---- -->
 <div class="bg-gray-100">
-    <section class="flex flex-col px-4 mx-auto max-w-6xl py-24">
+    <section class="flex flex-col px-4 mx-auto max-w-6xl pt-16 pb-32">
         <div data-title="our-data">
-            <h2 class="text-4xl text-zambezi font-semibold  mt-2 ">{{__('Our data')}}</h2>
+            <h2 class="text-4xl text-zambezi font-semibold">{{__('Our data')}}</h2>
         </div>
         <div data-title="collection-grid" class="flex w-full">
             <ul class="flex-grow sm:flex flex-wrap sm:-mx-2 mt-gutter">
@@ -42,9 +42,9 @@
         </div>
     </section>
 </div>
-<section class="flex flex-col px-4 mx-auto max-w-6xl py-24">
-    <div class="flex flex-col items-center">
-        <h2 class="text-4xl text-zambezi font-semibold mt-6 w-full">{{__('Ensembles de données récemment mis à jour')}}</h2>
+<section class="flex flex-col px-4 mx-auto max-w-6xl">
+    <div class="flex flex-col items-center pt-16 pb-32">
+        <h2 class="text-4xl text-zambezi font-semibold w-full">{{__('Ensembles de données récemment mis à jour')}}</h2>
         <div class="sm:flex flex-wrap sm:-mx-4">
             {% for dataSet in recentData %}
             <!-- posts -->
@@ -61,8 +61,8 @@
             {% endfor %}
         </div>
     </div>
-    <div class="flex flex-col items-center">
-        <h2 class="text-4xl text-zambezi font-semibold mt-6 w-full">{{__('News')}}</h2>
+    <div class="flex flex-col items-center pb-16">
+        <h2 class="text-4xl text-zambezi font-semibold w-full">{{__('News')}}</h2>
         <div class="sm:flex flex-wrap sm:-mx-4">
             {% for post in posts %}
             <!-- posts -->
@@ -91,7 +91,7 @@
 <div class="border"></div>
 <!--End of Separator-->
 <!-- Start of Powered By Section -->
-<div class="px-4 mx-auto max-w-6xl py-24">
+<div class="px-4 mx-auto max-w-6xl pt-16 pb-32">
     <div class="flex justify-between items-center w-full">
         <div class="w-1/3">
             <a class="block w-24 font-bold" href="https://ckan.org/">
