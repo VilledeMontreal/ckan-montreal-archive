@@ -49,10 +49,10 @@
             {% for dataSet in recentData %}
             <!-- posts -->
             <div class="md:w-1/3">
-                <a class="block m-4 rounded" href="/{{ dataSet.organization.name | safe }}/{{ dataSet.name | safe }}">
+                <a class="block m-4 rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/{{ dataSet.organization.name | safe }}/{{ dataSet.name | safe }}">
                     <div class="card-body border border-gray-300 p-8 font-open-sans rounded">
                         <div class="text-gray-600 text-xs font-bold mb-2">{{dataSet.groups[0].display_name}}</div>
-                        <div class="text-xl font-bold text-black font-medium mb-4">{{ dataSet.title }}</div>
+                        <div class="text-xl font-bold text-black font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;height:60px;">{{ dataSet.title }}</div>
                         <div class="text-gray-600 font-normal text-base">{{dataSet.metadata_modified}}</div>
                     </div>
                 </a>
@@ -67,12 +67,12 @@
             {% for post in posts %}
             <!-- posts -->
             <div class="md:w-1/3">
-                <a class="block m-4" href="/news/{{ post.slug | safe }}">
+                <a class="block m-4 hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/news/{{ post.slug | safe }}">
                     <div class="card-img">
-                        <img class="rounded-t" src="{{ post.image or '/static/img/texture.png' }}" style="width: calc(100% + 2px);" /> 
+                        <img class="rounded-t" src="{{ post.image or '/static/img/texture.png' }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
                     </div>
                     <div class="card-body border border-gray-300 p-8">
-                        <p class="text-xl font-bold text-black  font-open-sans font-medium">{{ post.title }}</p>
+                        <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ post.title }}</p>
                         <p class="text-gray-600  font-open-sans font-normal">{{post.modified}}</p>
                     </div>
                 </a>
