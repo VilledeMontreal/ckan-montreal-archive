@@ -123,7 +123,10 @@
 	"Nous joindre": "Contact us",
 	"Nous suivre": "Follow us",
 	"Fil RSS": "RSS Feed",
-	"Accessibilité": "Accessibilité",
-	"Confidentialité": "Confidentialité",
-	"Mentions légales": "Mentions légales"
+	"Accessibilité": "Accessibility",
+	"Confidentialité": "Privacy",
+	"Mentions légales": "Legal notice",
+	"https://montreal.ca/articles/accessibilite" : "https://montreal.ca/en/articles/accessibility",
+	"https://montreal.ca/articles/confidentialite" : "https://montreal.ca/en/articles/confidentiality",
+	"https://montreal.ca/articles/mentions-legales" : "https://montreal.ca/en/articles/legal-notices"
 }
