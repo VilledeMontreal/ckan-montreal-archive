@@ -57,6 +57,15 @@
       window.location.replace(window.origin + '/login');
     }
   </script>  
+  <style>
+    #homepage-collection-icons:hover div{
+      filter:brightness(0.5) sepia(1) hue-rotate(115deg) saturate(4);
+    }
+
+    #homepage-collection-icons:hover h2{
+      color: #097d6c
+    }
+  </style>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
 
