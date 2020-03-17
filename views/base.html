@@ -56,7 +56,7 @@
     if (document.referrer.includes('127.0.0.1:4000') || document.referrer.includes('donnees.montreal.ca')) == false {
       window.location.replace(window.origin + '/login');
     }
-  </script>  
+  </script>
   <style>
     #homepage-collection-icons:hover div{
       filter:brightness(0.5) sepia(1) hue-rotate(115deg) saturate(4);
@@ -64,6 +64,59 @@
 
     #homepage-collection-icons:hover h2{
       color: #097d6c
+    }
+
+    .custom_accordion {
+      background-color: #ffffff;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
+
+    .custom_accordion:hover::after{
+      content: '';
+      background-image: url(/static/img/icon-plus-circle-full.svg);
+      width: 24px;
+      height: 24px;
+    }
+
+    .custom_active:hover::after{
+      content: '';
+      background-image: url(/static/img/icon-minus-circle-full.svg);
+      width: 24px;
+      height: 24px;
+    }
+
+    .custom_accordion:after {
+      content: '';
+      background-image: url(/static/img/icon-plus-circle.svg);
+      color: #097d6c;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .custom_active:after {
+      content: '';
+      background-image: url(/static/img/icon-minus-circle.svg);
+      width: 24px;
+      height: 24px;
+    }
+
+    .custom_panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
     }
   </style>
 </head>
@@ -95,8 +148,8 @@
       <a href="#" class="text-xs font-bold">{{__('Haut de la page')}}</a>
     </div>
     <div class="">
-      <div class="flex flex-row text-base justify-between">
-        <div class="w-1/5 border-t border-white">
+      <div class="flex flex-col md:flex-row text-base justify-between">
+        <div class="w-full md:w-1/5 border-t border-white">
           <div class="list-heading font-bold mb-4 pt-8">{{__('Données ouvertes')}}</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
@@ -107,7 +160,7 @@
               </li>
             </ul>
           </div>
-        <div class="w-1/5 border-t border-white">
+        <div class="w-full md:w-1/5 border-t border-white">
           <div class="list-heading font-bold mb-4 pt-8">{{__('Initiative')}}</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
@@ -118,7 +171,7 @@
               </li>
             </ul>
           </div>
-        <div class="w-1/5 border-t border-white">
+        <div class="w-full md:w-1/5 border-t border-white">
           <div class="list-heading font-bold mb-4 pt-8">{{__('Communication')}}</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
@@ -129,7 +182,7 @@
               </li>
             </ul>
           </div>
-        <div class="w-1/5 border-t border-white">
+        <div class="w-full md:w-1/5 border-t border-white">
           <div class="list-heading font-bold mb-4 pt-8">{{__('Nous suivre')}}</div>
           <ul class="list-unstyled mb-16 text-sm">
             <li class="mb-4">
@@ -163,7 +216,7 @@
         </div>      
       </div>
     </div>
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col md:flex-row justify-between items-center">
       <div class="col-auto mb-4 mb-lg-0">
         <svg class="" x="0px" y="0px" viewBox="0 0 184.6 39.3" height="40px">
             <polyline class="fill-current" points="0,6.6 6.1,6.6 13.9,27.9 14,27.9 21.8,6.6 27.7,6.6 27.7,32.8 23.6,32.8 23.6,10.2 23.5,10.2 15.2,32.8 11.8,32.8 3.5,10.2 3.4,10.2 3.4,32.8 0,32.8 0,6.6   "></polyline>
@@ -178,9 +231,9 @@
         </svg>
       </div>
       <div class="">
-        <div class="flex text-sm">
+        <div class="flex flex-col md:flex-row text-sm">
           <div class="text-center mb-4 mb-md-0">
-            <ul class="flex items-center">
+            <ul class="flex flex-wrap md:flex-row items-center justify-center">
               <li class="list-inline-item">
                 <a href="{{__('https://montreal.ca/articles/accessibilite')}}" class="hover:text-primary">{{__('Accessibilité')}}</a>
               </li>
@@ -253,6 +306,33 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
       window.location.replace(window.origin + '/login');
     }
   </script> 
+  <script>
+    var acc = document.getElementsByClassName("custom_accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+
+      if (i == 0){
+        acc[i].classList.toggle("custom_active");
+        var panel = acc[i].nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }   
+      }
+
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("custom_active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+  </script>
 {% block scripts %}
 {% endblock %}
 </body>
