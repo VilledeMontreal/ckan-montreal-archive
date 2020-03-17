@@ -1,12 +1,12 @@
 <ul>
   {% for item in dataset.displayResources %}
+  <div class="custom_accordion mb-4 rounded border border-solid border-gray-300 hover:text-primary text-base font-bold"
+    id="{{item.resource.name}}"
+    >
+    {{item.resource.title or item.resource.name}}
+  </div>
+  <div class="custom_panel">
   <li class="mb-6">
-    <h3 class="text-2xl py-2 font-semibold text-gray-900" id="{{item.resource.name}}">
-      {# <a href="#{{item.slug}}"> #}
-        {{item.resource.title or item.resource.name}}
-      {# </a> #}
-    </h3>
-
     <!-- Download Button -->
     <nav class="pt-4 pb-1">
       <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
@@ -55,7 +55,6 @@
   <!-- Data API modal -->
   {% if item.resource.datastore_active %}
   <div class="w-screen h-screen overflow-auto bg-gray-100 z-50 fixed top-0 bottom-0 left-0 right-0" id="data-api-info-{{ loop.index }}" style="display:none" onclick="toggleApi({{ loop.index }})">
-    {# <div style="z-index: 1000000" class="absolute pin z-100000 overflow-auto bg-white flex fixed top-0 my-4 h-modal w-modal sm:w-modal-sm md:w-modal-md lg:w-modal-lg xl:w-modal-xl border-solid border-2 p-8"> #}
     <div style="z-index: 1000000" class="modal-content bg-white rounded-lg flex flex-col max-w-modal sm:max-w-modal-sm md:max-w-modal-md lg:max-w-modal-lg xl:max-w-modal-xl mx-auto my-6" onclick="event.stopPropagation()">
       <div class="modal-header py-3 px-4 flex flex-row justify-end items-center text-gray-900">
         <h3 class="modal-title flex-auto font-semibold">
@@ -165,8 +164,8 @@
       </div>
     </div>
   </div>
-
   <!-- End of Data API modal -->
   {% endif %} <!-- if item.resource.datastore_active -->
+  </div>
   {% endfor %} <!-- for dataset.displayResources -->
 </ul>
