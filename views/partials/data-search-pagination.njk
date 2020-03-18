@@ -8,7 +8,7 @@
         {% else %}
           {% set from = (currentPage - 2) * 10 %}
         {% endif %}
-        <a class="block px-5 py-3 hover:text-primary hover:bg-sarcelle-lightest" href="/search?q={{ query.q }}&from={{ from }}" aria-label="Previous">
+        <a class="block px-5 py-3 hover:text-primary hover:bg-sarcelle-lightest" href="/search?q={{ query.q }}&from={{ from }}{% if query.sort %}&sort={{ query.sort }}{% endif %}" aria-label="Previous">
           <span class="">{{__('<')}}</span>
         </a>
       </li>
@@ -19,12 +19,12 @@
         </li>
         {% else %}
         <li class="border border-gray-400 -ml-px hover:text-primary hover:bg-sarcelle-lightest">
-          <a class="block px-5 py-3 {{ 'bg-sarcelle-lightest text-primary secondary-nav_link' if currentPage == page }}" href="/search?q={{ query.q }}&from={{ (page - 1) * 10 }}">{{page}}</a>
+          <a class="block px-5 py-3 {{ 'bg-sarcelle-lightest text-primary secondary-nav_link' if currentPage == page }}" href="/search?q={{ query.q }}&from={{ (page - 1) * 10 }}{% if query.sort %}&sort={{ query.sort }}{% endif %}">{{page}}</a>
         </li>
         {% endif %}
       {% endfor %}
       <li class="border border-gray-400 -ml-px rounded-r hover:text-primary hover:bg-sarcelle-lightest">
-        <a class="block px-5 py-3" href="/search?q={{ query.q }}&from={{ currentPage * 10 }}" aria-label="Next">
+        <a class="block px-5 py-3" href="/search?q={{ query.q }}&from={{ currentPage * 10 }}{% if query.sort %}&sort={{ query.sort }}{% endif %}" aria-label="Next">
           <span class="">{{__('>')}}</span>
         </a>
       </li>
