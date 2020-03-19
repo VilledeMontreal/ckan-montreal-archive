@@ -61,4 +61,21 @@
     filterTarget.setAttribute("data-expanded", !expanded);
   }
 </script>
+<script>
+  var clear_button = document.getElementById("data_search_form_input_icon");
+  var input_icon = document.getElementById("data_search_form_input");
+
+  clear_button.addEventListener("click", function() {
+    document.getElementById("data_search_form_input").value = '';
+  });
+
+  input_icon.addEventListener("change", function(){
+    if (input_icon.length > 0){
+      clear_button.style.display = 'block';
+    }
+    else{
+      clear_button.style.display = 'none';
+    }
+  })
+</script>
 {% endblock %}
