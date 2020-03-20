@@ -321,7 +321,8 @@ module.exports = function (app) {
       modified: moment(post.modified).format('Do MMMM YYYY'),
       image: post.featured_image,
       thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
-      categories: post.categories ? Object.keys(post.categories) : []
+      categories: post.categories ? Object.keys(post.categories) : [],
+      displayContactForm: "true"
     });
   })
 
