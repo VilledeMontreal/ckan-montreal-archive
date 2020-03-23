@@ -2,7 +2,7 @@
   & .total-rows{
     @apply text-center pt-5 pb-3;
     &::before {
-      content: 'Entrées totales: '
+      content: ''
     }
   }
   & .react-date-picker__wrapper{
