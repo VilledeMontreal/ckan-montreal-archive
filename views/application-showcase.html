@@ -24,48 +24,47 @@
     </div>
     <div class="container mx-auto md:flex p-gutter">
       <div class="md:w-1/3 md:mr-gutter">
-        <div class="mb-gutter md:mr-10 md:pb-2">
-          <h2 class="text-primary text-xl font-semibold">{{ showcase.title }}</h2>
-          <p class="py-2 text-sm">{{__('Submitted by')}}</p>
-          <p class="py-2 text-lg">{{ showcase.author }}</p>
-          <a href="{{ showcase.url }}">
-            {{__('Launch website')}}
+        <div class="border border-gray-200 p-4 mb-gutter md:mr-10 pb-8">
+          <div class="py-4">
+            <p class="text-black text-sm">{{__('Submitted by')}}</p>
+            <h2 class="text-primary text-xl font-semibold">{{ showcase.title }}</h2>
+          </div>
+          <a class="px-4 py-2 bg-primary rounded text-white text-sm font-bold" href="{{ showcase.url }}">
+            {{__('Site Web')}}
           </a>
-        </div>
-        <div class="search-filters">
-          <section class="mb-6 md:pr-10">
-            <h2 class="bg-gray-200 px-4 py-3 border-t border-gray-200 font-bold">
-              {{__('Datasets in Applications')}}
-            </h2>
-            <ul>
-              {% for dataset in datasets %}
-            <li class="border-t border-gray-200">
-              <a href="/{{ dataset.organization.name }}/{{ dataset.name }}" class="filter-button">
-                {{ dataset.title }}
-              </a>
-            </li>
-              {% endfor %}
-            </ul>
-          </section>
         </div>
       </div>
       <main class="md:w-2/3">
-          <h2 class="text-primary text-3xl font-semibold">{{ showcase.title }}</h2>
+        <h2 class="pb-8 text-3xl font-bold">{{ showcase.title }}</h2>
+        <p class="border-t border-gray-200 p-4 text-lg">{{ showcase.notes }}</p>
+        <div class="flex justify-center md:p-8">
           <img src="{{ showcase.image_display_url }}">
+        </div>
         <br>
-        <p class="text-lg">{{ showcase.notes }}</p>
-        <br>
-        <a href="{{ showcase.url }}">
-          {{__('Launch website')}}
-        </a>
-        <br>
+        <section class="mt-2 mb-6 md:pr-10">
+          <h2 class="text-2xl py-3 border-gray-200 font-bold">
+            {{__('Datasets')}}
+          </h2>
+          <ul>
+            {% for dataset in datasets %}
+              <a class="application_dataset flex border-t border-gray-200 p-4" href="/{{ dataset.organization.name }}/{{ dataset.name }}">
+                <img class="block" src="{{ dataset.groups[0].image_display_url }}" width="50px" height="50px" />
+                <span class="text-base filter-button font-bold">
+                  {{ dataset.title }}
+                </span>
+              </a>
+            {% endfor %}
+          </ul>
+        </section>
+        <section class="mt-16 mb-32">
         {% for tag in showcase.tags %}
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 mt-10">
+          <span class="border text-xs inline-block rounded-sm px-2 py-1 font-bold text-primary mr-2">
             <a href="/applications">
               {{ tag.display_name }}
             </a>
           </span>
         {% endfor %}
+        </section>
       </main>
     </div>
   </div>
