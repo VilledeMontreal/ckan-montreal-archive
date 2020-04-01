@@ -16,6 +16,9 @@
   & p {
     @apply mb-2;
   }
+  & strong {
+    font-weight: 600;
+  }
   & ol {
     @apply mt-1 ml-2 list-disc;
   }
@@ -26,7 +29,10 @@
       font-family: "Nunito Sans",sans-serif;
       @apply font-semibold text-gray-900 text-base;
   }
-
+  & a{
+    text-decoration: underline;
+    color :  #097d6c;
+  }
 }
 
 .activity .item{
