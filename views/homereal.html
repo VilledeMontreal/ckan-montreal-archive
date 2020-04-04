@@ -2,7 +2,7 @@
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
 <section class="bg-center bg-no-repeat" style="background-image: url(/static/img/MTLdonneesGRIS.png)">
-    <div class="container flex flex-col  w-5/6 justify-center  m-auto lg:max-w-2xlm py-32">
+    <div class="container flex flex-col  w-5/6 content-center m-auto lg:max-w-2xlm py-32">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Rechercher un ensemble de données')}}</h1>
         <form action="/search" method="GET" id="search-form">
             <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
@@ -18,6 +18,13 @@
                 </button>
             </div>
         </form>
+        <div class="container mx-auto flex flex-wrap justify-center pt-4 w-4/5 md:w-3/5 lg:w-6/12">
+            {% for link in quickLinks %}
+            <!-- quick search links -->
+            <a class="rounded-full text-white bg-primary hover:bg-sarcelle-dark font-bold m-2 py-2 px-4" href={{ link[1] }}>{{ link[2] | safe }}</a>
+            <!-- end quick search links -->
+            {% endfor %}
+        </div>
     </div>
 </section>
 
@@ -54,7 +61,7 @@
                     <div class="card-body border border-gray-300 p-8 font-open-sans rounded">
                         <div class="text-gray-600 text-xs font-bold mb-2">{{dataSet.groups[0].display_name}}</div>
                         <div class="text-xl font-bold text-black font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;height:60px;">{{ dataSet.title }}</div>
-                        <div class="text-gray-600 font-normal text-base">{{dataSet.metadata_modified}}</div>
+                        <div class="text-gray-600 font-normal text-base">{{ dataSet.metadata_modified }}</div>
                     </div>
                 </a>
             </div>
