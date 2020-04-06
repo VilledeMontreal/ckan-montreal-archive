@@ -10,7 +10,7 @@ module.exports = function (app) {
   const moment = require('moment');
   const cmsPosts = require('./cms-posts');
   const ActivityFeed = require('./activity-api');
-  const proxy = require('express-http-proxy');  
+  const proxy = require('express-http-proxy');
 
   const configApiUrl = config.get("API_URL")
 
@@ -23,7 +23,7 @@ module.exports = function (app) {
     }
     next()
   })
- 
+
   app.use((req, res, next) => {
     let configApiUrl = config.get("API_URL")
 
@@ -162,12 +162,23 @@ module.exports = function (app) {
       }
     });
 
+    // Links from 'https://montreal.l3.ckan.io/pages/frontpage-calls-to-action'
+    // for Home page quick search buttons
+    const searchTagSlug = 'frontpage-calls-to-action'
+    let quickSearchPost = await postsModel.getPost(searchTagSlug)
+    let content = quickSearchPost.content
+    let quickLinks = []
+    content.replace(/[^<]*(<a href="([^"]+)">([^<]+)<\/a>)/g, function () {
+      quickLinks.push(Array.prototype.slice.call(arguments, 1, 4))
+    });
+      
     res.render('homereal.html', {
       title: 'Montreal',
       collections,
       recentData: threeRecentData,
       slug: 'collections',
       posts,
+      quickLinks
     })
   })
 
