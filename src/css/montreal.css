@@ -20,10 +20,10 @@
     font-weight: 600;
   }
   & ol {
-    @apply mt-1 ml-2 list-disc;
+    @apply mt-1 ml-2 list-decimal;
   }
   & ul{
-    @apply mt-1 ml-2;
+    @apply mt-1 ml-2 list-disc;
   }
   & code{
       font-family: "Nunito Sans",sans-serif;
