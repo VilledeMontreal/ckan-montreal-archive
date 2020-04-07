@@ -67,3 +67,7 @@
 .activity .load-more a{
  display: none
 }
+
+.showcase-item {
+  min-height: 220px;
+}
