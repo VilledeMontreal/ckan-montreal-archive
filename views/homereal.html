@@ -2,7 +2,7 @@
 {% block bodyclass %}home{% endblock %} {% block content %}
 <!-- Hero Section -->
 <section class="bg-center bg-no-repeat" style="background-image: url(/static/img/MTLdonneesGRIS.png)">
-    <div class="container flex flex-col  w-5/6 content-center m-auto lg:max-w-2xlm py-32">
+    <div class="container flex flex-col  w-5/6 content-justify m-auto lg:max-w-2xlm pt-32 pb-8">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Rechercher un ensemble de données')}}</h1>
         <form action="/search" method="GET" id="search-form">
             <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
@@ -21,7 +21,7 @@
         <div class="container mx-auto flex flex-wrap justify-center pt-4 w-4/5 md:w-3/5 lg:w-6/12">
             {% for link in quickLinks %}
             <!-- quick search links -->
-            <a class="rounded-full text-white bg-primary hover:bg-sarcelle-dark font-bold m-2 py-2 px-4" href={{ link[1] }}>{{ link[2] | safe }}</a>
+            <a class="rounded-full text-white text-base bg-primary hover:bg-sarcelle-dark font-bold m-2 py-2 px-4" href={{ link[1] }}>{{ link[2] | safe }}</a>
             <!-- end quick search links -->
             {% endfor %}
         </div>
