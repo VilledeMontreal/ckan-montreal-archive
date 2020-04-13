@@ -304,52 +304,52 @@ module.exports = function (app) {
     }
   })
 
-  // This handles Contuct Us, Our Approach an License pages. This renders info.html page
-  // app.get('/:page', async (req, res, next) => {
+  This handles Contuct Us, Our Approach an License pages. This renders info.html page
+  app.get('/:page', async (req, res, next) => {
     
-  //   // key: value pairs. Key is slug, value is post.name from CKAN backend CKANEXT PAGES extension
-  //   var infoPages = { 
-  //     "our-approach-en": "our-approach",
-  //     "notre-demarche": "notre-demarche",
-  //     "license-en": "license",
-  //     "licence-d-utilisation": "licence-d-utilisation",
-  //     "contact-us-en":"contact-us",
-  //     "nous-joindre":"nous-joindre"
-  //   }
+    // key: value pairs. Key is slug, value is post.name from CKAN backend CKANEXT PAGES extension
+    var infoPages = { 
+      "our-approach-en": "our-approach",
+      "notre-demarche": "notre-demarche",
+      "license-en": "license",
+      "licence-d-utilisation": "licence-d-utilisation",
+      "contact-us-en":"contact-us",
+      "nous-joindre":"nous-joindre"
+    }
 
-  //   const page = req.params.page
+    const page = req.params.page
 
-  //   if (page in infoPages){
-  //     try{
-  //       const postsModel = new cmsPosts.CmsModel();
-  //       let displayContactFormBool = "false";
+    if (page in infoPages){
+      try{
+        const postsModel = new cmsPosts.CmsModel();
+        let displayContactFormBool = "false";
         
-  //       // fetch required page
-  //       let post = await postsModel.getPost(infoPages[page]);
+        // fetch required page
+        let post = await postsModel.getPost(infoPages[page]);
         
-  //       // ebable contact form on following pages
-  //       if (post.name == "contact-us" || post.name == "nous-joindre"){
-  //         displayContactFormBool = "true";
-  //       } 
+        // ebable contact form on following pages
+        if (post.name == "contact-us" || post.name == "nous-joindre"){
+          displayContactFormBool = "true";
+        } 
 
-  //       if (post.name){
-  //         res.render('info.html', {
-  //           slug: post.name,
-  //           title: post.title,
-  //           content: post.content,
-  //           published: moment(post.date).format('Do MMMM YYYY'),
-  //           modified: moment(post.modified).format('Do MMMM YYYY'),
-  //           image: post.featured_image,
-  //           thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
-  //           categories: post.categories ? Object.keys(post.categories) : [],
-  //           displayContactForm: displayContactFormBool
-  //         });
-  //       }
-  //     } catch(e) {
-  //       next(e)
-  //     }
-  //   } else {
-  //     next()
-  //   }
-  // })
+        if (post.name){
+          res.render('info.html', {
+            slug: post.name,
+            title: post.title,
+            content: post.content,
+            published: moment(post.date).format('Do MMMM YYYY'),
+            modified: moment(post.modified).format('Do MMMM YYYY'),
+            image: post.featured_image,
+            thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
+            categories: post.categories ? Object.keys(post.categories) : [],
+            displayContactForm: displayContactFormBool
+          });
+        }
+      } catch(e) {
+        next(e)
+      }
+    } else {
+      next()
+    }
+  })
 }
