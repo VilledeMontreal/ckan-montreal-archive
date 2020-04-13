@@ -179,10 +179,10 @@
           <div class="list-heading font-bold mb-4 pt-8">{{__('Initiative')}}</div>
             <ul class="list-unstyled mb-16 text-sm">
               <li class="mb-4">
-                <a href={{__('/our-approach')}} class="hover:text-primary">{{__('Notre démarche')}}</a>
+                <a href={{ __('/our-approach-en') }} class="hover:text-primary">{{__('Our Approach')}}</a>
               </li>
               <li class="mb-4">
-                <a href={{__('/license')}} class="hover:text-primary">{{__("Licence d'utilisation")}}</a>
+                <a href={{ __('/license-en') }} class="hover:text-primary">{{__("Licence d'utilisation")}}</a>
               </li>
             </ul>
           </div>
@@ -193,7 +193,7 @@
                 <a href="/news" class="hover:text-primary">{{__('Actualités')}}</a>
               </li>
               <li class="mb-4">
-                <a href={{__('/contact-us')}} class="hover:text-primary">{{__('Nous joindre')}}</a>
+                <a href={{ __('/contact-us-en') }} class="hover:text-primary">{{__('Nous joindre')}}</a>
               </li>
             </ul>
           </div>
@@ -293,11 +293,31 @@
       el.setAttribute("data-language", "fr");
       el.setAttribute("data-language-name", "Français");
     }
-  //set cookie
+
+  //set cookie and handle Contact-us, Our-approach and License pages
   function languageSwitcher(el) {
+    var infoPages = { 
+                      "our-approach-en": "notre-demarche",
+                      "notre-demarche": "our-approach-en",
+                      "license-en": "licence-d-utilisation",
+                      "licence-d-utilisation": "license-en",
+                      "contact-us-en":"nous-joindre",
+                      "nous-joindre":"contact-us-en"
+                     }
+    // set cookie
     let lang = el.getAttribute('data-language');
     document.cookie = "defaultLocale=" + lang + "; path=/"
-    location.reload();
+    
+    // handle pages
+    let page = location.pathname.replace('/', '')
+
+    if (infoPages[page]){
+      location.pathname = '/' + infoPages[page];
+      window.href = window.origin + location.pathname;
+      window.reload();
+    } else {
+      location.reload();
+    }
   }
 </script>
 
