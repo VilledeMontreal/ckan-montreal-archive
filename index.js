@@ -304,7 +304,7 @@ module.exports = function (app) {
     }
   })
 
-  This handles Contuct Us, Our Approach an License pages. This renders info.html page
+  //This handles Contuct Us, Our Approach an License pages. This renders info.html page
   app.get('/:page', async (req, res, next) => {
     
     // key: value pairs. Key is slug, value is post.name from CKAN backend CKANEXT PAGES extension
