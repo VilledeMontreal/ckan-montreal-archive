@@ -304,52 +304,52 @@ module.exports = function (app) {
     }
   })
 
-  app.get('/our-approach-fr', async (req, res) => {
-    const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("demarche");
+  //This handles Contuct Us, Our Approach an License pages. This renders info.html page
+  app.get('/:page', async (req, res, next) => {
+    
+    // key: value pairs. Key is slug, value is post.name from CKAN backend CKANEXT PAGES extension
+    var infoPages = { 
+      "our-approach-en": "our-approach",
+      "notre-demarche": "notre-demarche",
+      "license-en": "license",
+      "licence-d-utilisation": "licence-d-utilisation",
+      "contact-us-en":"contact-us",
+      "nous-joindre":"nous-joindre"
+    }
 
-    res.render('post.html', {
-      slug: post.slug,
-      title: post.title,
-      content: post.content,
-      published: moment(post.date).format('Do MMMM YYYY'),
-      modified: moment(post.modified).format('Do MMMM YYYY'),
-      image: post.featured_image,
-      thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
-      categories: post.categories ? Object.keys(post.categories) : []
-    });
-  })
+    const page = req.params.page
 
-  app.get('/contact-us-fr', async (req, res) => {
-    const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("nous-joindre");
+    if (page in infoPages){
+      try{
+        const postsModel = new cmsPosts.CmsModel();
+        let displayContactFormBool = "false";
+        
+        // fetch required page
+        let post = await postsModel.getPost(infoPages[page]);
+        
+        // ebable contact form on following pages
+        if (post.name == "contact-us" || post.name == "nous-joindre"){
+          displayContactFormBool = "true";
+        } 
 
-    res.render('post.html', {
-      slug: post.slug,
-      title: post.title,
-      content: post.content,
-      published: moment(post.date).format('Do MMMM YYYY'),
-      modified: moment(post.modified).format('Do MMMM YYYY'),
-      image: post.featured_image,
-      thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
-      categories: post.categories ? Object.keys(post.categories) : [],
-      displayContactForm: "true"
-    });
-  })
-
-  app.get('/license-fr', async (req, res) => {
-    const postsModel = new cmsPosts.CmsModel();
-    let post = await postsModel.getPost("licence-d-utilisation");
-
-    res.render('post.html', {
-      slug: post.slug,
-      title: post.title,
-      content: post.content,
-      published: moment(post.date).format('Do MMMM YYYY'),
-      modified: moment(post.modified).format('Do MMMM YYYY'),
-      image: post.featured_image,
-      thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
-      categories: post.categories ? Object.keys(post.categories) : []
-    });
+        if (post.name){
+          res.render('info.html', {
+            slug: post.name,
+            title: post.title,
+            content: post.content,
+            published: moment(post.date).format('Do MMMM YYYY'),
+            modified: moment(post.modified).format('Do MMMM YYYY'),
+            image: post.featured_image,
+            thisPageFullUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
+            categories: post.categories ? Object.keys(post.categories) : [],
+            displayContactForm: displayContactFormBool
+          });
+        }
+      } catch(e) {
+        next(e)
+      }
+    } else {
+      next()
+    }
   })
 }
