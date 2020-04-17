@@ -105,21 +105,23 @@
           </div>
         </form>
        
-        <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
-          <!-- group -->
-          {% for showcase in showcases.results %}
-          <li class="sm:w-1/2 lg:w-1/2">
-            <a class="showcase-item flex flex-col justify-center p-4 border my-4 sm:mx-4 rounded overflow-hidden hover:shadow-xl" href="/applications/single/{{ showcase.id }}">
-              <div class="w-16 h-16 mb-4 flex-shrink-0 flex justify-center rounded-md">
-                <img class="w-full" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}" style="border-radius:16px;">
-              </div>
-              <h2 class="font-bold text-xl text-black">{{ showcase.title }}</h2>
-              <p class="text-base">{{ showcase.description | truncate(100) }}</p>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-
+            <div class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
+            {% for showcase in showcases.results %}
+            <!-- showcase -->
+            <div class="sm:w-1/2 lg:w-1/2">
+                <a class="showcase-item block m-4 hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl"  href="/applications/single/{{ showcase.id }}">
+                    <div class="card-img">
+                        <img class="rounded-t" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
+                    </div>
+                    <div class="card-body border border-gray-300 p-8" style="height: 300px;">
+                        <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ showcase.title }}</p>
+                        <p class="text-gray-600  font-open-sans font-normal" >{{ showcase.description | truncate(150) }}</p>
+                    </div>
+                </a>
+            </div>
+            <!-- showcase end -->
+            {% endfor %}
+          </div>
         <div class="flex flex-wrap justify-center">{% include "./partials/application-pagination.njk" %}</div>
       </div>
     </div>
