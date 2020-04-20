@@ -58,82 +58,6 @@
       window.location.replace(window.origin + '/login');
     }
   </script>
-  <style>
-    #homepage-collection-icons:hover div{
-      filter:brightness(0.5) sepia(1) hue-rotate(115deg) saturate(4);
-    }
-
-    #homepage-collection-icons:hover h2{
-      color: #097d6c
-    }
-
-    .custom_accordion {
-      background-color: #ffffff;
-      color: #444;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      transition: 0.4s;
-    }
-
-    .custom_accordion:hover::after{
-      content: '';
-      background-image: url(/static/img/icon-plus-circle-full.svg);
-      width: 24px;
-      height: 24px;
-    }
-
-    .custom_active:hover::after{
-      content: '';
-      background-image: url(/static/img/icon-minus-circle-full.svg);
-      width: 24px;
-      height: 24px;
-    }
-
-    .custom_accordion:after {
-      content: '';
-      background-image: url(/static/img/icon-plus-circle.svg);
-      color: #097d6c;
-      font-weight: bold;
-      float: right;
-      margin-left: 5px;
-      width: 24px;
-      height: 24px;
-    }
-
-    .custom_active:after {
-      content: '';
-      background-image: url(/static/img/icon-minus-circle.svg);
-      width: 24px;
-      height: 24px;
-    }
-
-    .custom_panel {
-      padding: 0 18px;
-      background-color: white;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-    }
-
-    #data_search_form_input_icon {
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      right: 10px;
-      top: 11px;
-      fill: #adb5bd;
-      cursor: pointer;
-    }
-
-    .application_dataset:hover{
-      background-color: #EEFAF8;
-    }
-  </style>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
 
@@ -326,25 +250,16 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
     var i;
 
     for (i = 0; i < acc.length; i++) {
-
-      if (i == 0){
+      if (i === 0){
         acc[i].classList.toggle("custom_active");
         var panel = acc[i].nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }   
+        panel.classList.remove("hidden")
       }
-
+      
       acc[i].addEventListener("click", function() {
         this.classList.toggle("custom_active");
         var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        } 
+        panel.classList.toggle("hidden");
       });
     }
   </script>
