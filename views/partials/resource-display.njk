@@ -45,7 +45,7 @@
     </nav>
     <!-- Download Button End -->
     {% if item.resource.description %}
-      {{ item.resource.descriptionHtml | safe }}
+    <div class="markdown-content leading-relaxed">{{ item.resource.descriptionHtml | safe }}</div>
     {% endif %}
     {% for view in item.resource.views %}
     <div class="data-explorer" id="data-explorer-{{ view.id }}" data-datapackage='{{ item.dataExplorers[loop.index - 1] | safe}}'></div>

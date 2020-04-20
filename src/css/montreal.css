@@ -69,7 +69,6 @@
  display: none
 }
 
-
 #data_search_form_input_icon {
   width: 24px;
   height: 24px;
@@ -82,4 +81,8 @@
 
 .application_dataset:hover{
   background-color: #EEFAF8;
+}
+
+.showcase-item {
+  min-height: 220px;
 }
