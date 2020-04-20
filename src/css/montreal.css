@@ -35,6 +35,7 @@
   }
 }
 
+
 .activity .item{
   margin-bottom: 20px;
   line-height: 1.625;
@@ -66,6 +67,20 @@
 }
 .activity .load-more a{
  display: none
+}
+
+#data_search_form_input_icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  fill: #adb5bd;
+  cursor: pointer;
+}
+
+.application_dataset:hover{
+  background-color: #EEFAF8;
 }
 
 .showcase-item {

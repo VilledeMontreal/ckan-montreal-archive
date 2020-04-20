@@ -1,0 +1,51 @@
+.custom_accordion {
+    background-color: #ffffff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.custom_accordion:hover::after{
+    content: '';
+    background-image: url(/static/img/icon-plus-circle-full.svg);
+    width: 24px;
+    height: 24px;
+}
+
+.custom_active:hover::after{
+    content: '';
+    background-image: url(/static/img/icon-minus-circle-full.svg);
+    width: 24px;
+    height: 24px;
+}
+
+.custom_accordion:after {
+    content: '';
+    background-image: url(/static/img/icon-plus-circle.svg);
+    color: #097d6c;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.custom_active:after {
+    content: '';
+    background-image: url(/static/img/icon-minus-circle.svg);
+    width: 24px;
+    height: 24px;
+}
+
+.custom_panel {
+    padding: 0 18px;
+    background-color: white;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
