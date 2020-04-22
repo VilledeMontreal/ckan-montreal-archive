@@ -163,20 +163,24 @@
         <div id="additional-info" class="py-2">
           <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Additional Info')}}</h2>
           <div class="py-2">
-            <h3 class="font-semibold text-gray-900">{{__('Editor')}}</h3>
-            <p>{{ dataset.author.name | dump | safe | replace('\"', '') or '--'}}</p>
+            <h3 class="font-semibold text-gray-900">{{__('Publisher')}}</h3>
+            <p>{{ dataset.sources[0].name | dump | safe | replace('\"', '') or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Temporal coverage')}}</h3>
+            <p>{{ dataset.temporal or '--'}}</p>
+          </div>
+          <div class="py-2">
+            <h3 class="font-semibold text-gray-900">{{__('Source (URL)')}}</h3>
+            {% if dataset.sources[0].web %}
+            <a href="{{ dataset.sources[0].web }}" class="hover:text-sarcelle-dark underline">{{ dataset.sources[0].web or '--'}}</a>
+            {% else %}
+            <p> -- </p>
+            {% endif %}
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Update frequency')}}</h3>
             <p>{{ __(dataset.update_frequency) or '--'}}</p>
-          </div>
-          <div class="py-2">
-            <h3 class="font-semibold text-gray-900">{{__('Language')}}</h3>
-            <p>{{ dataset.language or '--'}}</p>
-          </div>
-          <div class="py-2">
-            <h3 class="font-semibold text-gray-900">{{__('Geographic area')}}</h3>
-            <p>{{ dataset.ext_spatial or '--'}}</p>
           </div>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Last updated')}}</h3>
