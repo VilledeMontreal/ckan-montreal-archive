@@ -75,12 +75,6 @@ module.exports = function (app) {
     })
   ) 
 
-  // Remove this when Login page is no needed anymore
-  app.get('/login', (req, res) => {
-    res.render('home.html', {
-      title: 'Login'
-    })
-  })
 
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))
@@ -137,9 +131,7 @@ module.exports = function (app) {
     })
   })
 
-  // Change '/home' to '/', delete home.html and rename homereal.html to home.html
-  // when Login page is not needed anymore
-  app.get('/home', async (req, res) => {
+  app.get('/', async (req, res) => {
     const collections = await Model.getCollections()
     const recentData  = await Model.search({ q: '' })
     const threeRecentData  = recentData.results.filter((packages,index)=> index < 3 ).map((packages,index)=>{
@@ -172,7 +164,7 @@ module.exports = function (app) {
       quickLinks.push(Array.prototype.slice.call(arguments, 1, 4))
     });
       
-    res.render('homereal.html', {
+    res.render('home.html', {
       title: 'Montreal',
       collections,
       recentData: threeRecentData,
