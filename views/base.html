@@ -261,31 +261,24 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   }
 }   
 </script>
-  <script>
-    // This script is created for Login page.
-    // Delete this script when Login page is removed.
-    if (document.referrer.includes('127.0.0.1:4000') || document.referrer.includes('donnees.montreal.ca')) === false{
-      window.location.replace(window.origin + '/login');
-    }
-  </script> 
-  <script>
-    var acc = document.getElementsByClassName("custom_accordion");
-    var i;
+<script>
+  var acc = document.getElementsByClassName("custom_accordion");
+  var i;
 
-    for (i = 0; i < acc.length; i++) {
-      if (i === 0){
-        acc[i].classList.toggle("custom_active");
-        var panel = acc[i].nextElementSibling;
-        panel.classList.remove("hidden")
-      }
-      
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("custom_active");
-        var panel = this.nextElementSibling;
-        panel.classList.toggle("hidden");
-      });
+  for (i = 0; i < acc.length; i++) {
+    if (i === 0){
+      acc[i].classList.toggle("custom_active");
+      var panel = acc[i].nextElementSibling;
+      panel.classList.remove("hidden")
     }
-  </script>
+    
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("custom_active");
+      var panel = this.nextElementSibling;
+      panel.classList.toggle("hidden");
+    });
+  }
+</script>
 {% block scripts %}
 {% endblock %}
 </body>
