@@ -21,7 +21,7 @@
         <div class="container mx-auto flex flex-wrap justify-center pt-4 w-4/5 md:w-3/5 lg:w-6/12">
             {% for link in quickLinks %}
             <!-- quick search links -->
-            <a class="rounded-full text-white text-base bg-primary hover:bg-sarcelle-dark font-bold m-2 py-2 px-4" href={{ link[1] }}>{{ link[2] | safe }}</a>
+            <a class="rounded-full text-center text-white text-base bg-primary hover:bg-sarcelle-dark font-bold m-2 py-2 px-4" href={{ link[1] }}>{{ link[2] | safe }}</a>
             <!-- end quick search links -->
             {% endfor %}
         </div>
