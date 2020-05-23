@@ -41,7 +41,6 @@
       return null;
     }
   </script>
-
   <script>
     document.getElementById("ga-gtag").src = "https://www.googletagmanager.com/gtag/js?id={{ $GA_ID }}";
     window.dataLayer = window.dataLayer || [];
@@ -54,18 +53,37 @@
       }
     });
   </script>
-  <script>
-    // This script is created for Login page.
-    // Delete this script when Login page is removed.
-    if (document.referrer.includes('127.0.0.1:4000') || document.referrer.includes('donnees.montreal.ca')) == false {
-      window.location.replace(window.origin + '/login');
-    }
-  </script>
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %} text-gray-700" id="montreal">
 
 <!-- Page header -->
 <header class="mx-auto w-full shadow-sm">
+  <!-- Banner -->
+  <!-- Remove this section when not needed anymore -->
+  <div id="top-banner" class="flex content-start justify-center w-full bg-blue text-white text-xl px-4 py-3">
+    <div class="w-1/4 px-4 pt-1 text-base text-white">
+      <button class="fill-current w-6 h-6 text-white">
+        {% include "./partials/symbol/svg/icon.svg" %}
+      </button>
+    </div>
+    <div class="flex flex-wrap w-1/2 justify-center">
+      <div class="pr-2 font-bold">
+        {{__('BETA')}}
+      </div>
+      <div class="pr-2 text-center">
+        {{__('Unveiling of the new open data website')}}
+      </div>
+      <div class="underline text-center">
+        <a href="/news/devoilement-nouveau-site-web-donnees-ouvertes">{{__('Learn more')}}</a>
+      </div>
+    </div>
+    <div class="w-1/4 px-4 pt-1 content-end text-right">
+      <button class="text-base text-white" onclick="messageDismiss('top-banner')" type="submit">
+        {% include "./partials/symbol/svg/close.svg" %}
+      </button>
+    </div>
+  </div>
+  <!-- End of banner -->
   <div class="flex items-center py-4 px-5">
     <div>
       <a class="logo" href="/">
@@ -248,8 +266,7 @@
   }
 </script>
 
-<script>
-  
+<script>  
 if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   let dashElement= document.querySelectorAll("#montreal-dash > div > div.flex.flex-wrap.m-6 > div > div.mx-24.text-right > p > a")
   if (typeof(dashElement) != 'undefined' && dashElement != null){
@@ -261,6 +278,7 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   }
 }   
 </script>
+
 <script>
   var acc = document.getElementsByClassName("custom_accordion");
   var i;
@@ -277,6 +295,14 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
       var panel = this.nextElementSibling;
       panel.classList.toggle("hidden");
     });
+  }
+</script>
+
+<script>
+  // Remove this script when Top Banner is not needed anymore
+  function messageDismiss(elementId) {
+    el = document.getElementById(elementId)
+    el.style.display = 'none'
   }
 </script>
 {% block scripts %}
