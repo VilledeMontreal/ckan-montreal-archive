@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import '_snippets.html' as snippets %}
 
 {% block title%}{{title}}{% endblock %}
 
@@ -22,7 +23,7 @@
 <div class="bg-gray-100">
     <section class="flex flex-col px-4 mx-auto max-w-6xl pt-16 pb-32">
         <div data-title="our-data">
-            <h2 class="text-4xl text-zambezi font-semibold">{{__('Our data')}}</h2>
+            <h2 class="text-4xl text-zambezi font-semibold">{{__('Organizations')}}</h2>
         </div>
         <div data-title="collection-grid" class="flex w-full">
             <ul class="flex-grow sm:flex flex-wrap sm:-mx-2 mt-gutter">
@@ -30,7 +31,7 @@
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
                     <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
-                        <div style="background-image: url(/static/img/{{ collection.name }}.svg); height:40px; width:40px;"></div>
+                        <img class="h-20" src="{{ collection.image }}"/>
                         <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ collection.title }}</h2>
                     </a>
                 </li>
