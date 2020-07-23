@@ -30,8 +30,7 @@
       @apply font-semibold text-gray-900 text-base;
   }
   & a{
-    text-decoration: underline;
-    color :  #097d6c;
+    @apply underline text-gray-700;
   }
 }
 
