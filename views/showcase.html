@@ -66,6 +66,9 @@
           </h1>
           <div class="text-sm py-1"> 
             <p class="py-2">{{__('Data updated at')}} {{ dataset.metadata_modified | formatDate }}</p>
+            <div class="flex flex-row">
+              <p class="pr-4">{{__('Published by')}}</p>
+              <a class="underline font-bold text-sarcelle-dark" href="/organization/{{ owner.name }}">{{ owner.title }}</a>
             {# <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a> #}
           </div>
 
@@ -79,6 +82,8 @@
           </div>
         </div>
         <!-- end readme -->
+
+        <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Data')}}</h2>
 
         <!-- resources table -->
         <table class="info block">
@@ -117,7 +122,6 @@
         
         <!-- data -->
         <div id="data" class="py-2">
-          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Data')}}</h2>
 
           <!-- data views -->
       		{% include "./partials/resource-display.njk" %}
@@ -192,6 +196,22 @@
           </div>
           <!-- <p>{{ dataset.license_url }}</p> -->
           <!-- end Additional Info section -->
+
+          <!-- Organization block -->
+          <div class="container flex mt-12 mb-8 pt-4 items-center border-t border-gray-400">
+            <div class="w-1/5 pr-4">
+              <img class="inline-block w-full" src="{{ owner.avatar }}"/>
+            </div>
+            <div class="flex flex-col w-4/5">
+              <h2 class="text-black text-xl font-semibold hover:underline">
+                <a href="/organization/{{ owner.name }}">{{ owner.title }}</a>
+              </h2>
+              <p class="py-2 text-sm text-justify">
+                {{ dataset.organization.description | safe }}
+              </p>
+            </div>
+          </div>
+          <!-- End of Organization block>
 
           <!-- data files (downloads) -->
           {# {% include "./partials/resource-display.njk" %} #}
