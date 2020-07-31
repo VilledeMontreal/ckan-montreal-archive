@@ -14,7 +14,7 @@
       @apply text-lg my-1 font-semibold text-gray-900;
   }
   & p {
-    @apply mb-2;
+    @apply text-lg mb-2;
   }
   & strong {
     font-weight: 600;
