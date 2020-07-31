@@ -67,15 +67,15 @@
           <div class="text-sm py-1"> 
             <p class="py-2">{{__('Data updated at')}} {{ dataset.metadata_modified | formatDate }}</p>
             <div class="flex flex-row">
-              <p class="pr-4">{{__('Published by')}}</p>
-              <a class="underline font-bold text-sarcelle-dark" href="/organization/{{ owner.name }}">{{ owner.title }}</a>
+              <p class="pr-2">{{__('Published by')}}</p>
+              <a class="font-semibold text-sarcelle-dark hover:underline" href="/organization/{{ owner.name }}">{{ owner.title }}</a>
             {# <a class="py-2 text-primary" href="/collections/{{ dataset.groups[0].name}}">Where does this link go?</a> #}
           </div>
 
           <!-- readme -->
           <div class="container mt-12 mb-8 pt-16 border-t border-gray-400">
           {% if dataset.readmeSnippet or dataset.readmeHtml %}
-            <div class="leading-relaxed">{{dataset.readmeHtml|safe}}</div>
+            <div class="leading-relaxed text-lg">{{dataset.readmeHtml|safe}}</div>
           {% elif dataset.description %}
             <div class="markdown-content leading-relaxed">{{dataset.descriptionHtml|safe}}</div>
           {% endif %}
@@ -86,7 +86,7 @@
         <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Data')}}</h2>
 
         <!-- resources table -->
-        <table class="info block">
+        <table class="info block pb-12">
           <thead class="font-semibold text-left text-gray-900">
             <tr>
               <th class="px-4 py-3">{{__('Name')}}</th>
@@ -199,15 +199,15 @@
 
           <!-- Organization block -->
           <div class="container flex mt-12 mb-8 pt-4 items-center border-t border-gray-400">
-            <div class="w-1/5 pr-4">
+            <div class="w-1/4 pr-4">
               <img class="inline-block w-full" src="{{ owner.avatar }}"/>
             </div>
-            <div class="flex flex-col w-4/5">
+            <div class="flex flex-col w-3/4">
               <h2 class="text-black text-xl font-semibold hover:underline">
                 <a href="/organization/{{ owner.name }}">{{ owner.title }}</a>
               </h2>
               <p class="py-2 text-sm text-justify">
-                {{ dataset.organization.description | safe }}
+                {{ owner.description | safe | truncate(200) }}
               </p>
             </div>
           </div>
