@@ -6,23 +6,51 @@
         <a class="text-gray-900 hover:text-primary" href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}">{{ package.title or package.name }}</a>
       </h3>
 
-      <div class="leading-loose text-lg text-gray-ink my-3">
-        {% if package.readmeSnippet %}
-        <p>
-          {{ package.readmeSnippet }}
-        </p>
-        {% elif package.readmeHtml %}
-        <p>
-          {{ package.readmeHtml|safe }}
-        </p>
-        {% elif package.description %}
-        <div class="markdown-content leading-relaxed">
-          {% if package.description|length > 200 %}
-            {{ package.description|processMarkdown|truncate(200)|safe }}
-          {% else %}
-            {{ package.description|processMarkdown|safe }}
-          {% endif %}
-        </div>
+      <div class="container flex items-center leading-loose text-lg text-gray-ink my-3">
+        {% if 'organization:' not in query.q %}
+          <div id="org_logo" class="w-1/5 pr-4">
+            <img class="inline-block w-full" src="https://montreal.l3.ckan.io/uploads/group/{{ package.organization.image_url }}"/>
+          </div>
+          
+          <div class="w-4/5">
+            {% if package.readmeSnippet %}
+            <p>
+              {{ package.readmeSnippet }}
+            </p>
+            {% elif package.readmeHtml %}
+            <p>
+              {{ package.readmeHtml|safe }}
+            </p>
+            {% elif package.description %}
+            <div class="markdown-content leading-relaxed">
+              {% if package.description|length > 200 %}
+                {{ package.description|processMarkdown|truncate(200)|safe }}
+              {% else %}
+                {{ package.description|processMarkdown|safe }}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="w-full">
+            {% if package.readmeSnippet %}
+            <p>
+              {{ package.readmeSnippet }}
+            </p>
+            {% elif package.readmeHtml %}
+            <p>
+              {{ package.readmeHtml|safe }}
+            </p>
+            {% elif package.description %}
+            <div class="markdown-content leading-relaxed">
+              {% if package.description|length > 200 %}
+                {{ package.description|processMarkdown|truncate(200)|safe }}
+              {% else %}
+                {{ package.description|processMarkdown|safe }}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
         {% endif %}
       </div>
     </div>
