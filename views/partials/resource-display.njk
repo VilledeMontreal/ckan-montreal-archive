@@ -48,7 +48,13 @@
     <div class="markdown-content leading-relaxed">{{ item.resource.descriptionHtml | safe }}</div>
     {% endif %}
     {% for view in item.resource.views %}
+    {% if view.specType == 'text' %}
+    <div class="text-view overflow-scroll p-8 border border-solid rounded border-gray-300">
+      {{ view.content }}
+    </div>
+    {% else %}
     <div class="data-explorer" id="data-explorer-{{ view.id }}" data-datapackage='{{ item.dataExplorers[loop.index - 1] | safe}}'></div>
+    {% endif %}
     {% endfor %}
   </li>
 
