@@ -10,23 +10,10 @@ the human-readable
 
 `explorerFormats`: an array of lowercase file formats. Resources
 of these formats should render the data explorer.
-## Heroku
-
-Heroku uses the `npm start` command which calls `deploy.sh`
-For details on deployment take a look at `deploy.sh` 
-Some highlights:
-
-* Clones frontend-v2 at master
-* Copies .staging.env to frontend-v2/.env on heroku
-
-
-## Params for deployment through Jenkins
-
-Jenkins URL: https://cc-p-jenkins.ckan.io/job/deploy%20frontend%20instance/build 
 
 ### Staging
 
-Address = `montreal-frontend-staging.ckan.io/`
+Address = `https://montreal-frontend-staging.ckan.io/`
 
 INSTANCE_NAME = `montreal-frontend-staging`
 
