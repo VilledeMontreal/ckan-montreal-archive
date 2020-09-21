@@ -30,9 +30,9 @@
                 {% for collection in collections %}
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
+                    <a id="homepage-collection-icons" class="mx-auto flex flex-col flex-wrap items-center p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
                         <img class="h-20" src="{{ collection.image }}"/>
-                        <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ collection.title }}</h2>
+                        <h2 class="text-xl h-16 font-bold flex text-center text-black flex items-center justify-center">{{ collection.title }}</h2>
                     </a>
                 </li>
                 <!-- group end -->
