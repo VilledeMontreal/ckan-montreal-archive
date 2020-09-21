@@ -77,7 +77,7 @@
     <!-- End of Recently updated datasets Section -->
 
     <!-- News Section -->
-    <div class="flex flex-col content-center pt-16 pb-16">
+    <div class="flex flex-col pt-16 pb-16 items-center">
         <h2 class="text-4xl text-zambezi font-semibold w-full">{{__('News')}}</h2>
         <div class="sm:flex flex-wrap sm:-mx-4 items-center">
             {% for post in posts %}
@@ -96,7 +96,7 @@
             <!-- posts end -->
             {% endfor %}
         </div>
-        <a href="/news" class="float-right bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+        <a href="/news" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
             {{__('All news')}}
         </a>
     </div>
@@ -119,6 +119,9 @@
                 {% endfor %}
             </ul>
         </div>
+        <a href="/organization" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+            {{__('All Organizations')}}
+        </a>
     </div>
     <!-- End of Organizations Section -->
 </section>
