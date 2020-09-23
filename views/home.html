@@ -110,16 +110,16 @@
                 {% for organization in organizations %}
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <a id="homepage-collection-icons" class="mx-auto flex flex-col flex-wrap items-center p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ organization.name }}" style="border:1px solid #CED4DA">
-                        <img class="h-24" src="{{ organization.image }}"/>
-                        <h2 class="text-2xl h-20 font-bold flex text-center text-black flex items-center justify-center">{{ organization.title }}</h2>
+                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ organization.name }}" style="border:1px solid #CED4DA">
+                        <img class="h-20" src="{{ organization.image }}"/>
+                        <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ organization.title }}</h2>
                     </a>
                 </li>
                 <!-- group end -->
                 {% endfor %}
             </ul>
         </div>
-        <a href="/organization" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+        <a href="/organization" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white mt-2 py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
             {{__('All Organizations')}}
         </a>
     </div>
