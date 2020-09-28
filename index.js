@@ -11,8 +11,11 @@ module.exports = function (app) {
   const cmsPosts = require('./cms-posts');
   const ActivityFeed = require('./activity-api');
   const proxy = require('express-http-proxy');
+  const { URL } = require('url')
 
   const configApiUrl = config.get("API_URL")
+  const baseURL = new URL(configApiUrl)
+  const siteURL = baseURL.origin
 
   // set a cookie defaultLocale value for Moment
   app.use(function (req, res, next) {	
@@ -76,6 +79,28 @@ module.exports = function (app) {
   ) 
 
 
+  app.get('/search', async (req, res, next) => {
+    const result = await Model.search(req.query)
+    // Pagination
+    const from = req.query.from || 0
+    const size = req.query.size || 10
+    const total = result.count
+    const totalPages = Math.ceil(total / size)
+    const currentPage = parseInt(from, 10) / size + 1
+    const pages = utils.pagination(currentPage, totalPages)
+
+    console.log(siteURL)
+
+    res.render('search.html', {
+      title: 'Search',
+      result,
+      query: req.query,
+      totalPages,
+      pages,
+      currentPage,
+      siteURL
+    })
+  })
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))
     res.render('dash.html', {
@@ -163,14 +188,14 @@ module.exports = function (app) {
     content.replace(/[^<]*(<a href="([^"]+)">([^<]+)<\/a>)/g, function () {
       quickLinks.push(Array.prototype.slice.call(arguments, 1, 4))
     });
-      
+    
     res.render('home.html', {
       title: 'Montreal',
       collections,
       recentData: threeRecentData,
       slug: 'collections',
       posts,
-      quickLinks
+      quickLinks,
     })
   })
 
