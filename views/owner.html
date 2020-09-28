@@ -31,9 +31,9 @@
     <div class="mb-gutter md:mr-10 md:pb-2">
       <img src="{{owner.avatar}}" class="mb-4 h-24">
       <h2 class="text-primary text-xl font-semibold">{{ owner.title }}</h2>
-      <p class="py-2 text-sm">
-        {{ owner.description | safe | truncate(200) }}
-      </p>
+      <div class="py-2 text-sm">
+        {{ owner.description | safe | truncate(400) }}
+      </div>
     </div>
 
     <button id="filter-toggle" class="bg-primary w-full text-white mb-6 p-3 invisible md:hidden">
@@ -46,14 +46,14 @@
 
   <main class="md:w-2/3">
 
-    <ul class="tabs mb-10" data-tabs>
+    {# <ul class="tabs mb-10" data-tabs>
     	<li class="tabs_item">
         <a class="tabs_link" data-tabby-default href="#datasets">Datasets</a>
       </li>
     	<li class="tabs_item">
         <a class="tabs_link" href="#about">About</a>
       </li>
-    </ul>
+    </ul> #}
 
     <div id="datasets">
       <!-- datasets tab content -->
