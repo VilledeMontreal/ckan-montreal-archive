@@ -9,7 +9,7 @@
       <div class="container flex items-center leading-loose text-lg text-gray-ink my-3">
         {% if 'organization:' not in query.q %}
           <div id="org_logo" class="w-1/5 pr-4">
-            <img class="inline-block w-full" src="https://montreal.l3.ckan.io/uploads/group/{{ package.organization.image_url }}"/>
+            <img class="inline-block w-full" src="{{siteURL}}/uploads/group/{{ package.organization.image_url }}"/>
           </div>
           
           <div class="w-4/5">
