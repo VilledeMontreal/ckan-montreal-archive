@@ -24,3 +24,7 @@
     @apply border border-gray-500 px-2 py-1 mx-3;
   }
 }
+
+.text-view {
+  max-height: 300px;
+}

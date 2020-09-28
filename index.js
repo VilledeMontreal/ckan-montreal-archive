@@ -163,7 +163,17 @@ module.exports = function (app) {
       packages.metadata_modified = moment.utc(packages.metadata_modified ).format('ll')
       return packages
     });
+    
+    // Get list of Organizations, randomize it and extract first three of them
+    let orgs = await Model.getOrganizations()
 
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    let randomOrgs = shuffle(orgs)
+    let organizations = randomOrgs.slice(0, 3)
+    
     const postsModel = new cmsPosts.CmsModel();
     const size = 3;
     let posts = await postsModel.getListOfPosts(size);
@@ -196,6 +206,7 @@ module.exports = function (app) {
       slug: 'collections',
       posts,
       quickLinks,
+      organizations: organizations
     })
   })
 
