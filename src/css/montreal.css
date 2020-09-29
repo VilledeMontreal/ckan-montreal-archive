@@ -32,6 +32,9 @@
   & a{
     @apply underline text-gray-700;
   }
+  & em{
+      font-style: italic;
+  }
 }
 
 
