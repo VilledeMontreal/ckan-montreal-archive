@@ -15,7 +15,7 @@ module.exports = function (app) {
 
   const configApiUrl = config.get("API_URL")
   const baseURL = new URL(configApiUrl)
-  const siteURL = baseURL.origin
+
 
   // set a cookie defaultLocale value for Moment
   app.use(function (req, res, next) {	
@@ -89,16 +89,22 @@ module.exports = function (app) {
     const currentPage = parseInt(from, 10) / size + 1
     const pages = utils.pagination(currentPage, totalPages)
 
+    //CKAN backend URL
+    let siteURL = baseURL.origin
+    res.locals.urls = {
+      siteURL: siteURL
+    }
+    
     res.render('search.html', {
       title: 'Search',
       result,
       query: req.query,
       totalPages,
       pages,
-      currentPage,
-      siteURL
+      currentPage
     })
   })
+
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))
     res.render('dash.html', {
@@ -272,6 +278,12 @@ module.exports = function (app) {
 
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner === "collections"){
+      //CKAN backend URL
+      let siteURL = baseURL.origin
+      res.locals.urls = {
+        siteURL: siteURL
+      }
+      //Activities
       const ActivityModel = new ActivityFeed.ActivityModel();
       let activityLimit = 5;
       if(req.query.activity){
