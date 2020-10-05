@@ -78,6 +78,15 @@ module.exports = function (app) {
     })
   ) 
 
+  app.get('/robots.txt', async (req, res) => {
+    robotsPath = path.join(__dirname, '/public/robots.txt')
+    if (fs.existsSync(robotsPath)) {
+      res.sendFile(robotsPath)
+    } else {
+      res.type('text/plain')
+      res.send("User-agent: *\nAllow: /")
+    }
+  })
 
   app.get('/search', async (req, res, next) => {
     const result = await Model.search(req.query)
