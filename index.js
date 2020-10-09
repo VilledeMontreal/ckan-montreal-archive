@@ -12,6 +12,7 @@ module.exports = function (app) {
   const ActivityFeed = require('./activity-api');
   const proxy = require('express-http-proxy');
   const { URL } = require('url')
+  const os = require('os')
 
   const configApiUrl = config.get("API_URL")
   const baseURL = new URL(configApiUrl)
@@ -88,6 +89,30 @@ module.exports = function (app) {
     }
   })
 
+  app.get('/status', async (_req, res, _next) => {
+    // optional: add further things to check (e.g. connecting to dababase)
+    let memory_usage = (os.totalmem - os.freemem)
+    let uptime = process.uptime()
+    let h = Math.floor(uptime / 3600);
+    let m = Math.floor(uptime % 3600 / 60);
+    let s = Math.floor(uptime % 3600 % 60);
+    uptime = h + 'h' + ':' + m + 'm' + ':' + s + 's'
+    
+    const healthcheck = {
+      uptime,
+      message: 'Status OK 200',
+      memory_usage: Math.round(memory_usage/1048576) + ' MB'
+    };
+    try {
+      res.send(healthcheck);
+      console.log(healthcheck)
+    } catch (e) {
+      healthcheck.message = e;
+      res.status(503).send();
+    }
+  });
+
+
   app.get('/search', async (req, res, next) => {
     const result = await Model.search(req.query)
     // Pagination
@@ -97,6 +122,13 @@ module.exports = function (app) {
     const totalPages = Math.ceil(total / size)
     const currentPage = parseInt(from, 10) / size + 1
     const pages = utils.pagination(currentPage, totalPages)
+    
+    const query = req.query
+
+    // This is needed to be set if there is no query
+    if (req.query.q === undefined) {
+      query.q = ""
+    }
 
     //CKAN backend URL
     let siteURL = baseURL.origin
@@ -107,7 +139,7 @@ module.exports = function (app) {
     res.render('search.html', {
       title: 'Search',
       result,
-      query: req.query,
+      query,
       totalPages,
       pages,
       currentPage
