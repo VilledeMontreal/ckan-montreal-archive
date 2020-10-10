@@ -77,7 +77,7 @@ module.exports = function (app) {
         next()
       }
     })
-  ) 
+  )
 
   app.get('/robots.txt', async (req, res) => {
     robotsPath = path.join(__dirname, '/public/robots.txt')
