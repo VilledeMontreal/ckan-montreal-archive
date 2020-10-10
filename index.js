@@ -89,23 +89,24 @@ module.exports = function (app) {
     }
   })
 
+  // Status check route connected to Google Cloud Uptime check
   app.get('/status', async (_req, res, _next) => {
-    // optional: add further things to check (e.g. connecting to dababase)
-    let memory_usage = (os.totalmem - os.freemem)
+    // optional: add further things to check (e.g. connecting to backend)
+    let memory_usage = 'Memory usage (MB): ' + Math.round((process.memoryUsage().rss)/1048576)
     let uptime = process.uptime()
-    let h = Math.floor(uptime / 3600);
+    let M = Math.floor(uptime / 3600 / 24 / 30)
+    let D = Math.floor(uptime / 3600 / 24) % 30
+    let h = Math.floor(uptime / 3600) % 24;
     let m = Math.floor(uptime % 3600 / 60);
     let s = Math.floor(uptime % 3600 % 60);
-    uptime = h + 'h' + ':' + m + 'm' + ':' + s + 's'
+    uptime = 'Uptime: ' + M + ' months ' + D + ' days ' + h + 'h' + ':' + m + 'm' + ':' + s + 's'
+    let message = 'Status: 200 OK'
     
-    const healthcheck = {
-      uptime,
-      message: 'Status OK 200',
-      memory_usage: Math.round(memory_usage/1048576) + ' MB'
-    };
+    const statusCheck = {uptime, message, memory_usage}
+    const stausLog = '[' + uptime + ']' + '[' + message + ']' + '[' + memory_usage + ']'
     try {
-      res.send(healthcheck);
-      console.log(healthcheck)
+      res.send(statusCheck);
+      console.warn(stausLog)
     } catch (e) {
       healthcheck.message = e;
       res.status(503).send();
