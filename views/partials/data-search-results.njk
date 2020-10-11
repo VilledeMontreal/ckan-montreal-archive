@@ -5,7 +5,7 @@
       {% if 'organization:' not in query.q %}
         <div class="flex flex-row">
           <div id="org_logo" class="flex items-center h-40 w-1/5 pr-4">
-            <img class="inline-block w-full" src="{{urls.siteURL}}/uploads/group/{{ package.organization.image_url }}"/>
+            <img class="inline-block w-full" src="{{urls.ckanUrl}}/uploads/group/{{ package.organization.image_url }}"/>
           </div>
 
           <div class="flex flex-col w-4/5">

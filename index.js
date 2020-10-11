@@ -15,7 +15,8 @@ module.exports = function (app) {
   const os = require('os')
 
   const configApiUrl = config.get("API_URL")
-  const baseURL = new URL(configApiUrl)
+  const configCkanUrl = config.get("CKAN_URL")
+  const configProxyUrl = config.get("PROXY_URL")
 
 
   // set a cookie defaultLocale value for Moment
@@ -27,6 +28,15 @@ module.exports = function (app) {
     }
     next()
   })
+
+  // app.use((req, res, next) => {
+  //   res.locals.urls = {
+  //     apiUrl: configApiUrl,
+  //     ckanUrl: configCkanUrl,
+  //     proxyUrl: configProxyUrl
+  //   }
+  //   next()
+  // })
 
   app.use((req, res, next) => {
     let configApiUrl = config.get("API_URL")
@@ -56,6 +66,12 @@ module.exports = function (app) {
     }
 
     res.locals.explorerFormats = ["geojson", "csv", "tsv", "xls", "xlsx", "pdf"]
+
+    res.locals.urls = {
+      apiUrl: configApiUrl,
+      ckanUrl: configCkanUrl,
+      proxyUrl: configProxyUrl
+    }
 
     next();
   });
@@ -111,6 +127,7 @@ module.exports = function (app) {
       healthcheck.message = e;
       res.status(503).send();
     }
+    console.log(configProxyUrl)
   });
 
 
@@ -132,10 +149,10 @@ module.exports = function (app) {
     }
 
     //CKAN backend URL
-    let siteURL = baseURL.origin
-    res.locals.urls = {
-      siteURL: siteURL
-    }
+    // let siteURL = baseURL.origin
+    // res.locals.urls = {
+    //   siteURL: siteURL
+    // }
     
     res.render('search.html', {
       title: 'Search',
@@ -304,6 +321,12 @@ module.exports = function (app) {
 
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner !== "organization" && req.params.owner !== "collections"){
+      //CKAN backend URL
+      // let siteURL = baseURL.origin
+      // res.locals.urls = {
+      //   siteURL: siteURL
+      // }
+      //Activities      
       const ActivityModel = new ActivityFeed.ActivityModel();
       let activityLimit = 5;
       if(req.query.activity){
@@ -321,10 +344,10 @@ module.exports = function (app) {
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner === "collections"){
       //CKAN backend URL
-      let siteURL = baseURL.origin
-      res.locals.urls = {
-        siteURL: siteURL
-      }
+      // let siteURL = baseURL.origin
+      // res.locals.urls = {
+      //   siteURL: siteURL
+      // }
       //Activities
       const ActivityModel = new ActivityFeed.ActivityModel();
       let activityLimit = 5;
