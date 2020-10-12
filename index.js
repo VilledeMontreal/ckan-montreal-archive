@@ -11,11 +11,10 @@ module.exports = function (app) {
   const cmsPosts = require('./cms-posts');
   const ActivityFeed = require('./activity-api');
   const proxy = require('express-http-proxy');
-  const { URL } = require('url')
-  const os = require('os')
 
   const configApiUrl = config.get("API_URL")
-  const baseURL = new URL(configApiUrl)
+  const configCkanUrl = config.get("CKAN_URL")
+  const configProxyUrl = config.get("PROXY_URL")
 
 
   // set a cookie defaultLocale value for Moment
@@ -57,6 +56,12 @@ module.exports = function (app) {
 
     res.locals.explorerFormats = ["geojson", "csv", "tsv", "xls", "xlsx", "pdf"]
 
+    res.locals.urls = {
+      apiUrl: configApiUrl,
+      ckanUrl: configCkanUrl,
+      proxyUrl: configProxyUrl
+    }
+
     next();
   });
 
@@ -91,22 +96,32 @@ module.exports = function (app) {
 
   // Status check route connected to Google Cloud Uptime check
   app.get('/status', async (_req, res, _next) => {
-    // optional: add further things to check (e.g. connecting to backend)
-    let memory_usage = 'Memory usage (MB): ' + Math.round((process.memoryUsage().rss)/1048576)
-    let uptime = process.uptime()
-    let M = Math.floor(uptime / 3600 / 24 / 30)
-    let D = Math.floor(uptime / 3600 / 24) % 30
-    let h = Math.floor(uptime / 3600) % 24;
-    let m = Math.floor(uptime % 3600 / 60);
-    let s = Math.floor(uptime % 3600 % 60);
-    uptime = 'Uptime: ' + M + ' months ' + D + ' days ' + h + 'h' + ':' + m + 'm' + ':' + s + 's'
+    // Uptime
+    const uptime = moment.duration(process.uptime(), 'seconds')
+    let y = "Y:" + uptime.years()
+    let m = "M:" + uptime.months()
+    let d = "D:" + uptime.days()
+    let time = uptime.hours() + 'h:' + uptime.minutes() + 'm:' + uptime.seconds() + 's'
+    let upTime = y + ' ' + m + ' ' + d + ' ' + time
+
+    // Status message
     let message = 'Status: 200 OK'
-    
-    const statusCheck = {uptime, message, memory_usage}
-    const stausLog = '[' + uptime + ']' + '[' + message + ']' + '[' + memory_usage + ']'
+
+    // Memory usage
+    let memory_usage = 'Memory usage (MB): ' + Math.round((process.memoryUsage().rss)/1048576)
+
+    // Backend connection
+    const backendStatusUrl = configApiUrl + 'status_show'
+    let backendResponse = await fetch(backendStatusUrl)
+    let backStatus = backendResponse.status
+    let backStatusText = backendResponse.statusText
+    let backendStatusMessage = 'Backend status: ' + backStatus + ' ' + backStatusText
+
+    const statusCheck = {upTime, message, memory_usage, backendStatusMessage}
+    const statusLog = '[' + upTime + ']' + '[' + message + ']' + '[' + memory_usage + ']' + '[' + backendStatusMessage + ']'
     try {
       res.send(statusCheck);
-      console.warn(stausLog)
+      console.warn(statusLog)
     } catch (e) {
       healthcheck.message = e;
       res.status(503).send();
@@ -129,12 +144,6 @@ module.exports = function (app) {
     // This is needed to be set if there is no query
     if (req.query.q === undefined) {
       query.q = ""
-    }
-
-    //CKAN backend URL
-    let siteURL = baseURL.origin
-    res.locals.urls = {
-      siteURL: siteURL
     }
     
     res.render('search.html', {
@@ -304,6 +313,7 @@ module.exports = function (app) {
 
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner !== "organization" && req.params.owner !== "collections"){
+      //Activities      
       const ActivityModel = new ActivityFeed.ActivityModel();
       let activityLimit = 5;
       if(req.query.activity){
@@ -320,11 +330,6 @@ module.exports = function (app) {
 
   app.get('/:owner/:name', async (req, res, next) => {
     if(req.params.owner === "collections"){
-      //CKAN backend URL
-      let siteURL = baseURL.origin
-      res.locals.urls = {
-        siteURL: siteURL
-      }
       //Activities
       const ActivityModel = new ActivityFeed.ActivityModel();
       let activityLimit = 5;

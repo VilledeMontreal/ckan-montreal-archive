@@ -9,7 +9,7 @@
   <li class="mb-6">
     <!-- Download Button -->
     <nav class="pt-4 pb-1">
-      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" href="{{ item.resource.path}}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
+      <a class="inline-block mr-3 mb-6 py-2 px-4 rounded text-white bg-primary hover:bg-sarcelle-dark cursor-pointer" href="{{ item.resource.path | replace(urls.ckanUrl, urls.proxyUrl) }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')">
         <dl class="data-file-type_inner">
           <dt class="data-file-type_term ">
             {{__('Download')}} {% if item.resource.format %}({{ item.resource.format }}){% endif %}
@@ -90,11 +90,11 @@
 
                     <tr>
                       <th scope="row">Query</th>
-                      <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search</code></td>
+                      <td><code>{{ urls.proxyUrl }}/api/3/action/datastore_search</code></td>
                     </tr>
                     <tr>
                       <th scope="row">Query (via SQL)</th>
-                      <td><code>https://montreal.l3.ckan.io/api/3/action/datastore_search_sql</code></td>
+                      <td><code>{{ urls.proxyUrl }}/api/3/action/datastore_search_sql</code></td>
                     </tr>
                     </tbody>
                   </table>
@@ -111,12 +111,12 @@
               <div class="panel-body my-4 overflow-auto">
                 <strong>Query example (first 5 results)</strong>
                 <p>
-                  <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5</a></code>
+                  <code><a href="{{ urls.proxyUrl }}/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5" target="_blank">{{ urls.proxyUrl }}/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5</a></code>
                 </p>
 
                 <strong>Query example (via SQL statement)</strong>
                 <p>
-                  <code><a href="https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{item.resource.id}}&quot; LIMIT 5" target="_blank">https://montreal.l3.ckan.io/api/3/action/datastore_search_sql?sql=SELECT * from "{{item.resource.id}}" LIMIT 5</a></code>
+                  <code><a href="{{ urls.proxyUrl }}/api/3/action/datastore_search_sql?sql=SELECT * from &quot;{{item.resource.id}}&quot; LIMIT 5" target="_blank">{{ urls.proxyUrl }}/api/3/action/datastore_search_sql?sql=SELECT * from "{{item.resource.id}}" LIMIT 5</a></code>
                 </p>
               </div>
             </div>
@@ -135,7 +135,7 @@
                     limit: 5 // get 5 results
                   };
                   $.ajax({
-                    url: 'https://montreal.l3.ckan.io/api/3/action/datastore_search',
+                    url: '{{ urls.proxyUrl }}/api/3/action/datastore_search',
                     data: data,
                     dataType: 'jsonp',
                     success: function(data) {
@@ -155,7 +155,7 @@
               <div class="panel-body my-4 overflow-auto">
               <pre>
                 import urllib2
-                url = 'https://montreal.l3.ckan.io/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5'
+                url = '{{ urls.proxyUrl }}/api/3/action/datastore_search?resource_id={{item.resource.id}}&amp;limit=5'
                 fileobj = urllib2.urlopen(url)
                 print fileobj.read()
               </pre>
