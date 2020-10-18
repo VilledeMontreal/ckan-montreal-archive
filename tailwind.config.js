@@ -14,6 +14,9 @@ module.exports = {
                 'table': '34rem',
                 'modal': 'calc(100% - 3rem)',
             },
+            maxHeight: {
+                'a4': '1024px'
+            },
             width: {
                 '3/10': '30%',
             },

@@ -1,4 +1,5 @@
 .data-explorer{
+  /* @apply flex justify-center w-full; */
   & .total-rows{
     @apply text-center pt-5 pb-3;
     &::before {
@@ -9,7 +10,7 @@
     @apply mt-3 mr-3 px-2 border border-gray-400 rounded;
   }
   & .data-explorer-content{
-    @apply pt-6;
+    @apply pt-6 w-full;
     &>button{
       @apply font-bold p-2 mr-6 border-b-2 border-white;
       &:hover{
@@ -19,9 +20,53 @@
     & .tab-link-active{
       @apply text-primary border-primary;
     }
+    & .pager{
+      @apply flex z-auto;
+        & li{
+          @apply px-2 mr-5 my-2 border border-gray-600 rounded-full;
+          &.disabled a{
+            @apply text-gray-600;
+          }
+        }
+    }
   }
 
-  & .tab-content{
+  & .tab-content#tabpanel-PDF{
+    @apply flex items-center;
+    &::before{
+      content: '';
+      @apply block bg-gray-400;
+    }
+    & .container{
+      @apply flex justify-center my-3 py-0 border border-gray-min rounded;
+      &>div{
+        @apply w-full py-0 object-cover;
+      }
+      & .py-3.mr-4{
+        @apply w-full max-h-a4 ml-4 object-cover object-center overflow-auto;
+        &>div>div>div>div{
+          @apply static flex flex-col ml-4 justify-center items-center;
+          &>canvas{
+            @apply w-full object-none;
+          }
+          &>nav{
+            @apply object-left bottom-0 h-16 w-56 flex items-center justify-center z-50;
+          }
+        }
+      }
+      & .w-1\/4{
+        @apply w-0;
+      }
+      & .p-4.mr-4{
+        @apply p-0 mr-0;
+      }
+    }
+    & .w-full .flex.flex-wrap>div:last-child{
+      @apply truncate overflow-auto;
+    }
+  }
+
+  & .tab-content#tabpanel-Map{
     &::before{
       content: '';
       @apply block bg-gray-400 w-full h-px;
@@ -43,6 +88,28 @@
     }
   }
 
+  & .tab-content#tabpanel-Chart{
+    &::before{
+      content: '';
+      @apply block bg-gray-400 w-full h-px;
+    }
+    & .container{
+      @apply my-3 py-0 border border-gray-min rounded;
+      &>div{
+        @apply py-0;
+      }
+      & .py-3.mr-4{
+        @apply overflow-auto;
+      }
+      & .p-4.mr-4{
+        @apply p-0 mr-0;
+      }
+    }
+    & .w-full .flex.flex-wrap>div:last-child{
+      @apply truncate overflow-auto;
+    }
+  }
+  
   & .ReactTable{
     @apply h-table border-0;
     & .rt-thead.-header{
