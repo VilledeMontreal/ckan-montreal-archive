@@ -24,7 +24,7 @@
                   </p>
                 {% elif package.description %}
                   <div class="markdown-content leading-relaxed">
-                    {% if package.description|length > 200 %}
+                    {% if package.description|length > 170 %}
                       <p class="block">
                         {{ package.description|processMarkdown|truncate(170)|safe }}
                       </p>
@@ -71,8 +71,8 @@
                 </p>
               {% elif package.description %}
                 <div class="markdown-content leading-relaxed">
-                  {% if package.description|length > 200 %}
-                    {{ package.description|processMarkdown|truncate(200)|safe }}
+                  {% if package.description|length > 170 %}
+                    {{ package.description|processMarkdown|truncate(170)|safe }}
                   {% else %}
                     {{ package.description|processMarkdown|safe }}
                   {% endif %}

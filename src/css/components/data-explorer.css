@@ -38,19 +38,19 @@
       @apply block bg-gray-400;
     }
     & .container{
-      @apply flex justify-center my-3 py-0 border border-gray-min rounded;
+      @apply flex my-3 py-0 border border-gray-min rounded;
       &>div{
-        @apply w-full py-0 object-cover;
+        @apply w-full py-0;
       }
       & .py-3.mr-4{
-        @apply w-full max-h-a4 ml-4 object-cover object-center overflow-auto;
+        @apply w-full max-h-a4 ml-4 overflow-auto;
         &>div>div>div>div{
-          @apply static flex flex-col ml-4 justify-center items-center;
+          @apply flex flex-col ml-4 justify-center object-center;
           &>canvas{
-            @apply w-full object-none;
+            @apply block w-full object-none object-left-top;
           }
           &>nav{
-            @apply object-left bottom-0 h-16 w-56 flex items-center justify-center z-50;
+            @apply w-full bottom-0 h-16 flex items-center object-cover object-center justify-center;
           }
         }
       }
