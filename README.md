@@ -12,19 +12,19 @@ Thème public du portail de données ouvertes de la Ville de Montréal développ
 
 ### Staging
 
-Adresse = `https://Montréal-frontend-staging.ckan.io/`
+Adresse = `https://montreal-frontend-staging.ckan.io/`
 
-INSTANCE_NAME = `Montréal-frontend-staging`
+INSTANCE_NAME = `montreal-frontend-staging`
 
-REGISTRY_REPO = `datopian/cloud-images/cloud-Montréal-staging-ng` 
+REGISTRY_REPO = `datopian/cloud-images/cloud-montreal-staging-ng` 
 
 ### Production
 
-Adresse = `https://donnees.Montréal.ca/`
+Adresse = `https://donnees.montreal.ca/`
 
-INSTANCE_NAME = `Montréal-frontend`
+INSTANCE_NAME = `montreal-frontend`
 
-REGISTRY_REPO = `datopian/cloud-images/cloud-Montréal-ng`
+REGISTRY_REPO = `datopian/cloud-images/cloud-montreal-ng`
 
 
 -------------------------- english version --------------------------
