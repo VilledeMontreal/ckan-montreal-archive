@@ -58,7 +58,7 @@
 
 <!-- Page header -->
 <header class="mx-auto w-full shadow-sm">
-  <!-- Banner -->
+  {# <!-- Banner -->
   <!-- Remove this section when not needed anymore -->
   <div id="top-banner" class="flex content-start justify-center w-full bg-blue text-white text-xl px-4 py-3">
     <div class="w-1/4 px-4 pt-1 text-base text-white">
@@ -83,7 +83,7 @@
       </button>
     </div>
   </div>
-  <!-- End of banner -->
+  <!-- End of banner --> #}
   <div class="flex items-center py-4 px-5">
     <div>
       <a class="logo" href="/">
@@ -301,13 +301,13 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
   }
 </script>
 
-<script>
+{# <script>
   // Remove this script when Top Banner is not needed anymore
   function messageDismiss(elementId) {
     el = document.getElementById(elementId)
     el.style.display = 'none'
   }
-</script>
+</script> #}
 {% block scripts %}
 {% endblock %}
 </body>
