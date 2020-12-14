@@ -110,7 +110,7 @@
               <td class="px-4 py-3">{{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}</td>
               {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
               <td class="px-4 py-3 text-base text-primary">
-                <a href="{{ item.resource.path | replace(urls.ckanUrl, urls.proxyUrl) }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" title="Download file" target="_blank">
+                <a href="{{ item.resource.path | replace(urls.ckanUrl, urls.proxyUrl) }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" download title="Download file" target="_blank">
                   {% include "./partials/symbol/svg/download.svg" %}
                 </a>
               </td>
