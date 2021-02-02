@@ -30,7 +30,7 @@
       @apply font-semibold text-gray-900 text-base;
   }
   & a{
-    @apply underline text-gray-700;
+      @apply underline text-gray-700;
   }
   & em{
       font-style: italic;
