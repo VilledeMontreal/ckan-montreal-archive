@@ -36,9 +36,9 @@
       </div>
       <main class="md:w-2/3">
         <h2 class="pb-8 text-3xl font-bold">{{ showcase.title }}</h2>
-        <p class="markdown-content leading-relaxed border-t border-gray-200 p-4 text-lg">{{ showcase.notes | processMarkdown | safe }}</p>
-        <div class="flex justify-center md:p-8">
-          <img src="{{ showcase.image_display_url }}">
+        <span class="markdown-content leading-relaxed border-t border-gray-200 p-4 text-lg">{{ showcase.notes | processMarkdown | safe }}</span>
+        <div class="container w-full md:p-8">
+          <img class="object-fill w-full" src="{{ showcase.image_display_url }}">
         </div>
         <br>
         <section class="mt-2 mb-6 md:pr-10">
