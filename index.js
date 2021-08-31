@@ -128,6 +128,27 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/basic-auth/:user/:passwd', async (req, res, next) => {
+    // Authenticate against CKAN backend. Note, we're using `ckanext-auth`
+    // extension to expose login API.
+    const loginAPI = config.get('CKAN_INTERNAL_URL') + '/api/3/action/user_login';
+    const response = await fetch(loginAPI, {
+      method: 'post',
+      body: JSON.stringify({
+        id: req.params.user,
+        password: req.params.passwd
+      })
+    });
+
+    if (response.ok) {
+      res.sendStatus(200).end();
+    } else {
+      res
+        .set('WWW-Authenticate', 'Basic realm="Fake Realm"')
+        .sendStatus(401)
+        .end();
+    }
+  });
 
   app.get('/search', async (req, res, next) => {
     const result = await Model.search(req.query)
