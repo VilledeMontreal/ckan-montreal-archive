@@ -132,21 +132,41 @@ module.exports = function (app) {
     // Authenticate against CKAN backend. Note, we're using `ckanext-auth`
     // extension to expose login API.
     const loginAPI = config.get('CKAN_INTERNAL_URL') + '/api/3/action/user_login';
+
+    let id, password;
+
+    // Note that credentials in 'authorization' header is used over credentials
+    // from params. Credentials in 'authorization' header is passed from
+    // browser's built-in form and base64 encoded.
+    if (req.get('authorization')) {
+      const encodedCredentials = req.get('authorization').replace('Basic ', '');
+      const buff = new Buffer(encodedCredentials, 'base64');
+      const decodedCredentials = buff.toString('ascii');
+      // Decoded credentials are provided in form of "username:password"
+      id = decodedCredentials.split(':')[0];
+      password = decodedCredentials.split(':')[1];
+    } else {
+      id = req.params.user;
+      password = req.params.passwd;
+    }
+
     const response = await fetch(loginAPI, {
       method: 'post',
       body: JSON.stringify({
-        id: req.params.user,
-        password: req.params.passwd
+        id,
+        password
       })
     });
 
-    if (response.ok) {
-      res.sendStatus(200).end();
-    } else {
+    const responseBody = await response.json();
+
+    if (responseBody.result.error_summary) {
       res
         .set('WWW-Authenticate', 'Basic realm="Fake Realm"')
         .sendStatus(401)
         .end();
+    } else {
+      res.sendStatus(200).end();
     }
   });
 
