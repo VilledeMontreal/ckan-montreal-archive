@@ -109,7 +109,12 @@
               </td>
               <td class="px-4 py-3 font-semibold text-base text-gray-900 uppercase"> {{ item.resource.format }}</td>
               <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
-              <td class="px-4 py-3">{{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}</td>
+              <td class="px-4 py-3">
+                <div class="has-tooltip">
+                  <span class='tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>{{ (item.resource.last_modified or item.resource.created)  | formatDate}}</span>
+                  {{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}
+                </div>
+              </td>
               {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
               <td class="px-4 py-3 text-base text-primary">
                 <a href="{{ item.resource.path | replace(urls.ckanUrl, urls.proxyUrl) }}" onclick="sendGAEvent('{{ dataset.name }}', '{{ item.resource.name }}', '{{ item.resource.format }}')" download title="Download file" target="_blank">
