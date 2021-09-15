@@ -112,7 +112,9 @@
               <td class="px-4 py-3">
                 <div class="has-tooltip">
                   <span class='tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>{{ (item.resource.last_modified or item.resource.created)  | formatDate}}</span>
-                  {{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}
+                  <span class="border-dotted border-b border-gray-600">
+                    {{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}
+                  </span>
                 </div>
               </td>
               {# <td class=""><a href="#{{item.slug}}"><i class="icon icon-preview text-base hover:text-primary"></i></a></td> #}
