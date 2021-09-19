@@ -162,9 +162,8 @@ module.exports = function (app) {
 
     if (responseBody.result.error_summary) {
       res
-        .set('WWW-Authenticate', 'Basic realm="Fake Realm"')
-        .sendStatus(401)
-        .end();
+        .status(401)
+        .render('basic-auth.html');
     } else {
       res.sendStatus(200).end();
     }
