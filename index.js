@@ -140,7 +140,7 @@ module.exports = function (app) {
     // browser's built-in form and base64 encoded.
     if (req.get('authorization')) {
       const encodedCredentials = req.get('authorization').replace('Basic ', '');
-      const buff = new Buffer(encodedCredentials, 'base64');
+      const buff = Buffer.from(encodedCredentials, 'base64');
       const decodedCredentials = buff.toString('ascii');
       // Decoded credentials are provided in form of "username:password"
       id = decodedCredentials.split(':')[0];
