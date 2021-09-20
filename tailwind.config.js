@@ -94,10 +94,20 @@ module.exports = {
             'full': '100%',
             'm': ' 200',
         },
+        borderWidth: {
+            DEFAULT: '1px',
+            '0': '0',
+            '2': '2px',
+            '3': '3px',
+            '4': '4px',
+            '6': '6px',
+            '8': '8px',
+        },
     },
     variants: {
         visibility: ['responsive', 'hover', 'focus'],
         textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+        borderStyle: ['hover', 'focus'],
     },
     plugins: [
     function ({addUtilities}) {

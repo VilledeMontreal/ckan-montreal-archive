@@ -24,6 +24,7 @@
 @import "components/accordion";
 @import "components/secondary-nav";
 @import "components/data-explorer";
+@import "components/tooltip";
 @import "tailwindcss/utilities";
 
 /* code highlighting */
