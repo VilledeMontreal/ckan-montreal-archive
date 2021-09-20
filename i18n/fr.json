@@ -754,7 +754,7 @@
 	"unknown": "inconnu",
 	"Metadata last updated": "Dernière modification de la métadonnée",
 	"Created": "Créé le",
-	"Creation date": "Date de création",
+	"Date the dataset was added": "Date d'ajout de l'ensemble de données",
 	"Format": "Format",
 	"License": "Licence",
 	"New view": "Nouvelle vue",
