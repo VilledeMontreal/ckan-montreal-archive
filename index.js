@@ -163,7 +163,7 @@ module.exports = function (app) {
     if (responseBody.result.error_summary) {
       res
         .status(401)
-        .send('This is test body!!!');
+        .render('basic-auth.html');
     } else {
       res.sendStatus(200).end();
     }
