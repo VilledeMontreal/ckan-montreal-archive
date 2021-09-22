@@ -1,42 +1,22 @@
-{% extends "base.html" %}
+<p>
+    This website is designed only for internal testing. Please, use our production site here: https://donnees.montreal.ca/.
+</p>
+<p>
+    If you have any questions, you can reach us out via support@domain.com.
+</p>
 
-{% block title%}{{__('Basic Auth')}}{% endblock %}
+<br />
 
-{% block bodyclass %}basic-auth{% endblock %}
-
-{% block content %}
-<div class="container mx-auto p-gutter">
-    <p class="leading-relaxed lg:w-2/3">
-        {{__('This website is designed only for internal testing. Please, use our production site here: https://donnees.montreal.ca/. If you have any questions, you can reach us out via support@domain.com')}}
-    </p>
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-        <div class="mb-4">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-            Username
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text">
-        </div>
-        <div class="mb-6">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-            Password
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password">
-        </div>
-        <div class="flex items-center justify-between">
-        <button onclick="submitForm()" class="bg-primary text-white font-bold py-2 px-4 rounded" type="button">
-            Sign In
-        </button>
-        </div>
+<form action="/basic-auth/user/pass" method="GET">
+    <div>
+      <label for="username">CKAN username</label>
+      <input name="username" id="username" type="text">
     </div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-    function submitForm() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        window.location.href=`/basic-auth/${username}/${password}`;
-    }
-</script>
-{% endblock %}
+    <div>
+      <label for="password">CKAN password</label>
+      <input name="password" id="password" type="password">
+    </div>
+    <div>
+      <button>Sign In</button>
+    </div>
+</form>

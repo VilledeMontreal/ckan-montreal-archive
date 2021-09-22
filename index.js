@@ -128,7 +128,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get('/basic-auth/:user/:passwd', async (req, res, next) => {
+  app.get('/basic-auth/user/pass', async (req, res, next) => {
     // Authenticate against CKAN backend. Note, we're using `ckanext-auth`
     // extension to expose login API.
     const loginAPI = config.get('CKAN_INTERNAL_URL') + '/api/3/action/user_login';
@@ -146,8 +146,8 @@ module.exports = function (app) {
       id = decodedCredentials.split(':')[0];
       password = decodedCredentials.split(':')[1];
     } else {
-      id = req.params.user;
-      password = req.params.passwd;
+      id = req.query.username;
+      password = req.query.password;
     }
 
     const response = await fetch(loginAPI, {
