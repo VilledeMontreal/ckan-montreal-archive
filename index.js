@@ -146,8 +146,8 @@ module.exports = function (app) {
       id = decodedCredentials.split(':')[0];
       password = decodedCredentials.split(':')[1];
     } else {
-      id = req.query.username;
-      password = req.query.password;
+      id = req.query.username || '';
+      password = req.query.password || '';
     }
 
     const response = await fetch(loginAPI, {
