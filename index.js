@@ -165,7 +165,7 @@ module.exports = function (app) {
   }
 
   app.get('/basic-auth/user/validate', async (req, res) => {
-    console.log(res.get('authorization'));
+    console.log(JSON.stringify(req.headers, null, 2));
     if (await basicAuth(req)) {
       res.status(200).end();
     } else {
@@ -178,10 +178,8 @@ module.exports = function (app) {
       const buff = Buffer.from(req.query.username + ':' + req.query.password);
       const encodedCredentials = buff.toString('base64');
       res
-        .set({'authorization': 'Basic ' + encodedCredentials})
-        .status(200)
-        .end();
-      res.redirect('/basic-auth/user/validate');
+        .set({'X-Authz': 'Basic ' + encodedCredentials})
+        .redirect('https://ng.montreal-dev.ckan.io/');
     } else {
       res
         .status(401)
