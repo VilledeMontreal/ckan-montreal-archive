@@ -128,7 +128,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get('/basic-auth/user/pass', async (req, res, next) => {
+  async function basicAuth(req) {
     // Authenticate against CKAN backend. Note, we're using `ckanext-auth`
     // extension to expose login API.
     const loginAPI = config.get('CKAN_INTERNAL_URL') + '/api/3/action/user_login';
@@ -159,13 +159,33 @@ module.exports = function (app) {
     });
 
     const responseBody = await response.json();
+    // If repponse contains error, then credentials are invalid.
+    const authenticated = responseBody.result.error_summary ? false : true;
+    return authenticated;
+  }
 
-    if (responseBody.result.error_summary) {
+  app.get('/basic-auth/user/validate', async (req, res) => {
+    console.log(res.get('authorization'));
+    if (await basicAuth(req)) {
+      res.status(200).end();
+    } else {
+      res.status(401).end();
+    }
+  });
+
+  app.get('/basic-auth/user/pass', async (req, res) => {
+    if (req.query.username && req.query.password) {
+      const buff = Buffer.from(req.query.username + ':' + req.query.password);
+      const encodedCredentials = buff.toString('base64');
+      res
+        .set({'authorization': 'Basic ' + encodedCredentials})
+        .status(200)
+        .end();
+      res.redirect('/basic-auth/user/validate');
+    } else {
       res
         .status(401)
         .render('basic-auth.html');
-    } else {
-      res.sendStatus(200).end();
     }
   });
 
