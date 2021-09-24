@@ -106,7 +106,7 @@
 	"4 years ago": "4 years ago",
 	"Editor": "Editor",
 	"annual": "annual",
-	"Date the dataset was added": "Date the dataset was added",
+	"Date the dataset was first added": "Date the dataset was first added",
 	"Rechercher un ensemble de données": "Search for a dataset",
 	"Ensembles de données récemment mis à jour": "Datasets recently updated",
 	"/license-en": "/license-en",
@@ -158,5 +158,7 @@
 	"Survey": "Survey",
 	"Published by": "Published by",
 	"All Organizations": "All Organizations",
-	"Data sets integrated into the application": "Data sets integrated into the application"
+	"Data sets integrated into the application": "Data sets integrated into the application",
+	"Temporal coverage": "Temporal coverage",
+	"Source (URL)": "Source (URL)"
 }
