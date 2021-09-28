@@ -196,11 +196,16 @@
             <p>{{ __(dataset.update_frequency) or '--'}}</p>
           </div>
           <div class="py-2">
-            <h3 class="font-semibold text-gray-900">{{__('Last updated')}}</h3>
-            <p>{{ dataset.metadata_modified | formatDateFromNow }}</p>
+            <h3 class="font-semibold text-gray-900">{{__('Descriptive Information Last Updated')}}</h3>
+            <div class="has-tooltip">
+                <span class='tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>{{ dataset.metadata_modified  | formatDate}}</span>
+                <span class="border-dotted border-b border-gray-600">
+                  {{ dataset.metadata_modified | formatDateFromNow }}
+                </span>
+            </div>
           </div>
           <div class="py-2">
-            <h3 class="font-semibold text-gray-900">{{__('Creation date')}}</h3>
+            <h3 class="font-semibold text-gray-900">{{__('Date the dataset was first added')}}</h3>
             <p>{{ dataset.metadata_created | formatDate }}</p>
           </div>
           <!-- <p>{{ dataset.license_url }}</p> -->
