@@ -29,8 +29,9 @@
             <p class="text-black text-sm">{{__('Submitted by')}}</p>
             <h2 class="text-primary text-xl font-semibold">{{ showcase.author }}</h2>
           </div>
-          <a class="px-4 py-2 bg-primary rounded text-white text-sm font-bold" href="{{ showcase.url }}">
-            {{__('Site Web')}}
+          <a class="flex inline-flex items-center px-4 py-2 bg-primary rounded text-white text-sm font-bold" href="{{ showcase.url }}" target="_blank">
+            {{__('Find out more')}}
+            <span class="ml-2" style="background-image: url(/static/img/ext_link.svg); height:14px; width:14px;"></span>
           </a>
         </div>
       </div>
