@@ -59,11 +59,14 @@
         </section>
         <section class="mt-16 mb-32">
         {% for tag in showcase.tags %}
-          <span class="border text-xs inline-block rounded-sm px-2 py-1 font-bold text-primary mr-2">
-            <a href="/applications">
-              {{ tag.display_name }}
-            </a>
-          </span>
+          <div id="keywords" class="py-2">
+            <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Keywords')}}</h2>
+              <span class="border text-xs inline-block rounded-sm px-2 py-1 font-bold text-primary mr-2">
+                <a href="/applications?q=tags:{{tag.name | safe}}">
+                  {{ tag.display_name }}
+                </a>
+              </span>
+          </div>
         {% endfor %}
         </section>
       </main>
