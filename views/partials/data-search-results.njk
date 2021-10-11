@@ -47,7 +47,7 @@
               {% for format in formats %}
                 {%if format %}
                   <li class="inline ">
-                    <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="font-bold text-sm text-primary border border-gray-400 rounded py-1 px-2 mr-1 hover:border-primary">{{ format }}</a>
+                    <span class="font-bold text-sm text-primary border border-gray-400 rounded py-1 px-2 mr-1">{{ format }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
