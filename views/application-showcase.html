@@ -42,7 +42,7 @@
           <img class="object-fill w-full" src="{{ showcase.image_display_url }}">
         </div>
         <br>
-        <section class="mt-2 mb-6 md:pr-10">
+        <section class="mt-2 mb-2 md:pr-10">
           <h2 class="text-2xl py-3 border-gray-200 font-bold">
             {{__('Dataset(s) used in this application')}}
           </h2>
@@ -57,10 +57,10 @@
             {% endfor %}
           </ul>
         </section>
-        <section class="mt-16 mb-32">
+        <section class="mt-2 mb-16 md:pr-10">
         {% for tag in showcase.tags %}
           <div id="keywords" class="py-2">
-            <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Keywords')}}</h2>
+            <h2 class="text-2xl py-3 border-gray-200 font-bold">{{__('Keywords')}}</h2>
               <span class="border text-xs inline-block rounded-sm px-2 py-1 font-bold text-primary mr-2">
                 <a href="/applications?q=tags:{{'"' + tag.name + '"' | safe}}">
                   {{ tag.display_name }}
