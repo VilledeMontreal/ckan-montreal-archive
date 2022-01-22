@@ -29,6 +29,6 @@
   "dependencies": {
     "express-http-proxy": "^1.6.0",
     "moment": "^2.24.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.1.1"
   }
 }
