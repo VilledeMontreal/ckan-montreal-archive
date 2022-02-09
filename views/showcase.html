@@ -67,7 +67,6 @@
             {{ dataset.title or dataset.name }} {{name}}
           </h1>
           <div class="text-sm-up py-1"> 
-            <p class="py-2">{{__('Data updated at')}} {{ dataset.metadata_modified | formatDate }}</p>
             <div class="flex flex-row">
               <p class="pr-2">{{__('Published by')}}</p>
               <a class="font-semibold text-sarcelle-dark hover:underline" href="/organization/{{ owner.name }}">{{ owner.title }}</a>
