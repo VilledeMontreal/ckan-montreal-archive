@@ -7,7 +7,7 @@
     }
   }
   & .react-date-picker__wrapper{
-    @apply mt-3 mr-3 px-2 border border-gray-400 rounded;
+    @apply mt-3 mr-3 px-2 border-1 border-gray-400 rounded;
   }
   & .data-explorer-content{
     @apply pt-6 w-full;
@@ -23,7 +23,7 @@
     & .pager{
       @apply flex z-auto;
         & li{
-          @apply px-2 mr-5 my-2 border border-gray-600 rounded-full;
+          @apply px-2 mr-5 my-2 border-1 border-gray-600 rounded-full;
           &.disabled a{
             @apply text-gray-600;
           }
@@ -38,7 +38,7 @@
       @apply block bg-gray-400;
     }
     & .container{
-      @apply flex my-3 py-0 border border-gray-min rounded;
+      @apply flex my-3 py-0 border-1 border-gray-min rounded;
       &>div{
         @apply w-full py-0;
       }
@@ -72,7 +72,7 @@
       @apply block bg-gray-400 w-full h-px;
     }
     & .container{
-      @apply my-3 py-0 border border-gray-min rounded;
+      @apply my-3 py-0 border-1 border-gray-min rounded;
       &>div{
         @apply py-0;
       }
@@ -94,7 +94,7 @@
       @apply block bg-gray-400 w-full h-px;
     }
     & .container{
-      @apply my-3 py-0 border border-gray-min rounded;
+      @apply my-3 py-0 border-1 border-gray-min rounded;
       &>div{
         @apply py-0;
       }
@@ -113,7 +113,7 @@
   & .ReactTable{
     @apply h-table border-0;
     & .rt-thead.-header{
-      @apply sticky top-0 border-b border-gray-400 shadow-none font-semibold text-base text-gray-900 bg-white rounded-t;
+      @apply sticky top-0 border-b-1 border-gray-400 shadow-none font-semibold text-base text-gray-900 bg-white rounded-t;
       & .rt-th{
         & .rt-resizable-header-content{
           @apply break-normal;
@@ -137,7 +137,7 @@
 
 .dq-rule-container{
   & button{
-    @apply inline-block mr-3 mt-3 py-2 px-4 rounded leading-none text-sm font-bold border text-primary bg-white border-gray-400;
+    @apply inline-block mr-3 mt-3 py-2 px-4 rounded leading-none text-sm font-bold border-1 text-primary bg-white border-gray-400;
     &:hover{
       @apply border-primary;
     }
@@ -161,7 +161,7 @@
 .pagination{
   @apply table font-semibold py-3 mx-auto text-base;
   & li{
-    @apply inline-block border border-gray-400 -ml-px;
+    @apply inline-block border-1 border-gray-400 -ml-px;
     &:hover{
       @apply text-primary bg-sarcelle-lightest;
     }
@@ -211,7 +211,7 @@
     @apply m-0 mr-2; 
   }
   & a{
-    @apply inline-block py-2 px-4 rounded leading-none text-sm font-bold border text-primary bg-white border-gray-400;
+    @apply inline-block py-2 px-4 rounded leading-none text-sm font-bold border-1 text-primary bg-white border-gray-400;
     &:hover{
       @apply border-primary;
     }
