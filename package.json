@@ -7,7 +7,7 @@
   "author": "Datopian <info@datopian.com>",
   "license": "MIT",
   "scripts": {
-    "test": "nyc ava test/montreal.test.js",
+    "test": "ava test/montreal.test.js",
     "start": "./deploy.sh"
   },
   "devDependencies": {
