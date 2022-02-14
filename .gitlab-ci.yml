@@ -14,6 +14,8 @@ Test:
     - cp /opt/frontend-v2/themes/ckan-montreal/.staging.env /opt/frontend-v2/.env
     - cd /opt/frontend-v2
     - yarn
+    - cd /opt/frontend-v2/themes/ckan-montreal
+    - yarn
   script:
     - cd /opt/frontend-v2/themes/ckan-montreal/
     - yarn test
