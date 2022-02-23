@@ -137,6 +137,13 @@ module.exports = function (app) {
     const totalPages = Math.ceil(total / size)
     const currentPage = parseInt(from, 10) / size + 1
     const pages = utils.pagination(currentPage, totalPages)
+    
+    const query = req.query
+
+    // This is needed to be set if there is no query
+    if (req.query.q === undefined) {
+      query.q = ""
+    }
 
     // This section is to truncate the description field from the search results to ~200 characters
     // and to enable proper processing of markdown
@@ -168,7 +175,7 @@ module.exports = function (app) {
     res.render('search.html', {
       title: 'Search',
       result,
-      query: req.query,
+      query,
       totalPages,
       pages,
       currentPage
@@ -216,33 +223,6 @@ module.exports = function (app) {
       res.sendStatus(200).end();
     }
   });
-
-  app.get('/search', async (req, res, next) => {
-    const result = await Model.search(req.query)
-    // Pagination
-    const from = req.query.from || 0
-    const size = req.query.size || 10
-    const total = result.count
-    const totalPages = Math.ceil(total / size)
-    const currentPage = parseInt(from, 10) / size + 1
-    const pages = utils.pagination(currentPage, totalPages)
-    
-    const query = req.query
-
-    // This is needed to be set if there is no query
-    if (req.query.q === undefined) {
-      query.q = ""
-    }
-    
-    res.render('search.html', {
-      title: 'Search',
-      result,
-      query,
-      totalPages,
-      pages,
-      currentPage
-    })
-  })
 
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))
