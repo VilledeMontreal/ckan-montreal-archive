@@ -170,7 +170,7 @@ module.exports = function (app) {
     }
   });
 
-  app.get('/search', async (req, res, next) => {
+  app.get('/search', async (req, res,  next) => {
     try {
       let facetNameToShowAll
       for (let [key, value] of Object.entries(req.query)) {
