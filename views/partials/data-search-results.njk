@@ -25,7 +25,7 @@
                 {% elif package.description %}
                   <div class="markdown-content leading-relaxed">
                     <p class="block">
-                      {{ package.description|processMarkdown|safe }}
+                      {{ package.description|truncate(170)|processMarkdown|safe }}
                     </p>
                   </div>
                 {% endif %}
