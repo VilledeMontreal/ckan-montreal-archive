@@ -128,6 +128,60 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/search', async (req, res, next) => {
+    const result = await Model.search(req.query)
+    // Pagination
+    const from = req.query.from || 0
+    const size = req.query.size || 10
+    const total = result.count
+    const totalPages = Math.ceil(total / size)
+    const currentPage = parseInt(from, 10) / size + 1
+    const pages = utils.pagination(currentPage, totalPages)
+    
+    const query = req.query
+
+    // This is needed to be set if there is no query
+    if (req.query.q === undefined) {
+      query.q = ""
+    }
+
+    // This section is to truncate the description field from the search results to ~200 characters
+    // and to enable proper processing of markdown
+    for (item in result.results) {
+      let emTagNum = result.results[item].description.substring(0, 200).split("_").length - 1
+      let strongTagNum = result.results[item].description.substring(0, 200).split("__").length - 1
+      let hyperlinkTagEnd = result.results[item].description.indexOf(")", 200)
+      let hyperlinkTagOpen = result.results[item].description.lastIndexOf("[", 200)
+      let hyperlinkLinkStart = result.results[item].description.lastIndexOf("(", hyperlinkTagEnd)
+      let isHyperlynk = result.results[item].description.substring(hyperlinkLinkStart - 1, hyperlinkLinkStart) == "]"
+
+      if (hyperlinkTagEnd > 200 && hyperlinkTagOpen < 200 && hyperlinkTagOpen != -1 && isHyperlynk) {
+        result.results[item].description = result.results[item].description.substring(0, hyperlinkTagEnd) + ") ..."
+      } else {
+        if (emTagNum % 2 != 0) {
+          result.results[item].description = result.results[item].description.substring(0, 200) + "_ ..."
+        } else {
+          if (strongTagNum % 2 != 0) {
+            result.results[item].description = result.results[item].description.substring(0, 200) + "__ ..."
+          } else {
+            if (result.results[item].description.length > 200) {
+              result.results[item].description = result.results[item].description.substring(0, 200) + " ..."
+            }
+          }
+        }
+      }
+    }
+
+    res.render('search.html', {
+      title: 'Search',
+      result,
+      query,
+      totalPages,
+      pages,
+      currentPage
+    })
+  })
+
   app.get('/basic-auth/:user/:passwd', async (req, res, next) => {
     // Authenticate against CKAN backend. Note, we're using `ckanext-auth`
     // extension to expose login API.
@@ -169,56 +223,6 @@ module.exports = function (app) {
       res.sendStatus(200).end();
     }
   });
-
-  app.get('/search', async (req, res,  next) => {
-    try {
-      let facetNameToShowAll
-      for (let [key, value] of Object.entries(req.query)) {
-        if (key.includes('facet.limit.')) {
-          facetNameToShowAll = key.split('.')[2]
-          req.query['facet.limit'] = value
-        }
-      }
-      const result = await Model.search(req.query)
-      if (facetNameToShowAll) {
-        for (let [key, value] of Object.entries(result.search_facets)) {
-          // Sort facets by count
-          result.search_facets[key].items = result.search_facets[key].items
-            .sort((a, b) => b.count - a.count)
-          if (key !== facetNameToShowAll) {
-            result.search_facets[key].items = result.search_facets[key].items
-              .slice(0, 5)
-          }
-        }
-      }
-      // Pagination
-      const from = req.query.from || 0
-      const size = req.query.size || 10
-      const total = result.count
-      const totalPages = Math.ceil(total / size)
-      const currentPage = parseInt(from, 10) / size + 1
-      const pages = utils.pagination(currentPage, totalPages)
-
-      const query = req.query
-
-      // This is needed to be set if there is no query
-      if (req.query.q === undefined) {
-        query.q = ""
-      }
-
-      res.render('search.html', {
-        title: 'Search',
-        result,
-        query,
-        totalPages,
-        pages,
-        currentPage
-      })
-    } catch (e) {
-      next(e)
-    }
-  })
-
 
   app.get('/dash', (req, res) => {
     const dashPage = fs.readFileSync(path.resolve(__dirname, './public/dash/index.html'))

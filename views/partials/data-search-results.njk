@@ -24,15 +24,9 @@
                   </p>
                 {% elif package.description %}
                   <div class="markdown-content leading-relaxed">
-                    {% if package.description|length > 170 %}
-                      <p class="block">
-                        {{ package.description|processMarkdown|truncate(170)|safe }}
-                      </p>
-                    {% else %}
-                      <p class="block">
-                        {{ package.description|processMarkdown|safe }}
-                      </p>
-                    {% endif %}
+                    <p class="block">
+                      {{ package.description|processMarkdown|safe }}
+                    </p>
                   </div>
                 {% endif %}
               </div>
@@ -71,11 +65,7 @@
                 </p>
               {% elif package.description %}
                 <div class="markdown-content leading-relaxed">
-                  {% if package.description|length > 170 %}
-                    {{ package.description|processMarkdown|truncate(170)|safe }}
-                  {% else %}
-                    {{ package.description|processMarkdown|safe }}
-                  {% endif %}
+                  {{ package.description|processMarkdown|safe }}
                 </div>
               {% endif %}
             </div>
