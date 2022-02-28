@@ -46,6 +46,5 @@
 .custom_panel {
     padding: 0 18px;
     background-color: white;
-    overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
