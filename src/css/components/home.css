@@ -1,18 +1,16 @@
-
-#homepage-collection-icons:hover div{
-  filter:brightness(0.5) sepia(1) hue-rotate(115deg) saturate(4);
+#homepage-collection-icons:hover div {
+  filter: brightness(0.5) sepia(1) hue-rotate(115deg) saturate(4);
 }
 
-#homepage-collection-icons:hover h2{
-  color: #097d6c
+#homepage-collection-icons:hover h2 {
+  color: #097d6c;
 }
 
 .home_h1 {
   @apply font-semibold text-4xl leading-tight;
 }
 
-.home_grid{
-  
+.home_grid {
   min-height: 221px;
   max-height: 221px;
 }
@@ -35,7 +33,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     @apply bg-gray-200 w-gutter;
     position: absolute;
     top: 0;
@@ -78,7 +76,6 @@
 }
 
 @screen md {
-
   .home_h1 {
     margin-top: 6vh;
     margin-bottom: 6vh;
@@ -86,13 +83,10 @@
   .home_feed {
     columns: 2;
   }
-
 }
 
 @screen lg {
-
   .home {
-    background-image: url("../img/home-bg.svg");
     background-repeat: no-repeat;
     background-position: right 8rem;
     background-size: 40vw auto;
@@ -125,13 +119,10 @@
       background-position: 5rem top;
     }
   }
-  
 }
 
 @screen xl {
-
   .home_h1 {
     font-size: 94px;
   }
-  
 }
