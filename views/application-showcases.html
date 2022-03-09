@@ -72,7 +72,7 @@
       <div class="md:w-2/3 md:mr-gutter">
         <form action="/applications" method="GET">
           <div class="relative mb-gutter">
-            <input class="border border-solid border-gray-400 rounded pr-2 pl-10 py-2 text-lg w-full outline-none" type="text" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
+            <input class="border-1 border-solid border-gray-400 rounded pr-2 pl-10 py-2 text-lg w-full outline-none" type="text" placeholder={{__('Search datasets')}} name="q" value="{{ query.q }}" autofocus>
             <button class="absolute flex items-center h-full px-3 top-0 left-0" type="submit">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4263 12.9554C16.9557 13.1127 17.5124 12.811 17.6697 12.2816C17.888 11.5468 18 10.7804 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.833 18 13.5747 17.4194 14.9529 16.3671L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L15.7078 14.2936C15.7073 14.2931 15.7069 14.2927 15.7064 14.2922C15.3155 13.9021 14.6824 13.9027 14.2922 14.2936C13.2086 15.3793 11.6632 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 10.587 15.916 11.1616 15.7525 11.712C15.5952 12.2414 15.8969 12.7981 16.4263 12.9554Z" fill="#ADB5BD"></path>
@@ -91,7 +91,7 @@
             </h1>
             <label class="flex-none font-bold text-lg text-black px-2" for="field-order-by">{{__('Order by')}}:</label>
             <div class="flex-none relative">
-              <select class="bg-white appearance-none border border-solid border-gray-400 text-base text-gray-900 rounded py-3 px-2 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
+              <select class="bg-white appearance-none border-1 border-solid border-gray-400 text-base text-gray-900 rounded py-3 px-2 pr-8 leading-tight focus:outline-none focus:bg-white" id="field-order-by" name="sort" onchange="this.form.submit()">
                 <option value="score:desc" {% if query.sort == "score:desc" %}selected="selected"{% endif %}>{{__('Relevance')}}</option>
                 <option value="title_string:asc" {% if query.sort == "title_string:asc" %}selected="selected"{% endif %}>{{__('Name Ascending')}}</option>
                 <option value="title_string:desc" {% if query.sort == "title_string:desc" %}selected="selected"{% endif %}>{{__('Name Descending')}}</option>
@@ -113,7 +113,7 @@
                     <div class="card-img">
                         <img class="rounded-t" src="https://montreal.l3.ckan.io/uploads/showcase/{{ showcase.image_url }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
                     </div>
-                    <div class="card-body border border-gray-300 p-8" style="height: 300px;">
+                    <div class="card-body border-1 border-gray-300 p-8" style="height: 300px;">
                         <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ showcase.title }}</p>
                         <p class="text-gray-600  font-open-sans font-normal" >{{ showcase.description | truncate(150) }}</p>
                     </div>
