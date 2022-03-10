@@ -33,24 +33,24 @@ module.exports = function (app) {
       AHU: "Ahuntsic-Cartierville",
       agglomeration: "Agglomération",
       ANJ: "Anjou",
-      CDN: "Côte-des-Neiges–Notre-Dame-de-Grâce",
+      CDN: "Côte-des-Neiges-Notre-Dame-de-Grâce",
       LAC: "Lachine",
       LAS: "LaSalle",
       PLA: "Le Plateau-Mont-Royal",
       LSO: "Le Sud-Ouest",
-      IBI: "L’Île-Bizard–Sainte-Geneviève",
-      MHM: "Mercier–Hochelaga-Maisonneuve",
+      IBI: "L’Île-Bizard-Sainte-Geneviève",
+      MHM: "Mercier-Hochelaga-Maisonneuve",
       montreal: "Montréal",
       MTN: "Montréal-Nord",
       OUT: "Outremont",
       PRF: "Pierrefonds-Roxboro",
-      RDP: "Rivière-des-Prairies–Pointe-aux-Trembles",
-      RPP: "Rosemont–La Petite-Patrie",
+      RDP: "Rivière-des-Prairies-Pointe-aux-Trembles",
+      RPP: "Rosemont-La Petite-Patrie",
       VSL: "Saint-Laurent",
       STL: "Saint-Léonard",
       VER: "Verdun",
       VIM: "Ville-Marie",
-      VSE: "Villeray–Saint-Michel–Parc-Extension",
+      VSE: "Villeray-Saint-Michel-Parc-Extension",
     };
 
     res.locals.explorerFormats = [
@@ -170,7 +170,7 @@ module.exports = function (app) {
 
     // This section is to truncate the description field from the search results to ~200 characters
     // and to enable proper processing of markdown
-    for (item in result.results) {
+    for (var item in result.results) {
       let emTagNum =
         result.results[item].description.substring(0, 200).split("_").length -
         1;
