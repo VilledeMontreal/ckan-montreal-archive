@@ -102,7 +102,7 @@
     </div>
     <!-- News Section -->
 
-    <!-- Applications Section -->
+    <!-- Applications Carousel Section -->
     <div class="flex flex-col items-center pt-16 pb-16">
         <h2 class="text-4xl text-zambezi font-semibold w-full">{{__('Applications')}}</h2>
         <div class="carousel block flex w-full flex-row">
@@ -112,9 +112,9 @@
                     <div class="card-img">
                         <img class="rounded-t" src="https://montreal.l3.ckan.io/uploads/showcase/{{ app.image_url }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
                     </div>
-                    <div class="card-body border-1 border-gray-300 p-8" style="height: 200px;">
+                    <div class="card-body border-1 border-gray-300 p-6" style="height: 220px;">
                         <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ app.title }}</p>
-                        <p class="text-gray-600  font-open-sans font-normal" >{{ app.publisher }}</p>
+                        <p class="text-gray-600  font-open-sans font-normal" >{{__("by") + " " + app.publisher }}</p>
                     </div>
                 </a>
             </div>
@@ -124,7 +124,7 @@
             {{__('All Applications')}}
         </a>
     </div>
-    <!-- End of Applications Section -->
+    <!-- End of Applications Carousel Section -->
 
     <!-- Organizations Section -->
     <div class="flex flex-col items-center pt-16 pb-16">
