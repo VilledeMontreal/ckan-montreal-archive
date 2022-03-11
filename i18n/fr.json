@@ -1132,5 +1132,7 @@
 	"Survey": "Sondage",
 	"Published by": "Publié par",
 	"All Organizations": "Toutes les organisations",
-	"Dataset(s) used in this application": "Ensemble(s) de données intégré(s) à l'application"
+	"Dataset(s) used in this application": "Ensemble(s) de données intégré(s) à l'application",
+	"All Applications": "Voir toutes les applications",
+	"by": "par"
 }

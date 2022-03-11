@@ -41,7 +41,7 @@
                 {% for collection in collections %}
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
+                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/{{ slug }}/{{ collection.name }}" style="border:1px solid #CED4DA">
                         <div style="background-image: url(/static/img/{{ collection.name }}.svg); height:40px; width:40px;"></div>
                         <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ collection.title }}</h2>
                     </a>
@@ -62,8 +62,8 @@
             {% for dataSet in recentData %}
             <!-- posts -->
             <div class="md:w-1/3">
-                <a class="block m-4 rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/{{ dataSet.organization.name | safe }}/{{ dataSet.name | safe }}">
-                    <div class="card-body border border-gray-300 p-8 font-open-sans rounded">
+                <a class="block m-4 rounded hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/{{ dataSet.organization.name | safe }}/{{ dataSet.name | safe }}">
+                    <div class="card-body border-1 border-gray-300 p-8 font-open-sans rounded">
                         <div class="text-gray-600 text-xs font-bold mb-2 h-10">{{dataSet.groups[0].display_name}}</div>
                         <div class="text-xl font-bold text-black font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;height:60px;">{{ dataSet.title }}</div>
                         <div class="text-gray-600 font-normal text-base">{{ dataSet.metadata_modified }}</div>
@@ -83,11 +83,11 @@
             {% for post in posts %}
             <!-- posts -->
             <div class="container md:w-1/3 justify-center">
-                <a class="block m-4 hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/news/{{ post.slug | safe }}">
+                <a class="block m-4 hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/news/{{ post.slug | safe }}">
                     <div class="card-img">
                         <img class="rounded-t" src="{{ post.image or '/static/img/texture.png' }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
                     </div>
-                    <div class="card-body border border-gray-300 p-8">
+                    <div class="card-body border-1 border-gray-300 p-8">
                         <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ post.title }}</p>
                         <p class="text-gray-600  font-open-sans font-normal">{{post.modified}}</p>
                     </div>
@@ -96,11 +96,35 @@
             <!-- posts end -->
             {% endfor %}
         </div>
-        <a href="/news" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+        <a href="/news" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full">
             {{__('All news')}}
         </a>
     </div>
     <!-- News Section -->
+
+    <!-- Applications Carousel Section -->
+    <div class="flex flex-col items-center pt-16 pb-16">
+        <h2 class="text-4xl text-zambezi font-semibold w-full">{{__('Applications')}}</h2>
+        <div class="carousel block flex w-full flex-row">
+            {% for app in applications %}
+            <div class="block md:w-1/3 justify-center p-2">
+                <a class="block m-4 hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl" href="/applications/single/{{ app.name }}">
+                    <div class="card-img">
+                        <img class="rounded-t" src="https://montreal.l3.ckan.io/uploads/showcase/{{ app.image_url }}" style="width: calc(100% + 2px);height: 205px;object-fit: cover;" /> 
+                    </div>
+                    <div class="card-body border-1 border-gray-300 p-6" style="height: 220px;">
+                        <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ app.title }}</p>
+                        <p class="text-gray-600  font-open-sans font-normal" >{{__('by') + " " + app.publisher }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/applications" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white mt-4 py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full">
+            {{__('All Applications')}}
+        </a>
+    </div>
+    <!-- End of Applications Carousel Section -->
 
     <!-- Organizations Section -->
     <div class="flex flex-col items-center pt-16 pb-16">
@@ -110,7 +134,7 @@
                 {% for organization in organizations %}
                 <!-- group -->
                 <li class="sm:w-1/3 lg:w-1/3 p-2">
-                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/organization/{{ organization.name }}" style="border:1px solid #CED4DA">
+                    <a id="homepage-collection-icons" class="p-4 block bg-white rounded hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl hover:text-primary" href="/organization/{{ organization.name }}" style="border:1px solid #CED4DA">
                         <img class="h-20" src="{{ organization.image }}"/>
                         <h2 class="text-xl h-16 font-bold flex items-center text-black">{{ organization.title }}</h2>
                     </a>
@@ -119,7 +143,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <a href="/organization" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white mt-2 py-2 px-4 border border-gray-500 hover:border-transparent rounded-full">
+        <a href="/organization" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white mt-2 py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full">
             {{__('All Organizations')}}
         </a>
     </div>
@@ -127,7 +151,7 @@
 </section>
 <!--End Intro Section -->
 <!--Start of Separator-->
-<div class="border"></div>
+<div class="border-1"></div>
 <!--End of Separator-->
 <!-- Start of Powered By Section -->
 <div class="px-4 mx-auto max-w-6xl pt-16 pb-32">
