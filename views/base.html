@@ -20,6 +20,10 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
   {% endif %}
 
+  <!-- Slick carousel -->
+  <link rel="stylesheet" href="/static/stylesheets/slick.css">
+  <link rel="stylesheet" href="/static/stylesheets/slick-theme.css">
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script id="ga-gtag" async></script>
 
@@ -203,6 +207,10 @@
 </div>
 
 <!-- <script src="/static/js/scripts.js"></script> -->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+
 <script>
   //set lang
    el = document.getElementById('lang')
@@ -273,6 +281,41 @@ if(readCookie('defaultLocale') == 'fr' || !readCookie('defaultLocale')){
       panel.classList.toggle("hidden");
     });
   }
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.carousel').slick({
+      dots: true,
+      arrows:true,
+      infinite: false,
+      speed: 600,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 800,
+          settings: {
+            arrows:false,
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows:false,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+  })
 </script>
 
 {% block scripts %}

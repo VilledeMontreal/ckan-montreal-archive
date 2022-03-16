@@ -177,8 +177,8 @@
         <div id="keywords" class="py-2">
           <h2 class="text-3xl font-semibold pt-gutter pb-2 text-gray-900">{{__('Keywords')}}</h2>
           <div class="flex flex-wrap ">
-          {% for t in dataset.keywords %}
-            <a href="/search?q=tags:{{t | safe}}" class="font-bold text-sm text-primary lowercase border border-gray-400 rounded py-1 px-2 mr-3 my-2 hover:border-primary">{{t | safe}}</a>
+          {% for t in dataset.keywords %} 
+            <a href="/search?q=tags:{{t | safe}}" class="font-bold text-sm text-primary lowercase border-1 border-gray-400 rounded py-1 px-2 mr-3 my-2 hover:border-primary">{{t | safe}}</a>
           {% endfor %}
           </div class="pb-4">
         </div>
