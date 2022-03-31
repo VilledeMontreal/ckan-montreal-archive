@@ -953,7 +953,7 @@ msgstr "Formats"
 #: ckan/controllers/group.py:309 ckan/controllers/home.py:65
 #: ckan/controllers/package.py:244 ckan/lib/helpers.py:837
 msgid "Licenses"
-msgstr "Licenses"
+msgstr "Licences"
 
 #: ckan/controllers/group.py:395 ckan/controllers/group.py:512
 #: ckan/controllers/package.py:326 ckan/controllers/package.py:767
