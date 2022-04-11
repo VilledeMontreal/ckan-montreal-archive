@@ -1,6 +1,6 @@
 <ul class="pt-gutter font-open-sans">
   {% for package in result.results  %}
-  <li class="mt-2 border-t border-gray-400 px-5 py-6">
+  <li class="mt-2 border-t-1 border-gray-400 px-5 py-6">
     <div>
       {% if 'organization:' not in query.q %}
         <div class="flex flex-row">
@@ -25,7 +25,7 @@
                 {% elif package.description %}
                   <div class="markdown-content leading-relaxed">
                     <p class="block">
-                      {{ package.description|processMarkdown|safe }}
+                      {{ package.description|truncate(170)|processMarkdown|safe }}
                     </p>
                   </div>
                 {% endif %}
@@ -41,7 +41,7 @@
               {% for format in formats %}
                 {%if format %}
                   <li class="inline ">
-                    <span class="font-bold text-sm text-primary border border-gray-400 rounded py-1 px-2 mr-1">{{ format }}</span>
+                    <span class="font-bold text-sm text-primary border-1 border-gray-400 rounded py-1 px-2 mr-1">{{ format }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -81,7 +81,7 @@
           {% for format in formats %}
             {%if format %}
               <li class="inline ">
-                <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="font-bold text-sm text-primary border border-gray-400 rounded py-1 px-2 mr-1 hover:border-primary">{{ format }}</a>
+                <a href="/{{ package.organization.name or 'dataset' }}/{{ package.name }}" data-format="{{ format }}" class="font-bold text-sm text-primary border-1 border-gray-400 rounded py-1 px-2 mr-1 hover:border-primary">{{ format }}</a>
               </li>
             {% endif %}
           {% endfor %}
