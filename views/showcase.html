@@ -277,7 +277,14 @@
 <script>
   
   const teritoriesList = [...document.querySelectorAll("#hidden-territories > p")].map(e => e.innerHTML);
-  let updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
+  let updatedGeoJson
+  if (teritoriesList.includes("Agglomération")) {
+    updatedGeoJson = teritories.features
+  } else if (teritoriesList.includes("Montréal")) {
+    updatedGeoJson = teritories.features.filter((el) => teritoriesList.el.properties.TYPE === "Arrondissement")
+  } else {
+    updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
+  }
   
   // Leaflet Map
 
