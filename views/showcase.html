@@ -120,7 +120,8 @@
               <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
               <td class="px-4 py-3">
                 <div class="has-tooltip">
-                  <span class='tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>{{ (item.resource.last_modified or item.resource.created)  | formatDate}}</span>
+                  <span class='local-date tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>
+                    {{ (item.resource.last_modified or item.resource.created) }}</span>
                   <span class="border-dotted border-b border-gray-600">
                     {{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}
                   </span>
@@ -272,12 +273,64 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+//show the date and time in the local time set by the user's browser
+window.onload = function utcDatetoLocalDate(date) {
+  var elements = document.getElementsByClassName('local-date tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8');
+  for (let item of elements) {
+    var date = (item.textContent.trim());
+
+    date = convertUTCDateToLocalDate(new Date(date));
+    date = formatDate(date)
+
+    item.textContent = date;
+  }
+}
+
+function convertUTCDateToLocalDate(date) {
+  var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+
+  var offset = date.getTimezoneOffset() / 60;
+  var hours = date.getHours();
+
+  newDate.setHours(hours - offset);
+
+  return newDate;
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return (
+    [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-') +
+    ' ' +
+    [
+      padTo2Digits(date.getHours()),
+      padTo2Digits(date.getMinutes())
+    ].join(':')
+  );
+}
+//end of show date and time in local time 
+</script>
 <script src="/static/js/geojson.js"></script>
 <!-- <script src="/static/js/leafletMap.js"></script> -->
 <script>
   
   const teritoriesList = [...document.querySelectorAll("#hidden-territories > p")].map(e => e.innerHTML);
-  let updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
+  let updatedGeoJson
+  if (teritoriesList.includes("Agglomération")) {
+    updatedGeoJson = teritories.features
+  } else if (teritoriesList.includes("Montréal")) {
+    updatedGeoJson = teritories.features.filter((el) => teritoriesList.el.properties.TYPE === "Arrondissement")
+  } else {
+    updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
+  }
   
   // Leaflet Map
 

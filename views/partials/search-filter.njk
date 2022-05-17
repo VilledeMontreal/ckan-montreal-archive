@@ -37,7 +37,7 @@
     </li>
     {% elif value.items | length > 5 %}
     <li class="search-facet flex justify-between items-center text-gray-900 group hover:bg-sarcelle-lightest cursor-pointer" style="list-style-type: none">
-      <a href="/search" class="flex-1 font-bold text-secondary text-base pl-3 py-3" aria-label="{{__('Show Less')}} {{ __(facetNames[facetId]) }}">
+      <a href="/search?q={{ query.q }}" class="flex-1 font-bold text-secondary text-base pl-3 py-3" aria-label="{{__('Show Less')}} {{ __(facetNames[facetId]) }}">
         {% if facetId == 'organization' %}
       {{ __('Show Less Organisations') }}
       {% elif facetId == 'groups' %}
