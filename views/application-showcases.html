@@ -115,7 +115,7 @@
                     </div>
                     <div class="card-body border-1 border-gray-300 p-8" style="height: 300px;">
                         <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{ showcase.title }}</p>
-                        <p class="text-gray-600  font-open-sans font-normal" >{{ showcase.description | processMarkdown | safe | truncate(150) }}</p>
+                        <p class="text-gray-600  font-open-sans font-normal" >{{ showcase.description|truncate(150)|processMarkdown|safe }}</p>
                     </div>
                 </a>
             </div>
