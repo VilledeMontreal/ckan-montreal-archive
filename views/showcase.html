@@ -327,7 +327,7 @@ function formatDate(date) {
   if (teritoriesList.includes("Agglomération")) {
     updatedGeoJson = teritories.features
   } else if (teritoriesList.includes("Montréal")) {
-    updatedGeoJson = teritories.features.filter((el) => teritoriesList.el.properties.TYPE === "Arrondissement")
+    updatedGeoJson = teritories.features.filter((el) => el.properties.TYPE === "Arrondissement")
   } else {
     updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
   }
