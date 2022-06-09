@@ -9,9 +9,19 @@
 {% block content %}
 <!-- data explorer CSS -->
 <link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/main.0e85ebd4.chunk.css">
-<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.1c55df8f.chunk.css">
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/dataexplorer/2.0f69c0e7.chunk.css">
 <!-- end data explorer CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
+<style>
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+</style>
 <section class="font-open-sans leading-relaxed">
   <!-- breadcrumbs -->
   <div class="container mx-auto px-gutter pt-12">
@@ -67,7 +77,6 @@
             {{ dataset.title or dataset.name }} {{name}}
           </h1>
           <div class="text-sm-up py-1"> 
-            <p class="py-2">{{__('Data updated at')}} {{ dataset.metadata_modified | formatDate }}</p>
             <div class="flex flex-row">
               <p class="pr-2">{{__('Published by')}}</p>
               <a class="font-semibold text-sarcelle-dark hover:underline" href="/organization/{{ owner.name }}">{{ owner.title }}</a>
@@ -111,7 +120,8 @@
               <td class="px-4 py-3">{{ item.resource.sizeFormatted or '--' }}</td>
               <td class="px-4 py-3">
                 <div class="has-tooltip">
-                  <span class='tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>{{ (item.resource.last_modified or item.resource.created)  | formatDate}}</span>
+                  <span class='local-date tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8'>
+                    {{ (item.resource.last_modified or item.resource.created) }}</span>
                   <span class="border-dotted border-b border-gray-600">
                     {{ (item.resource.last_modified or item.resource.created) | formatDateFromNow }}
                   </span>
@@ -150,11 +160,15 @@
 
         <!-- territoire -->
         {% if dataset.territoire %}
-        <div id="territories" class="py-2">
-          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Territories')}}</h2>
-          {% for t in dataset.territoire %}
-            <p class="py-2">{{territoires[t] | safe or ''}}</p>
-          {% endfor %}
+        <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Territories')}}</h2>
+          <div id="hidden-territories" class="hidden">
+            {% for t in dataset.territoire %}
+            <p id="hidden-p">{{territoires[t] | safe or ''}}</p>
+            {% endfor %}
+
+          </div>
+        <div id="map" class="py-2">
+                
         </div class="pb-4">
         {% endif %}
         <!-- end territories -->
@@ -174,7 +188,7 @@
 
         <!-- additional info -->
         <div id="additional-info" class="py-2">
-          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Additional Info')}}</h2>
+          <h2 class="text-3xl font-semibold pt-gutter pb-4 text-gray-900">{{__('Additional Information')}}</h2>
           <div class="py-2">
             <h3 class="font-semibold text-gray-900">{{__('Publisher')}}</h3>
             <p>{{ dataset.sources[0].name | dump | safe | replace('\"', '') or '--'}}</p>
@@ -260,6 +274,153 @@
 
 {% block scripts %}
 <script>
+//show the date and time in the local time set by the user's browser
+window.onload = function utcDatetoLocalDate(date) {
+  var elements = document.getElementsByClassName('local-date tooltip rounded shadow-md p-1 bg-gray-100 text-base ml-10 -mt-8');
+  for (let item of elements) {
+    var date = (item.textContent.trim());
+
+    date = convertUTCDateToLocalDate(new Date(date));
+    date = formatDate(date)
+
+    item.textContent = date;
+  }
+}
+
+function convertUTCDateToLocalDate(date) {
+  var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+
+  var offset = date.getTimezoneOffset() / 60;
+  var hours = date.getHours();
+
+  newDate.setHours(hours - offset);
+
+  return newDate;
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return (
+    [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-') +
+    ' ' +
+    [
+      padTo2Digits(date.getHours()),
+      padTo2Digits(date.getMinutes())
+    ].join(':')
+  );
+}
+//end of show date and time in local time 
+</script>
+<script src="/static/js/geojson.js"></script>
+<!-- <script src="/static/js/leafletMap.js"></script> -->
+<script>
+  
+  const teritoriesList = [...document.querySelectorAll("#hidden-territories > p")].map(e => e.innerHTML);
+  let updatedGeoJson
+  if (teritoriesList.includes("Agglomération")) {
+    updatedGeoJson = teritories.features
+  } else if (teritoriesList.includes("Montréal")) {
+    updatedGeoJson = teritories.features.filter((el) => el.properties.TYPE === "Arrondissement")
+  } else {
+    updatedGeoJson = teritories.features.filter((el) => teritoriesList.includes(el.properties.NOM))
+  }
+  
+  // Leaflet Map
+
+  var map = L.map('map').setView([45.55, -73.7], 10);
+
+var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  id: 'mapbox/light-v9',
+  tileSize: 512,
+  zoomOffset: -1
+}).addTo(map);
+
+
+// control that shows state info on hover
+var info = L.control();
+
+info.onAdd = function (map) {
+  this._div = L.DomUtil.create('div', 'info');
+  this.update();
+  return this._div;
+};
+
+info.update = function (props) {
+  this._div.innerHTML = props ?
+    '<b>' + props.NOM : ""
+};
+info.addTo(map);
+
+function getColor(d) {
+  return d > 1000 ? '#800026' :
+    d > 500  ? '#BD0026' :
+    d > 200  ? '#E31A1C' :
+    d > 100  ? '#FC4E2A' :
+    d > 50   ? '#FD8D3C' :
+    d > 20   ? '#FEB24C' :
+    d > 10   ? '#FED976' : '#097d6c';
+}
+
+function style(feature) {
+  return {
+    weight: 2,
+    opacity: 1,
+    color: 'white',
+    dashArray: '3',
+    fillOpacity: 0.7,
+    fillColor: getColor(feature.properties.density)
+  };
+}
+
+function highlightFeature(e) {
+  var layer = e.target;
+  layer.setStyle({
+    weight: 2,
+    color: '#666',
+    dashArray: '',
+    fillOpacity: 0.5
+  });
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+  info.update(layer.feature.properties);
+}
+
+var geojson;
+
+function resetHighlight(e) {
+  geojson.resetStyle(e.target);
+  info.update();
+}
+
+function zoomToFeature(e) {
+  map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+  layer.on({
+    mouseover: highlightFeature,
+    mouseout: resetHighlight,
+    click: zoomToFeature
+  });
+}
+geojson = L.geoJson(updatedGeoJson, {
+  style: style,
+  onEachFeature: onEachFeature
+}).addTo(map);
+
+// Leaflet Map
+
   function toggleApi(i) {
     const el = document.getElementById(`data-api-info-${i}`)
     const body = document.body
@@ -310,7 +471,7 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
 <script type="text/javascript" src="/static/js/dataexplorer/runtime~main.a8a9905a.js"></script>
-<script type="text/javascript" src="/static/js/dataexplorer/2.7a0db414.chunk.js"></script>
-<script type="text/javascript" src="/static/js/dataexplorer/main.86eba3bf.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/2.30cee88f.chunk.js"></script>
+<script type="text/javascript" src="/static/js/dataexplorer/main.1157632d.chunk.js"></script>
 
 {% endblock %}

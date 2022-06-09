@@ -1,6 +1,6 @@
 <ul class="pt-gutter font-open-sans">
   {% for package in result.results  %}
-  <li class="mt-2 border-t border-gray-400 px-5 py-6">
+  <li class="mt-2 border-t-1 border-gray-400 px-5 py-6">
     <div>
       {% if 'organization:' not in query.q %}
         <div class="flex flex-row">
@@ -25,7 +25,7 @@
                 {% elif package.description %}
                   <div class="markdown-content leading-relaxed">
                     <p class="block">
-                      {{ package.description|processMarkdown|safe }}
+                      {{ package.description|truncate(170)|processMarkdown|safe }}
                     </p>
                   </div>
                 {% endif %}

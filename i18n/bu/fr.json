@@ -176,7 +176,7 @@
 	"Groups": "Groupes",
 	"Tags": "Mots-clés",
 	"Formats": "Formats",
-	"Licenses": "Licenses",
+	"Licenses": "Licences",
 	"User %r not authorized to edit %s": "L'utilisateur {0} n'est pas autorisé à éditer {1}",
 	"Not authorized to perform bulk update": "Vous n'êtes pas autorisé à effectuer des mises à jour par lots",
 	"Unauthorized to create a group": "Vous n'êtes pas autorisé à créer un groupe",

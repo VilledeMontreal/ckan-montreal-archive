@@ -30,27 +30,27 @@ module.exports = function (app) {
     let configApiUrl = config.get("API_URL");
 
     res.locals.territoires = {
-      AHU: "Ahuntsic-Cartierville",
-      agglomeration: "Agglomération",
-      ANJ: "Anjou",
-      CDN: "Côte-des-Neiges-Notre-Dame-de-Grâce",
-      LAC: "Lachine",
-      LAS: "LaSalle",
-      PLA: "Le Plateau-Mont-Royal",
-      LSO: "Le Sud-Ouest",
-      IBI: "L’Île-Bizard-Sainte-Geneviève",
-      MHM: "Mercier-Hochelaga-Maisonneuve",
-      montreal: "Montréal",
-      MTN: "Montréal-Nord",
-      OUT: "Outremont",
-      PRF: "Pierrefonds-Roxboro",
-      RDP: "Rivière-des-Prairies-Pointe-aux-Trembles",
-      RPP: "Rosemont-La Petite-Patrie",
-      VSL: "Saint-Laurent",
-      STL: "Saint-Léonard",
-      VER: "Verdun",
-      VIM: "Ville-Marie",
-      VSE: "Villeray-Saint-Michel-Parc-Extension",
+      "AHU": "Ahuntsic-Cartierville",
+      "agglomeration": "Agglomération",
+      "ANJ": "Anjou",
+      "CDN": "Côte-des-Neiges-Notre-Dame-de-Grâce",
+      "LAC": "Lachine",
+      "LAS": "LaSalle",
+      "PLA": "Le Plateau-Mont-Royal",
+      "LSO": "Le Sud-Ouest",
+      "IBI": "L'Île-Bizard-Sainte-Geneviève",
+      "MHM": "Mercier-Hochelaga-Maisonneuve",
+      "montreal": "Montréal",
+      "MTN": "Montréal-Nord",
+      "OUT": "Outremont",
+      "PRF": "Pierrefonds-Roxboro",
+      "RDP": "Rivière-des-Prairies-Pointe-aux-Trembles",
+      "RPP": "Rosemont-La Petite-Patrie",
+      "VSL": "Saint-Laurent",
+      "STL": "Saint-Léonard",
+      "VER": "Verdun",
+      "VIM": "Ville-Marie",
+      "VSE": "Villeray-Saint-Michel-Parc-Extension"
     };
 
     res.locals.explorerFormats = [
@@ -59,8 +59,7 @@ module.exports = function (app) {
       "tsv",
       "xls",
       "xlsx",
-      "pdf",
-    ];
+      "pdf"];
 
     res.locals.urls = {
       apiUrl: configApiUrl,
@@ -152,7 +151,26 @@ module.exports = function (app) {
   });
 
   app.get("/search", async (req, res, next) => {
-    const result = await Model.search(req.query);
+    try {
+      let facetNameToShowAll
+      for (let [key, value] of Object.entries(req.query)) {
+        if (key.includes('facet.limit.')) {
+          facetNameToShowAll = key.split('.')[2]
+          req.query['facet.limit'] = value
+        }
+      }
+      const result = await Model.search(req.query)
+      if (facetNameToShowAll) {
+        for (let [key, value] of Object.entries(result.search_facets)) {
+          // Sort facets by count
+          result.search_facets[key].items = result.search_facets[key].items
+            .sort((a, b) => b.count - a.count)
+          if (key !== facetNameToShowAll) {
+            result.search_facets[key].items = result.search_facets[key].items
+              .slice(0, 5)
+          }
+        }
+      }
     // Pagination
     const from = req.query.from || 0;
     const size = req.query.size || 10;
@@ -219,14 +237,17 @@ module.exports = function (app) {
       }
     }
 
-    res.render("search.html", {
-      title: "Search",
-      result,
-      query,
-      totalPages,
-      pages,
-      currentPage,
-    });
+      res.render('search.html', {
+        title: 'Search',
+        result,
+        query,
+        totalPages,
+        pages,
+        currentPage
+      })
+    } catch (e) {
+      next(e)
+    };
   });
 
   app.get("/basic-auth/:user/:passwd", async (req, res, next) => {

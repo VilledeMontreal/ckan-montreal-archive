@@ -2,8 +2,8 @@
 {% block bodyclass %}home{% endblock %} {% block content %}
 
 <!-- Hero Section -->
-<section class="bg-center bg-no-repeat bg-cover" style="background-image: url(/static/img/MTLdonneesGRIS.png)">
-    <div class="container flex flex-col  w-5/6 content-justify m-auto lg:max-w-2xlm pt-32 pb-8">
+<section class="bg-center bg-no-repeat bg-contain" style="background-image: url(/static/img/MTLdonneesGRIS.png); background-color: rgba(247,248,249,255);">
+    <div class="container flex flex-col  w-5/6 content-justify m-auto lg:max-w-2xlm pt-8 pb-8">
         <h1 class="text-center text-black font-normal text-4xl  mb-8 px-8">{{__('Rechercher un ensemble de données')}}</h1>
         <form action="/search" method="GET" id="search-form">
             <div class="flex flex-row  flex-row-reverse justify-center m-auto w-4/5 md:w-3/5 lg:w-6/12 ">
@@ -32,7 +32,7 @@
 
 <!-- Our Data Section -->
 <div class="bg-gray-100">
-    <section class="flex flex-col px-4 mx-auto max-w-6xl pt-16 pb-32">
+    <section class="flex flex-col px-4 mx-auto max-w-6xl pt-16">
         <div data-title="our-data">
             <h2 class="text-4xl text-zambezi font-semibold">{{__('Our data')}}</h2>
         </div>
@@ -49,6 +49,11 @@
                 <!-- group end -->
                 {% endfor %}
             </ul>
+        </div>
+        <div class="flex flex-col pt-6 pb-3 items-center">
+            <a href="/dataset" class="text-center bg-transparent mb-4 hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full">
+                {{__('View All')}}
+            </a>
         </div>
     </section>
 </div>
