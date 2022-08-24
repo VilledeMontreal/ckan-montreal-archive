@@ -189,6 +189,9 @@ module.exports = function (app) {
     // This section is to truncate the description field from the search results to ~200 characters
     // and to enable proper processing of markdown
     for (var item in result.results) {
+      if (!result.results[item].description){
+        continue
+      }
       let emTagNum =
         result.results[item].description.substring(0, 200).split("_").length -
         1;
