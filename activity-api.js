@@ -10,7 +10,7 @@ class ActivityModel {
 
   // returns promise
   async getPackageActivity(pkg,limit) {
-   const url = `${this.api}package_activity_list_html?id=${pkg}&limit=${limit}`
+   const url = `${this.api}package_activity_list?id=${pkg}&limit=${limit}`
    const res = await fetch(url)
    if (res.ok) {
      const activity = await res.json()
@@ -28,7 +28,7 @@ class ActivityModel {
   
   // returns promise
   async getCollectionActivity(collection,limit) {
-   const url = `${this.api}group_activity_list_html?id=${collection}&limit=${limit}`
+   const url = `${this.api}group_activity_list?id=${collection}&limit=${limit}`
    const res = await fetch(url)
    if (res.ok) {
      const activity = await res.json()
