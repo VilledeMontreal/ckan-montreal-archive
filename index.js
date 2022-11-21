@@ -101,6 +101,11 @@ module.exports = function (app) {
     }
   });
 
+  // Cookie page route handler
+  app.get("/google4c60939197c830fd.html", (req, res) => {
+    res.render("google4c60939197c830fd.html");
+  });
+
   // Status check route connected to Google Cloud Uptime check
   app.get("/status", async (_req, res, _next) => {
     // Uptime
